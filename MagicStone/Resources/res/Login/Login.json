@@ -1,0 +1,239 @@
+{
+  "ID": "976e6aeb-cbf7-42a1-bf2b-7d92a7a7e994",
+  "Version": "2.3.1.2",
+  "Name": "Login",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 3,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "Login/login.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 363.0281,
+              "Y": 596.979
+            },
+            "Scale": {
+              "ScaleX": 2.28,
+              "ScaleY": 2.5749
+            },
+            "Alpha": 171,
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.484,
+              "Y": 0.4475
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -148.9719,
+            "RightMargin": -125.0281,
+            "TopMargin": 449.021,
+            "BottomMargin": 308.979,
+            "Tag": 5,
+            "Children": [
+              {
+                "FontSize": 20,
+                "IsCustomSize": true,
+                "LabelText": "",
+                "PlaceHolderText": "Text Field",
+                "MaxLengthText": 10,
+                "PasswordEnable": true,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 549.521,
+                  "Y": 243.1435
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5366,
+                  "Y": 0.4221
+                },
+                "PreSize": {
+                  "X": 0.1465,
+                  "Y": 0.0469
+                },
+                "LeftMargin": 474.521,
+                "RightMargin": 399.479,
+                "TopMargin": 319.3564,
+                "BottomMargin": 229.6435,
+                "Tag": 7,
+                "ActionTag": -805067403,
+                "Size": {
+                  "X": 150.0,
+                  "Y": 27.0
+                },
+                "Name": "txt_name",
+                "ctype": "TextFieldObjectData"
+              },
+              {
+                "FontSize": 20,
+                "IsCustomSize": true,
+                "LabelText": "",
+                "PlaceHolderText": "Text Field",
+                "MaxLengthText": 10,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 549.3039,
+                  "Y": 290.2048
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5364,
+                  "Y": 0.5038
+                },
+                "PreSize": {
+                  "X": 0.1465,
+                  "Y": 0.0469
+                },
+                "LeftMargin": 474.3039,
+                "RightMargin": 399.6961,
+                "TopMargin": 272.2952,
+                "BottomMargin": 276.7048,
+                "Tag": 8,
+                "ActionTag": -1080454393,
+                "Size": {
+                  "X": 150.0,
+                  "Y": 27.0
+                },
+                "Name": "txt_pswd",
+                "ctype": "TextFieldObjectData"
+              },
+              {
+                "FontSize": 24,
+                "ButtonText": "Login",
+                "TextColor": {},
+                "DisabledFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/btn_push.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/btn_hilight.png",
+                  "Plist": ""
+                },
+                "NormalFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/btn_normal.png",
+                  "Plist": ""
+                },
+                "Scale9Enable": true,
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 11,
+                "Scale9Width": 112,
+                "Scale9Height": 22,
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 550.3556,
+                  "Y": 185.7348
+                },
+                "Scale": {
+                  "ScaleX": 0.7492,
+                  "ScaleY": 0.6829
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5375,
+                  "Y": 0.3225
+                },
+                "PreSize": {
+                  "X": 0.1893,
+                  "Y": 0.033
+                },
+                "LeftMargin": 479.3556,
+                "RightMargin": 402.6444,
+                "TopMargin": 368.2652,
+                "BottomMargin": 163.7348,
+                "Tag": 6,
+                "ActionTag": -885972890,
+                "Size": {
+                  "X": 142.0,
+                  "Y": 44.0
+                },
+                "Name": "btn_ok",
+                "ctype": "ButtonObjectData"
+              }
+            ],
+            "ActionTag": -1306658360,
+            "Size": {
+              "X": 1024.0,
+              "Y": 576.0
+            },
+            "Name": "background",
+            "ctype": "SpriteObjectData"
+          }
+        ],
+        "Size": {
+          "X": 750.0,
+          "Y": 1334.0
+        },
+        "Name": "Scene",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "btn_hilight.png",
+        "btn_normal.png",
+        "btn_push.png",
+        "login.png"
+      ],
+      "ctype": "GameProjectData"
+    }
+  },
+  "Type": "Scene"
+}
