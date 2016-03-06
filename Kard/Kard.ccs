@@ -1,20 +1,20 @@
 <Solution>
-  <PropertyGroup Name="Kard" Version="2.3.1.2" Type="CocosStudio" />
+  <PropertyGroup Name="Kard" Version="3.10.0.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
         <Folder Name="Login">
-          <Project Name="Login.csd" Type="Scene" />
-          <Image Name="login.png" />
           <Image Name="btn_hilight.png" />
           <Image Name="btn_normal.png" />
           <Image Name="btn_push.png" />
+          <Project Name="Login.csd" Type="Scene" />
+          <Image Name="login.png" />
         </Folder>
         <Folder Name="Main">
-          <Project Name="Main.csd" Type="Scene" />
-          <Image Name="desk.png" />
           <Image Name="chat.png" />
+          <Image Name="desk.png" />
           <Image Name="head.png" />
+          <Project Name="Main.csd" Type="Scene" />
         </Folder>
       </RootFolder>
     </Group>

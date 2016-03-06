@@ -1,18 +1,18 @@
-<GameProjectFile>
-  <PropertyGroup Type="Scene" Name="Main" ID="9bb16080-82c0-4854-bb7a-dc868faee136" Version="2.3.1.2" />
+<GameFile>
+  <PropertyGroup Name="Main" Type="Scene" ID="9bb16080-82c0-4854-bb7a-dc868faee136" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
       <ObjectData Name="Scene" Tag="4" ctype="GameNodeObjectData">
         <Size X="750.0000" Y="1334.0000" />
         <Children>
-          <AbstractNodeData Name="background" ActionTag="-251418080" Tag="17" IconVisible="False" TouchEnable="True" StretchHeightEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="356" Scale9Height="760" ctype="PanelObjectData">
+          <AbstractNodeData Name="background" ActionTag="-251418080" Tag="17" IconVisible="False" TouchEnable="True" StretchHeightEnable="True" ClipAble="False" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="356" Scale9Height="760" ctype="PanelObjectData">
             <Size X="750.0000" Y="1334.0000" />
             <Children>
-              <AbstractNodeData Name="opp" ActionTag="1164493311" Tag="28" IconVisible="False" BottomMargin="886.0000" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="opp" ActionTag="1164493311" Tag="28" IconVisible="False" BottomMargin="886.0000" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="750.0000" Y="448.0000" />
                 <Children>
-                  <AbstractNodeData Name="deck_opp" ActionTag="-1032501366" Tag="25" IconVisible="False" LeftMargin="-278.0000" RightMargin="760.0000" TopMargin="-374.0000" BottomMargin="458.0000" TouchEnable="True" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                  <AbstractNodeData Name="deck_opp" ActionTag="-1032501366" Tag="25" IconVisible="False" LeftMargin="-278.0000" RightMargin="760.0000" TopMargin="-374.0000" BottomMargin="458.0000" TouchEnable="True" ClipAble="False" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                     <Size X="268.0000" Y="364.0000" />
                     <AnchorPoint ScaleX="1.0000" />
                     <Position X="-10.0000" Y="458.0000" />
@@ -25,7 +25,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="hand_opp" ActionTag="-1026794220" Tag="19" IconVisible="False" LeftMargin="241.0000" RightMargin="241.0000" TopMargin="-374.0000" BottomMargin="458.0000" TouchEnable="True" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                  <AbstractNodeData Name="hand_opp" ActionTag="-1026794220" Tag="19" IconVisible="False" LeftMargin="241.0000" RightMargin="241.0000" TopMargin="-374.0000" BottomMargin="458.0000" TouchEnable="True" ClipAble="False" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                     <Size X="268.0000" Y="364.0000" />
                     <AnchorPoint ScaleX="0.5000" />
                     <Position X="375.0000" Y="458.0000" />
@@ -38,7 +38,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="bench_opp" ActionTag="-448466600" Tag="37" IconVisible="False" TopMargin="10.0000" BottomMargin="364.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
+                  <AbstractNodeData Name="bench_opp" ActionTag="-448466600" Tag="37" IconVisible="False" TopMargin="10.0000" BottomMargin="364.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
                     <Size X="750.0000" Y="74.0000" />
                     <Children>
                       <AbstractNodeData Name="num_discard_opp" ActionTag="-59249063" Tag="31" IconVisible="False" LeftMargin="690.0000" RightMargin="40.0000" TopMargin="16.0000" BottomMargin="16.0000" FontSize="36" LabelText="3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
@@ -98,7 +98,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="desk_opp" ActionTag="-1575679512" Tag="19" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" TopMargin="84.0000" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                  <AbstractNodeData Name="desk_opp" ActionTag="-1575679512" Tag="19" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" TopMargin="84.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                     <Size X="710.0000" Y="364.0000" />
                     <AnchorPoint />
                     <Position X="20.0000" />
@@ -123,7 +123,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="reminder" ActionTag="1031562714" Tag="41" IconVisible="False" TopMargin="448.0000" BottomMargin="812.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
+              <AbstractNodeData Name="reminder" ActionTag="1031562714" Tag="41" IconVisible="False" TopMargin="448.0000" BottomMargin="812.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
                 <Size X="750.0000" Y="74.0000" />
                 <Children>
                   <AbstractNodeData Name="remind_text" ActionTag="-485930080" Tag="44" IconVisible="False" LeftMargin="20.0000" RightMargin="644.0000" TopMargin="25.5000" BottomMargin="25.5000" FontSize="20" LabelText="Reminder" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
@@ -161,10 +161,10 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="me" ActionTag="-1716556648" Tag="29" IconVisible="False" TopMargin="522.0000" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+              <AbstractNodeData Name="me" ActionTag="-1716556648" Tag="29" IconVisible="False" TopMargin="522.0000" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                 <Size X="750.0000" Y="812.0000" />
                 <Children>
-                  <AbstractNodeData Name="desk_me" ActionTag="1552335595" Tag="20" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" BottomMargin="448.0000" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                  <AbstractNodeData Name="desk_me" ActionTag="1552335595" Tag="20" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" BottomMargin="448.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                     <Size X="710.0000" Y="364.0000" />
                     <AnchorPoint />
                     <Position X="20.0000" Y="448.0000" />
@@ -177,7 +177,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="bench_me" ActionTag="58075736" Tag="26" IconVisible="False" TopMargin="364.0000" BottomMargin="374.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
+                  <AbstractNodeData Name="bench_me" ActionTag="58075736" Tag="26" IconVisible="False" TopMargin="364.0000" BottomMargin="374.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
                     <Size X="750.0000" Y="74.0000" />
                     <Children>
                       <AbstractNodeData Name="btn_operation" ActionTag="192751884" ZOrder="2" Tag="38" IconVisible="False" LeftMargin="16.0000" RightMargin="634.0000" TopMargin="13.0000" BottomMargin="13.0000" TouchEnable="True" FontSize="18" ButtonText="OK" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="112" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
@@ -252,7 +252,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="hand_me" ActionTag="-373056442" Tag="18" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" TopMargin="438.0000" BottomMargin="10.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
+                  <AbstractNodeData Name="hand_me" ActionTag="-373056442" Tag="18" IconVisible="False" LeftMargin="20.0000" RightMargin="20.0000" TopMargin="438.0000" BottomMargin="10.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="284" Scale9Height="68" ctype="PanelObjectData">
                     <Size X="710.0000" Y="364.0000" />
                     <AnchorPoint />
                     <Position X="20.0000" Y="10.0000" />
@@ -266,7 +266,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="deck_me" ActionTag="774170492" Tag="26" IconVisible="False" LeftMargin="-278.0000" RightMargin="760.0000" TopMargin="438.0000" BottomMargin="10.0000" TouchEnable="True" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                  <AbstractNodeData Name="deck_me" ActionTag="774170492" Tag="26" IconVisible="False" LeftMargin="-278.0000" RightMargin="760.0000" TopMargin="438.0000" BottomMargin="10.0000" TouchEnable="True" ClipAble="False" ColorAngle="90.0000" Scale9Enable="True" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                     <Size X="268.0000" Y="364.0000" />
                     <AnchorPoint ScaleX="1.0000" />
                     <Position X="-10.0000" Y="10.0000" />
@@ -291,10 +291,10 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="reveal" ActionTag="270202608" Tag="37" VisibleForFrame="False" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" TouchEnable="True" BackColorAlpha="84" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="reveal" ActionTag="270202608" VisibleForFrame="False" Tag="37" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" TouchEnable="True" ClipAble="False" BackColorAlpha="84" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="750.0000" Y="1334.0000" />
                 <Children>
-                  <AbstractNodeData Name="reveal_pv" ActionTag="-1182936562" Tag="35" IconVisible="False" TopMargin="303.0000" BottomMargin="667.0000" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ScrollDirectionType="0" ctype="PageViewObjectData">
+                  <AbstractNodeData Name="reveal_pv" ActionTag="-1182936562" Tag="35" IconVisible="False" TopMargin="303.0000" BottomMargin="667.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ScrollDirectionType="0" ctype="PageViewObjectData">
                     <Size X="750.0000" Y="364.0000" />
                     <AnchorPoint ScaleY="0.5000" />
                     <Position Y="849.0000" />
@@ -307,7 +307,7 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="reveal_sv" ActionTag="-1150088097" Tag="36" IconVisible="False" TopMargin="303.0000" BottomMargin="667.0000" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="Horizontal" ctype="ScrollViewObjectData">
+                  <AbstractNodeData Name="reveal_sv" ActionTag="-1150088097" Tag="36" IconVisible="False" TopMargin="303.0000" BottomMargin="667.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="Horizontal" ctype="ScrollViewObjectData">
                     <Size X="750.0000" Y="364.0000" />
                     <AnchorPoint ScaleY="0.5000" />
                     <Position Y="849.0000" />
@@ -333,7 +333,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="menus" ActionTag="-776809490" Tag="29" VisibleForFrame="False" IconVisible="False" LeftMargin="315.0000" RightMargin="315.0000" TopMargin="617.0000" BottomMargin="617.0000" ClipAble="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="0" DirectionType="Vertical" HorizontalType="Align_HorizontalCenter" ctype="ListViewObjectData">
+              <AbstractNodeData Name="menus" ActionTag="-776809490" VisibleForFrame="False" Tag="29" IconVisible="False" LeftMargin="315.0000" RightMargin="315.0000" TopMargin="617.0000" BottomMargin="617.0000" ClipAble="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="0" DirectionType="Vertical" HorizontalType="Align_HorizontalCenter" ctype="ListViewObjectData">
                 <Size X="120.0000" Y="100.0000" />
                 <Children>
                   <AbstractNodeData Name="btn_giveup" ActionTag="894644080" Tag="35" IconVisible="False" LeftMargin="10.0000" RightMargin="10.0000" BottomMargin="68.0000" TouchEnable="True" FontSize="18" ButtonText="GiveUp" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="112" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
@@ -410,4 +410,4 @@
       </ObjectData>
     </Content>
   </Content>
-</GameProjectFile>
+</GameFile>

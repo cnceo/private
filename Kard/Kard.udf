@@ -1,4 +1,4 @@
-<UserData Version="2.3.1.2">
+<UserData Version="3.10.0.0">
   <Properties>
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
@@ -14,7 +14,7 @@
         <LuaEncryptSign Value="" />
         <Android_PackageName Value="org.cocos.Kard" />
         <AndroidkeyStore Value="" />
-        <AndroidVersion Value="" />
+        <AndroidVersion Value="android-16" />
         <iOS_Target Value="Kard-mobile" />
         <iOS_BundleID Value="iPhone Developer: happy latte (P2AY34FU8D)" />
         <Platform Value="None" />

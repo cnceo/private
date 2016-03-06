@@ -1,12 +1,12 @@
-<GameProjectFile>
-  <PropertyGroup Type="Scene" Name="Login" ID="976e6aeb-cbf7-42a1-bf2b-7d92a7a7e994" Version="2.3.1.2" />
+<GameFile>
+  <PropertyGroup Name="Login" Type="Scene" ID="976e6aeb-cbf7-42a1-bf2b-7d92a7a7e994" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
       <ObjectData Name="Scene" Tag="3" ctype="GameNodeObjectData">
         <Size X="750.0000" Y="1334.0000" />
         <Children>
-          <AbstractNodeData Name="background" ActionTag="-1306658360" Tag="5" Alpha="171" IconVisible="False" LeftMargin="-148.9719" RightMargin="-125.0281" TopMargin="449.0210" BottomMargin="308.9790" ctype="SpriteObjectData">
+          <AbstractNodeData Name="background" ActionTag="-1306658360" Alpha="171" Tag="5" IconVisible="False" LeftMargin="-148.9719" RightMargin="-125.0281" TopMargin="449.0210" BottomMargin="308.9790" ctype="SpriteObjectData">
             <Size X="1024.0000" Y="576.0000" />
             <Children>
               <AbstractNodeData Name="txt_name" ActionTag="-805067403" Tag="7" IconVisible="False" LeftMargin="474.5210" RightMargin="399.4790" TopMargin="319.3565" BottomMargin="229.6435" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Text Field" MaxLengthText="10" PasswordEnable="True" ctype="TextFieldObjectData">
@@ -56,4 +56,4 @@
       </ObjectData>
     </Content>
   </Content>
-</GameProjectFile>
+</GameFile>
