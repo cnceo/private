@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0A65E41C931285004D37CE /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A65E21C931285004D37CE /* stdafx.cpp */; };
+		5E0A65E51C931285004D37CE /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E0A65E31C931285004D37CE /* stdafx.h */; };
 		5E2DBE9C1C92FAEB009FC394 /* bas_fwd.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBE961C92FAEB009FC394 /* bas_fwd.hpp */; };
 		5E2DBE9D1C92FAEB009FC394 /* bas_pch.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBE971C92FAEB009FC394 /* bas_pch.hpp */; };
 		5E2DBE9E1C92FAEB009FC394 /* io_service_pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBE981C92FAEB009FC394 /* io_service_pool.hpp */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E0A65E21C931285004D37CE /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
+		5E0A65E31C931285004D37CE /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		5E2DBE961C92FAEB009FC394 /* bas_fwd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bas_fwd.hpp; path = htio/bas/bas_fwd.hpp; sourceTree = "<group>"; };
 		5E2DBE971C92FAEB009FC394 /* bas_pch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bas_pch.hpp; path = htio/bas/bas_pch.hpp; sourceTree = "<group>"; };
 		5E2DBE981C92FAEB009FC394 /* io_service_pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = io_service_pool.hpp; path = htio/bas/io_service_pool.hpp; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		5E9FFF061C92F9D80069015B /* keye */ = {
 			isa = PBXGroup;
 			children = (
+				5E0A65E21C931285004D37CE /* stdafx.cpp */,
+				5E0A65E31C931285004D37CE /* stdafx.h */,
 				5E2DBECE1C92FB24009FC394 /* wsio */,
 				5E2DBECD1C92FB1B009FC394 /* utility */,
 				5E2DBECC1C92FB15009FC394 /* keyeio */,
@@ -247,6 +253,7 @@
 				5E2DBECA1C92FB0F009FC394 /* keye_fwd.h in Headers */,
 				5E2DBE9F1C92FAEB009FC394 /* service_handler_pool.hpp in Headers */,
 				5E2DBEDB1C92FB36009FC394 /* svc_handler.h in Headers */,
+				5E0A65E51C931285004D37CE /* stdafx.h in Headers */,
 				5E2DBEB51C92FAFC009FC394 /* alloc.h in Headers */,
 				5E2DBEC61C92FAFC009FC394 /* work_handler.h in Headers */,
 				5E2DBE9D1C92FAEB009FC394 /* bas_pch.hpp in Headers */,
@@ -347,6 +354,7 @@
 				5E2DBEDD1C92FB36009FC394 /* ws_service.cpp in Sources */,
 				5E2DBEBF1C92FAFC009FC394 /* packeti.cpp in Sources */,
 				5E2DBEBB1C92FAFC009FC394 /* metric.cpp in Sources */,
+				5E0A65E41C931285004D37CE /* stdafx.cpp in Sources */,
 				5E2DBEDE1C92FB36009FC394 /* ws_svc_handler.cpp in Sources */,
 				5E2DBF001C92FB80009FC394 /* svc_handler.cpp in Sources */,
 			);
@@ -440,6 +448,10 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -450,6 +462,10 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

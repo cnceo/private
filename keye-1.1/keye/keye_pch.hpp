@@ -21,6 +21,6 @@
 #include "keye/utility/utility_pch.hpp"
 #include "keye/htio/htio_pch.hpp"
 #include "keye/keyeio/keyeio_pch.hpp"
-//#include "keye/wsio/wsio_pch.hpp"
+#include "keye/wsio/wsio_pch.hpp"
 // --------------------------------------------------------
 #endif // _core_pch_h_

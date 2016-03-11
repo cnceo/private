@@ -5,7 +5,14 @@
 #include <SDKDDKVer.h>
 #endif
 
+#define _WEBSOCKETPP_
+#ifdef _WEBSOCKETPP_
+#include <websocketpp/config/asio_no_tls.hpp>
+#include <websocketpp/server.hpp>
+#include <websocketpp/common/thread.hpp>
+#else
 #include <libwebsocket/libwebsockets.h>
+#endif
 
 #include <functional>
 #include <string>
