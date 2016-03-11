@@ -1,0 +1,2 @@
+"itemId"	"itemType"	"count"	"BuyType"	"BuyCost"	"SellType"	"Sellcost"
+0	0	1	0	40	0	0

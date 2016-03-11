@@ -1,0 +1,4 @@
+USE dnf;
+
+ALTER TABLE t_user ADD COLUMN task_win INT(10) DEFAULT 0;
+ALTER TABLE t_user ADD COLUMN out_time BIGINT(20) DEFAULT 0;
