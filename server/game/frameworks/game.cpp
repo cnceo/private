@@ -28,5 +28,7 @@ void Game::initialize(){
 		*pswd=_config->value("mysql_pswd"),
 		*db=_config->value("mysql_db");
 	auto port=(unsigned short)(int)_config->value("mysql_port");
+#ifndef NO_MYSQL
 	proxy().connect(host,port,user,pswd,db);
+#endif
 }

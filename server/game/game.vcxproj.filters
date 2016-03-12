@@ -42,6 +42,7 @@
     <ClCompile Include="behavior\player_behavior.cpp">
       <Filter>behavior</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frameworks\alloc.h">

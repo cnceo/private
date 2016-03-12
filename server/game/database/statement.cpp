@@ -10,6 +10,7 @@
 // --------------------------------------------------------
 #include "stdafx.h"
 #include "game_fwd.h"
+#ifndef NO_MYSQL
 
 using namespace keye;
 
@@ -27,3 +28,4 @@ void reg_stmt(){
 	memset(stmts,0,sizeof(stmts));
 	REG_STMT(STMT_AUTH,handleAuth,"SELECT id FROM account WHERE username=\'%s\' and sessionkey=\'%s\'");
 }
+#endif

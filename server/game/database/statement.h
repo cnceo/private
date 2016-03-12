@@ -11,6 +11,7 @@
 #ifndef _statement_h_
 #define _statement_h_
 
+#ifndef NO_MYSQL
 enum e_stmt:unsigned short{
 	STMT_AUTH,
 	STMT_MAX
@@ -24,4 +25,5 @@ struct Statements_t{
 extern Statements_t stmts[STMT_MAX];
 void reg_stmt();
 
+#endif
 #endif

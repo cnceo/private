@@ -10,6 +10,7 @@
 // --------------------------------------------------------
 #include "stdafx.h"
 #include "game_fwd.h"
+#ifndef NO_MYSQL
 
 using namespace keye;
 // --------------------------------------------------------
@@ -19,6 +20,7 @@ Proxy::Proxy():mysql_proxy(2){
 
 void Proxy::authorize(Session* session,const char* name,const char* pswd){
 	if(name&&pswd){
+#ifndef NO_MYSQL
 		mysql_parameter param0(0,STMT_AUTH);
 		char str[128];
 		sprintf(str,stmts[STMT_AUTH].sql,name,pswd);
@@ -29,6 +31,7 @@ void Proxy::authorize(Session* session,const char* name,const char* pswd){
 			execute(st_find,&param0,(ProxyHandler*)p);
 		}
 	}
+#endif
 }
 // --------------------------------------------------------
 ProxyHandler::ProxyHandler(Session* s):session(s){}
@@ -66,3 +69,4 @@ void ProxyHandler::handleAuth(mysql_resultset& resultset){
 	}else{
 	}
 }
+#endif

@@ -28,7 +28,9 @@ public:
 	GAME_GLOBLE(ini_file,			config)
 	GAME_GLOBLE(Alloc,				alloc)
 	GAME_GLOBLE(joint_scheduler,	scheduler)
+#ifndef NO_MYSQL
 	GAME_GLOBLE(Proxy,				proxy)
+#endif
 //	GAME_GLOBLE(ProxyHandler,		proxy_handler)
 	//logic
 	GAME_GLOBLE(ObjectMap,			objectMap)

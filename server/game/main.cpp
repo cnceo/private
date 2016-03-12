@@ -1,17 +1,20 @@
+#include "stdafx.h"
 #include <string>
 #include <memory>
 #include <gamelib.h>
-#include <autobot.h>
+//#include <autobot.h>
 
 int main(int argc,char* argv[]){
 	GameLib game;
 	game.run(argc,argv);
 
-	bool server_only=false;
+	bool server_only=true;
 	if(!server_only){
+		/*
 		Autobot robot;
 		robot.run(argc,argv);
 		robot.stop();
+		*/
 	}else{
 		printf("press x to exit.\n");
 		bool exit=false;

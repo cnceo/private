@@ -32,16 +32,16 @@ using namespace keye;
 #pragma warning(disable:4200)
 
 typedef std::allocator<char>			std_ax_t;
-typedef keye::keye_allocator<std_ax_t>	keye_ax_t;
+//typedef keye::keye_allocator<std_ax_t>	keye_ax_t;
 // --------------------------------------------------------
 class myalloc:public htio_alloc{
 public:
-					myalloc():_kax(64<<20,_sax){}
+//					myalloc():_kax(64<<20,_sax){}
 	virtual void*	allocate(size_t _Count){return _sax.allocate(_Count);}
 	virtual void	deallocate(void* _Ptr, size_t){_sax.deallocate((char*)_Ptr,0);}
 private:
 	std_ax_t		_sax;
-	keye_ax_t		_kax;
+//	keye_ax_t		_kax;
 };
 // --------------------------------------------------------
 class ServiceBase{
@@ -139,20 +139,23 @@ private:
 // SessionBase and packet
 // --------------------------------------------------------
 template<typename _Ax=std_ax_t>
-class SessionBase{
+class SessionBase: public packet_handler {
 	typedef packet_reader	helper_t;
 public:
 					SessionBase(keye::svc_handler& sh,_Ax& ax):_helper(*this,ax){
 						_sh=sh();
 					}
 	virtual			~SessionBase(){}
+	virtual void	handle(svc_handler& sh, const packet_t& p) {
+		handle(p);
+	}
 	virtual void	handle(const packet_t& p)=0;
 	virtual void	send(const packet_t& p){
 		if(_sh)_sh->send((void*)&p,p.length+sizeof(packet_t));
 	}
 protected:
 	void	handle_raw(void* buf,size_t len){
-		_helper.on_read(buf,len);
+		_helper.on_read(*_sh,buf,len);
 	}
 
 	template<typename,typename> friend class SessionHandlerBase;

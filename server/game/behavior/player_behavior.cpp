@@ -16,7 +16,9 @@ using namespace keye;
 GameBehavior::GameBehavior():Behavior(game.scheduler()){}
 
 void PlayerAuth::update(joint*){
+#ifndef NO_MYSQL
 	if(_player)game.proxy().authorize(_player->session(),_name.c_str(),_pswd.c_str());
+#endif
 }
 
 void PlayerLogin::update(joint*){

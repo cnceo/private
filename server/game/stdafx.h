@@ -18,6 +18,9 @@
 #include <Windows.h>
 #endif
 
+#ifndef NO_MYSQL
+#define NO_MYSQL
+#endif
 #include <keye/keye_fwd.h>
 #include "common/htio_fx.h"
 

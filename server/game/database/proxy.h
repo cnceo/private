@@ -10,6 +10,7 @@
 // --------------------------------------------------------
 #ifndef _proxy_h_
 #define _proxy_h_
+#ifndef NO_MYSQL
 
 class Session;
 /*
@@ -34,5 +35,5 @@ public:
 
 	Session*		session;
 };
-
+#endif
 #endif

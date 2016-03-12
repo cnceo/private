@@ -11,7 +11,9 @@
 #ifndef _core_pch_h_
 #define _core_pch_h_
 
+#ifndef NO_MYSQL
 #define NO_MYSQL
+#endif
 /* This defined the latest Window platform.
 	If you are compiling for the preversion of Windows platform,Please include <WinSDKVer.h>
 	and define proper WIN32_WINNT,then include <SDKDDKVer.h>*/
