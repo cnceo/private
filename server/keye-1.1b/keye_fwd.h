@@ -1,0 +1,17 @@
+// --------------------------------------------------------
+/*Copyright KeyeLeo.All rights reserved.
+ *
+ *File		: core_fwd.h
+ *Desc		: 
+ *Version	: 1.0
+ *Program	: KeyeLeo
+ *Date		: 2012-10-30
+ */
+// --------------------------------------------------------
+#ifndef _core_fwd_h_
+#define _core_fwd_h_
+// --------------------------------------------------------
+#include <keye/utility/utility_fwd.h>
+#include <keye/htio/htio_fwd.h>
+// --------------------------------------------------------
+#endif // _core_fwd_h_

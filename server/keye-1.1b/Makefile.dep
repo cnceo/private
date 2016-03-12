@@ -1,0 +1,16 @@
+NAME= keye
+BUILDMODE=dynamic
+CFLAGS+= -D_DEBUG -D_CRT_SECURE_NO_DEPRECATE
+CFLAGS+= -I./ -I../ -I./htio/ -I./utility/threadpool/ -I$(DEPENDENCIES)/include
+LDFLAGS+= -L$(DEPENDENCIES)/lib
+LIBS+= -lm -lrt -lmysqlclient -lstdc++ -lboost_system -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lz
+SRCS= $(wildcard keye/htio/*.cpp) \
+	$(wildcard keye/utility/*.cpp) \
+	$(wildcard keye/*.cpp)
+INCS= $(wildcard keye/htio/*.h) \
+	$(wildcard keye/htio/*.hpp) \
+	$(wildcard keye/htio/bas/*.hpp) \
+	$(wildcard keye/utility/*.h) \
+	$(wildcard keye/utility/*.hpp) \
+	$(wildcard keye/*.h) \
+	$(wildcard keye/*.hpp)

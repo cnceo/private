@@ -1,0 +1,2 @@
+MAKE_CMD=$(MAKE) -C trunks/keye/;$(MAKE) -C trunks/test/client/;$(MAKE) -C trunks/test/server/;
+MAKE_CLEAN_CMD=$(MAKE) -C trunks/keye/ clean;$(MAKE) -C trunks/test/client/ clean;$(MAKE) -C trunks/test/server/ clean;

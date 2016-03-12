@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="frameworks\alloc.cpp">
+      <Filter>frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="frameworks\session.cpp">
+      <Filter>frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="frameworks\service.cpp">
+      <Filter>frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="frameworks\handler.cpp">
+      <Filter>frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="object\player.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="behavior\walk.cpp">
+      <Filter>behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="common\protocol.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="database\proxy.cpp">
+      <Filter>database</Filter>
+    </ClCompile>
+    <ClCompile Include="database\statement.cpp">
+      <Filter>database</Filter>
+    </ClCompile>
+    <ClCompile Include="object\objectmap.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="object\object.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="frameworks\game.cpp">
+      <Filter>frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="gamelib.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="behavior\player_behavior.cpp">
+      <Filter>behavior</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="frameworks\alloc.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="common\htio_fx.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworks\session.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworks\service.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworks\handler.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="object\player.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="behavior\walk.h">
+      <Filter>behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="game_fwd.h" />
+    <ClInclude Include="behavior\fwd.h">
+      <Filter>behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="common\fwd.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworks\fwd.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="object\fwd.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\protocol.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\packets.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="database\fwd.h">
+      <Filter>database</Filter>
+    </ClInclude>
+    <ClInclude Include="database\proxy.h">
+      <Filter>database</Filter>
+    </ClInclude>
+    <ClInclude Include="database\statement.h">
+      <Filter>database</Filter>
+    </ClInclude>
+    <ClInclude Include="object\objectmap.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="object\object.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworks\game.h">
+      <Filter>frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="gamelib.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="behavior\player_behavior.h">
+      <Filter>behavior</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="object">
+      <UniqueIdentifier>{543e8ac5-ec00-47ea-b2b6-d33311793c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="behavior">
+      <UniqueIdentifier>{c72891b1-975b-4c42-b542-7dfd90ec4782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{0a99fb7f-10e3-4fe7-81b2-9515e3531e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="frameworks">
+      <UniqueIdentifier>{727ee845-50f8-4abf-ab51-4c50954c6329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database">
+      <UniqueIdentifier>{ecdc6944-f047-4f0f-9ea5-75fc49904447}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
