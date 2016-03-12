@@ -12,6 +12,7 @@
 #include "wsio_fwd.h"
 #include "impl_decl.hpp"
 
+#if 0
 using namespace keye::ws;
 // --------------------------------------------------------
 Svc_handler_impl::Svc_handler_impl(struct libwebsocket_context& ctx,
@@ -65,3 +66,5 @@ void svc_handler::close()					{_impl.close();}
 void svc_handler::send(void* buf,size_t length)	{_impl.send(buf,length);}
 const char* svc_handler::address()const		{return _impl.address();}
 unsigned short svc_handler::port()const		{return _impl.port();}
+#endif
+

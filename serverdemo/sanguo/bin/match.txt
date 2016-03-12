@@ -1,0 +1,4 @@
+"type_id"	"format"	"info_id"	"fees"	"awards"	"num_min"	"num_max"	"tm_interval"	"desc"
+100	1	109	0	0	2	1024	25	"月赛,双败定时赛事"
+101	0	110	0	0	2	1024	10	"日常比赛,单淘定时赛事"
+102	0	111	0	0	8	8	10	"日常8人赛,单淘定员赛事"
