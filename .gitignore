@@ -1,0 +1,6 @@
+server/intermediate/
+server/ipch/
+server/solution.opensdf
+server/solution.sdf
+server/builds/.vs/
+server/.vs/

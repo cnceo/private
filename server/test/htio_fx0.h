@@ -140,7 +140,7 @@ private:
 // --------------------------------------------------------
 template<typename _Ax=std_ax_t>
 class SessionBase{
-	typedef packet_helper<SessionBase<_Ax>,_Ax>	helper_t;
+	typedef packet_reader	helper_t;
 public:
 					SessionBase(keye::svc_handler& sh,_Ax& ax):_helper(*this,ax){
 						_sh=sh();

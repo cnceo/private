@@ -11,7 +11,7 @@
 #include "stdafx.h"
 #include <keye/utility/utility_fwd.h>
 
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #define LOAD_LIB(f)			LoadLibraryExA(f,nullptr,LOAD_WITH_ALTERED_SEARCH_PATH)
 #define FREE_LIB(f)			FreeLibrary((HMODULE)f)
 #define GET_PROC(h,name)	GetProcAddress((HMODULE)h,name)
@@ -54,7 +54,7 @@ bool library_impl::load(const char* file){
 	if(file){
 		string name(file);
 		name=name.substr(0,name.rfind('.'));
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 		std::transform(name.begin(),name.end(),name.begin(),tolower);	//linux has an error with transform, i'v not resolved
 #endif
 		// find first

@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <conio.h>
 #else
 #include <curses.h>

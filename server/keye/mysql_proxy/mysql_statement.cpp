@@ -9,6 +9,7 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
+#ifndef NO_MYSQL
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
 #include <keye/mysql_proxy/mysql_parameters.hpp>
 #include <keye/mysql_proxy/mysql_statement.hpp>
@@ -99,3 +100,4 @@ mysql_statement::mysql_statement(const char* name,const char* db){
 
 const char* mysql_statement::name()const{return _impl?_impl->name():nullptr;}
 const char* mysql_statement::database()const{return _impl?_impl->database():nullptr;}
+#endif

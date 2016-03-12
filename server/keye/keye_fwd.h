@@ -13,6 +13,8 @@
 // --------------------------------------------------------
 #include <keye/utility/utility_fwd.h>
 #include <keye/htio/htio_fwd.h>
+#ifndef NO_MYSQL
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
+#endif
 // --------------------------------------------------------
 #endif // _core_fwd_h_

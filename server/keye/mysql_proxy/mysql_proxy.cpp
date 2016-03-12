@@ -9,6 +9,7 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
+#ifndef NO_MYSQL
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
 #include <keye/mysql_proxy/mysql_statement.hpp>
 #include <keye/mysql_proxy/mysql_connection.hpp>
@@ -133,3 +134,4 @@ bool mysql_proxy::connect(const char* host, unsigned short port,
 void mysql_proxy::execute(mysql_statement& stmt,mysql_parameter* param,mysql_handler* h){
 	if(_impl)_impl->execute(stmt,param,h);
 }
+#endif

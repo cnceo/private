@@ -9,6 +9,7 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
+#ifndef NO_MYSQL
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
 #include <keye/mysql_proxy/mysql_resultset.hpp>
 #include <keye/mysql_proxy/mysql_error.hpp>
@@ -303,3 +304,4 @@ bool mysql_resultset_builder::build(size_t id){
 	}
 	return true;
 }
+#endif

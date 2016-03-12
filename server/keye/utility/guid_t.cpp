@@ -14,7 +14,7 @@
 
 //#define _UUID_H_
 
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #	include <objbase.h>
 #elif defined(_UUID_H_)
 #	include <uuid/uuid.h>
@@ -32,7 +32,7 @@ typedef struct _GUID {
 */
 // --------------------------------------------------------
 guid_t::guid_t():_dirty(true){
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 	GUID* guid=(GUID*)_uuid;
 	CoCreateGuid(guid);
 #elif defined(_UUID_H_)

@@ -1,7 +1,7 @@
 #ifndef _ba_pch_h_
 #define _ba_pch_h_
 // --------------------------------------------------------
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <SDKDDKVer.h>
 #endif
 

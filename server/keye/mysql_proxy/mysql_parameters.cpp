@@ -9,6 +9,7 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
+#ifndef NO_MYSQL
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
 #include <keye/mysql_proxy/mysql_parameters.hpp>
 #include <keye/mysql_proxy/mysql_resultset.hpp>
@@ -174,3 +175,4 @@ s_ptr<char> mysql_parameter::deserialize(size_t& len)const{
 	s_ptr<char> spbuf;
 	return _impl?_impl->deserialize(len):spbuf;
 }
+#endif

@@ -1,0 +1,66 @@
+﻿  test_client.cpp
+d:\project\private\server\test\htio_fx0.h(82): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(82): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(82): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'void *'
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 3 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 4 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 5 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(116): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(116): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(116): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'void *'
+d:\project\private\server\test\htio_fx0.h(267): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(283): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(290): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(297): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 5 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 6 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 9 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+d:\project\private\server\test\test_client\test_client.cpp(21): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\conio.h(452): note: see declaration of 'getch'
+  stdafx.cpp
+d:\project\private\server\test\htio_fx0.h(82): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(82): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(82): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'void *'
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 3 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 4 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 5 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(94): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(116): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(116): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(116): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'void *'
+d:\project\private\server\test\htio_fx0.h(267): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(283): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(290): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(297): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 5 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 6 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+d:\project\private\server\test\htio_fx0.h(312): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 9 has type 'size_t'
+  d:\project\private\server\test\htio_fx0.h(312): note: consider using '%zd' in the format string
+  Generating Code...
+  test_client.vcxproj -> D:\project\private\server\builds\bin\test_client.exe

@@ -10,7 +10,7 @@
 // --------------------------------------------------------
 #include "stdafx.h"
 #include <keye/utility/utility_fwd.h>
-#ifdef WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <conio.h>
 #else
 #include <curses.h>
@@ -20,7 +20,7 @@ namespace keye{
 // --------------------------------------------------------
 time_t ticker(){
 	//milliseconds from history
-	#ifdef WIN32
+	#if(defined(_WIN32)||defined(_WIN64))
 	struct _timeb tb;
 	_ftime(&tb);
 	#else
