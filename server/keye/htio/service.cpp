@@ -9,12 +9,12 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
-#include <keye/htio/htio_fwd.h>
+#include "htio_fwd.h"
 // --------------------------------------------------------
 // service_impl
 // --------------------------------------------------------
-#include <keye/htio/svc_handler.hpp>
-#include <keye/htio/work_handler.hpp>
+#include "svc_handler.hpp"
+#include "work_handler.hpp"
 namespace keye{
 class service_impl{
 public:

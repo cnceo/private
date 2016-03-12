@@ -5,9 +5,8 @@
 
 NAME=    keye
 MAJVER=  1
-MINVER=  0
-RELVER=  1
-VERSION= $(MAJVER).$(MINVER).$(RELVER)
+MINVER=  1
+VERSION= $(MAJVER).$(MINVER)
 
 ##############################################################################
 # Change the installation path as needed. Note: PREFIX must be an absolute path!

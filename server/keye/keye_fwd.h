@@ -12,9 +12,6 @@
 #define _core_fwd_h_
 // --------------------------------------------------------
 #include <keye/utility/utility_fwd.h>
-#include <keye/allocator/alloc_fwd.h>
-#include <keye/cache/cache_fwd.h>
-#include <keye/keyeio/keyeio_fwd.h>
 #include <keye/htio/htio_fwd.h>
 #include <keye/mysql_proxy/mysql_proxy_fwd.h>
 // --------------------------------------------------------

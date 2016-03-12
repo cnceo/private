@@ -9,7 +9,7 @@
  */
 // --------------------------------------------------------
 #include "stdafx.h"
-#include <keye/htio/htio_fwd.h>
+#include "htio_fwd.h"
 
 using namespace keye;
 // --------------------------------------------------------

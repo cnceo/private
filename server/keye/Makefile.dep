@@ -3,22 +3,17 @@ BUILDMODE=dynamic
 CFLAGS+= -D_DEBUG -D_CRT_SECURE_NO_DEPRECATE
 CFLAGS+= -I./ -I../ -I./htio/ -I./utility/threadpool/ -I$(DEPENDENCIES)/include
 LDFLAGS+= -L$(DEPENDENCIES)/lib
-LIBS+= -lm -lrt -lmysqlclient -lstdc++ -lboost_system -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono
-SRCS= $(wildcard allocator/*.cpp) \
-	$(wildcard cache/*.cpp) \
-	$(wildcard htio/*.cpp) \
-	$(wildcard keyeio/*.cpp) \
-	$(wildcard mysql_proxy/*.cpp) \
-	$(wildcard utility/*.cpp) \
-	$(wildcard *.cpp)
-INCS= $(wildcard allocator/*.h) \
-	$(wildcard cache/*.h) \
-	$(wildcard htio/*.h) \
-	$(wildcard htio/*.hpp) \
-	$(wildcard htio/bas/*.hpp) \
-	$(wildcard mysql_proxy/*.h) \
-	$(wildcard mysql_proxy/*.hpp) \
-	$(wildcard utility/*.h) \
-	$(wildcard utility/*.hpp) \
-	$(wildcard *.h) \
-	$(wildcard *.hpp)
+LIBS+= -lm -lrt -lmysqlclient -lstdc++ -lboost_system -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lz
+SRCS= $(wildcard keye/htio/*.cpp) \
+    $(wildcard keye/mysql_proxy/*.cpp) \
+    $(wildcard keye/utility/*.cpp) \
+    $(wildcard keye/*.cpp)
+INCS= $(wildcard keye/htio/*.h) \
+    $(wildcard keye/htio/*.hpp) \
+    $(wildcard keye/htio/bas/*.hpp) \
+    $(wildcard keye/mysql_proxy/*.h) \
+    $(wildcard keye/mysql_proxy/*.hpp) \
+    $(wildcard keye/utility/*.h) \
+    $(wildcard keye/utility/*.hpp) \
+    $(wildcard keye/*.h) \
+    $(wildcard keye/*.hpp)

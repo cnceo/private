@@ -10,7 +10,7 @@
 // --------------------------------------------------------
 #include "stdafx.h"
 #include <fstream>
-#include <keye/utility/utility_fwd.h>
+#include "utility_fwd.h"
 
 using namespace keye;
 

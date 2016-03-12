@@ -35,6 +35,7 @@
 #include <keye/htio/svc_handler.h>
 #include <keye/htio/work_handler.h>
 #include <keye/htio/metric.h>
+#include <keye/htio/packet.h>
 #include <keye/htio/service.h>
 #include <keye/htio/http_client.h>
 // --------------------------------------------------------
