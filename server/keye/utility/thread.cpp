@@ -15,7 +15,7 @@
 namespace keye{
 // --------------------------------------------------------
 typedef std::mutex Mutex;
-typedef boost::interprocess::named_mutex IPMutex;
+//typedef boost::interprocess::named_mutex IPMutex;
 class mutex_impl{
 	friend class mutex_t;
 				mutex_impl():_locked(false){}
@@ -24,6 +24,7 @@ class mutex_impl{
 	Mutex		_m;
 	bool		_locked;
 };
+/*
 class ip_mutex_impl{
 	friend class ip_mutex_t;
 				ip_mutex_impl(const char* n):_locked(false){
@@ -45,16 +46,17 @@ class ip_mutex_impl{
 	std::shared_ptr<IPMutex>	_m;
 	bool		_locked;
 };
-
+*/
 mutex_t::mutex_t()		{_impl.reset(new mutex_impl);}
 void mutex_t::lock()	{if(_impl)_impl->lock();}
 void mutex_t::unlock()	{if(_impl)_impl->unlock();}
-
+/*
 ip_mutex_t::ip_mutex_t(const char* n){
 	_impl.reset(new ip_mutex_impl(n));
 }
 void ip_mutex_t::lock()		{if(_impl)_impl->lock();}
 void ip_mutex_t::unlock()	{if(_impl)_impl->unlock();}
+*/
 // --------------------------------------------------------
 //a simple boost thread wrapper,template has void run() function
 template<typename _Tx>

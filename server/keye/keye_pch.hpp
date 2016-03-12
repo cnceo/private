@@ -18,8 +18,8 @@
 #include <SDKDDKVer.h>
 #endif
 
-#include <keye/mysql_proxy/mysql_proxy_pch.hpp>
 #include "keye/utility/utility_pch.hpp"
 #include "keye/htio/htio_pch.hpp"
-// --------------------------------------------------------
+#include <keye/mysql_proxy/mysql_proxy_pch.hpp>
+	// --------------------------------------------------------
 #endif // _core_pch_h_

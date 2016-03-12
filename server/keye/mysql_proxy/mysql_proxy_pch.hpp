@@ -1,7 +1,7 @@
 #ifndef _proxy_pch_h_
 #define _proxy_pch_h_
 // --------------------------------------------------------
-#ifdef _WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <SDKDDKVer.h>
 #endif
 
@@ -13,10 +13,15 @@
 #include <memory>
 
 #include <stdexcept>
-#ifdef _WIN32
+#if(defined(_WIN32)||defined(_WIN64))
+/*
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
+#endif
+*/
 #include <Windows.h>
 #endif
 // mysql
-#include <mysql/mysql.h>
+#include <mysql.h>
 // --------------------------------------------------------
 #endif // _proxy_pch_h_

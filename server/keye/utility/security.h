@@ -13,7 +13,7 @@
 
 namespace keye{
 //bits:16,32;checksum could be short or integer value
-long long	KEYE_API crc(const void*,size_t,unsigned char bits=32);
+//long long	KEYE_API crc(const void*,size_t,unsigned char bits=32);
 
 //url encode,return dest length
 size_t		KEYE_API url_encode(const unsigned char* src,unsigned char* dest,size_t max_len);

@@ -1,7 +1,7 @@
 #ifndef _stdafx_h_
 #define _stdafx_h_
 
-#ifdef _WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <SDKDDKVer.h>
 #endif
 
@@ -14,7 +14,7 @@
 #include <string.h>
 
 #include <stdexcept>
-#ifdef _WIN32
+#if(defined(_WIN32)||defined(_WIN64))
 #include <Windows.h>
 #endif
 

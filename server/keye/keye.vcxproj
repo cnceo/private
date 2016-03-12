@@ -19,20 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="allocator\alloc_fwd.h" />
-    <ClInclude Include="allocator\alloc_pch.hpp" />
-    <ClInclude Include="allocator\copyable_allocator.h" />
-    <ClInclude Include="allocator\keye_allocator.h" />
-    <ClInclude Include="allocator\list_head.h" />
-    <ClInclude Include="allocator\shm_allocator.h" />
-    <ClInclude Include="allocator\static_allocator.h" />
-    <ClInclude Include="cache\cache.h" />
-    <ClInclude Include="cache\cache_alloc.h" />
-    <ClInclude Include="cache\cache_provider.h" />
-    <ClInclude Include="cache\static_alloc.hpp" />
-    <ClInclude Include="cache\cache_fwd.h" />
-    <ClInclude Include="cache\shm_cache.h" />
-    <ClInclude Include="cache\cache.hpp" />
     <ClInclude Include="htio\alloc.h" />
     <ClInclude Include="htio\bas\bas_fwd.hpp" />
     <ClInclude Include="htio\bas\bas_pch.hpp" />
@@ -44,19 +30,12 @@
     <ClInclude Include="htio\htio_pch.hpp" />
     <ClInclude Include="htio\http_client.h" />
     <ClInclude Include="htio\metric.h" />
+    <ClInclude Include="htio\packet.h" />
     <ClInclude Include="htio\service.h" />
     <ClInclude Include="htio\svc_handler.h" />
     <ClInclude Include="htio\svc_handler.hpp" />
     <ClInclude Include="htio\work_handler.h" />
     <ClInclude Include="htio\work_handler.hpp" />
-    <ClInclude Include="keyeio\alloc.h" />
-    <ClInclude Include="keyeio\impl_decl.h" />
-    <ClInclude Include="keyeio\keyeio_fwd.h" />
-    <ClInclude Include="keyeio\keyeio_pch.h" />
-    <ClInclude Include="keyeio\packet.h" />
-    <ClInclude Include="keyeio\service.h" />
-    <ClInclude Include="keyeio\svc_handler.h" />
-    <ClInclude Include="keyeio\work_handler.h" />
     <ClInclude Include="keye_fwd.h" />
     <ClInclude Include="keye_pch.hpp" />
     <ClInclude Include="mysql_proxy\mysql_connection.hpp" />
@@ -64,11 +43,11 @@
     <ClInclude Include="mysql_proxy\mysql_parameters.h" />
     <ClInclude Include="mysql_proxy\mysql_parameters.hpp" />
     <ClInclude Include="mysql_proxy\mysql_proxy.h" />
+    <ClInclude Include="mysql_proxy\mysql_proxy_fwd.h" />
     <ClInclude Include="mysql_proxy\mysql_proxy_pch.hpp" />
     <ClInclude Include="mysql_proxy\mysql_resultset.h" />
     <ClInclude Include="mysql_proxy\mysql_resultset.hpp" />
     <ClInclude Include="mysql_proxy\mysql_statement.h" />
-    <ClInclude Include="mysql_proxy\mysql_proxy_fwd.h" />
     <ClInclude Include="mysql_proxy\mysql_statement.hpp" />
     <ClInclude Include="mysql_proxy\mysql_svc.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -85,20 +64,27 @@
     <ClInclude Include="utility\security.h" />
     <ClInclude Include="utility\system.h" />
     <ClInclude Include="utility\thread.h" />
+    <ClInclude Include="utility\threadpool\threadpool.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\detail\future.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\detail\locking_ptr.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\detail\pool_core.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\detail\scope_guard.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\detail\worker_thread.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\future.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\pool.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\pool_adaptors.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\scheduling_policies.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\shutdown_policies.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\size_policies.hpp" />
+    <ClInclude Include="utility\threadpool\threadpool\task_adaptors.hpp" />
     <ClInclude Include="utility\utility_fwd.h" />
     <ClInclude Include="utility\utility_pch.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="allocator\keye_allocator.cpp" />
-    <ClCompile Include="allocator\shm_allocator.cpp" />
-    <ClCompile Include="allocator\static_allocator.cpp" />
-    <ClCompile Include="cache\cache.cpp" />
-    <ClCompile Include="cache\shm_cache.cpp" />
     <ClCompile Include="htio\http_client.cpp" />
     <ClCompile Include="htio\metric.cpp" />
+    <ClCompile Include="htio\packeti.cpp" />
     <ClCompile Include="htio\service.cpp" />
-    <ClCompile Include="keyeio\servicei.cpp" />
-    <ClCompile Include="keyeio\svc_handler.cpp" />
     <ClCompile Include="mysql_proxy\mysql_parameters.cpp" />
     <ClCompile Include="mysql_proxy\mysql_proxy.cpp" />
     <ClCompile Include="mysql_proxy\mysql_resultset.cpp" />
@@ -106,6 +92,8 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="utility\behavior.cpp" />
     <ClCompile Include="utility\buffer.cpp" />
@@ -193,8 +181,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;$(DEPENDENCIES)/include/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(TargetDir)$(TargetName).pdb</ProgramDataBaseFileName>
@@ -205,42 +193,43 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\sdks\core;$(BOOST);D:\ACE_60;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN64;NDEBUG;_CONSOLE;JONYO_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;$(DEPENDENCIES)/include/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
-      <ProgramDataBaseFileName>
-      </ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(TargetDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalOptions>-Zm120 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>ACE.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(TargetDir);$(BOOST_LIB);D:\ACE_60\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>
       </ProgramDatabaseFile>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;$(DEPENDENCIES)/include/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(TargetDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level1</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -249,31 +238,34 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>
       </SubSystem>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\sdks\core;$(BOOST);D:\ACE_60;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN64;_DEBUG;_CONSOLE;JONYO_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;$(DEPENDENCIES)/include/mysql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(TargetDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level1</WarningLevel>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalOptions>-Zm120 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>ACEd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(TargetDir);$(BOOST_LIB);D:\ACE_60\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>
       </SubSystem>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -18,6 +18,7 @@
 
 namespace keye{
 // --------------------------------------------------------
+/*
 long long crc(const void* buf,size_t len,unsigned char bytes){
 	long long ret=0;
 	switch(bytes){
@@ -36,6 +37,7 @@ long long crc(const void* buf,size_t len,unsigned char bytes){
 	}
 	return ret;
 }
+*/
 // --------------------------------------------------------
 static unsigned char char_to_hex(unsigned char x){
 	return(unsigned char)(x > 9 ? x + 55: x + 48);
