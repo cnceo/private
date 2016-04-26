@@ -140,7 +140,7 @@ private:
       work_.push_back(work);
 
       // Create a thread to run the io_service.
-      thread_ptr thread(new boost::thread(
+      thread_ptr thread(new std::thread(
           boost::bind(&boost::asio::io_service::run,io_services_[i])));
       threads_.push_back(thread);
     }
@@ -154,7 +154,7 @@ private:
 private:
   typedef boost::shared_ptr<boost::asio::io_service> io_service_ptr;
   typedef boost::shared_ptr<boost::asio::io_service::work> work_ptr;
-  typedef boost::shared_ptr<boost::thread> thread_ptr;
+  typedef boost::shared_ptr<std::thread> thread_ptr;
 
   /// The pool of io_services.
   std::vector<io_service_ptr> io_services_;

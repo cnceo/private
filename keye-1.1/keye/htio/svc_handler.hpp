@@ -15,7 +15,7 @@ using namespace keye;
 class work_handler_impl;
 
 class svc_handler_impl:public svc_handler{
-	typedef bas::service_handler<work_handler_impl,htio_alloc> service_handler_type;
+	typedef bas::service_handler<work_handler_impl,alloc_type> service_handler_type;
 public:
 			svc_handler_impl(service_handler_type& sh):_sh(sh){}
 	virtual void	close(){

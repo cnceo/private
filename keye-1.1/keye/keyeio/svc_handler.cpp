@@ -154,7 +154,7 @@ void Svc_handler_impl::_close(const boost::system::error_code& e){
 
 void Svc_handler_impl::_open(){
 	// save id and address
-	_id=(size_t)_sock->native_handle();
+	_id=(int)_sock->native_handle();
 
 	ip::tcp::endpoint local_endpoint=_socket().local_endpoint(),
 		remote_endpoint=_socket().remote_endpoint();
@@ -234,7 +234,7 @@ void Svc_handler_impl::_handle_connect(const boost::system::error_code& e){
 	// The handler has been stopped,do nothing.
 	if(!e){
 		_open();
-		LOG("connected to %s:%d.\n",_address.c_str(),_port);
+		KEYE_LOG("connected to %s:%d.\n",_address.c_str(),_port);
 	}else
 		// Close with error_code e.
 		_close(e);

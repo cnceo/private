@@ -11,6 +11,8 @@
 #ifndef _metric_h_
 #define _metric_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 // --------------------------------------------------------
 /* flow metric:helper to record flow from service,

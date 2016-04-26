@@ -74,15 +74,15 @@ public:
 			acceptor_.bind(endpoint_);
 			acceptor_.listen();
 		}catch(boost::system::system_error se){
-			LOG(se.what());
+			KEYE_LOG(se.what());
 		}
 		  // Accept new connection.
 		accept_one();
 	}
 
     started_ =true;
-	LOG("server started on %d, with %d io and %d work threads.\n",
-		port,io_service_pool_.size(),work_service_pool_.size());
+	KEYE_LOG("server started on %d, with %d io and %d work threads.\n",
+		(int)port,(int)io_service_pool_.size(),(int)work_service_pool_.size());
     // Start accept_service_pool with block to perform asynchronous accept operations.
     accept_service_pool_.run();
   }
@@ -93,7 +93,7 @@ public:
     if(!started_&&!connected_)
       return;
 
-	LOG("start stop server.\n");
+	KEYE_LOG("start stop server.\n");
     // Close the acceptor in the same thread.
     acceptor_.get_io_service().dispatch(boost::bind(&boost::asio::ip::tcp::acceptor::close,&acceptor_));
     // Stop accept_service_pool from block.
@@ -110,7 +110,7 @@ public:
     work_service_pool_.stop();
 
     started_=connected_=false;
-	LOG("server stopped.\n");
+	KEYE_LOG("server stopped.\n");
   }
 
   /// Make an connection with given io_service and work_service.
@@ -120,7 +120,7 @@ public:
 	boost::asio::ip::tcp::endpoint ep(boost::asio::ip::address::from_string(address),port);
 	for(unsigned short i=0;i<conns;++i)
 	    connect(io_service_pool_.get_io_service(),work_service_pool_.get_io_service(),ep);
-	LOG("start %d connects to %s:%d.\n",conns,address.c_str(),port);
+	KEYE_LOG("start %d connects to %s:%d.\n",conns,address.c_str(),port);
   }
 
   /// Setup a timer.

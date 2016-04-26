@@ -23,8 +23,8 @@
 #endif
 #endif //KEYE_API
 
-#ifndef LOG
-#	define LOG printf
+#ifndef KEYE_LOG
+#	define KEYE_LOG printf
 #endif
 
 #ifndef NS_KEYE

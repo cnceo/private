@@ -12,9 +12,9 @@
 #define _work_handler_impl_hpp_
 
 class work_handler_impl{
-	typedef bas::service_handler<work_handler_impl,htio_alloc> service_handler_type;
+	typedef bas::service_handler<work_handler_impl,alloc_type> service_handler_type;
 public:
-			work_handler_impl(work_handler& base):_base(base){}
+			work_handler_impl(service& base):_base(base){}
 	void	on_open(service_handler_type& handler){
 		svc_handler_impl sh(handler);
 		_base.on_open(sh);
@@ -40,7 +40,7 @@ public:
 		return _base.on_timer(sh,id,milliseconds);
 	}
 private:
-	work_handler&	_base;
+	service&	_base;
 };
 // --------------------------------------------------------
 #endif

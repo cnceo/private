@@ -80,7 +80,7 @@ void Service_impl::run(unsigned short port,const char* address){
 			_acceptor.bind(_endpoint);
 			_acceptor.listen();
 		}catch(boost::system::system_error se){
-			LOG(se.what());
+			KEYE_LOG(se.what());
 		}
 		  // Accept new connection.
 		_accept_one();
@@ -97,7 +97,7 @@ void Service_impl::run(unsigned short port,const char* address){
 		_started=true;
 
 		auto host=_endpoint.address().to_string();
-		LOG("server started on %s:%d, with %d io and %d work threads.\n",host.c_str(),port,_ios,_works);
+		KEYE_LOG("server started on %s:%d, with %d io and %d work threads.\n",host.c_str(),(int)port,(int)_ios,(int)_works);
 	}
 /*
 	//work threads

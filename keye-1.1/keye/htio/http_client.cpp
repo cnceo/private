@@ -20,7 +20,7 @@ class WorldPacket;
 class WorldSession;
 */
 namespace keye{
-class http_handler:public work_handler{
+class http_handler{
 public:
 					http_handler(http_client_impl& x):_cx(x){}
 	virtual void	on_open(svc_handler& sh);
@@ -32,7 +32,7 @@ private:
 
 class http_client_impl{
 public:
-					http_client_impl(htio_alloc&);
+					http_client_impl();
 	bool			connect(const char*,unsigned short);
 	int				request(const char* =nullptr);
 	void			set_responser(http_responser*);
@@ -54,10 +54,10 @@ private:
 	std::list<std::string>		_requests;
 };};//namespace
 
-http_client_impl::http_client_impl(htio_alloc& ax):
+http_client_impl::http_client_impl():
 	m_port(0),
 	_hx(*this),
-	_svc(_hx,ax,2,4,1460),
+	_svc(2,4,1460),
 	_responser(nullptr){}
 
 bool http_client_impl::connect(const char* host,unsigned short port){
@@ -120,8 +120,8 @@ bool http_handler::on_timer(svc_handler&,size_t id,size_t milliseconds){
 	return true;
 }
 // --------------------------------------------------------
-http_client::http_client(htio_alloc& ax){
-	_impl.reset(new http_client_impl(ax));
+http_client::http_client(){
+	_impl.reset(new http_client_impl());
 }
 
 bool http_client::connect(const char* host,unsigned short port){

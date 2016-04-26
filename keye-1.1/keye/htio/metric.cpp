@@ -50,14 +50,14 @@ void flow_metric_impl::on_read(std::size_t bytes_transferred){
 //	boost::mutex::scoped_lock lock(_mutex_flow);
 	std::lock_guard<std::mutex> lock(_mutex_flow);
 	++_current.read_count;
-	_current.read_bytes+=bytes_transferred+sizeof(packet_t);
+	_current.read_bytes+=bytes_transferred;
 }
 
 void flow_metric_impl::on_write(std::size_t bytes_transferred){
 //	boost::mutex::scoped_lock lock(_mutex_flow);
 	std::lock_guard<std::mutex> lock(_mutex_flow);
 	++_current.write_count;
-	_current.write_bytes+=bytes_transferred+sizeof(packet_t);
+	_current.write_bytes+=bytes_transferred;
 }
 
 bool flow_metric_impl::on_timer(size_t elapsed_milliseconds){

@@ -75,7 +75,7 @@ public:
       closed_(true),
 	  read_ptr_(nullptr),
       timeout_seconds_(timeout_seconds),
-      closed_wait_time_(boost::posix_time::seconds(closed_wait_delay)),
+      closed_wait_time_(boost::posix_time::seconds((long)closed_wait_delay)),
       restriction_time_(boost::posix_time::microsec_clock::universal_time()){
     BOOST_ASSERT(work_handler !=0);
     BOOST_ASSERT(closed_wait_delay !=0);
@@ -97,16 +97,16 @@ public:
 
   ~service_handler(){
 	  if(read_ptr_)
-		allocator_->deallocate((void*)read_ptr_,1);
+		allocator_->deallocate((char*)read_ptr_,1);
 #ifdef _DO_READ_TIMER
 	  if(rpacket_.buf)
-		allocator_->deallocate((void*)rpacket_.buf,1);
+		allocator_->deallocate((char*)rpacket_.buf,1);
 #endif
 #ifdef _WRITE_TIMER
 	  if(wpacket_.buf)
-		allocator_->deallocate((void*)wpacket_.buf,1);
+		allocator_->deallocate((char*)wpacket_.buf,1);
 	  if(epacket_.buf)
-		allocator_->deallocate((void*)epacket_.buf,1);
+		allocator_->deallocate((char*)epacket_.buf,1);
 #endif
   }
 
@@ -267,7 +267,7 @@ private:
 	auto wbuf=boost::asio::detail::buffer_cast_helper(buffers);
 	// The handler has been stopped,break.
     if(stopped_)
-		allocator_->deallocate((void*)wbuf,1);
+		allocator_->deallocate((char*)wbuf,1);
 	else
 		boost::asio::async_write(socket(),
 			buffers,
@@ -344,7 +344,7 @@ private:
     if(timeout_seconds==0)return;
     BOOST_ASSERT(timer_.get() !=0);
     ++timer_count_;
-    timer_->expires_from_now(boost::posix_time::seconds(timeout_seconds));
+    timer_->expires_from_now(boost::posix_time::seconds((long)timeout_seconds));
     timer_->async_wait(boost::bind(&service_handler_type::_handle_timeout,
         shared_from_this(),
         boost::asio::placeholders::error));
@@ -404,7 +404,7 @@ private:
       std::size_t bytes_transferred,void* wbuf){
     // The handler has been stopped,break.
 	if(stopped_||e){
-		allocator_->deallocate(wbuf,1);
+		allocator_->deallocate((char*)wbuf,1);
 		// Close with error_code e.
 		_close_i(e);
 	}else{
@@ -572,7 +572,7 @@ private:
 			work_handler_->on_event(*this,bytes_transferred,rbuf);
 	}
 	if(rbuf){
-		allocator_->deallocate((void*)rbuf,1);
+		allocator_->deallocate((char*)rbuf,1);
 //		read_ptr_=nullptr;
 	}
   }
@@ -583,7 +583,7 @@ private:
 		// Call on_write function of the work handler.
 		work_handler_->on_write(*this,bytes_transferred,wbuf);
 	if(wbuf)
-		allocator_->deallocate((void*)wbuf,1);
+		allocator_->deallocate((char*)wbuf,1);
   }
 
   /// Do on_event in work_service thread.

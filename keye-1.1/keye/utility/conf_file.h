@@ -11,6 +11,8 @@
 #ifndef _conf_file_h_
 #define _conf_file_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 // --------------------------------------------------------
 // cast_t:a help type casting class

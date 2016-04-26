@@ -11,6 +11,8 @@
 #ifndef _http_client_h_
 #define _http_client_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 class KEYE_API http_responser{
 public:
@@ -20,16 +22,10 @@ public:
 class http_client_impl;
 class KEYE_API http_client{
 public:
-					http_client(htio_alloc&);
+					http_client();
 	bool			connect(const char*,unsigned short=80);
 	int				request(const char* =nullptr);
 	void			set_responser(http_responser*);
-/*
-	//special for ACE
-	int				OnSocketOpen(HttpSocket*);
-	void			QueuePack(WorldPacket*);
-	void			Update(uint32);
-*/
 private:
 	std::shared_ptr<http_client_impl>	_impl;
 };};

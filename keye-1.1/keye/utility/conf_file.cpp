@@ -20,14 +20,14 @@ txt_file::txt_file():_endl(CL),_endlen(CL.length()){}
 
 bool txt_file::load(const char* file){
 	if(!file){
-		LOG("no file specified.\n");
+		KEYE_LOG("no file specified.\n");
 		return false;
 	}
 
 	std::ifstream fp;
 	fp.open(file,std::ios::in|std::ios::binary);
 	if(!fp.is_open()){
-		LOG("file %s does not exist\n",file);
+		KEYE_LOG("file %s does not exist\n",file);
 		return false;
 	}
 
@@ -43,26 +43,26 @@ bool txt_file::load(const char* file){
 		if(_check_endl(buf,CL)||_check_endl(buf,LF)||_check_endl(buf,CR))
 			return _parse(buf);
 		else{
-			LOG("file without endl\n");
+			KEYE_LOG("file without endl\n");
 			return false;
 		}
 	}else{
 		fp.close();
-		LOG("file empty\n");
+		KEYE_LOG("file empty\n");
 		return false;
 	}
 }
 
 bool txt_file::save(const char* file){
 	if(!file){
-		LOG("no file specified.\n");
+		KEYE_LOG("no file specified.\n");
 		return false;
 	}
 
 	std::ofstream fp;
 	fp.open(file,std::ios::out|std::ios::binary);
 	if(!fp.is_open()){
-		LOG("file %s open failed.\n",file);
+		KEYE_LOG("file %s open failed.\n",file);
 		return false;
 	}
 
@@ -71,7 +71,7 @@ bool txt_file::save(const char* file){
 	if(ret)
 		fp.write(buf.c_str(),buf.size());
 	else
-		LOG("file empty\n");
+		KEYE_LOG("file empty\n");
 	fp.close();
 	return true;
 }
@@ -189,38 +189,38 @@ void tab_file::print()const{
 	if(0==_rows||0==_cols)return;
 
 	const char* LINE="|---------------";
-	LOG("rows=%d,columns=%d\n",_rows,_cols);
+	KEYE_LOG("rows=%d,columns=%d\n",(int)_rows,(int)_cols);
 	//title
 	for(size_t j=0;j<_cols;++j)
-		LOG(LINE);
-	LOG("|\n");
+		KEYE_LOG(LINE);
+	KEYE_LOG("|\n");
 	for(size_t j=0;j<_cols;++j){
 		auto s=(const char*)_grids[j];
-		LOG("%s",s);
+		KEYE_LOG("%s",s);
 		if(strlen(s)<8)
-			LOG("\t\t");
+			KEYE_LOG("\t\t");
 		else if(strlen(s)<16)
-			LOG("\t");
+			KEYE_LOG("\t");
 	}
-	LOG("\n");
+	KEYE_LOG("\n");
 	//content
 	for(size_t j=0;j<_cols;++j)
-		LOG(LINE);
-	LOG("|\n");
+		KEYE_LOG(LINE);
+	KEYE_LOG("|\n");
 	for(size_t i=0;i<_rows;++i){
 		for(size_t j=0;j<_cols;++j){
 			auto s=(const char*)value(i,j);
-			LOG("%s",s);
+			KEYE_LOG("%s",s);
 			if(strlen(s)<8)
-				LOG("\t\t");
+				KEYE_LOG("\t\t");
 			else if(strlen(s)<16)
-				LOG("\t");
+				KEYE_LOG("\t");
 		}
-		LOG("\n");
+		KEYE_LOG("\n");
 	}
 	for(size_t j=0;j<_cols;++j)
-		LOG(LINE);
-	LOG("|\n");
+		KEYE_LOG(LINE);
+	KEYE_LOG("|\n");
 }
 // --------------------------------------------------------
 bool ini_file::_parse(const std::string& buf){
@@ -292,13 +292,13 @@ void ini_file::print()const{
 	for(auto i=_map.begin(),ii=_map.end();i!=ii;++i){
 		auto& key=i->first;
 		const char* val=i->second;
-		LOG("%s",key.c_str());
+		KEYE_LOG("%s",key.c_str());
 		auto len=key.length();
 		if(len<8)
-			LOG("\t\t");
+			KEYE_LOG("\t\t");
 		else if(len<16)
-			LOG("\t");
-		LOG("=%s\n",val);
+			KEYE_LOG("\t");
+		KEYE_LOG("=%s\n",val);
 	}
 }
 // --------------------------------------------------------

@@ -16,6 +16,9 @@
     <Filter Include="wsio">
       <UniqueIdentifier>{bf5b183c-8e4c-411f-b3cc-8b7633d4de19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mysql_proxy">
+      <UniqueIdentifier>{c9b28b00-ec8e-4bf5-acb9-b75b39e6b001}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keye\keye_fwd.h" />
@@ -57,9 +60,6 @@
       <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="keye\htio\alloc.h">
-      <Filter>htio</Filter>
-    </ClInclude>
     <ClInclude Include="keye\htio\htio_fwd.h">
       <Filter>htio</Filter>
     </ClInclude>
@@ -79,9 +79,6 @@
       <Filter>htio</Filter>
     </ClInclude>
     <ClInclude Include="keye\htio\svc_handler.hpp">
-      <Filter>htio</Filter>
-    </ClInclude>
-    <ClInclude Include="keye\htio\work_handler.h">
       <Filter>htio</Filter>
     </ClInclude>
     <ClInclude Include="keye\htio\work_handler.hpp">
@@ -105,9 +102,6 @@
     <ClInclude Include="keye\htio\bas\bas_pch.hpp">
       <Filter>htio\bas</Filter>
     </ClInclude>
-    <ClInclude Include="keye\htio\packet.h">
-      <Filter>htio</Filter>
-    </ClInclude>
     <ClInclude Include="keye\wsio\work_handler.h">
       <Filter>wsio</Filter>
     </ClInclude>
@@ -128,6 +122,54 @@
     </ClInclude>
     <ClInclude Include="keye\wsio\impl_decl.hpp">
       <Filter>wsio</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_connection.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_error.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_parameters.h">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_parameters.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_proxy.h">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_proxy_fwd.h">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_proxy_pch.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_resultset.h">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_resultset.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_statement.h">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_statement.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\mysql_proxy\mysql_svc.hpp">
+      <Filter>mysql_proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\utility\buf_set.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\htio\packer.h">
+      <Filter>htio</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\htio\htio_demo.h">
+      <Filter>htio</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\utility\secure_hash.h">
+      <Filter>utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,14 +198,26 @@
     <ClCompile Include="keye\htio\service.cpp">
       <Filter>htio</Filter>
     </ClCompile>
-    <ClCompile Include="keye\htio\packeti.cpp">
-      <Filter>htio</Filter>
-    </ClCompile>
     <ClCompile Include="keye\wsio\ws_service.cpp">
       <Filter>wsio</Filter>
     </ClCompile>
     <ClCompile Include="keye\wsio\ws_svc_handler.cpp">
       <Filter>wsio</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\mysql_proxy\mysql_parameters.cpp">
+      <Filter>mysql_proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\mysql_proxy\mysql_proxy.cpp">
+      <Filter>mysql_proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\mysql_proxy\mysql_resultset.cpp">
+      <Filter>mysql_proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\mysql_proxy\mysql_statement.cpp">
+      <Filter>mysql_proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\utility\secure_hash.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

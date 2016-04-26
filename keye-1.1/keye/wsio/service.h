@@ -11,6 +11,8 @@
 #ifndef _wsService_h_
 #define _wsService_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 NS_KEYE_WS_BEGIN
 // use this as prototol name
 static const char* protocol_name="keye-websocket";

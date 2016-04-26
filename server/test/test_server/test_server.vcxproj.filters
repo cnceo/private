@@ -24,7 +24,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\htio_fx0.h">
+    <ClInclude Include="..\protocol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

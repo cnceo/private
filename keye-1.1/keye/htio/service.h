@@ -11,11 +11,11 @@
 #ifndef _service_h_
 #define _service_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 // --------------------------------------------------------
-/* service to process io,_W must be pass into,
-	_W must derive from work_handler and it handles io event,
-	_A must derice from htio_alloc and it allocate for service,
+/* service to process io,
 	io runs on io threads,events and timer run on work threads,
 	threads are auto chosen */
 // --------------------------------------------------------
@@ -23,7 +23,8 @@ class service_impl;
 class KEYE_API service{
 public:
 	//ios:io threads;works:work threads;rb_size:read buffer max size
-			service(work_handler& w,htio_alloc& a,size_t ios=1,size_t works=1,size_t rb_size=510);
+			service(size_t ios=1,size_t works=1,size_t rb_size=510);
+	virtual	~service(){close();}
 	//run as server,we do not open accept while port was 0
 	void	run(unsigned short port=0,const char* address=nullptr);
 	//run as client and connect to server
@@ -35,6 +36,14 @@ public:
 	void	unset_timer(size_t id);
 	//post event to work thead
 	void	post_event(void* buf,size_t length);
+
+	//events handlers
+	virtual void	on_open(svc_handler&){}
+	virtual void	on_close(svc_handler&){}
+	virtual void	on_read(svc_handler&,void*,size_t){}
+	virtual void	on_write(svc_handler&,void*,size_t){}
+	virtual void	on_event(svc_handler&,void*,size_t){}
+	virtual bool	on_timer(svc_handler&,size_t id,size_t milliseconds){ return true; }
 private:
 	std::shared_ptr<service_impl>	_svc;
 };

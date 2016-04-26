@@ -14,7 +14,7 @@
 namespace keye{
 // --------------------------------------------------------
 /* service handler:object for handle socket operations
-	svc_handler is created by service and pass to work_handler,
+	svc_handler is created by and pass to service,
 	svc_handler is only the interface,htio encapse the implements */
 // --------------------------------------------------------
 class KEYE_API svc_handler{

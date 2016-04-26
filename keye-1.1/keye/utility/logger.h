@@ -11,6 +11,8 @@
 #ifndef _logger_h_
 #define _logger_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 // --------------------------------------------------------
 // logger

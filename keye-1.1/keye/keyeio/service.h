@@ -11,6 +11,8 @@
 #ifndef _Service_h_
 #define _Service_h_
 
+#pragma warning(disable:4251)	//avoid export implementation class
+
 namespace keye{
 // --------------------------------------------------------
 /* service to process io,_W must be pass into,
