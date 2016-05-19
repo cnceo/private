@@ -17,7 +17,7 @@ namespace keye{
 // --------------------------------------------------------
 class parameter_impl{
 public:
-				parameter_impl(size_t num,size_t id=0);
+				parameter_impl(size_t num,size_t id=0,void* privdata=nullptr);
 				parameter_impl(const void*);
 	bool		prepare(MYSQL*);
 	size_t		size()const;
@@ -25,6 +25,7 @@ public:
 	void		id(size_t);
 	void		serialize(const void*);
 	s_ptr<char>	deserialize(size_t&)const;
+	void*		privdata;
 private:
 	friend class mysql_statement_impl;
 	friend class mysql_parameter;

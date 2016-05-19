@@ -24,6 +24,8 @@
 #include <keye/utility/logger.h>
 #include <keye/utility/buf_set.h>
 #include <keye/utility/conf_file.h>
+#include <keye/utility/str_util.h>
+#include <keye/utility/md5.h>
 #include <keye/utility/secure_hash.h>
 // --------------------------------------------------------
 #endif // _utility_fwd_h_

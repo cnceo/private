@@ -171,6 +171,15 @@
     <ClInclude Include="keye\utility\secure_hash.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="keye\htio\op_packer.h">
+      <Filter>htio</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\utility\str_util.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="keye\utility\md5.h">
+      <Filter>utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keye\keyeio\packet.cpp">
@@ -217,6 +226,12 @@
       <Filter>mysql_proxy</Filter>
     </ClCompile>
     <ClCompile Include="keye\utility\secure_hash.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\utility\str_util.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="keye\utility\md5.c">
       <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>

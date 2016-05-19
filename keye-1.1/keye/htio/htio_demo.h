@@ -118,6 +118,7 @@ private:
 template<typename SessionType>
 class SessionServer:public service{
 public:
+	virtual ~SessionServer(){}
 	virtual void	on_open(svc_handler& sh){
 		sessions.insert(std::make_pair(sh.id(),std::shared_ptr<SessionType>(new SessionType)));
 	}

@@ -3,11 +3,20 @@
 #include "stdafx.h"
 #include "utility_fwd.h"
 
+using namespace keye;
+
+std::string MD5::HashAnsiString(const char* str){
+	uint8 Digest[DigestSize];
+	MD5Context ctx;
+	MD5Init(&ctx);
+	MD5Update(&ctx,(unsigned char*)str,(unsigned)strlen(str));
+	MD5Final(Digest,&ctx);
+	return str_util::bytes2hex(Digest,DigestSize);
+}
 
 /*-----------------------------------------------------------------------------
 	MD5 functions, adapted from MD5 RFC by Brandon Reinhart
 -----------------------------------------------------------------------------*/
-
 //
 // Constants for MD5 Transform.
 //
@@ -160,7 +169,7 @@ FString FMD5::HashAnsiString(const char* String)
 	Md5Gen.Update((unsigned char*)String,(uint32)strlen(String));
 	Md5Gen.Final(Digest);
 
-	return bytes2hex(Digest,DigestSize);
+	return str_util::bytes2hex(Digest,DigestSize);
 }
 
 void FMD5::Transform( uint32* state, uint8* block )
@@ -424,15 +433,5 @@ FString FSHA1::HashAnsiString(const char* String){
 	FSHA1 Sha;
 	Sha.Update((const uint8*)String,(uint32)strlen(String));
 	Sha.Final(Digest);
-	return bytes2hex(Digest,DigestSize);
-}
-
-std::string bytes2hex(uint8* buf,uint32 len){
-	std::string str;
-	char tmp[3];
-	for(uint32 i=0; i<len; i++){
-		sprintf(tmp,"%02x",buf[i]);
-		str += tmp;
-	}
-	return str;
+	return str_util::bytes2hex(Digest,DigestSize);
 }

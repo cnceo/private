@@ -30,6 +30,7 @@
     <ClInclude Include="keye\htio\htio_pch.hpp" />
     <ClInclude Include="keye\htio\http_client.h" />
     <ClInclude Include="keye\htio\metric.h" />
+    <ClInclude Include="keye\htio\op_packer.h" />
     <ClInclude Include="keye\htio\packer.h" />
     <ClInclude Include="keye\htio\service.h" />
     <ClInclude Include="keye\htio\svc_handler.h" />
@@ -58,6 +59,8 @@
     <ClInclude Include="keye\mysql_proxy\mysql_statement.hpp" />
     <ClInclude Include="keye\mysql_proxy\mysql_svc.hpp" />
     <ClInclude Include="keye\utility\buf_set.h" />
+    <ClInclude Include="keye\utility\md5.h" />
+    <ClInclude Include="keye\utility\str_util.h" />
     <ClInclude Include="keye\utility\conf_file.h" />
     <ClInclude Include="keye\utility\logger.h" />
     <ClInclude Include="keye\utility\secure_hash.h" />
@@ -83,6 +86,10 @@
     <ClCompile Include="keye\mysql_proxy\mysql_proxy.cpp" />
     <ClCompile Include="keye\mysql_proxy\mysql_resultset.cpp" />
     <ClCompile Include="keye\mysql_proxy\mysql_statement.cpp" />
+    <ClCompile Include="keye\utility\md5.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="keye\utility\str_util.cpp" />
     <ClCompile Include="keye\utility\conf_file.cpp" />
     <ClCompile Include="keye\utility\logger.cpp" />
     <ClCompile Include="keye\utility\secure_hash.cpp" />
@@ -192,7 +199,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>./;../;./htio/;./utility/threadpool/;$(DEPENDENCIES)/include;C:\Program Files\MySQL\MySQL Server 5.7\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINNT=0x0A00;_CRT_SECURE_NO_WARNINGS;_WIN64;NDEBUG;_CONSOLE;KEYE_EXPORT;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -210,6 +217,13 @@
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;"C:\Program Files\MySQL\MySQL Server 5.7\lib";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;</AdditionalDependencies>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -256,6 +270,13 @@
       <TargetMachine>MachineX64</TargetMachine>
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(TargetDir);$(DEPENDENCIES)/lib;"C:\Program Files\MySQL\MySQL Server 5.7\lib";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;</AdditionalDependencies>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

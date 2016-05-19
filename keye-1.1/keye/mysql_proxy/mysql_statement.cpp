@@ -44,7 +44,8 @@ s_ptr<mysql_resultset> mysql_statement_impl::execute(MYSQL* mysql,mysql_paramete
 	_prepare(params);
 
 	size_t id=(params?params->id():0);
-	s_ptr<mysql_resultset> sprs(new mysql_resultset());
+	void* privdata=(params&&params->_impl?params->_impl->privdata:nullptr);
+	s_ptr<mysql_resultset> sprs(new mysql_resultset(nullptr,0,privdata));
 	if(mysql&&!_sql.empty()){
 		try{
 			//mysql_stmt_init

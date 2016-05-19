@@ -15,8 +15,8 @@
 // --------------------------------------------------------
 using namespace keye;
 #define PR_ASSERT
-parameter_impl::parameter_impl(size_t num,size_t id)
-:_index(0),_num((decltype(_num))num),_id(id){
+parameter_impl::parameter_impl(size_t num,size_t id,void* pd)
+:_index(0),_num((decltype(_num))num),_id(id),privdata(pd){
 	_length=(unsigned short)(sizeof(_id)+sizeof(_num)+num*sizeof(e_field));
 	_mysql_binds.reset(new MYSQL_BIND[num],std::default_delete<MYSQL_BIND[]>());
 	memset(_mysql_binds.get(),0,sizeof(MYSQL_BIND)*num);
@@ -151,8 +151,8 @@ void parameter_impl::serialize(const void* buf){
 // --------------------------------------------------------
 // mysql parameter
 // --------------------------------------------------------
-mysql_parameter::mysql_parameter(size_t num,size_t id){
-	_impl.reset(new parameter_impl(num,id));
+mysql_parameter::mysql_parameter(size_t num,size_t id,void* privdata){
+	_impl.reset(new parameter_impl(num,id,privdata));
 }
 
 mysql_parameter::mysql_parameter(const void* buf){

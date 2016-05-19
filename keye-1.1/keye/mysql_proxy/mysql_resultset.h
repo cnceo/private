@@ -38,8 +38,9 @@ public:
 	size_t					id;		//id for result handler,pass by mysql_parameter while execute
 	std::string				error;	//error message if happen
 	void					debug_log();
+	void*					privdata;
 	//ctor from data buffer
-	mysql_resultset(const void* =nullptr,size_t len =0);
+	mysql_resultset(const void* =nullptr,size_t len =0,void* privdata=nullptr);
 private:
 	friend class mysql_statement_impl;
 	friend class mysql_resultset_builder;

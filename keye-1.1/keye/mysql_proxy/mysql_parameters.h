@@ -18,7 +18,7 @@ namespace keye{
 class parameter_impl;
 class KEYE_API mysql_parameter{
 public:
-				mysql_parameter(size_t num,size_t id=0);
+				mysql_parameter(size_t num,size_t id=0,void* privdata=nullptr);
 				mysql_parameter(const void*);
 	void		push_byte(char);
 	void		push_short(short);

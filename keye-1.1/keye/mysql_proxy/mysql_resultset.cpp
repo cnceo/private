@@ -260,8 +260,8 @@ e_field mysql_resultset_impl::_map(enum_field_types e){
 	}
 }
 // --------------------------------------------------------
-mysql_resultset::mysql_resultset(const void* src,size_t len)
-:length(0),id(0){
+mysql_resultset::mysql_resultset(const void* src,size_t len,void* pd)
+:length(0),id(0),privdata(pd){
 	_impl.reset(new mysql_resultset_impl(*this,src,len));
 }
 

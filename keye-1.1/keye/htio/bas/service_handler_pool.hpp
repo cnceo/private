@@ -15,6 +15,7 @@ namespace bas {
 #define __READ_BUFFER_SIZE 510
 #define __TIMEOUT_SECONDS 0
 #define __BAS_GRACEFUL_CLOSED_WAIT_DELAY 5
+#define __ERROR_CONNECTION_LIMIT_ONLY4_TEST 99
 
 /// A pool of service_handler objects.
 template<typename Work_Handler,typename _Ax=std::allocator<char>,typename Socket_Service =boost::asio::ip::tcp::socket>
@@ -84,7 +85,8 @@ public:
     // If the next handler is busy,create new handler.
     if(service_handler.get()==0)
     {
-      service_handler.reset(make_handler());
+	  if(service_handlers_.size()<=__ERROR_CONNECTION_LIMIT_ONLY4_TEST)
+	  service_handler.reset(make_handler());
       service_handlers_.push_back(service_handler);
     }
 

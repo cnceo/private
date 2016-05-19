@@ -35,6 +35,7 @@ public:
 	virtual			~txt_file(){}
 	bool			load(const char*);
 	bool			save(const char*);
+
 	//test print in console
 	virtual void	print()const=0;
 protected:
@@ -45,6 +46,55 @@ protected:
 	cast_t			_default;
 	std::string		_endl;	//"\n","\r" or "\r\n"
 	size_t			_endlen;
+};
+// --------------------------------------------------------
+// csv_file:csv file splits by "\t" or ","
+// --------------------------------------------------------
+class KEYE_API csv_file:public txt_file{
+public:
+	csv_file(bool use_comma=true);
+	size_t			rows()const;
+	size_t			colulmns()const;
+	/* retrieve values,usage:auto val=value(x,y)
+	cast_t will auto cast types */
+	const cast_t&	value(size_t row,size_t col)const;
+	//test print in console
+	virtual void	print()const;
+private:
+	virtual bool	_parse(const std::string&);
+	bool			_parse_title(const std::string& buf);
+	bool			_parse_content(const std::string& buf);
+
+	bool			parse_csv(std::vector<std::wstring>&,const std::wstring&,bool tab=false);
+
+	virtual bool	_make_buffer(std::string&);
+
+	bool				_use_comma;
+	size_t				_rows,_cols;
+	std::vector<cast_t>	_grids;
+};
+// --------------------------------------------------------
+// ini_cfg_file:elements inline split by "=".
+// --------------------------------------------------------
+class KEYE_API ini_cfg_file:public txt_file{
+public:
+	/* retrieve values,usage:auto val=value(name)
+	cast_t will auto cast types */
+	const cast_t&	value(const char*)const;
+	//test print in console
+	virtual void	print()const;
+private:
+	virtual bool	_parse(const std::string&);
+	bool			_parse_content(const std::string& buf);
+
+	virtual bool	_make_buffer(std::string&);
+
+	//clean '\t' and space before and after string
+	void			_clean(std::string&,char='\t');
+
+	bool			parse_ini(std::map<std::wstring,std::wstring>& dict,const std::wstring& line);
+		
+	std::map<std::string,cast_t>	_map;
 };
 // --------------------------------------------------------
 // tab_file:elements inline split by "\t"

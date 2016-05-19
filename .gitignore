@@ -1,6 +1,15 @@
+.vs/
+ipch/
+bin/
+intermediate/
+server.sdf
+server.VC.opendb
 server/intermediate/
 server/ipch/
 server/solution.opensdf
 server/solution.sdf
 server/builds/.vs/
 server/.vs/
+keye-1.1/.vs/
+keye-1.1/keye.sdf
+keye-1.1/vc140.pdb

@@ -15,7 +15,7 @@ namespace keye{
 // --------------------------------------------------------
 // Packet process
 // --------------------------------------------------------
-static const size_t	PACKET_SIZE=64*1024;
+static const size_t	PACKET_SIZE=8*1024;
 
 struct PacketWrapper{
 			PacketWrapper(void* b=nullptr,size_t l=0):data(b),length(l){}
@@ -131,11 +131,10 @@ public:
 // --------------------------------------------------------
 // PackHelper
 // --------------------------------------------------------
-template <typename SH>
+template <typename SH,typename Handler>
 class PackHelper{
 public:
-	void	send(SH& sh,void* buf,size_t len,bool immediately=true){
-		PacketWrapper pw(buf,len);
+	void	send(SH& sh,PacketWrapper& pw,bool immediately=true){
 		packer<<pw;
 		if(immediately){
 			packer>>pw;
@@ -151,16 +150,12 @@ public:
 		}
 	}
 
-	void	on_read(std::vector<std::shared_ptr<void>>& o,void* buf,size_t len){
-		PacketWrapper pw(buf,len);
+	void	on_read(SH& sh,Handler& h,PacketWrapper& pw){
 		unpacker<<pw;
 		while(true){
 			unpacker>>pw;
-			if(pw.length>0){
-				auto data=new char[pw.length];
-				memcpy(data,pw.data,pw.length);
-				o.push_back(std::shared_ptr<void>(data));
-			}
+			if(pw.length>0)
+				h.on_message(sh,pw);
 			else break;
 		}
 	}
