@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E0A66241C932112004D37CE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A66231C932112004D37CE /* main.cpp */; };
+		5EC0D2D41C93E960000F3090 /* libkeye.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0D2D31C93E960000F3090 /* libkeye.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		5E0A66191C9320F2004D37CE /* keye_client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = keye_client; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A66231C932112004D37CE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5EC0D2D31C93E960000F3090 /* libkeye.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libkeye.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC0D2D41C93E960000F3090 /* libkeye.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0A66231C932112004D37CE /* main.cpp */,
+				5EC0D2D31C93E960000F3090 /* libkeye.a */,
 				5E0A661A1C9320F2004D37CE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,6 +203,11 @@
 		5E0A66211C9320F2004D37CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/vliu/project/private/keye-1.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -206,6 +215,11 @@
 		5E0A66221C9320F2004D37CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/vliu/project/private/keye-1.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -229,6 +243,7 @@
 				5E0A66221C9320F2004D37CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

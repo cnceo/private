@@ -8,7 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		5E0A660F1C9320A5004D37CE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A660E1C9320A5004D37CE /* main.cpp */; };
+		5EC0D2D21C93E92A000F3090 /* libkeye.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0D2D11C93E92A000F3090 /* libkeye.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5EC0D2D91C93F473000F3090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC0D2D51C93F473000F3090 /* keye.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5E9FFF041C92F9D80069015B;
+			remoteInfo = keye;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5E0A66021C932073004D37CE /* CopyFiles */ = {
@@ -25,6 +36,8 @@
 /* Begin PBXFileReference section */
 		5E0A66041C932073004D37CE /* keye_server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = keye_server; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A660E1C9320A5004D37CE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5EC0D2D11C93E92A000F3090 /* libkeye.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libkeye.a; sourceTree = "<group>"; };
+		5EC0D2D51C93F473000F3090 /* keye.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = keye.xcodeproj; path = "../../keye-1.1/keye.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC0D2D21C93E92A000F3090 /* libkeye.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +56,8 @@
 			isa = PBXGroup;
 			children = (
 				5E0A660E1C9320A5004D37CE /* main.cpp */,
+				5EC0D2D51C93F473000F3090 /* keye.xcodeproj */,
+				5EC0D2D11C93E92A000F3090 /* libkeye.a */,
 				5E0A66051C932073004D37CE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +66,14 @@
 			isa = PBXGroup;
 			children = (
 				5E0A66041C932073004D37CE /* keye_server */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5EC0D2D61C93F473000F3090 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5EC0D2DA1C93F473000F3090 /* libkeye.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,12 +122,28 @@
 			mainGroup = 5E0A65FB1C932073004D37CE;
 			productRefGroup = 5E0A66051C932073004D37CE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5EC0D2D61C93F473000F3090 /* Products */;
+					ProjectRef = 5EC0D2D51C93F473000F3090 /* keye.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5E0A66031C932073004D37CE /* keye_server */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5EC0D2DA1C93F473000F3090 /* libkeye.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libkeye.a;
+			remoteRef = 5EC0D2D91C93F473000F3090 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5E0A66001C932073004D37CE /* Sources */ = {
@@ -199,6 +239,11 @@
 		5E0A660C1C932073004D37CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/vliu/project/private/keye-1.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -206,6 +251,11 @@
 		5E0A660D1C932073004D37CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/vliu/project/private/keye-1.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -229,6 +279,7 @@
 				5E0A660D1C932073004D37CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,3 +14,15 @@ keye-1.1/.vs/
 keye-1.1/keye.sdf
 keye-1.1/vc140.pdb
 *.o
+MagicStone/proj.android
+MagicStone/proj.linux
+MagicStone/cocos2d
+MagicStone/proj.win10
+MagicStone/proj.win8.1-universal
+MagicStone/proj.win32
+MagicStone/proj.android-studio
+MagicStone/Resources
+MagicStone/proj.ios_mac
+MagicStone/.cocos-project.json
+MagicStone/CMakeLists.txt
+libkeye.so.1.1

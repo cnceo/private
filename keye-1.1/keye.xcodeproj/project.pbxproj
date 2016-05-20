@@ -23,7 +23,6 @@
 		5E2DBEBB1C92FAFC009FC394 /* metric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E2DBEA81C92FAFC009FC394 /* metric.cpp */; };
 		5E2DBEBC1C92FAFC009FC394 /* metric.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEA91C92FAFC009FC394 /* metric.h */; };
 		5E2DBEBE1C92FAFC009FC394 /* packet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEAB1C92FAFC009FC394 /* packet.h */; };
-		5E2DBEBF1C92FAFC009FC394 /* packeti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E2DBEAC1C92FAFC009FC394 /* packeti.cpp */; };
 		5E2DBEC11C92FAFC009FC394 /* service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E2DBEAE1C92FAFC009FC394 /* service.cpp */; };
 		5E2DBEC21C92FAFC009FC394 /* service.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEAF1C92FAFC009FC394 /* service.h */; };
 		5E2DBEC41C92FAFC009FC394 /* svc_handler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEB11C92FAFC009FC394 /* svc_handler.h */; };
@@ -58,6 +57,17 @@
 		5E2DBF001C92FB80009FC394 /* svc_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E2DBEF51C92FB80009FC394 /* svc_handler.cpp */; };
 		5E2DBF011C92FB80009FC394 /* svc_handler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEF61C92FB80009FC394 /* svc_handler.h */; };
 		5E2DBF021C92FB80009FC394 /* work_handler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E2DBEF71C92FB80009FC394 /* work_handler.h */; };
+		5E5C424D1CEF5E04005CDF47 /* htio_demo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C424C1CEF5E04005CDF47 /* htio_demo.h */; };
+		5E5C42551CEF5E32005CDF47 /* buf_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C424E1CEF5E32005CDF47 /* buf_set.h */; };
+		5E5C42561CEF5E32005CDF47 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C424F1CEF5E32005CDF47 /* md5.c */; };
+		5E5C42571CEF5E32005CDF47 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C42501CEF5E32005CDF47 /* md5.h */; };
+		5E5C42581CEF5E32005CDF47 /* secure_hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C42511CEF5E32005CDF47 /* secure_hash.cpp */; };
+		5E5C42591CEF5E32005CDF47 /* secure_hash.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C42521CEF5E32005CDF47 /* secure_hash.h */; };
+		5E5C425A1CEF5E32005CDF47 /* str_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C42531CEF5E32005CDF47 /* str_util.cpp */; };
+		5E5C425B1CEF5E32005CDF47 /* str_util.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C42541CEF5E32005CDF47 /* str_util.h */; };
+		5EC0D2CC1C93E885000F3090 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0D2CB1C93E885000F3090 /* libboost_date_time.a */; };
+		5EC0D2CE1C93E89F000F3090 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0D2CD1C93E89F000F3090 /* libboost_thread-mt.a */; };
+		5EC0D2D01C93E8CB000F3090 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0D2CF1C93E8CB000F3090 /* libboost_system-mt.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +87,6 @@
 		5E2DBEA81C92FAFC009FC394 /* metric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = metric.cpp; path = htio/metric.cpp; sourceTree = "<group>"; };
 		5E2DBEA91C92FAFC009FC394 /* metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metric.h; path = htio/metric.h; sourceTree = "<group>"; };
 		5E2DBEAB1C92FAFC009FC394 /* packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = packet.h; path = htio/packet.h; sourceTree = "<group>"; };
-		5E2DBEAC1C92FAFC009FC394 /* packeti.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = packeti.cpp; path = htio/packeti.cpp; sourceTree = "<group>"; };
 		5E2DBEAE1C92FAFC009FC394 /* service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = service.cpp; path = htio/service.cpp; sourceTree = "<group>"; };
 		5E2DBEAF1C92FAFC009FC394 /* service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = service.h; path = htio/service.h; sourceTree = "<group>"; };
 		5E2DBEB11C92FAFC009FC394 /* svc_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = svc_handler.h; path = htio/svc_handler.h; sourceTree = "<group>"; };
@@ -112,7 +121,18 @@
 		5E2DBEF51C92FB80009FC394 /* svc_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = svc_handler.cpp; path = keyeio/svc_handler.cpp; sourceTree = "<group>"; };
 		5E2DBEF61C92FB80009FC394 /* svc_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = svc_handler.h; path = keyeio/svc_handler.h; sourceTree = "<group>"; };
 		5E2DBEF71C92FB80009FC394 /* work_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = work_handler.h; path = keyeio/work_handler.h; sourceTree = "<group>"; };
+		5E5C424C1CEF5E04005CDF47 /* htio_demo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = htio_demo.h; path = htio/htio_demo.h; sourceTree = "<group>"; };
+		5E5C424E1CEF5E32005CDF47 /* buf_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buf_set.h; path = utility/buf_set.h; sourceTree = "<group>"; };
+		5E5C424F1CEF5E32005CDF47 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = md5.c; path = utility/md5.c; sourceTree = "<group>"; };
+		5E5C42501CEF5E32005CDF47 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = utility/md5.h; sourceTree = "<group>"; };
+		5E5C42511CEF5E32005CDF47 /* secure_hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = secure_hash.cpp; path = utility/secure_hash.cpp; sourceTree = "<group>"; };
+		5E5C42521CEF5E32005CDF47 /* secure_hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = secure_hash.h; path = utility/secure_hash.h; sourceTree = "<group>"; };
+		5E5C42531CEF5E32005CDF47 /* str_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = str_util.cpp; path = utility/str_util.cpp; sourceTree = "<group>"; };
+		5E5C42541CEF5E32005CDF47 /* str_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = str_util.h; path = utility/str_util.h; sourceTree = "<group>"; };
 		5E9FFF041C92F9D80069015B /* libkeye.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libkeye.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC0D2CB1C93E885000F3090 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = ../../../../../usr/local/Cellar/boost/1.58.0/lib/libboost_date_time.a; sourceTree = "<group>"; };
+		5EC0D2CD1C93E89F000F3090 /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "../../../../../usr/local/Cellar/boost/1.58.0/lib/libboost_thread-mt.a"; sourceTree = "<group>"; };
+		5EC0D2CF1C93E8CB000F3090 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../usr/local/Cellar/boost/1.58.0/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +140,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC0D2D01C93E8CB000F3090 /* libboost_system-mt.a in Frameworks */,
+				5EC0D2CE1C93E89F000F3090 /* libboost_thread-mt.a in Frameworks */,
+				5EC0D2CC1C93E885000F3090 /* libboost_date_time.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +152,7 @@
 		5E2DBE941C92FAB9009FC394 /* htio */ = {
 			isa = PBXGroup;
 			children = (
+				5E5C424C1CEF5E04005CDF47 /* htio_demo.h */,
 				5E2DBEA21C92FAFC009FC394 /* alloc.h */,
 				5E2DBEA31C92FAFC009FC394 /* htio_fwd.h */,
 				5E2DBEA41C92FAFC009FC394 /* htio_pch.hpp */,
@@ -137,7 +161,6 @@
 				5E2DBEA81C92FAFC009FC394 /* metric.cpp */,
 				5E2DBEA91C92FAFC009FC394 /* metric.h */,
 				5E2DBEAB1C92FAFC009FC394 /* packet.h */,
-				5E2DBEAC1C92FAFC009FC394 /* packeti.cpp */,
 				5E2DBEAE1C92FAFC009FC394 /* service.cpp */,
 				5E2DBEAF1C92FAFC009FC394 /* service.h */,
 				5E2DBEB11C92FAFC009FC394 /* svc_handler.h */,
@@ -183,6 +206,13 @@
 		5E2DBECD1C92FB1B009FC394 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				5E5C424E1CEF5E32005CDF47 /* buf_set.h */,
+				5E5C424F1CEF5E32005CDF47 /* md5.c */,
+				5E5C42501CEF5E32005CDF47 /* md5.h */,
+				5E5C42511CEF5E32005CDF47 /* secure_hash.cpp */,
+				5E5C42521CEF5E32005CDF47 /* secure_hash.h */,
+				5E5C42531CEF5E32005CDF47 /* str_util.cpp */,
+				5E5C42541CEF5E32005CDF47 /* str_util.h */,
 				5E2DBEE11C92FB43009FC394 /* conf_file.cpp */,
 				5E2DBEE21C92FB43009FC394 /* conf_file.h */,
 				5E2DBEE31C92FB43009FC394 /* logger.cpp */,
@@ -212,6 +242,9 @@
 		5E9FFEFB1C92F9D80069015B = {
 			isa = PBXGroup;
 			children = (
+				5EC0D2CF1C93E8CB000F3090 /* libboost_system-mt.a */,
+				5EC0D2CD1C93E89F000F3090 /* libboost_thread-mt.a */,
+				5EC0D2CB1C93E885000F3090 /* libboost_date_time.a */,
 				5E9FFF061C92F9D80069015B /* keye */,
 				5E9FFF051C92F9D80069015B /* Products */,
 			);
@@ -256,6 +289,7 @@
 				5E0A65E51C931285004D37CE /* stdafx.h in Headers */,
 				5E2DBEB51C92FAFC009FC394 /* alloc.h in Headers */,
 				5E2DBEC61C92FAFC009FC394 /* work_handler.h in Headers */,
+				5E5C424D1CEF5E04005CDF47 /* htio_demo.h in Headers */,
 				5E2DBE9D1C92FAEB009FC394 /* bas_pch.hpp in Headers */,
 				5E2DBF011C92FB80009FC394 /* svc_handler.h in Headers */,
 				5E2DBEB91C92FAFC009FC394 /* http_client.h in Headers */,
@@ -268,22 +302,26 @@
 				5E2DBEF81C92FB80009FC394 /* alloc.h in Headers */,
 				5E2DBEB61C92FAFC009FC394 /* htio_fwd.h in Headers */,
 				5E2DBEDF1C92FB36009FC394 /* wsio_fwd.h in Headers */,
+				5E5C425B1CEF5E32005CDF47 /* str_util.h in Headers */,
 				5E2DBEC51C92FAFC009FC394 /* svc_handler.hpp in Headers */,
 				5E2DBED91C92FB36009FC394 /* impl_decl.hpp in Headers */,
 				5E2DBF021C92FB80009FC394 /* work_handler.h in Headers */,
 				5E2DBEEA1C92FB43009FC394 /* logger.h in Headers */,
 				5E2DBEC71C92FAFC009FC394 /* work_handler.hpp in Headers */,
 				5E2DBEE01C92FB36009FC394 /* wsio_pch.hpp in Headers */,
+				5E5C42551CEF5E32005CDF47 /* buf_set.h in Headers */,
 				5E2DBEC21C92FAFC009FC394 /* service.h in Headers */,
 				5E2DBEA01C92FAEB009FC394 /* service_handler.hpp in Headers */,
 				5E2DBEFB1C92FB80009FC394 /* keyeio_pch.hpp in Headers */,
 				5E2DBEA11C92FAEB009FC394 /* service.hpp in Headers */,
+				5E5C42591CEF5E32005CDF47 /* secure_hash.h in Headers */,
 				5E2DBEFE1C92FB80009FC394 /* service.h in Headers */,
 				5E2DBEBC1C92FAFC009FC394 /* metric.h in Headers */,
 				5E2DBEC41C92FAFC009FC394 /* svc_handler.h in Headers */,
 				5E2DBE9E1C92FAEB009FC394 /* io_service_pool.hpp in Headers */,
 				5E2DBECB1C92FB0F009FC394 /* keye_pch.hpp in Headers */,
 				5E2DBEEB1C92FB43009FC394 /* utility_fwd.h in Headers */,
+				5E5C42571CEF5E32005CDF47 /* md5.h in Headers */,
 				5E2DBEEC1C92FB43009FC394 /* utility_pch.hpp in Headers */,
 				5E2DBEFD1C92FB80009FC394 /* packet.h in Headers */,
 			);
@@ -345,14 +383,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5C42561CEF5E32005CDF47 /* md5.c in Sources */,
 				5E2DBEB81C92FAFC009FC394 /* http_client.cpp in Sources */,
 				5E2DBEFF1C92FB80009FC394 /* servicei.cpp in Sources */,
+				5E5C425A1CEF5E32005CDF47 /* str_util.cpp in Sources */,
 				5E2DBEC11C92FAFC009FC394 /* service.cpp in Sources */,
 				5E2DBEE71C92FB43009FC394 /* conf_file.cpp in Sources */,
 				5E2DBEFC1C92FB80009FC394 /* packet.cpp in Sources */,
 				5E2DBEE91C92FB43009FC394 /* logger.cpp in Sources */,
+				5E5C42581CEF5E32005CDF47 /* secure_hash.cpp in Sources */,
 				5E2DBEDD1C92FB36009FC394 /* ws_service.cpp in Sources */,
-				5E2DBEBF1C92FAFC009FC394 /* packeti.cpp in Sources */,
 				5E2DBEBB1C92FAFC009FC394 /* metric.cpp in Sources */,
 				5E0A65E41C931285004D37CE /* stdafx.cpp in Sources */,
 				5E2DBEDE1C92FB36009FC394 /* ws_svc_handler.cpp in Sources */,
@@ -452,6 +492,10 @@
 					"$(SRCROOT)",
 					/usr/local/include,
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/boost/1.58.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -465,6 +509,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/boost/1.58.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
