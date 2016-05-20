@@ -17,13 +17,10 @@ namespace keye{
 // --------------------------------------------------------
 	template<typename T>
 	void buf_set(char** buf,const T& val){
-		buf_set(buf,&val,sizeof(T));
-		/*
 		if(buf&&*buf){
 			memcpy(*buf,&val,sizeof(T));
 			(*buf)+=sizeof(T);
 		}
-		*/
 	}
 
 	inline void buf_set(char** buf,const void* val,size_t len){
@@ -40,13 +37,10 @@ namespace keye{
 
 	template<typename T>
 	void buf_get(T& val,const char** buf){
-		buf_get(&val,sizeof(T),buf);
-		/*
 		if(buf&&*buf){
 			memcpy(&val,*buf,sizeof(T));
 			(*buf)+=sizeof(T);
 		}
-		*/
 	}
 
 	inline void buf_get(void* val,size_t len,const char** buf){

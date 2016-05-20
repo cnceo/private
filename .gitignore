@@ -13,3 +13,4 @@ server/.vs/
 keye-1.1/.vs/
 keye-1.1/keye.sdf
 keye-1.1/vc140.pdb
+*.o

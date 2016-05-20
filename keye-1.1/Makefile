@@ -22,10 +22,10 @@ export PREFIX= bin
 # followed by "make" if you change any options.
 #
 # LuaJIT builds as a native 32 or 64 bit binary by default.
-#CC= gcc
-#CXX= g++ -std=c++11
-CC= gcc-5
-CXX= g++-5 -std=c++11
+CC= gcc
+CXX= g++ -std=c++11
+#CC= gcc-5
+#CXX= g++-5 -std=c++11
 #
 # Use this if you want to force a 32 bit build on a 64 bit multilib OS.
 #CC= gcc -m32

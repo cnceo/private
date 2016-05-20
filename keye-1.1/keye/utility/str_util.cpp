@@ -25,7 +25,7 @@ void str_util::split_lines(std::vector<std::string>& lines,const std::string& bu
 		for(auto i=beg;i!=end; ++i)
 			//for(auto s:*i)lines.push_back(s);
 			for(auto s:*i){
-				auto& str=s.str();
+				auto str=s.str();
 				if(str.back()==L'\r')str.pop_back();
 				lines.push_back(str);
 			}
@@ -42,7 +42,7 @@ void str_util::wsplit_lines(std::vector<std::wstring>& lines,const std::wstring&
 		auto end = std::wsregex_iterator();
 		for(auto i=beg;i!=end; ++i)
 			for(auto s:*i){
-				auto& str=s.str();
+				auto str=s.str();
 				if(str.back()==L'\r')str.pop_back();
 				lines.push_back(str);
 			}
