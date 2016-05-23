@@ -1,0 +1,11 @@
+NAME= pandadb
+BUILDMODE=static
+CFLAGS+= -D_DEBUG -D_CRT_SECURE_NO_DEPRECATE
+CFLAGS+= -I./ -I../ -I../../pandanet -I../../pandanet/thirdparts/include
+LDFLAGS+= -L../../pandanet/thirdparts/lib
+LIBS+= -lm -lmysqlclient -lstdc++ -lhiredis -lz
+SRCS= $(wildcard *.cpp) \
+	$(wildcard database/*.cpp)
+INCS= $(wildcard *.h) \
+	$(wildcard database/*.hpp) \
+	$(wildcard database/*.h)

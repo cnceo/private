@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="pandanet_fwd.h" />
+    <ClInclude Include="pandanet_pch.hpp" />
+    <ClInclude Include="session\BaseSession.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\ZoneSession.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\ArenaSession.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\ClientSession.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="session\PandaService.h">
+      <Filter>session</Filter>
+    </ClInclude>
+    <ClInclude Include="PandaNet.h" />
+    <ClInclude Include="protocol\game_protocol.pb.h">
+      <Filter>protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\game_protocol.h">
+      <Filter>protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ObjectPool.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\DataProvider.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="PandaNet.cpp" />
+    <ClCompile Include="protocol\game_protocol.pb.cc">
+      <Filter>protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ObjectPool.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\DataProvider.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="protocol">
+      <UniqueIdentifier>{16cd274c-34b5-416d-aa96-35b6ac740402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="session">
+      <UniqueIdentifier>{30ae2e1a-787a-45b9-92e1-5c6c8f897da9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="settings">
+      <UniqueIdentifier>{ddb20a6f-eaa9-4a43-9afe-512eba3058bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{d2b95171-e2b1-4cd0-9952-1dcf3922bd4f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="protocol\game_protocol.proto">
+      <Filter>protocol</Filter>
+    </None>
+  </ItemGroup>
+</Project>

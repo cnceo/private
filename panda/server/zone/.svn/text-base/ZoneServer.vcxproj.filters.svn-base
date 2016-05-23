@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="ZoneServer.cpp" />
+    <ClCompile Include="handlers\ArenaHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\ClientHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\GatewayHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\WorldHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\PandaDBProxy.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="level\LevelSystem.cpp">
+      <Filter>level</Filter>
+    </ClCompile>
+    <ClCompile Include="social\SocialSystem.cpp">
+      <Filter>social</Filter>
+    </ClCompile>
+    <ClCompile Include="quest\QuestSystem.cpp">
+      <Filter>quest</Filter>
+    </ClCompile>
+    <ClCompile Include="player\PlayerSystem.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ZoneServerFwd.h" />
+    <ClInclude Include="ZoneServer.h" />
+    <ClInclude Include="handlers\ArenaHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\ClientHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\GatewayHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\WorldHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\PandaDBProxy.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="level\LevelSystem.h">
+      <Filter>level</Filter>
+    </ClInclude>
+    <ClInclude Include="social\SocialSystem.h">
+      <Filter>social</Filter>
+    </ClInclude>
+    <ClInclude Include="quest\QuestSystem.h">
+      <Filter>quest</Filter>
+    </ClInclude>
+    <ClInclude Include="player\PlayerSystem.h">
+      <Filter>player</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="handlers">
+      <UniqueIdentifier>{d41d96e8-e271-4a5a-8223-5efba0eb3609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="player">
+      <UniqueIdentifier>{f8268e03-5b98-4bf4-89b6-c52f6df0e8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="level">
+      <UniqueIdentifier>{899499f1-1ce8-44b4-95a6-2873da17f39f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quest">
+      <UniqueIdentifier>{09bac13f-ddb2-4a96-84d3-3c8fb92197b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="social">
+      <UniqueIdentifier>{40b644b0-719d-4a3c-9497-98fbd006a020}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\zone.ini" />
+  </ItemGroup>
+</Project>

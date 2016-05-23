@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GatewayServer.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="handlers\ZoneHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\ClientHandler.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\PandaDBProxy.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GatewayServer.h" />
+    <ClInclude Include="GatewayServerFwd.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="handlers\ZoneHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\ClientHandler.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\PandaDBProxy.h">
+      <Filter>handlers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="handlers">
+      <UniqueIdentifier>{d41d96e8-e271-4a5a-8223-5efba0eb3609}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\gateway.ini" />
+  </ItemGroup>
+</Project>

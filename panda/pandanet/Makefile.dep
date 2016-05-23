@@ -1,0 +1,14 @@
+NAME= pandanet
+BUILDMODE=static
+CFLAGS+= -D_DEBUG -D_CRT_SECURE_NO_DEPRECATE
+CFLAGS+= -I./ -I../ -I/usr/include/mysql/ -Ithirdparts/include
+LDFLAGS+= -Lthirdparts/lib -L/usr/lib/mysql -L/usr/local/lib/ -lpthread -lm -lmysqlclient -lstdc++ -lkeye -lprotobuf-lite
+LIBS+= -lcurses -lboost_system-mt -lboost_date_time-mt
+SRCS= $(wildcard *.cpp) \
+	$(wildcard utils/*.cpp) \
+	$(wildcard settings/*.cpp) \
+	$(wildcard protocol/*.cc)
+INCS= $(wildcard *.h) \
+	$(wildcard utils/*.h) \
+	$(wildcard settings/*.h) \
+	$(wildcard protocol/*.h)
