@@ -1,0 +1,80 @@
+添加：
+git add path
+git add -u path	//添加所有tracked文件
+git add -A path	//tracked and untracked
+
+提交：
+git commit -m “message”
+回退一次提交：
+git reset —soft HEAD~1
+
+忽略文件：
+全局：vi .gitignore
+*.log
+本地：
+.git/info/exclude
+
+推送：
+git push
+
+检出：
+git pull
+
+恢复单个文件：
+git checkout — file
+恢复所有文件：
+git stash
+
+查看历史版本：
+git show <commit>
+检出历史版本：
+git show <commit>:<file> > new-file
+
+分支
+HEAD：当前分支的指针
+创建：
+git branch branch_name
+创建远程：
+git push origin branch_name
+删除：
+git branch -d branch_name
+删除远程：
+git push origin :branch_name
+切换：
+git checkout branch_name
+合并：
+git merge branch_name	//先切回工作分支
+解决冲突后用git add添加
+
+冲突
+使用本地,checkout;
+使用远端,reset then checkout;
+add -u标记已解决冲突;
+rebase —-continue
+or git co —-theirs .
+
+
+git config --global user.name "Tony Wang"
+git config --global user.email tony@exoweb.net
+# only push the current branch
+git config --global push.default upstream
+# use some aliases and other things, check git config for detail (optional)
+git config --global alias.co checkout
+git config --global alias.st status
+git config --global alias.ci commit -v
+git config --global alias.br branch
+# like hg out
+git config --global alias.out \!"git fetch; git cherry origin/HEAD -v"
+git config --global apply.whitespace fix
+common project specific configuration, run in the cloned directory. (You can postpone below steps, see next section)
+
+# it combines commits in merged branch into one, otherwise, we'll see every commits in the merged branch after merge
+# to make your commit top of fetched branches
+git config branch.autosetuprebase always
+git config branch.master.rebase true
+git config branch.master.mergeoptions --squash
+
+//update remote url with user and store
+git config --global credential.helper store
+git remote add origin https://keyeleo:Skipper_2013@github.com/keyeleo/private.git
+git remote set-url origin https://keyeleo:Skipper_2013@github.com/keyeleo/private.git
