@@ -26,6 +26,7 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete PlayerExtraInfo_OccultUnderstanding::default_instance_;
   delete PlayerExtraInfo_SkillTreeId::default_instance_;
   delete PlayerExtraInfo_KuangfuHouseSkill::default_instance_;
+  delete TeamInfo::default_instance_;
   delete User_FriendList::default_instance_;
   delete User_Title::default_instance_;
   delete NPCBaseData::default_instance_;
@@ -47,11 +48,13 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete StageLootRewardData_nLoot_random_Activity::default_instance_;
   delete StageLootRewardData_nItemId_Task::default_instance_;
   delete StageLootRewardData_nLoot_random_Task::default_instance_;
+  delete TaskInfoData::default_instance_;
   delete MsgBase::default_instance_;
   delete MsgCGLogin::default_instance_;
   delete MsgGCLogin::default_instance_;
   delete MsgCZEnter::default_instance_;
   delete MsgZCEnter::default_instance_;
+  delete MsgZCExit::default_instance_;
   delete MsgCZCreatePlayer::default_instance_;
   delete MsgZCCreatePlayer::default_instance_;
   delete MsgCZUpdatePlayer::default_instance_;
@@ -63,11 +66,25 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete MsgZCUpdatePlayerExtra::default_instance_;
   delete MsgCZMove::default_instance_;
   delete MsgZCMove::default_instance_;
+  delete MsgZCBroadcastPlayer::default_instance_;
   delete MsgZCSyncPlayers::default_instance_;
   delete MsgCZUpdateName::default_instance_;
   delete MsgZCUpdateName::default_instance_;
   delete MsgCZEnterArena::default_instance_;
   delete MsgZCEnterArena::default_instance_;
+  delete MsgZCTeamBroadcast::default_instance_;
+  delete MsgCZTeamCreate::default_instance_;
+  delete MsgCZTeamEdit::default_instance_;
+  delete MsgZCTeamUpdate::default_instance_;
+  delete MsgCZTeamDismiss::default_instance_;
+  delete MsgCZTeamKick::default_instance_;
+  delete MsgCZTeamLeave::default_instance_;
+  delete MsgCZTeamRecruit::default_instance_;
+  delete MsgZCTeamInvite::default_instance_;
+  delete MsgCZTeamInvite::default_instance_;
+  delete MsgCZTeamJoin::default_instance_;
+  delete MsgZCTeamApply::default_instance_;
+  delete MsgCZTeamApply::default_instance_;
   delete MsgCAEnter::default_instance_;
   delete MsgACEnter::default_instance_;
   delete MsgZGConnect::default_instance_;
@@ -101,6 +118,7 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   PlayerExtraInfo_OccultUnderstanding::default_instance_ = new PlayerExtraInfo_OccultUnderstanding();
   PlayerExtraInfo_SkillTreeId::default_instance_ = new PlayerExtraInfo_SkillTreeId();
   PlayerExtraInfo_KuangfuHouseSkill::default_instance_ = new PlayerExtraInfo_KuangfuHouseSkill();
+  TeamInfo::default_instance_ = new TeamInfo();
   User_FriendList::default_instance_ = new User_FriendList();
   User_Title::default_instance_ = new User_Title();
   NPCBaseData::default_instance_ = new NPCBaseData();
@@ -122,11 +140,13 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   StageLootRewardData_nLoot_random_Activity::default_instance_ = new StageLootRewardData_nLoot_random_Activity();
   StageLootRewardData_nItemId_Task::default_instance_ = new StageLootRewardData_nItemId_Task();
   StageLootRewardData_nLoot_random_Task::default_instance_ = new StageLootRewardData_nLoot_random_Task();
+  TaskInfoData::default_instance_ = new TaskInfoData();
   MsgBase::default_instance_ = new MsgBase();
   MsgCGLogin::default_instance_ = new MsgCGLogin();
   MsgGCLogin::default_instance_ = new MsgGCLogin();
   MsgCZEnter::default_instance_ = new MsgCZEnter();
   MsgZCEnter::default_instance_ = new MsgZCEnter();
+  MsgZCExit::default_instance_ = new MsgZCExit();
   MsgCZCreatePlayer::default_instance_ = new MsgCZCreatePlayer();
   MsgZCCreatePlayer::default_instance_ = new MsgZCCreatePlayer();
   MsgCZUpdatePlayer::default_instance_ = new MsgCZUpdatePlayer();
@@ -138,11 +158,25 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZCUpdatePlayerExtra::default_instance_ = new MsgZCUpdatePlayerExtra();
   MsgCZMove::default_instance_ = new MsgCZMove();
   MsgZCMove::default_instance_ = new MsgZCMove();
+  MsgZCBroadcastPlayer::default_instance_ = new MsgZCBroadcastPlayer();
   MsgZCSyncPlayers::default_instance_ = new MsgZCSyncPlayers();
   MsgCZUpdateName::default_instance_ = new MsgCZUpdateName();
   MsgZCUpdateName::default_instance_ = new MsgZCUpdateName();
   MsgCZEnterArena::default_instance_ = new MsgCZEnterArena();
   MsgZCEnterArena::default_instance_ = new MsgZCEnterArena();
+  MsgZCTeamBroadcast::default_instance_ = new MsgZCTeamBroadcast();
+  MsgCZTeamCreate::default_instance_ = new MsgCZTeamCreate();
+  MsgCZTeamEdit::default_instance_ = new MsgCZTeamEdit();
+  MsgZCTeamUpdate::default_instance_ = new MsgZCTeamUpdate();
+  MsgCZTeamDismiss::default_instance_ = new MsgCZTeamDismiss();
+  MsgCZTeamKick::default_instance_ = new MsgCZTeamKick();
+  MsgCZTeamLeave::default_instance_ = new MsgCZTeamLeave();
+  MsgCZTeamRecruit::default_instance_ = new MsgCZTeamRecruit();
+  MsgZCTeamInvite::default_instance_ = new MsgZCTeamInvite();
+  MsgCZTeamInvite::default_instance_ = new MsgCZTeamInvite();
+  MsgCZTeamJoin::default_instance_ = new MsgCZTeamJoin();
+  MsgZCTeamApply::default_instance_ = new MsgZCTeamApply();
+  MsgCZTeamApply::default_instance_ = new MsgCZTeamApply();
   MsgCAEnter::default_instance_ = new MsgCAEnter();
   MsgACEnter::default_instance_ = new MsgACEnter();
   MsgZGConnect::default_instance_ = new MsgZGConnect();
@@ -162,6 +196,7 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   PlayerExtraInfo_OccultUnderstanding::default_instance_->InitAsDefaultInstance();
   PlayerExtraInfo_SkillTreeId::default_instance_->InitAsDefaultInstance();
   PlayerExtraInfo_KuangfuHouseSkill::default_instance_->InitAsDefaultInstance();
+  TeamInfo::default_instance_->InitAsDefaultInstance();
   User_FriendList::default_instance_->InitAsDefaultInstance();
   User_Title::default_instance_->InitAsDefaultInstance();
   NPCBaseData::default_instance_->InitAsDefaultInstance();
@@ -183,11 +218,13 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   StageLootRewardData_nLoot_random_Activity::default_instance_->InitAsDefaultInstance();
   StageLootRewardData_nItemId_Task::default_instance_->InitAsDefaultInstance();
   StageLootRewardData_nLoot_random_Task::default_instance_->InitAsDefaultInstance();
+  TaskInfoData::default_instance_->InitAsDefaultInstance();
   MsgBase::default_instance_->InitAsDefaultInstance();
   MsgCGLogin::default_instance_->InitAsDefaultInstance();
   MsgGCLogin::default_instance_->InitAsDefaultInstance();
   MsgCZEnter::default_instance_->InitAsDefaultInstance();
   MsgZCEnter::default_instance_->InitAsDefaultInstance();
+  MsgZCExit::default_instance_->InitAsDefaultInstance();
   MsgCZCreatePlayer::default_instance_->InitAsDefaultInstance();
   MsgZCCreatePlayer::default_instance_->InitAsDefaultInstance();
   MsgCZUpdatePlayer::default_instance_->InitAsDefaultInstance();
@@ -199,11 +236,25 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZCUpdatePlayerExtra::default_instance_->InitAsDefaultInstance();
   MsgCZMove::default_instance_->InitAsDefaultInstance();
   MsgZCMove::default_instance_->InitAsDefaultInstance();
+  MsgZCBroadcastPlayer::default_instance_->InitAsDefaultInstance();
   MsgZCSyncPlayers::default_instance_->InitAsDefaultInstance();
   MsgCZUpdateName::default_instance_->InitAsDefaultInstance();
   MsgZCUpdateName::default_instance_->InitAsDefaultInstance();
   MsgCZEnterArena::default_instance_->InitAsDefaultInstance();
   MsgZCEnterArena::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamBroadcast::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamCreate::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamEdit::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamUpdate::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamDismiss::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamKick::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamLeave::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamRecruit::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamInvite::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamInvite::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamJoin::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamApply::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamApply::default_instance_->InitAsDefaultInstance();
   MsgCAEnter::default_instance_->InitAsDefaultInstance();
   MsgACEnter::default_instance_->InitAsDefaultInstance();
   MsgZGConnect::default_instance_->InitAsDefaultInstance();
@@ -248,6 +299,9 @@ bool eResult_IsValid(int value) {
     case 100:
     case 101:
     case 102:
+    case 103:
+    case 104:
+    case 999:
       return true;
     default:
       return false;
@@ -261,6 +315,22 @@ bool eMoveType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+bool eTeamOp_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
       return true;
     default:
       return false;
@@ -1607,6 +1677,7 @@ void PlaceInfo::clear_orientation() {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PlayerInfo::kIdFieldNumber;
+const int PlayerInfo::kUidFieldNumber;
 const int PlayerInfo::kNameFieldNumber;
 const int PlayerInfo::kLevelFieldNumber;
 const int PlayerInfo::kEnergyFieldNumber;
@@ -1620,6 +1691,13 @@ const int PlayerInfo::kCurrentTitleFieldNumber;
 const int PlayerInfo::kArenaRankFieldNumber;
 const int PlayerInfo::kArenaHonorFieldNumber;
 const int PlayerInfo::kHuashanRankingFieldNumber;
+const int PlayerInfo::kExtraFieldNumber;
+const int PlayerInfo::kHPFieldNumber;
+const int PlayerInfo::kMPFieldNumber;
+const int PlayerInfo::kMaxHPFieldNumber;
+const int PlayerInfo::kMaxMPFieldNumber;
+const int PlayerInfo::kMartialclubIDFieldNumber;
+const int PlayerInfo::kNBreakFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PlayerInfo::PlayerInfo()
@@ -1636,6 +1714,12 @@ void PlayerInfo::InitAsDefaultInstance() {
 #else
   lastplace_ = const_cast< ::proto3::PlaceInfo*>(&::proto3::PlaceInfo::default_instance());
 #endif
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  extra_ = const_cast< ::proto3::PlayerExtraInfo*>(
+      ::proto3::PlayerExtraInfo::internal_default_instance());
+#else
+  extra_ = const_cast< ::proto3::PlayerExtraInfo*>(&::proto3::PlayerExtraInfo::default_instance());
+#endif
 }
 
 PlayerInfo::PlayerInfo(const PlayerInfo& from)
@@ -1651,6 +1735,7 @@ void PlayerInfo::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   id_ = 0u;
+  uid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   level_ = 0u;
   energy_ = 0u;
@@ -1664,6 +1749,13 @@ void PlayerInfo::SharedCtor() {
   arenarank_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   arenahonor_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   huashanranking_ = 0u;
+  extra_ = NULL;
+  hp_ = 0u;
+  mp_ = 0u;
+  maxhp_ = 0u;
+  maxmp_ = 0u;
+  martialclubid_ = 0u;
+  nbreak_ = 0u;
 }
 
 PlayerInfo::~PlayerInfo() {
@@ -1672,6 +1764,7 @@ PlayerInfo::~PlayerInfo() {
 }
 
 void PlayerInfo::SharedDtor() {
+  uid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   currenttitle_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   arenarank_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -1682,6 +1775,7 @@ void PlayerInfo::SharedDtor() {
   if (this != default_instance_) {
   #endif
     delete lastplace_;
+    delete extra_;
   }
 }
 
@@ -1727,15 +1821,20 @@ void PlayerInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(id_, money_);
+  ZR_(id_, level_);
+  ZR_(energy_, gold_);
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  honor_ = 0u;
+  ZR_(money_, honor_);
   if (GetArenaNoVirtual() == NULL && lastplace_ != NULL) delete lastplace_;
   lastplace_ = NULL;
   currenttitle_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   arenarank_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   arenahonor_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   huashanranking_ = 0u;
+  if (GetArenaNoVirtual() == NULL && extra_ != NULL) delete extra_;
+  extra_ = NULL;
+  ZR_(hp_, nbreak_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -1791,6 +1890,23 @@ bool PlayerInfo::MergePartialFromCodedStream(
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &level_)));
 
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_uid;
+        break;
+      }
+
+      // optional string uid = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_uid:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_uid()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->uid().data(), this->uid().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.PlayerInfo.uid"));
         } else {
           goto handle_unusual;
         }
@@ -1963,6 +2079,109 @@ bool PlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(242)) goto parse_extra;
+        break;
+      }
+
+      // optional .proto3.PlayerExtraInfo extra = 30;
+      case 30: {
+        if (tag == 242) {
+         parse_extra:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_extra()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(400)) goto parse_HP;
+        break;
+      }
+
+      // optional uint32 HP = 50;
+      case 50: {
+        if (tag == 400) {
+         parse_HP:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &hp_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(408)) goto parse_MP;
+        break;
+      }
+
+      // optional uint32 MP = 51;
+      case 51: {
+        if (tag == 408) {
+         parse_MP:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mp_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(416)) goto parse_MaxHP;
+        break;
+      }
+
+      // optional uint32 MaxHP = 52;
+      case 52: {
+        if (tag == 416) {
+         parse_MaxHP:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &maxhp_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(424)) goto parse_MaxMP;
+        break;
+      }
+
+      // optional uint32 MaxMP = 53;
+      case 53: {
+        if (tag == 424) {
+         parse_MaxMP:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &maxmp_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(432)) goto parse_MartialclubID;
+        break;
+      }
+
+      // optional uint32 MartialclubID = 54;
+      case 54: {
+        if (tag == 432) {
+         parse_MartialclubID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &martialclubid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(440)) goto parse_nBreak;
+        break;
+      }
+
+      // optional uint32 nBreak = 55;
+      case 55: {
+        if (tag == 440) {
+         parse_nBreak:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &nbreak_)));
+
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -2009,6 +2228,16 @@ void PlayerInfo::SerializeWithCachedSizes(
   // optional uint32 level = 3;
   if (this->level() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
+  }
+
+  // optional string uid = 4;
+  if (this->uid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->uid().data(), this->uid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.PlayerInfo.uid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->uid(), output);
   }
 
   // optional uint32 energy = 5;
@@ -2082,6 +2311,42 @@ void PlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(25, this->huashanranking(), output);
   }
 
+  // optional .proto3.PlayerExtraInfo extra = 30;
+  if (this->has_extra()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      30, *this->extra_, output);
+  }
+
+  // optional uint32 HP = 50;
+  if (this->hp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(50, this->hp(), output);
+  }
+
+  // optional uint32 MP = 51;
+  if (this->mp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(51, this->mp(), output);
+  }
+
+  // optional uint32 MaxHP = 52;
+  if (this->maxhp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(52, this->maxhp(), output);
+  }
+
+  // optional uint32 MaxMP = 53;
+  if (this->maxmp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(53, this->maxmp(), output);
+  }
+
+  // optional uint32 MartialclubID = 54;
+  if (this->martialclubid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(54, this->martialclubid(), output);
+  }
+
+  // optional uint32 nBreak = 55;
+  if (this->nbreak() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(55, this->nbreak(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:proto3.PlayerInfo)
 }
 
@@ -2094,6 +2359,13 @@ int PlayerInfo::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->id());
+  }
+
+  // optional string uid = 4;
+  if (this->uid().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->uid());
   }
 
   // optional string name = 2;
@@ -2187,6 +2459,55 @@ int PlayerInfo::ByteSize() const {
         this->huashanranking());
   }
 
+  // optional .proto3.PlayerExtraInfo extra = 30;
+  if (this->has_extra()) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->extra_);
+  }
+
+  // optional uint32 HP = 50;
+  if (this->hp() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->hp());
+  }
+
+  // optional uint32 MP = 51;
+  if (this->mp() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mp());
+  }
+
+  // optional uint32 MaxHP = 52;
+  if (this->maxhp() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->maxhp());
+  }
+
+  // optional uint32 MaxMP = 53;
+  if (this->maxmp() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->maxmp());
+  }
+
+  // optional uint32 MartialclubID = 54;
+  if (this->martialclubid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->martialclubid());
+  }
+
+  // optional uint32 nBreak = 55;
+  if (this->nbreak() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->nbreak());
+  }
+
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
@@ -2203,6 +2524,10 @@ void PlayerInfo::MergeFrom(const PlayerInfo& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.id() != 0) {
     set_id(from.id());
+  }
+  if (from.uid().size() > 0) {
+
+    uid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.uid_);
   }
   if (from.name().size() > 0) {
 
@@ -2247,6 +2572,27 @@ void PlayerInfo::MergeFrom(const PlayerInfo& from) {
   if (from.huashanranking() != 0) {
     set_huashanranking(from.huashanranking());
   }
+  if (from.has_extra()) {
+    mutable_extra()->::proto3::PlayerExtraInfo::MergeFrom(from.extra());
+  }
+  if (from.hp() != 0) {
+    set_hp(from.hp());
+  }
+  if (from.mp() != 0) {
+    set_mp(from.mp());
+  }
+  if (from.maxhp() != 0) {
+    set_maxhp(from.maxhp());
+  }
+  if (from.maxmp() != 0) {
+    set_maxmp(from.maxmp());
+  }
+  if (from.martialclubid() != 0) {
+    set_martialclubid(from.martialclubid());
+  }
+  if (from.nbreak() != 0) {
+    set_nbreak(from.nbreak());
+  }
 }
 
 void PlayerInfo::CopyFrom(const PlayerInfo& from) {
@@ -2267,6 +2613,7 @@ void PlayerInfo::Swap(PlayerInfo* other) {
 }
 void PlayerInfo::InternalSwap(PlayerInfo* other) {
   std::swap(id_, other->id_);
+  uid_.Swap(&other->uid_);
   name_.Swap(&other->name_);
   std::swap(level_, other->level_);
   std::swap(energy_, other->energy_);
@@ -2280,6 +2627,13 @@ void PlayerInfo::InternalSwap(PlayerInfo* other) {
   arenarank_.Swap(&other->arenarank_);
   arenahonor_.Swap(&other->arenahonor_);
   std::swap(huashanranking_, other->huashanranking_);
+  std::swap(extra_, other->extra_);
+  std::swap(hp_, other->hp_);
+  std::swap(mp_, other->mp_);
+  std::swap(maxhp_, other->maxhp_);
+  std::swap(maxmp_, other->maxmp_);
+  std::swap(martialclubid_, other->martialclubid_);
+  std::swap(nbreak_, other->nbreak_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -2303,6 +2657,50 @@ void PlayerInfo::clear_id() {
   
   id_ = value;
   // @@protoc_insertion_point(field_set:proto3.PlayerInfo.id)
+}
+
+// optional string uid = 4;
+void PlayerInfo::clear_uid() {
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& PlayerInfo::uid() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.uid)
+  return uid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void PlayerInfo::set_uid(const ::std::string& value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.uid)
+}
+ void PlayerInfo::set_uid(const char* value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.PlayerInfo.uid)
+}
+ void PlayerInfo::set_uid(const char* value, size_t size) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.PlayerInfo.uid)
+}
+ ::std::string* PlayerInfo::mutable_uid() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.PlayerInfo.uid)
+  return uid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* PlayerInfo::release_uid() {
+  // @@protoc_insertion_point(field_release:proto3.PlayerInfo.uid)
+  
+  return uid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void PlayerInfo::set_allocated_uid(::std::string* uid) {
+  if (uid != NULL) {
+    
+  } else {
+    
+  }
+  uid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), uid);
+  // @@protoc_insertion_point(field_set_allocated:proto3.PlayerInfo.uid)
 }
 
 // optional string name = 2;
@@ -2633,6 +3031,132 @@ void PlayerInfo::clear_huashanranking() {
   
   huashanranking_ = value;
   // @@protoc_insertion_point(field_set:proto3.PlayerInfo.HuashanRanking)
+}
+
+// optional .proto3.PlayerExtraInfo extra = 30;
+bool PlayerInfo::has_extra() const {
+  return !_is_default_instance_ && extra_ != NULL;
+}
+void PlayerInfo::clear_extra() {
+  if (GetArenaNoVirtual() == NULL && extra_ != NULL) delete extra_;
+  extra_ = NULL;
+}
+const ::proto3::PlayerExtraInfo& PlayerInfo::extra() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.extra)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return extra_ != NULL ? *extra_ : *default_instance().extra_;
+#else
+  return extra_ != NULL ? *extra_ : *default_instance_->extra_;
+#endif
+}
+::proto3::PlayerExtraInfo* PlayerInfo::mutable_extra() {
+  
+  if (extra_ == NULL) {
+    extra_ = new ::proto3::PlayerExtraInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.PlayerInfo.extra)
+  return extra_;
+}
+::proto3::PlayerExtraInfo* PlayerInfo::release_extra() {
+  // @@protoc_insertion_point(field_release:proto3.PlayerInfo.extra)
+  
+  ::proto3::PlayerExtraInfo* temp = extra_;
+  extra_ = NULL;
+  return temp;
+}
+void PlayerInfo::set_allocated_extra(::proto3::PlayerExtraInfo* extra) {
+  delete extra_;
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.PlayerInfo.extra)
+}
+
+// optional uint32 HP = 50;
+void PlayerInfo::clear_hp() {
+  hp_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::hp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.HP)
+  return hp_;
+}
+ void PlayerInfo::set_hp(::google::protobuf::uint32 value) {
+  
+  hp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.HP)
+}
+
+// optional uint32 MP = 51;
+void PlayerInfo::clear_mp() {
+  mp_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::mp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MP)
+  return mp_;
+}
+ void PlayerInfo::set_mp(::google::protobuf::uint32 value) {
+  
+  mp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MP)
+}
+
+// optional uint32 MaxHP = 52;
+void PlayerInfo::clear_maxhp() {
+  maxhp_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::maxhp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MaxHP)
+  return maxhp_;
+}
+ void PlayerInfo::set_maxhp(::google::protobuf::uint32 value) {
+  
+  maxhp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MaxHP)
+}
+
+// optional uint32 MaxMP = 53;
+void PlayerInfo::clear_maxmp() {
+  maxmp_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::maxmp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MaxMP)
+  return maxmp_;
+}
+ void PlayerInfo::set_maxmp(::google::protobuf::uint32 value) {
+  
+  maxmp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MaxMP)
+}
+
+// optional uint32 MartialclubID = 54;
+void PlayerInfo::clear_martialclubid() {
+  martialclubid_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::martialclubid() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MartialclubID)
+  return martialclubid_;
+}
+ void PlayerInfo::set_martialclubid(::google::protobuf::uint32 value) {
+  
+  martialclubid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MartialclubID)
+}
+
+// optional uint32 nBreak = 55;
+void PlayerInfo::clear_nbreak() {
+  nbreak_ = 0u;
+}
+ ::google::protobuf::uint32 PlayerInfo::nbreak() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.nBreak)
+  return nbreak_;
+}
+ void PlayerInfo::set_nbreak(::google::protobuf::uint32 value) {
+  
+  nbreak_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.nBreak)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -3986,6 +4510,787 @@ const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerExtraInfo_KuangfuHou
 PlayerExtraInfo::kuangfuhouseskill() const {
   // @@protoc_insertion_point(field_list:proto3.PlayerExtraInfo.kuangfuhouseskill)
   return kuangfuhouseskill_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TeamInfo::kUidFieldNumber;
+const int TeamInfo::kTitleFieldNumber;
+const int TeamInfo::kLevelLimitFieldNumber;
+const int TeamInfo::kProfessionLimitFieldNumber;
+const int TeamInfo::kDungeonIdFieldNumber;
+const int TeamInfo::kDifficultyFieldNumber;
+const int TeamInfo::kCapacityFieldNumber;
+const int TeamInfo::kMembersFieldNumber;
+const int TeamInfo::kRecruitsFieldNumber;
+const int TeamInfo::kJoinsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TeamInfo::TeamInfo()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.TeamInfo)
+}
+
+void TeamInfo::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+TeamInfo::TeamInfo(const TeamInfo& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.TeamInfo)
+}
+
+void TeamInfo::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  uid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  title_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  levellimit_ = 0u;
+  professionlimit_ = 0u;
+  dungeonid_ = 0u;
+  difficulty_ = 0u;
+  capacity_ = 0u;
+}
+
+TeamInfo::~TeamInfo() {
+  // @@protoc_insertion_point(destructor:proto3.TeamInfo)
+  SharedDtor();
+}
+
+void TeamInfo::SharedDtor() {
+  uid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  title_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void TeamInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const TeamInfo& TeamInfo::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+TeamInfo* TeamInfo::default_instance_ = NULL;
+
+TeamInfo* TeamInfo::New(::google::protobuf::Arena* arena) const {
+  TeamInfo* n = new TeamInfo;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TeamInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.TeamInfo)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(TeamInfo, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TeamInfo*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(levellimit_, difficulty_);
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  capacity_ = 0u;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  members_.Clear();
+  recruits_.Clear();
+  joins_.Clear();
+}
+
+bool TeamInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.TeamInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string title = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_title()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->title().data(), this->title().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.TeamInfo.title"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_levelLimit;
+        break;
+      }
+
+      // optional uint32 levelLimit = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_levelLimit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &levellimit_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_professionLimit;
+        break;
+      }
+
+      // optional uint32 professionLimit = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_professionLimit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &professionlimit_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_dungeonId;
+        break;
+      }
+
+      // optional uint32 dungeonId = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_dungeonId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dungeonid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_difficulty;
+        break;
+      }
+
+      // optional uint32 difficulty = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_difficulty:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &difficulty_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(48)) goto parse_capacity;
+        break;
+      }
+
+      // optional uint32 capacity = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_capacity:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &capacity_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_members;
+        break;
+      }
+
+      // repeated .proto3.PlayerInfo members = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_members:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_members:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_members()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_loop_members;
+        if (input->ExpectTag(66)) goto parse_loop_recruits;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .proto3.PlayerInfo recruits = 8;
+      case 8: {
+        if (tag == 66) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_recruits:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_recruits()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_loop_recruits;
+        if (input->ExpectTag(74)) goto parse_loop_joins;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .proto3.PlayerInfo joins = 9;
+      case 9: {
+        if (tag == 74) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_joins:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_joins()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(74)) goto parse_loop_joins;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectTag(90)) goto parse_uid;
+        break;
+      }
+
+      // optional string uid = 11;
+      case 11: {
+        if (tag == 90) {
+         parse_uid:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_uid()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->uid().data(), this->uid().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.TeamInfo.uid"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.TeamInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.TeamInfo)
+  return false;
+#undef DO_
+}
+
+void TeamInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.TeamInfo)
+  // optional string title = 1;
+  if (this->title().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->title().data(), this->title().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.TeamInfo.title");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->title(), output);
+  }
+
+  // optional uint32 levelLimit = 2;
+  if (this->levellimit() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->levellimit(), output);
+  }
+
+  // optional uint32 professionLimit = 3;
+  if (this->professionlimit() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->professionlimit(), output);
+  }
+
+  // optional uint32 dungeonId = 4;
+  if (this->dungeonid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->dungeonid(), output);
+  }
+
+  // optional uint32 difficulty = 5;
+  if (this->difficulty() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->difficulty(), output);
+  }
+
+  // optional uint32 capacity = 6;
+  if (this->capacity() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->capacity(), output);
+  }
+
+  // repeated .proto3.PlayerInfo members = 7;
+  for (unsigned int i = 0, n = this->members_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      7, this->members(i), output);
+  }
+
+  // repeated .proto3.PlayerInfo recruits = 8;
+  for (unsigned int i = 0, n = this->recruits_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      8, this->recruits(i), output);
+  }
+
+  // repeated .proto3.PlayerInfo joins = 9;
+  for (unsigned int i = 0, n = this->joins_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      9, this->joins(i), output);
+  }
+
+  // optional string uid = 11;
+  if (this->uid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->uid().data(), this->uid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.TeamInfo.uid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->uid(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.TeamInfo)
+}
+
+int TeamInfo::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.TeamInfo)
+  int total_size = 0;
+
+  // optional string uid = 11;
+  if (this->uid().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->uid());
+  }
+
+  // optional string title = 1;
+  if (this->title().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->title());
+  }
+
+  // optional uint32 levelLimit = 2;
+  if (this->levellimit() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->levellimit());
+  }
+
+  // optional uint32 professionLimit = 3;
+  if (this->professionlimit() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->professionlimit());
+  }
+
+  // optional uint32 dungeonId = 4;
+  if (this->dungeonid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->dungeonid());
+  }
+
+  // optional uint32 difficulty = 5;
+  if (this->difficulty() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->difficulty());
+  }
+
+  // optional uint32 capacity = 6;
+  if (this->capacity() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->capacity());
+  }
+
+  // repeated .proto3.PlayerInfo members = 7;
+  total_size += 1 * this->members_size();
+  for (int i = 0; i < this->members_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->members(i));
+  }
+
+  // repeated .proto3.PlayerInfo recruits = 8;
+  total_size += 1 * this->recruits_size();
+  for (int i = 0; i < this->recruits_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->recruits(i));
+  }
+
+  // repeated .proto3.PlayerInfo joins = 9;
+  total_size += 1 * this->joins_size();
+  for (int i = 0; i < this->joins_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->joins(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TeamInfo::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const TeamInfo*>(&from));
+}
+
+void TeamInfo::MergeFrom(const TeamInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.TeamInfo)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  members_.MergeFrom(from.members_);
+  recruits_.MergeFrom(from.recruits_);
+  joins_.MergeFrom(from.joins_);
+  if (from.uid().size() > 0) {
+
+    uid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.uid_);
+  }
+  if (from.title().size() > 0) {
+
+    title_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.title_);
+  }
+  if (from.levellimit() != 0) {
+    set_levellimit(from.levellimit());
+  }
+  if (from.professionlimit() != 0) {
+    set_professionlimit(from.professionlimit());
+  }
+  if (from.dungeonid() != 0) {
+    set_dungeonid(from.dungeonid());
+  }
+  if (from.difficulty() != 0) {
+    set_difficulty(from.difficulty());
+  }
+  if (from.capacity() != 0) {
+    set_capacity(from.capacity());
+  }
+}
+
+void TeamInfo::CopyFrom(const TeamInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.TeamInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TeamInfo::IsInitialized() const {
+
+  return true;
+}
+
+void TeamInfo::Swap(TeamInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TeamInfo::InternalSwap(TeamInfo* other) {
+  uid_.Swap(&other->uid_);
+  title_.Swap(&other->title_);
+  std::swap(levellimit_, other->levellimit_);
+  std::swap(professionlimit_, other->professionlimit_);
+  std::swap(dungeonid_, other->dungeonid_);
+  std::swap(difficulty_, other->difficulty_);
+  std::swap(capacity_, other->capacity_);
+  members_.UnsafeArenaSwap(&other->members_);
+  recruits_.UnsafeArenaSwap(&other->recruits_);
+  joins_.UnsafeArenaSwap(&other->joins_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string TeamInfo::GetTypeName() const {
+  return "proto3.TeamInfo";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TeamInfo
+
+// optional string uid = 11;
+void TeamInfo::clear_uid() {
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& TeamInfo::uid() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.uid)
+  return uid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TeamInfo::set_uid(const ::std::string& value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.uid)
+}
+ void TeamInfo::set_uid(const char* value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TeamInfo.uid)
+}
+ void TeamInfo::set_uid(const char* value, size_t size) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TeamInfo.uid)
+}
+ ::std::string* TeamInfo::mutable_uid() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.uid)
+  return uid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TeamInfo::release_uid() {
+  // @@protoc_insertion_point(field_release:proto3.TeamInfo.uid)
+  
+  return uid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TeamInfo::set_allocated_uid(::std::string* uid) {
+  if (uid != NULL) {
+    
+  } else {
+    
+  }
+  uid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), uid);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TeamInfo.uid)
+}
+
+// optional string title = 1;
+void TeamInfo::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& TeamInfo::title() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TeamInfo::set_title(const ::std::string& value) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.title)
+}
+ void TeamInfo::set_title(const char* value) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TeamInfo.title)
+}
+ void TeamInfo::set_title(const char* value, size_t size) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TeamInfo.title)
+}
+ ::std::string* TeamInfo::mutable_title() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TeamInfo::release_title() {
+  // @@protoc_insertion_point(field_release:proto3.TeamInfo.title)
+  
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TeamInfo::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    
+  } else {
+    
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TeamInfo.title)
+}
+
+// optional uint32 levelLimit = 2;
+void TeamInfo::clear_levellimit() {
+  levellimit_ = 0u;
+}
+ ::google::protobuf::uint32 TeamInfo::levellimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.levelLimit)
+  return levellimit_;
+}
+ void TeamInfo::set_levellimit(::google::protobuf::uint32 value) {
+  
+  levellimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.levelLimit)
+}
+
+// optional uint32 professionLimit = 3;
+void TeamInfo::clear_professionlimit() {
+  professionlimit_ = 0u;
+}
+ ::google::protobuf::uint32 TeamInfo::professionlimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.professionLimit)
+  return professionlimit_;
+}
+ void TeamInfo::set_professionlimit(::google::protobuf::uint32 value) {
+  
+  professionlimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.professionLimit)
+}
+
+// optional uint32 dungeonId = 4;
+void TeamInfo::clear_dungeonid() {
+  dungeonid_ = 0u;
+}
+ ::google::protobuf::uint32 TeamInfo::dungeonid() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.dungeonId)
+  return dungeonid_;
+}
+ void TeamInfo::set_dungeonid(::google::protobuf::uint32 value) {
+  
+  dungeonid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.dungeonId)
+}
+
+// optional uint32 difficulty = 5;
+void TeamInfo::clear_difficulty() {
+  difficulty_ = 0u;
+}
+ ::google::protobuf::uint32 TeamInfo::difficulty() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.difficulty)
+  return difficulty_;
+}
+ void TeamInfo::set_difficulty(::google::protobuf::uint32 value) {
+  
+  difficulty_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.difficulty)
+}
+
+// optional uint32 capacity = 6;
+void TeamInfo::clear_capacity() {
+  capacity_ = 0u;
+}
+ ::google::protobuf::uint32 TeamInfo::capacity() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.capacity)
+  return capacity_;
+}
+ void TeamInfo::set_capacity(::google::protobuf::uint32 value) {
+  
+  capacity_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.capacity)
+}
+
+// repeated .proto3.PlayerInfo members = 7;
+int TeamInfo::members_size() const {
+  return members_.size();
+}
+void TeamInfo::clear_members() {
+  members_.Clear();
+}
+const ::proto3::PlayerInfo& TeamInfo::members(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.members)
+  return members_.Get(index);
+}
+::proto3::PlayerInfo* TeamInfo::mutable_members(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.members)
+  return members_.Mutable(index);
+}
+::proto3::PlayerInfo* TeamInfo::add_members() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.members)
+  return members_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_members() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.members)
+  return &members_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::members() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.members)
+  return members_;
+}
+
+// repeated .proto3.PlayerInfo recruits = 8;
+int TeamInfo::recruits_size() const {
+  return recruits_.size();
+}
+void TeamInfo::clear_recruits() {
+  recruits_.Clear();
+}
+const ::proto3::PlayerInfo& TeamInfo::recruits(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.recruits)
+  return recruits_.Get(index);
+}
+::proto3::PlayerInfo* TeamInfo::mutable_recruits(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.recruits)
+  return recruits_.Mutable(index);
+}
+::proto3::PlayerInfo* TeamInfo::add_recruits() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.recruits)
+  return recruits_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_recruits() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.recruits)
+  return &recruits_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::recruits() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.recruits)
+  return recruits_;
+}
+
+// repeated .proto3.PlayerInfo joins = 9;
+int TeamInfo::joins_size() const {
+  return joins_.size();
+}
+void TeamInfo::clear_joins() {
+  joins_.Clear();
+}
+const ::proto3::PlayerInfo& TeamInfo::joins(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.joins)
+  return joins_.Get(index);
+}
+::proto3::PlayerInfo* TeamInfo::mutable_joins(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.joins)
+  return joins_.Mutable(index);
+}
+::proto3::PlayerInfo* TeamInfo::add_joins() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.joins)
+  return joins_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_joins() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.joins)
+  return &joins_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::joins() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.joins)
+  return joins_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -14879,6 +16184,1233 @@ StageLootRewardData::nloot_random_task() const {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TaskInfoData::kNextTaskIdFieldNumber;
+const int TaskInfoData::kLevelLimitFieldNumber;
+const int TaskInfoData::kRecommendLevelFieldNumber;
+const int TaskInfoData::kTaskNameFieldNumber;
+const int TaskInfoData::kTaskTypeFieldNumber;
+const int TaskInfoData::kTriggerTypeFieldNumber;
+const int TaskInfoData::kLimitTimeFieldNumber;
+const int TaskInfoData::kAcceptNPCIDFieldNumber;
+const int TaskInfoData::kConsignNPCIDFieldNumber;
+const int TaskInfoData::kTargetIDFieldNumber;
+const int TaskInfoData::kSceneIDFieldNumber;
+const int TaskInfoData::kTargetNumFieldNumber;
+const int TaskInfoData::kRewardGoldFieldNumber;
+const int TaskInfoData::kRewardEXPFieldNumber;
+const int TaskInfoData::kRewardItemIDFieldNumber;
+const int TaskInfoData::kTalkContentIDFieldNumber;
+const int TaskInfoData::kConsignDialogIDFieldNumber;
+const int TaskInfoData::kFailedDialogIDFieldNumber;
+const int TaskInfoData::kDoingDialogIDFieldNumber;
+const int TaskInfoData::kDescriptionIDFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TaskInfoData::TaskInfoData()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.TaskInfoData)
+}
+
+void TaskInfoData::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+TaskInfoData::TaskInfoData(const TaskInfoData& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.TaskInfoData)
+}
+
+void TaskInfoData::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  nexttaskid_ = 0u;
+  levellimit_ = 0u;
+  recommendlevel_ = 0u;
+  taskname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  tasktype_ = 0u;
+  triggertype_ = 0u;
+  limittime_ = 0u;
+  acceptnpcid_ = 0u;
+  consignnpcid_ = 0u;
+  targetid_ = 0u;
+  sceneid_ = 0u;
+  targetnum_ = 0u;
+  rewardgold_ = 0u;
+  rewardexp_ = 0u;
+  consigndialogid_ = 0u;
+  faileddialogid_ = 0u;
+  doingdialogid_ = 0u;
+  descriptionid_ = 0u;
+}
+
+TaskInfoData::~TaskInfoData() {
+  // @@protoc_insertion_point(destructor:proto3.TaskInfoData)
+  SharedDtor();
+}
+
+void TaskInfoData::SharedDtor() {
+  taskname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void TaskInfoData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const TaskInfoData& TaskInfoData::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+TaskInfoData* TaskInfoData::default_instance_ = NULL;
+
+TaskInfoData* TaskInfoData::New(::google::protobuf::Arena* arena) const {
+  TaskInfoData* n = new TaskInfoData;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TaskInfoData::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.TaskInfoData)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(TaskInfoData, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TaskInfoData*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(nexttaskid_, levellimit_);
+  ZR_(recommendlevel_, acceptnpcid_);
+  taskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ZR_(consignnpcid_, rewardgold_);
+  rewardexp_ = 0u;
+  ZR_(faileddialogid_, descriptionid_);
+  consigndialogid_ = 0u;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  rewarditemid_.Clear();
+  talkcontentid_.Clear();
+}
+
+bool TaskInfoData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.TaskInfoData)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(16383);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 NextTaskId = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &nexttaskid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_LevelLimit;
+        break;
+      }
+
+      // optional uint32 LevelLimit = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_LevelLimit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &levellimit_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_RecommendLevel;
+        break;
+      }
+
+      // optional uint32 RecommendLevel = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_RecommendLevel:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &recommendlevel_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_TaskName;
+        break;
+      }
+
+      // optional string TaskName = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_TaskName:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_taskname()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->taskname().data(), this->taskname().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.TaskInfoData.TaskName"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_TaskType;
+        break;
+      }
+
+      // optional uint32 TaskType = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_TaskType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &tasktype_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(48)) goto parse_TriggerType;
+        break;
+      }
+
+      // optional uint32 TriggerType = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_TriggerType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &triggertype_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_LimitTime;
+        break;
+      }
+
+      // optional uint32 LimitTime = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_LimitTime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &limittime_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_AcceptNPCID;
+        break;
+      }
+
+      // optional uint32 AcceptNPCID = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_AcceptNPCID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &acceptnpcid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(72)) goto parse_ConsignNPCID;
+        break;
+      }
+
+      // optional uint32 ConsignNPCID = 9;
+      case 9: {
+        if (tag == 72) {
+         parse_ConsignNPCID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &consignnpcid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(80)) goto parse_TargetID;
+        break;
+      }
+
+      // optional uint32 TargetID = 10;
+      case 10: {
+        if (tag == 80) {
+         parse_TargetID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &targetid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(88)) goto parse_SceneID;
+        break;
+      }
+
+      // optional uint32 SceneID = 11;
+      case 11: {
+        if (tag == 88) {
+         parse_SceneID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &sceneid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(96)) goto parse_TargetNum;
+        break;
+      }
+
+      // optional uint32 TargetNum = 12;
+      case 12: {
+        if (tag == 96) {
+         parse_TargetNum:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &targetnum_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(104)) goto parse_RewardGold;
+        break;
+      }
+
+      // optional uint32 RewardGold = 13;
+      case 13: {
+        if (tag == 104) {
+         parse_RewardGold:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rewardgold_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(112)) goto parse_RewardEXP;
+        break;
+      }
+
+      // optional uint32 RewardEXP = 14;
+      case 14: {
+        if (tag == 112) {
+         parse_RewardEXP:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rewardexp_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(122)) goto parse_RewardItemID;
+        break;
+      }
+
+      // repeated uint32 RewardItemID = 15;
+      case 15: {
+        if (tag == 122) {
+         parse_RewardItemID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_rewarditemid())));
+        } else if (tag == 120) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 122, input, this->mutable_rewarditemid())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(130)) goto parse_TalkContentID;
+        break;
+      }
+
+      // repeated uint32 TalkContentID = 16;
+      case 16: {
+        if (tag == 130) {
+         parse_TalkContentID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_talkcontentid())));
+        } else if (tag == 128) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 130, input, this->mutable_talkcontentid())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(136)) goto parse_ConsignDialogID;
+        break;
+      }
+
+      // optional uint32 ConsignDialogID = 17;
+      case 17: {
+        if (tag == 136) {
+         parse_ConsignDialogID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &consigndialogid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(144)) goto parse_FailedDialogID;
+        break;
+      }
+
+      // optional uint32 FailedDialogID = 18;
+      case 18: {
+        if (tag == 144) {
+         parse_FailedDialogID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &faileddialogid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(152)) goto parse_DoingDialogID;
+        break;
+      }
+
+      // optional uint32 DoingDialogID = 19;
+      case 19: {
+        if (tag == 152) {
+         parse_DoingDialogID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &doingdialogid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(160)) goto parse_DescriptionID;
+        break;
+      }
+
+      // optional uint32 DescriptionID = 20;
+      case 20: {
+        if (tag == 160) {
+         parse_DescriptionID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &descriptionid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.TaskInfoData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.TaskInfoData)
+  return false;
+#undef DO_
+}
+
+void TaskInfoData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.TaskInfoData)
+  // optional uint32 NextTaskId = 1;
+  if (this->nexttaskid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->nexttaskid(), output);
+  }
+
+  // optional uint32 LevelLimit = 2;
+  if (this->levellimit() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->levellimit(), output);
+  }
+
+  // optional uint32 RecommendLevel = 3;
+  if (this->recommendlevel() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->recommendlevel(), output);
+  }
+
+  // optional string TaskName = 4;
+  if (this->taskname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->taskname().data(), this->taskname().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.TaskInfoData.TaskName");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->taskname(), output);
+  }
+
+  // optional uint32 TaskType = 5;
+  if (this->tasktype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->tasktype(), output);
+  }
+
+  // optional uint32 TriggerType = 6;
+  if (this->triggertype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->triggertype(), output);
+  }
+
+  // optional uint32 LimitTime = 7;
+  if (this->limittime() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->limittime(), output);
+  }
+
+  // optional uint32 AcceptNPCID = 8;
+  if (this->acceptnpcid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->acceptnpcid(), output);
+  }
+
+  // optional uint32 ConsignNPCID = 9;
+  if (this->consignnpcid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->consignnpcid(), output);
+  }
+
+  // optional uint32 TargetID = 10;
+  if (this->targetid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->targetid(), output);
+  }
+
+  // optional uint32 SceneID = 11;
+  if (this->sceneid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->sceneid(), output);
+  }
+
+  // optional uint32 TargetNum = 12;
+  if (this->targetnum() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->targetnum(), output);
+  }
+
+  // optional uint32 RewardGold = 13;
+  if (this->rewardgold() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->rewardgold(), output);
+  }
+
+  // optional uint32 RewardEXP = 14;
+  if (this->rewardexp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(14, this->rewardexp(), output);
+  }
+
+  // repeated uint32 RewardItemID = 15;
+  if (this->rewarditemid_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(15, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_rewarditemid_cached_byte_size_);
+  }
+  for (int i = 0; i < this->rewarditemid_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->rewarditemid(i), output);
+  }
+
+  // repeated uint32 TalkContentID = 16;
+  if (this->talkcontentid_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(16, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_talkcontentid_cached_byte_size_);
+  }
+  for (int i = 0; i < this->talkcontentid_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->talkcontentid(i), output);
+  }
+
+  // optional uint32 ConsignDialogID = 17;
+  if (this->consigndialogid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(17, this->consigndialogid(), output);
+  }
+
+  // optional uint32 FailedDialogID = 18;
+  if (this->faileddialogid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(18, this->faileddialogid(), output);
+  }
+
+  // optional uint32 DoingDialogID = 19;
+  if (this->doingdialogid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(19, this->doingdialogid(), output);
+  }
+
+  // optional uint32 DescriptionID = 20;
+  if (this->descriptionid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(20, this->descriptionid(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.TaskInfoData)
+}
+
+int TaskInfoData::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.TaskInfoData)
+  int total_size = 0;
+
+  // optional uint32 NextTaskId = 1;
+  if (this->nexttaskid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->nexttaskid());
+  }
+
+  // optional uint32 LevelLimit = 2;
+  if (this->levellimit() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->levellimit());
+  }
+
+  // optional uint32 RecommendLevel = 3;
+  if (this->recommendlevel() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->recommendlevel());
+  }
+
+  // optional string TaskName = 4;
+  if (this->taskname().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->taskname());
+  }
+
+  // optional uint32 TaskType = 5;
+  if (this->tasktype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->tasktype());
+  }
+
+  // optional uint32 TriggerType = 6;
+  if (this->triggertype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->triggertype());
+  }
+
+  // optional uint32 LimitTime = 7;
+  if (this->limittime() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->limittime());
+  }
+
+  // optional uint32 AcceptNPCID = 8;
+  if (this->acceptnpcid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->acceptnpcid());
+  }
+
+  // optional uint32 ConsignNPCID = 9;
+  if (this->consignnpcid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->consignnpcid());
+  }
+
+  // optional uint32 TargetID = 10;
+  if (this->targetid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->targetid());
+  }
+
+  // optional uint32 SceneID = 11;
+  if (this->sceneid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->sceneid());
+  }
+
+  // optional uint32 TargetNum = 12;
+  if (this->targetnum() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->targetnum());
+  }
+
+  // optional uint32 RewardGold = 13;
+  if (this->rewardgold() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->rewardgold());
+  }
+
+  // optional uint32 RewardEXP = 14;
+  if (this->rewardexp() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->rewardexp());
+  }
+
+  // optional uint32 ConsignDialogID = 17;
+  if (this->consigndialogid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->consigndialogid());
+  }
+
+  // optional uint32 FailedDialogID = 18;
+  if (this->faileddialogid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->faileddialogid());
+  }
+
+  // optional uint32 DoingDialogID = 19;
+  if (this->doingdialogid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->doingdialogid());
+  }
+
+  // optional uint32 DescriptionID = 20;
+  if (this->descriptionid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->descriptionid());
+  }
+
+  // repeated uint32 RewardItemID = 15;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->rewarditemid_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->rewarditemid(i));
+    }
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _rewarditemid_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated uint32 TalkContentID = 16;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->talkcontentid_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->talkcontentid(i));
+    }
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _talkcontentid_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TaskInfoData::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const TaskInfoData*>(&from));
+}
+
+void TaskInfoData::MergeFrom(const TaskInfoData& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.TaskInfoData)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  rewarditemid_.MergeFrom(from.rewarditemid_);
+  talkcontentid_.MergeFrom(from.talkcontentid_);
+  if (from.nexttaskid() != 0) {
+    set_nexttaskid(from.nexttaskid());
+  }
+  if (from.levellimit() != 0) {
+    set_levellimit(from.levellimit());
+  }
+  if (from.recommendlevel() != 0) {
+    set_recommendlevel(from.recommendlevel());
+  }
+  if (from.taskname().size() > 0) {
+
+    taskname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.taskname_);
+  }
+  if (from.tasktype() != 0) {
+    set_tasktype(from.tasktype());
+  }
+  if (from.triggertype() != 0) {
+    set_triggertype(from.triggertype());
+  }
+  if (from.limittime() != 0) {
+    set_limittime(from.limittime());
+  }
+  if (from.acceptnpcid() != 0) {
+    set_acceptnpcid(from.acceptnpcid());
+  }
+  if (from.consignnpcid() != 0) {
+    set_consignnpcid(from.consignnpcid());
+  }
+  if (from.targetid() != 0) {
+    set_targetid(from.targetid());
+  }
+  if (from.sceneid() != 0) {
+    set_sceneid(from.sceneid());
+  }
+  if (from.targetnum() != 0) {
+    set_targetnum(from.targetnum());
+  }
+  if (from.rewardgold() != 0) {
+    set_rewardgold(from.rewardgold());
+  }
+  if (from.rewardexp() != 0) {
+    set_rewardexp(from.rewardexp());
+  }
+  if (from.consigndialogid() != 0) {
+    set_consigndialogid(from.consigndialogid());
+  }
+  if (from.faileddialogid() != 0) {
+    set_faileddialogid(from.faileddialogid());
+  }
+  if (from.doingdialogid() != 0) {
+    set_doingdialogid(from.doingdialogid());
+  }
+  if (from.descriptionid() != 0) {
+    set_descriptionid(from.descriptionid());
+  }
+}
+
+void TaskInfoData::CopyFrom(const TaskInfoData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.TaskInfoData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskInfoData::IsInitialized() const {
+
+  return true;
+}
+
+void TaskInfoData::Swap(TaskInfoData* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TaskInfoData::InternalSwap(TaskInfoData* other) {
+  std::swap(nexttaskid_, other->nexttaskid_);
+  std::swap(levellimit_, other->levellimit_);
+  std::swap(recommendlevel_, other->recommendlevel_);
+  taskname_.Swap(&other->taskname_);
+  std::swap(tasktype_, other->tasktype_);
+  std::swap(triggertype_, other->triggertype_);
+  std::swap(limittime_, other->limittime_);
+  std::swap(acceptnpcid_, other->acceptnpcid_);
+  std::swap(consignnpcid_, other->consignnpcid_);
+  std::swap(targetid_, other->targetid_);
+  std::swap(sceneid_, other->sceneid_);
+  std::swap(targetnum_, other->targetnum_);
+  std::swap(rewardgold_, other->rewardgold_);
+  std::swap(rewardexp_, other->rewardexp_);
+  rewarditemid_.UnsafeArenaSwap(&other->rewarditemid_);
+  talkcontentid_.UnsafeArenaSwap(&other->talkcontentid_);
+  std::swap(consigndialogid_, other->consigndialogid_);
+  std::swap(faileddialogid_, other->faileddialogid_);
+  std::swap(doingdialogid_, other->doingdialogid_);
+  std::swap(descriptionid_, other->descriptionid_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string TaskInfoData::GetTypeName() const {
+  return "proto3.TaskInfoData";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TaskInfoData
+
+// optional uint32 NextTaskId = 1;
+void TaskInfoData::clear_nexttaskid() {
+  nexttaskid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::nexttaskid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.NextTaskId)
+  return nexttaskid_;
+}
+ void TaskInfoData::set_nexttaskid(::google::protobuf::uint32 value) {
+  
+  nexttaskid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.NextTaskId)
+}
+
+// optional uint32 LevelLimit = 2;
+void TaskInfoData::clear_levellimit() {
+  levellimit_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::levellimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.LevelLimit)
+  return levellimit_;
+}
+ void TaskInfoData::set_levellimit(::google::protobuf::uint32 value) {
+  
+  levellimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.LevelLimit)
+}
+
+// optional uint32 RecommendLevel = 3;
+void TaskInfoData::clear_recommendlevel() {
+  recommendlevel_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::recommendlevel() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RecommendLevel)
+  return recommendlevel_;
+}
+ void TaskInfoData::set_recommendlevel(::google::protobuf::uint32 value) {
+  
+  recommendlevel_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RecommendLevel)
+}
+
+// optional string TaskName = 4;
+void TaskInfoData::clear_taskname() {
+  taskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& TaskInfoData::taskname() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TaskName)
+  return taskname_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoData::set_taskname(const ::std::string& value) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TaskName)
+}
+ void TaskInfoData::set_taskname(const char* value) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TaskInfoData.TaskName)
+}
+ void TaskInfoData::set_taskname(const char* value, size_t size) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TaskInfoData.TaskName)
+}
+ ::std::string* TaskInfoData::mutable_taskname() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TaskInfoData.TaskName)
+  return taskname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TaskInfoData::release_taskname() {
+  // @@protoc_insertion_point(field_release:proto3.TaskInfoData.TaskName)
+  
+  return taskname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoData::set_allocated_taskname(::std::string* taskname) {
+  if (taskname != NULL) {
+    
+  } else {
+    
+  }
+  taskname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), taskname);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TaskInfoData.TaskName)
+}
+
+// optional uint32 TaskType = 5;
+void TaskInfoData::clear_tasktype() {
+  tasktype_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::tasktype() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TaskType)
+  return tasktype_;
+}
+ void TaskInfoData::set_tasktype(::google::protobuf::uint32 value) {
+  
+  tasktype_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TaskType)
+}
+
+// optional uint32 TriggerType = 6;
+void TaskInfoData::clear_triggertype() {
+  triggertype_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::triggertype() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TriggerType)
+  return triggertype_;
+}
+ void TaskInfoData::set_triggertype(::google::protobuf::uint32 value) {
+  
+  triggertype_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TriggerType)
+}
+
+// optional uint32 LimitTime = 7;
+void TaskInfoData::clear_limittime() {
+  limittime_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::limittime() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.LimitTime)
+  return limittime_;
+}
+ void TaskInfoData::set_limittime(::google::protobuf::uint32 value) {
+  
+  limittime_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.LimitTime)
+}
+
+// optional uint32 AcceptNPCID = 8;
+void TaskInfoData::clear_acceptnpcid() {
+  acceptnpcid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::acceptnpcid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.AcceptNPCID)
+  return acceptnpcid_;
+}
+ void TaskInfoData::set_acceptnpcid(::google::protobuf::uint32 value) {
+  
+  acceptnpcid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.AcceptNPCID)
+}
+
+// optional uint32 ConsignNPCID = 9;
+void TaskInfoData::clear_consignnpcid() {
+  consignnpcid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::consignnpcid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.ConsignNPCID)
+  return consignnpcid_;
+}
+ void TaskInfoData::set_consignnpcid(::google::protobuf::uint32 value) {
+  
+  consignnpcid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.ConsignNPCID)
+}
+
+// optional uint32 TargetID = 10;
+void TaskInfoData::clear_targetid() {
+  targetid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::targetid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TargetID)
+  return targetid_;
+}
+ void TaskInfoData::set_targetid(::google::protobuf::uint32 value) {
+  
+  targetid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TargetID)
+}
+
+// optional uint32 SceneID = 11;
+void TaskInfoData::clear_sceneid() {
+  sceneid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::sceneid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.SceneID)
+  return sceneid_;
+}
+ void TaskInfoData::set_sceneid(::google::protobuf::uint32 value) {
+  
+  sceneid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.SceneID)
+}
+
+// optional uint32 TargetNum = 12;
+void TaskInfoData::clear_targetnum() {
+  targetnum_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::targetnum() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TargetNum)
+  return targetnum_;
+}
+ void TaskInfoData::set_targetnum(::google::protobuf::uint32 value) {
+  
+  targetnum_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TargetNum)
+}
+
+// optional uint32 RewardGold = 13;
+void TaskInfoData::clear_rewardgold() {
+  rewardgold_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::rewardgold() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardGold)
+  return rewardgold_;
+}
+ void TaskInfoData::set_rewardgold(::google::protobuf::uint32 value) {
+  
+  rewardgold_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardGold)
+}
+
+// optional uint32 RewardEXP = 14;
+void TaskInfoData::clear_rewardexp() {
+  rewardexp_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::rewardexp() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardEXP)
+  return rewardexp_;
+}
+ void TaskInfoData::set_rewardexp(::google::protobuf::uint32 value) {
+  
+  rewardexp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardEXP)
+}
+
+// repeated uint32 RewardItemID = 15;
+int TaskInfoData::rewarditemid_size() const {
+  return rewarditemid_.size();
+}
+void TaskInfoData::clear_rewarditemid() {
+  rewarditemid_.Clear();
+}
+ ::google::protobuf::uint32 TaskInfoData::rewarditemid(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardItemID)
+  return rewarditemid_.Get(index);
+}
+ void TaskInfoData::set_rewarditemid(int index, ::google::protobuf::uint32 value) {
+  rewarditemid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardItemID)
+}
+ void TaskInfoData::add_rewarditemid(::google::protobuf::uint32 value) {
+  rewarditemid_.Add(value);
+  // @@protoc_insertion_point(field_add:proto3.TaskInfoData.RewardItemID)
+}
+ const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+TaskInfoData::rewarditemid() const {
+  // @@protoc_insertion_point(field_list:proto3.TaskInfoData.RewardItemID)
+  return rewarditemid_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+TaskInfoData::mutable_rewarditemid() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TaskInfoData.RewardItemID)
+  return &rewarditemid_;
+}
+
+// repeated uint32 TalkContentID = 16;
+int TaskInfoData::talkcontentid_size() const {
+  return talkcontentid_.size();
+}
+void TaskInfoData::clear_talkcontentid() {
+  talkcontentid_.Clear();
+}
+ ::google::protobuf::uint32 TaskInfoData::talkcontentid(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TalkContentID)
+  return talkcontentid_.Get(index);
+}
+ void TaskInfoData::set_talkcontentid(int index, ::google::protobuf::uint32 value) {
+  talkcontentid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TalkContentID)
+}
+ void TaskInfoData::add_talkcontentid(::google::protobuf::uint32 value) {
+  talkcontentid_.Add(value);
+  // @@protoc_insertion_point(field_add:proto3.TaskInfoData.TalkContentID)
+}
+ const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+TaskInfoData::talkcontentid() const {
+  // @@protoc_insertion_point(field_list:proto3.TaskInfoData.TalkContentID)
+  return talkcontentid_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+TaskInfoData::mutable_talkcontentid() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TaskInfoData.TalkContentID)
+  return &talkcontentid_;
+}
+
+// optional uint32 ConsignDialogID = 17;
+void TaskInfoData::clear_consigndialogid() {
+  consigndialogid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::consigndialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.ConsignDialogID)
+  return consigndialogid_;
+}
+ void TaskInfoData::set_consigndialogid(::google::protobuf::uint32 value) {
+  
+  consigndialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.ConsignDialogID)
+}
+
+// optional uint32 FailedDialogID = 18;
+void TaskInfoData::clear_faileddialogid() {
+  faileddialogid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::faileddialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.FailedDialogID)
+  return faileddialogid_;
+}
+ void TaskInfoData::set_faileddialogid(::google::protobuf::uint32 value) {
+  
+  faileddialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.FailedDialogID)
+}
+
+// optional uint32 DoingDialogID = 19;
+void TaskInfoData::clear_doingdialogid() {
+  doingdialogid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::doingdialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.DoingDialogID)
+  return doingdialogid_;
+}
+ void TaskInfoData::set_doingdialogid(::google::protobuf::uint32 value) {
+  
+  doingdialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.DoingDialogID)
+}
+
+// optional uint32 DescriptionID = 20;
+void TaskInfoData::clear_descriptionid() {
+  descriptionid_ = 0u;
+}
+ ::google::protobuf::uint32 TaskInfoData::descriptionid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.DescriptionID)
+  return descriptionid_;
+}
+ void TaskInfoData::set_descriptionid(::google::protobuf::uint32 value) {
+  
+  descriptionid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.DescriptionID)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgBase::kMidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -17125,6 +19657,361 @@ void MsgZCEnter::clear_result() {
   
   result_ = value;
   // @@protoc_insertion_point(field_set:proto3.MsgZCEnter.result)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCExit::kMidFieldNumber;
+const int MsgZCExit::kPlayerInfoFieldNumber;
+const int MsgZCExit::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCExit::MsgZCExit()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCExit)
+}
+
+void MsgZCExit::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  playerinfo_ = const_cast< ::proto3::PlayerInfo*>(
+      ::proto3::PlayerInfo::internal_default_instance());
+#else
+  playerinfo_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
+#endif
+}
+
+MsgZCExit::MsgZCExit(const MsgZCExit& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCExit)
+}
+
+void MsgZCExit::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  playerinfo_ = NULL;
+  result_ = 0;
+}
+
+MsgZCExit::~MsgZCExit() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCExit)
+  SharedDtor();
+}
+
+void MsgZCExit::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete playerinfo_;
+  }
+}
+
+void MsgZCExit::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCExit& MsgZCExit::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCExit* MsgZCExit::default_instance_ = NULL;
+
+MsgZCExit* MsgZCExit::New(::google::protobuf::Arena* arena) const {
+  MsgZCExit* n = new MsgZCExit;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCExit::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCExit)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgZCExit, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgZCExit*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, result_);
+  if (GetArenaNoVirtual() == NULL && playerinfo_ != NULL) delete playerinfo_;
+  playerinfo_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgZCExit::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCExit)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_playerInfo;
+        break;
+      }
+
+      // optional .proto3.PlayerInfo playerInfo = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_playerInfo:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_playerinfo()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCExit)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCExit)
+  return false;
+#undef DO_
+}
+
+void MsgZCExit::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCExit)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.PlayerInfo playerInfo = 3;
+  if (this->has_playerinfo()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->playerinfo_, output);
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCExit)
+}
+
+int MsgZCExit::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCExit)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.PlayerInfo playerInfo = 3;
+  if (this->has_playerinfo()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->playerinfo_);
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCExit::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCExit*>(&from));
+}
+
+void MsgZCExit::MergeFrom(const MsgZCExit& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCExit)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_playerinfo()) {
+    mutable_playerinfo()->::proto3::PlayerInfo::MergeFrom(from.playerinfo());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgZCExit::CopyFrom(const MsgZCExit& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCExit)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCExit::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCExit::Swap(MsgZCExit* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCExit::InternalSwap(MsgZCExit* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(playerinfo_, other->playerinfo_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCExit::GetTypeName() const {
+  return "proto3.MsgZCExit";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCExit
+
+// optional uint32 mid = 1;
+void MsgZCExit::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCExit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.mid)
+  return mid_;
+}
+ void MsgZCExit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCExit.mid)
+}
+
+// optional .proto3.PlayerInfo playerInfo = 3;
+bool MsgZCExit::has_playerinfo() const {
+  return !_is_default_instance_ && playerinfo_ != NULL;
+}
+void MsgZCExit::clear_playerinfo() {
+  if (GetArenaNoVirtual() == NULL && playerinfo_ != NULL) delete playerinfo_;
+  playerinfo_ = NULL;
+}
+const ::proto3::PlayerInfo& MsgZCExit::playerinfo() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.playerInfo)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return playerinfo_ != NULL ? *playerinfo_ : *default_instance().playerinfo_;
+#else
+  return playerinfo_ != NULL ? *playerinfo_ : *default_instance_->playerinfo_;
+#endif
+}
+::proto3::PlayerInfo* MsgZCExit::mutable_playerinfo() {
+  
+  if (playerinfo_ == NULL) {
+    playerinfo_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCExit.playerInfo)
+  return playerinfo_;
+}
+::proto3::PlayerInfo* MsgZCExit::release_playerinfo() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCExit.playerInfo)
+  
+  ::proto3::PlayerInfo* temp = playerinfo_;
+  playerinfo_ = NULL;
+  return temp;
+}
+void MsgZCExit::set_allocated_playerinfo(::proto3::PlayerInfo* playerinfo) {
+  delete playerinfo_;
+  playerinfo_ = playerinfo;
+  if (playerinfo) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCExit.playerInfo)
+}
+
+// optional .proto3.eResult result = 4;
+void MsgZCExit::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgZCExit::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgZCExit::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCExit.result)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -20825,6 +23712,293 @@ void MsgZCMove::clear_result() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCBroadcastPlayer::kMidFieldNumber;
+const int MsgZCBroadcastPlayer::kPlayerFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCBroadcastPlayer::MsgZCBroadcastPlayer()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCBroadcastPlayer)
+}
+
+void MsgZCBroadcastPlayer::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  player_ = const_cast< ::proto3::PlayerInfo*>(
+      ::proto3::PlayerInfo::internal_default_instance());
+#else
+  player_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
+#endif
+}
+
+MsgZCBroadcastPlayer::MsgZCBroadcastPlayer(const MsgZCBroadcastPlayer& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCBroadcastPlayer)
+}
+
+void MsgZCBroadcastPlayer::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  player_ = NULL;
+}
+
+MsgZCBroadcastPlayer::~MsgZCBroadcastPlayer() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCBroadcastPlayer)
+  SharedDtor();
+}
+
+void MsgZCBroadcastPlayer::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete player_;
+  }
+}
+
+void MsgZCBroadcastPlayer::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCBroadcastPlayer& MsgZCBroadcastPlayer::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCBroadcastPlayer* MsgZCBroadcastPlayer::default_instance_ = NULL;
+
+MsgZCBroadcastPlayer* MsgZCBroadcastPlayer::New(::google::protobuf::Arena* arena) const {
+  MsgZCBroadcastPlayer* n = new MsgZCBroadcastPlayer;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCBroadcastPlayer::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCBroadcastPlayer)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && player_ != NULL) delete player_;
+  player_ = NULL;
+}
+
+bool MsgZCBroadcastPlayer::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCBroadcastPlayer)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_player;
+        break;
+      }
+
+      // optional .proto3.PlayerInfo player = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_player:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_player()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCBroadcastPlayer)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCBroadcastPlayer)
+  return false;
+#undef DO_
+}
+
+void MsgZCBroadcastPlayer::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCBroadcastPlayer)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.PlayerInfo player = 2;
+  if (this->has_player()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->player_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCBroadcastPlayer)
+}
+
+int MsgZCBroadcastPlayer::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCBroadcastPlayer)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.PlayerInfo player = 2;
+  if (this->has_player()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->player_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCBroadcastPlayer::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCBroadcastPlayer*>(&from));
+}
+
+void MsgZCBroadcastPlayer::MergeFrom(const MsgZCBroadcastPlayer& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCBroadcastPlayer)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_player()) {
+    mutable_player()->::proto3::PlayerInfo::MergeFrom(from.player());
+  }
+}
+
+void MsgZCBroadcastPlayer::CopyFrom(const MsgZCBroadcastPlayer& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCBroadcastPlayer)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCBroadcastPlayer::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCBroadcastPlayer::Swap(MsgZCBroadcastPlayer* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCBroadcastPlayer::InternalSwap(MsgZCBroadcastPlayer* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(player_, other->player_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCBroadcastPlayer::GetTypeName() const {
+  return "proto3.MsgZCBroadcastPlayer";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCBroadcastPlayer
+
+// optional uint32 mid = 1;
+void MsgZCBroadcastPlayer::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCBroadcastPlayer::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCBroadcastPlayer.mid)
+  return mid_;
+}
+ void MsgZCBroadcastPlayer::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCBroadcastPlayer.mid)
+}
+
+// optional .proto3.PlayerInfo player = 2;
+bool MsgZCBroadcastPlayer::has_player() const {
+  return !_is_default_instance_ && player_ != NULL;
+}
+void MsgZCBroadcastPlayer::clear_player() {
+  if (GetArenaNoVirtual() == NULL && player_ != NULL) delete player_;
+  player_ = NULL;
+}
+const ::proto3::PlayerInfo& MsgZCBroadcastPlayer::player() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCBroadcastPlayer.player)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return player_ != NULL ? *player_ : *default_instance().player_;
+#else
+  return player_ != NULL ? *player_ : *default_instance_->player_;
+#endif
+}
+::proto3::PlayerInfo* MsgZCBroadcastPlayer::mutable_player() {
+  
+  if (player_ == NULL) {
+    player_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCBroadcastPlayer.player)
+  return player_;
+}
+::proto3::PlayerInfo* MsgZCBroadcastPlayer::release_player() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCBroadcastPlayer.player)
+  
+  ::proto3::PlayerInfo* temp = player_;
+  player_ = NULL;
+  return temp;
+}
+void MsgZCBroadcastPlayer::set_allocated_player(::proto3::PlayerInfo* player) {
+  delete player_;
+  player_ = player;
+  if (player) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCBroadcastPlayer.player)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgZCSyncPlayers::kMidFieldNumber;
 const int MsgZCSyncPlayers::kPlayersFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -22638,6 +25812,4387 @@ void MsgZCEnterArena::clear_level() {
   }
   level_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), level);
   // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCEnterArena.level)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCTeamBroadcast::kMidFieldNumber;
+const int MsgZCTeamBroadcast::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCTeamBroadcast::MsgZCTeamBroadcast()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamBroadcast)
+}
+
+void MsgZCTeamBroadcast::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+MsgZCTeamBroadcast::MsgZCTeamBroadcast(const MsgZCTeamBroadcast& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamBroadcast)
+}
+
+void MsgZCTeamBroadcast::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+}
+
+MsgZCTeamBroadcast::~MsgZCTeamBroadcast() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamBroadcast)
+  SharedDtor();
+}
+
+void MsgZCTeamBroadcast::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void MsgZCTeamBroadcast::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCTeamBroadcast& MsgZCTeamBroadcast::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCTeamBroadcast* MsgZCTeamBroadcast::default_instance_ = NULL;
+
+MsgZCTeamBroadcast* MsgZCTeamBroadcast::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamBroadcast* n = new MsgZCTeamBroadcast;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCTeamBroadcast::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamBroadcast)
+  mid_ = 0u;
+  team_.Clear();
+}
+
+bool MsgZCTeamBroadcast::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamBroadcast)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // repeated .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_loop_team;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamBroadcast)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamBroadcast)
+  return false;
+#undef DO_
+}
+
+void MsgZCTeamBroadcast::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamBroadcast)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated .proto3.TeamInfo team = 2;
+  for (unsigned int i = 0, n = this->team_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, this->team(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamBroadcast)
+}
+
+int MsgZCTeamBroadcast::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamBroadcast)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // repeated .proto3.TeamInfo team = 2;
+  total_size += 1 * this->team_size();
+  for (int i = 0; i < this->team_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->team(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCTeamBroadcast::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamBroadcast*>(&from));
+}
+
+void MsgZCTeamBroadcast::MergeFrom(const MsgZCTeamBroadcast& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamBroadcast)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  team_.MergeFrom(from.team_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+}
+
+void MsgZCTeamBroadcast::CopyFrom(const MsgZCTeamBroadcast& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamBroadcast)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCTeamBroadcast::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCTeamBroadcast::Swap(MsgZCTeamBroadcast* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCTeamBroadcast::InternalSwap(MsgZCTeamBroadcast* other) {
+  std::swap(mid_, other->mid_);
+  team_.UnsafeArenaSwap(&other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCTeamBroadcast::GetTypeName() const {
+  return "proto3.MsgZCTeamBroadcast";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCTeamBroadcast
+
+// optional uint32 mid = 1;
+void MsgZCTeamBroadcast::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCTeamBroadcast::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamBroadcast.mid)
+  return mid_;
+}
+ void MsgZCTeamBroadcast::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamBroadcast.mid)
+}
+
+// repeated .proto3.TeamInfo team = 2;
+int MsgZCTeamBroadcast::team_size() const {
+  return team_.size();
+}
+void MsgZCTeamBroadcast::clear_team() {
+  team_.Clear();
+}
+const ::proto3::TeamInfo& MsgZCTeamBroadcast::team(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamBroadcast.team)
+  return team_.Get(index);
+}
+::proto3::TeamInfo* MsgZCTeamBroadcast::mutable_team(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamBroadcast.team)
+  return team_.Mutable(index);
+}
+::proto3::TeamInfo* MsgZCTeamBroadcast::add_team() {
+  // @@protoc_insertion_point(field_add:proto3.MsgZCTeamBroadcast.team)
+  return team_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >*
+MsgZCTeamBroadcast::mutable_team() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCTeamBroadcast.team)
+  return &team_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >&
+MsgZCTeamBroadcast::team() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCTeamBroadcast.team)
+  return team_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamCreate::kMidFieldNumber;
+const int MsgCZTeamCreate::kReasonFieldNumber;
+const int MsgCZTeamCreate::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamCreate::MsgCZTeamCreate()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamCreate)
+}
+
+void MsgCZTeamCreate::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamCreate::MsgCZTeamCreate(const MsgCZTeamCreate& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamCreate)
+}
+
+void MsgCZTeamCreate::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  reason_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamCreate::~MsgCZTeamCreate() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamCreate)
+  SharedDtor();
+}
+
+void MsgCZTeamCreate::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamCreate::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamCreate& MsgCZTeamCreate::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamCreate* MsgCZTeamCreate::default_instance_ = NULL;
+
+MsgCZTeamCreate* MsgCZTeamCreate::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamCreate* n = new MsgCZTeamCreate;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamCreate::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamCreate)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamCreate, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamCreate*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, reason_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgCZTeamCreate::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamCreate)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_reason;
+        break;
+      }
+
+      // optional uint32 reason = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_reason:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &reason_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamCreate)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamCreate)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamCreate::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamCreate)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->reason(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamCreate)
+}
+
+int MsgCZTeamCreate::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamCreate)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->reason());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamCreate::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamCreate*>(&from));
+}
+
+void MsgCZTeamCreate::MergeFrom(const MsgCZTeamCreate& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamCreate)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamCreate::CopyFrom(const MsgCZTeamCreate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamCreate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamCreate::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamCreate::Swap(MsgCZTeamCreate* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamCreate::InternalSwap(MsgCZTeamCreate* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(reason_, other->reason_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamCreate::GetTypeName() const {
+  return "proto3.MsgCZTeamCreate";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamCreate
+
+// optional uint32 mid = 1;
+void MsgCZTeamCreate::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamCreate::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.mid)
+  return mid_;
+}
+ void MsgCZTeamCreate::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamCreate.mid)
+}
+
+// optional uint32 reason = 2;
+void MsgCZTeamCreate::clear_reason() {
+  reason_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamCreate::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.reason)
+  return reason_;
+}
+ void MsgCZTeamCreate::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamCreate.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamCreate::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamCreate::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamCreate::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamCreate::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamCreate.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamCreate::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamCreate.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamCreate::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamCreate.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamEdit::kMidFieldNumber;
+const int MsgCZTeamEdit::kReasonFieldNumber;
+const int MsgCZTeamEdit::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamEdit::MsgCZTeamEdit()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamEdit)
+}
+
+void MsgCZTeamEdit::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamEdit::MsgCZTeamEdit(const MsgCZTeamEdit& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamEdit)
+}
+
+void MsgCZTeamEdit::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  reason_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamEdit::~MsgCZTeamEdit() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamEdit)
+  SharedDtor();
+}
+
+void MsgCZTeamEdit::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamEdit::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamEdit& MsgCZTeamEdit::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamEdit* MsgCZTeamEdit::default_instance_ = NULL;
+
+MsgCZTeamEdit* MsgCZTeamEdit::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamEdit* n = new MsgCZTeamEdit;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamEdit::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamEdit)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamEdit, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamEdit*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, reason_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgCZTeamEdit::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamEdit)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_reason;
+        break;
+      }
+
+      // optional uint32 reason = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_reason:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &reason_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamEdit)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamEdit)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamEdit::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamEdit)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->reason(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamEdit)
+}
+
+int MsgCZTeamEdit::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamEdit)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->reason());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamEdit::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamEdit*>(&from));
+}
+
+void MsgCZTeamEdit::MergeFrom(const MsgCZTeamEdit& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamEdit)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamEdit::CopyFrom(const MsgCZTeamEdit& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamEdit)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamEdit::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamEdit::Swap(MsgCZTeamEdit* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamEdit::InternalSwap(MsgCZTeamEdit* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(reason_, other->reason_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamEdit::GetTypeName() const {
+  return "proto3.MsgCZTeamEdit";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamEdit
+
+// optional uint32 mid = 1;
+void MsgCZTeamEdit::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamEdit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.mid)
+  return mid_;
+}
+ void MsgCZTeamEdit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamEdit.mid)
+}
+
+// optional uint32 reason = 2;
+void MsgCZTeamEdit::clear_reason() {
+  reason_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamEdit::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.reason)
+  return reason_;
+}
+ void MsgCZTeamEdit::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamEdit.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamEdit::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamEdit::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamEdit::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamEdit::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamEdit.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamEdit::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamEdit.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamEdit::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamEdit.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCTeamUpdate::kMidFieldNumber;
+const int MsgZCTeamUpdate::kTeamFieldNumber;
+const int MsgZCTeamUpdate::kOpFieldNumber;
+const int MsgZCTeamUpdate::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCTeamUpdate::MsgZCTeamUpdate()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamUpdate)
+}
+
+void MsgZCTeamUpdate::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgZCTeamUpdate::MsgZCTeamUpdate(const MsgZCTeamUpdate& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamUpdate)
+}
+
+void MsgZCTeamUpdate::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+  op_ = 0;
+  result_ = 0;
+}
+
+MsgZCTeamUpdate::~MsgZCTeamUpdate() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamUpdate)
+  SharedDtor();
+}
+
+void MsgZCTeamUpdate::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgZCTeamUpdate::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCTeamUpdate& MsgZCTeamUpdate::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCTeamUpdate* MsgZCTeamUpdate::default_instance_ = NULL;
+
+MsgZCTeamUpdate* MsgZCTeamUpdate::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamUpdate* n = new MsgZCTeamUpdate;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCTeamUpdate::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamUpdate)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgZCTeamUpdate, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgZCTeamUpdate*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, result_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgZCTeamUpdate::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamUpdate)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_op;
+        break;
+      }
+
+      // optional .proto3.eTeamOp op = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_op:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_op(static_cast< ::proto3::eTeamOp >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamUpdate)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamUpdate)
+  return false;
+#undef DO_
+}
+
+void MsgZCTeamUpdate::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamUpdate)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->team_, output);
+  }
+
+  // optional .proto3.eTeamOp op = 3;
+  if (this->op() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->op(), output);
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamUpdate)
+}
+
+int MsgZCTeamUpdate::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamUpdate)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  // optional .proto3.eTeamOp op = 3;
+  if (this->op() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->op());
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCTeamUpdate::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamUpdate*>(&from));
+}
+
+void MsgZCTeamUpdate::MergeFrom(const MsgZCTeamUpdate& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamUpdate)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+  if (from.op() != 0) {
+    set_op(from.op());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgZCTeamUpdate::CopyFrom(const MsgZCTeamUpdate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamUpdate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCTeamUpdate::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCTeamUpdate::Swap(MsgZCTeamUpdate* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCTeamUpdate::InternalSwap(MsgZCTeamUpdate* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  std::swap(op_, other->op_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCTeamUpdate::GetTypeName() const {
+  return "proto3.MsgZCTeamUpdate";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCTeamUpdate
+
+// optional uint32 mid = 1;
+void MsgZCTeamUpdate::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCTeamUpdate::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.mid)
+  return mid_;
+}
+ void MsgZCTeamUpdate::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+bool MsgZCTeamUpdate::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgZCTeamUpdate::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgZCTeamUpdate::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgZCTeamUpdate::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamUpdate.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgZCTeamUpdate::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamUpdate.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgZCTeamUpdate::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamUpdate.team)
+}
+
+// optional .proto3.eTeamOp op = 3;
+void MsgZCTeamUpdate::clear_op() {
+  op_ = 0;
+}
+ ::proto3::eTeamOp MsgZCTeamUpdate::op() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.op)
+  return static_cast< ::proto3::eTeamOp >(op_);
+}
+ void MsgZCTeamUpdate::set_op(::proto3::eTeamOp value) {
+  
+  op_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.op)
+}
+
+// optional .proto3.eResult result = 4;
+void MsgZCTeamUpdate::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgZCTeamUpdate::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgZCTeamUpdate::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.result)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamDismiss::kMidFieldNumber;
+const int MsgCZTeamDismiss::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamDismiss::MsgCZTeamDismiss()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamDismiss)
+}
+
+void MsgCZTeamDismiss::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamDismiss::MsgCZTeamDismiss(const MsgCZTeamDismiss& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamDismiss)
+}
+
+void MsgCZTeamDismiss::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamDismiss::~MsgCZTeamDismiss() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamDismiss)
+  SharedDtor();
+}
+
+void MsgCZTeamDismiss::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamDismiss::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamDismiss& MsgCZTeamDismiss::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamDismiss* MsgCZTeamDismiss::default_instance_ = NULL;
+
+MsgCZTeamDismiss* MsgCZTeamDismiss::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamDismiss* n = new MsgCZTeamDismiss;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamDismiss::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamDismiss)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+
+bool MsgCZTeamDismiss::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamDismiss)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamDismiss)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamDismiss)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamDismiss::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamDismiss)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamDismiss)
+}
+
+int MsgCZTeamDismiss::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamDismiss)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamDismiss::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamDismiss*>(&from));
+}
+
+void MsgCZTeamDismiss::MergeFrom(const MsgCZTeamDismiss& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamDismiss)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamDismiss::CopyFrom(const MsgCZTeamDismiss& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamDismiss)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamDismiss::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamDismiss::Swap(MsgCZTeamDismiss* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamDismiss::InternalSwap(MsgCZTeamDismiss* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamDismiss::GetTypeName() const {
+  return "proto3.MsgCZTeamDismiss";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamDismiss
+
+// optional uint32 mid = 1;
+void MsgCZTeamDismiss::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamDismiss::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamDismiss.mid)
+  return mid_;
+}
+ void MsgCZTeamDismiss::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamDismiss.mid)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamDismiss::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamDismiss::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamDismiss::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamDismiss.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamDismiss::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamDismiss.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamDismiss::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamDismiss.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamDismiss::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamDismiss.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamKick::kMidFieldNumber;
+const int MsgCZTeamKick::kTeamFieldNumber;
+const int MsgCZTeamKick::kTargetsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamKick::MsgCZTeamKick()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamKick)
+}
+
+void MsgCZTeamKick::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  targets_ = const_cast< ::proto3::PlayerInfo*>(
+      ::proto3::PlayerInfo::internal_default_instance());
+#else
+  targets_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
+#endif
+}
+
+MsgCZTeamKick::MsgCZTeamKick(const MsgCZTeamKick& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamKick)
+}
+
+void MsgCZTeamKick::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+  targets_ = NULL;
+}
+
+MsgCZTeamKick::~MsgCZTeamKick() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamKick)
+  SharedDtor();
+}
+
+void MsgCZTeamKick::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+    delete targets_;
+  }
+}
+
+void MsgCZTeamKick::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamKick& MsgCZTeamKick::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamKick* MsgCZTeamKick::default_instance_ = NULL;
+
+MsgCZTeamKick* MsgCZTeamKick::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamKick* n = new MsgCZTeamKick;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamKick::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamKick)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+  if (GetArenaNoVirtual() == NULL && targets_ != NULL) delete targets_;
+  targets_ = NULL;
+}
+
+bool MsgCZTeamKick::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamKick)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_targets;
+        break;
+      }
+
+      // optional .proto3.PlayerInfo targets = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_targets:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_targets()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamKick)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamKick)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamKick::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamKick)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // optional .proto3.PlayerInfo targets = 4;
+  if (this->has_targets()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      4, *this->targets_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamKick)
+}
+
+int MsgCZTeamKick::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamKick)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  // optional .proto3.PlayerInfo targets = 4;
+  if (this->has_targets()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->targets_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamKick::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamKick*>(&from));
+}
+
+void MsgCZTeamKick::MergeFrom(const MsgCZTeamKick& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamKick)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+  if (from.has_targets()) {
+    mutable_targets()->::proto3::PlayerInfo::MergeFrom(from.targets());
+  }
+}
+
+void MsgCZTeamKick::CopyFrom(const MsgCZTeamKick& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamKick)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamKick::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamKick::Swap(MsgCZTeamKick* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamKick::InternalSwap(MsgCZTeamKick* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  std::swap(targets_, other->targets_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamKick::GetTypeName() const {
+  return "proto3.MsgCZTeamKick";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamKick
+
+// optional uint32 mid = 1;
+void MsgCZTeamKick::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamKick::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.mid)
+  return mid_;
+}
+ void MsgCZTeamKick::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamKick.mid)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamKick::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamKick::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamKick::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamKick::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamKick.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamKick::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamKick.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamKick::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamKick.team)
+}
+
+// optional .proto3.PlayerInfo targets = 4;
+bool MsgCZTeamKick::has_targets() const {
+  return !_is_default_instance_ && targets_ != NULL;
+}
+void MsgCZTeamKick::clear_targets() {
+  if (GetArenaNoVirtual() == NULL && targets_ != NULL) delete targets_;
+  targets_ = NULL;
+}
+const ::proto3::PlayerInfo& MsgCZTeamKick::targets() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.targets)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return targets_ != NULL ? *targets_ : *default_instance().targets_;
+#else
+  return targets_ != NULL ? *targets_ : *default_instance_->targets_;
+#endif
+}
+::proto3::PlayerInfo* MsgCZTeamKick::mutable_targets() {
+  
+  if (targets_ == NULL) {
+    targets_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamKick.targets)
+  return targets_;
+}
+::proto3::PlayerInfo* MsgCZTeamKick::release_targets() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamKick.targets)
+  
+  ::proto3::PlayerInfo* temp = targets_;
+  targets_ = NULL;
+  return temp;
+}
+void MsgCZTeamKick::set_allocated_targets(::proto3::PlayerInfo* targets) {
+  delete targets_;
+  targets_ = targets;
+  if (targets) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamKick.targets)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamLeave::kMidFieldNumber;
+const int MsgCZTeamLeave::kReasonFieldNumber;
+const int MsgCZTeamLeave::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamLeave::MsgCZTeamLeave()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamLeave)
+}
+
+void MsgCZTeamLeave::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamLeave::MsgCZTeamLeave(const MsgCZTeamLeave& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamLeave)
+}
+
+void MsgCZTeamLeave::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  reason_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamLeave::~MsgCZTeamLeave() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamLeave)
+  SharedDtor();
+}
+
+void MsgCZTeamLeave::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamLeave::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamLeave& MsgCZTeamLeave::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamLeave* MsgCZTeamLeave::default_instance_ = NULL;
+
+MsgCZTeamLeave* MsgCZTeamLeave::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamLeave* n = new MsgCZTeamLeave;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamLeave::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamLeave)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamLeave, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamLeave*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, reason_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgCZTeamLeave::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamLeave)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_reason;
+        break;
+      }
+
+      // optional uint32 reason = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_reason:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &reason_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamLeave)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamLeave)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamLeave::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamLeave)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->reason(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamLeave)
+}
+
+int MsgCZTeamLeave::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamLeave)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->reason());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamLeave::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamLeave*>(&from));
+}
+
+void MsgCZTeamLeave::MergeFrom(const MsgCZTeamLeave& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamLeave)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamLeave::CopyFrom(const MsgCZTeamLeave& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamLeave)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamLeave::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamLeave::Swap(MsgCZTeamLeave* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamLeave::InternalSwap(MsgCZTeamLeave* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(reason_, other->reason_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamLeave::GetTypeName() const {
+  return "proto3.MsgCZTeamLeave";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamLeave
+
+// optional uint32 mid = 1;
+void MsgCZTeamLeave::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamLeave::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.mid)
+  return mid_;
+}
+ void MsgCZTeamLeave::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamLeave.mid)
+}
+
+// optional uint32 reason = 2;
+void MsgCZTeamLeave::clear_reason() {
+  reason_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamLeave::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.reason)
+  return reason_;
+}
+ void MsgCZTeamLeave::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamLeave.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamLeave::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamLeave::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamLeave::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamLeave::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamLeave.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamLeave::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamLeave.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamLeave::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamLeave.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamRecruit::kMidFieldNumber;
+const int MsgCZTeamRecruit::kReasonFieldNumber;
+const int MsgCZTeamRecruit::kTeamFieldNumber;
+const int MsgCZTeamRecruit::kTargetsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamRecruit::MsgCZTeamRecruit()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamRecruit)
+}
+
+void MsgCZTeamRecruit::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamRecruit::MsgCZTeamRecruit(const MsgCZTeamRecruit& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamRecruit)
+}
+
+void MsgCZTeamRecruit::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  reason_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamRecruit::~MsgCZTeamRecruit() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamRecruit)
+  SharedDtor();
+}
+
+void MsgCZTeamRecruit::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamRecruit::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamRecruit& MsgCZTeamRecruit::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamRecruit* MsgCZTeamRecruit::default_instance_ = NULL;
+
+MsgCZTeamRecruit* MsgCZTeamRecruit::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamRecruit* n = new MsgCZTeamRecruit;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamRecruit::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamRecruit)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamRecruit, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamRecruit*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, reason_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  targets_.Clear();
+}
+
+bool MsgCZTeamRecruit::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamRecruit)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_reason;
+        break;
+      }
+
+      // optional uint32 reason = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_reason:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &reason_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_targets;
+        break;
+      }
+
+      // repeated .proto3.PlayerInfo targets = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_targets:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_targets:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_targets()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_loop_targets;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamRecruit)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamRecruit)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamRecruit::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamRecruit)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->reason(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, *this->team_, output);
+  }
+
+  // repeated .proto3.PlayerInfo targets = 4;
+  for (unsigned int i = 0, n = this->targets_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      4, this->targets(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamRecruit)
+}
+
+int MsgCZTeamRecruit::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamRecruit)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 reason = 2;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->reason());
+  }
+
+  // optional .proto3.TeamInfo team = 3;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  // repeated .proto3.PlayerInfo targets = 4;
+  total_size += 1 * this->targets_size();
+  for (int i = 0; i < this->targets_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->targets(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamRecruit::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamRecruit*>(&from));
+}
+
+void MsgCZTeamRecruit::MergeFrom(const MsgCZTeamRecruit& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamRecruit)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  targets_.MergeFrom(from.targets_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamRecruit::CopyFrom(const MsgCZTeamRecruit& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamRecruit)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamRecruit::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamRecruit::Swap(MsgCZTeamRecruit* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamRecruit::InternalSwap(MsgCZTeamRecruit* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(reason_, other->reason_);
+  std::swap(team_, other->team_);
+  targets_.UnsafeArenaSwap(&other->targets_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamRecruit::GetTypeName() const {
+  return "proto3.MsgCZTeamRecruit";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamRecruit
+
+// optional uint32 mid = 1;
+void MsgCZTeamRecruit::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamRecruit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.mid)
+  return mid_;
+}
+ void MsgCZTeamRecruit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.mid)
+}
+
+// optional uint32 reason = 2;
+void MsgCZTeamRecruit::clear_reason() {
+  reason_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamRecruit::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.reason)
+  return reason_;
+}
+ void MsgCZTeamRecruit::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+bool MsgCZTeamRecruit::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamRecruit::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamRecruit::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamRecruit::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamRecruit::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamRecruit.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamRecruit::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamRecruit.team)
+}
+
+// repeated .proto3.PlayerInfo targets = 4;
+int MsgCZTeamRecruit::targets_size() const {
+  return targets_.size();
+}
+void MsgCZTeamRecruit::clear_targets() {
+  targets_.Clear();
+}
+const ::proto3::PlayerInfo& MsgCZTeamRecruit::targets(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Get(index);
+}
+::proto3::PlayerInfo* MsgCZTeamRecruit::mutable_targets(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Mutable(index);
+}
+::proto3::PlayerInfo* MsgCZTeamRecruit::add_targets() {
+  // @@protoc_insertion_point(field_add:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+MsgCZTeamRecruit::mutable_targets() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZTeamRecruit.targets)
+  return &targets_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+MsgCZTeamRecruit::targets() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZTeamRecruit.targets)
+  return targets_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCTeamInvite::kMidFieldNumber;
+const int MsgZCTeamInvite::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCTeamInvite::MsgZCTeamInvite()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamInvite)
+}
+
+void MsgZCTeamInvite::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgZCTeamInvite::MsgZCTeamInvite(const MsgZCTeamInvite& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamInvite)
+}
+
+void MsgZCTeamInvite::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+}
+
+MsgZCTeamInvite::~MsgZCTeamInvite() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamInvite)
+  SharedDtor();
+}
+
+void MsgZCTeamInvite::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgZCTeamInvite::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCTeamInvite& MsgZCTeamInvite::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCTeamInvite* MsgZCTeamInvite::default_instance_ = NULL;
+
+MsgZCTeamInvite* MsgZCTeamInvite::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamInvite* n = new MsgZCTeamInvite;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCTeamInvite::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamInvite)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+
+bool MsgZCTeamInvite::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamInvite)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamInvite)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamInvite)
+  return false;
+#undef DO_
+}
+
+void MsgZCTeamInvite::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamInvite)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamInvite)
+}
+
+int MsgZCTeamInvite::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamInvite)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCTeamInvite::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamInvite*>(&from));
+}
+
+void MsgZCTeamInvite::MergeFrom(const MsgZCTeamInvite& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamInvite)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgZCTeamInvite::CopyFrom(const MsgZCTeamInvite& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamInvite)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCTeamInvite::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCTeamInvite::Swap(MsgZCTeamInvite* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCTeamInvite::InternalSwap(MsgZCTeamInvite* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCTeamInvite::GetTypeName() const {
+  return "proto3.MsgZCTeamInvite";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCTeamInvite
+
+// optional uint32 mid = 1;
+void MsgZCTeamInvite::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCTeamInvite::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.mid)
+  return mid_;
+}
+ void MsgZCTeamInvite::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamInvite.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+bool MsgZCTeamInvite::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgZCTeamInvite::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgZCTeamInvite::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgZCTeamInvite::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamInvite.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgZCTeamInvite::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamInvite.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgZCTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamInvite.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamInvite::kMidFieldNumber;
+const int MsgCZTeamInvite::kTeamFieldNumber;
+const int MsgCZTeamInvite::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamInvite::MsgCZTeamInvite()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamInvite)
+}
+
+void MsgCZTeamInvite::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamInvite::MsgCZTeamInvite(const MsgCZTeamInvite& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamInvite)
+}
+
+void MsgCZTeamInvite::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+  result_ = 0;
+}
+
+MsgCZTeamInvite::~MsgCZTeamInvite() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamInvite)
+  SharedDtor();
+}
+
+void MsgCZTeamInvite::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamInvite::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamInvite& MsgCZTeamInvite::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamInvite* MsgCZTeamInvite::default_instance_ = NULL;
+
+MsgCZTeamInvite* MsgCZTeamInvite::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamInvite* n = new MsgCZTeamInvite;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamInvite::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamInvite)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamInvite, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamInvite*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, result_);
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgCZTeamInvite::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamInvite)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamInvite)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamInvite)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamInvite::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamInvite)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->team_, output);
+  }
+
+  // optional .proto3.eResult result = 3;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamInvite)
+}
+
+int MsgCZTeamInvite::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamInvite)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  // optional .proto3.eResult result = 3;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamInvite::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamInvite*>(&from));
+}
+
+void MsgCZTeamInvite::MergeFrom(const MsgCZTeamInvite& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamInvite)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgCZTeamInvite::CopyFrom(const MsgCZTeamInvite& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamInvite)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamInvite::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamInvite::Swap(MsgCZTeamInvite* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamInvite::InternalSwap(MsgCZTeamInvite* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamInvite::GetTypeName() const {
+  return "proto3.MsgCZTeamInvite";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamInvite
+
+// optional uint32 mid = 1;
+void MsgCZTeamInvite::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamInvite::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.mid)
+  return mid_;
+}
+ void MsgCZTeamInvite::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+bool MsgCZTeamInvite::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamInvite::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamInvite::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamInvite::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamInvite.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamInvite::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamInvite.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamInvite.team)
+}
+
+// optional .proto3.eResult result = 3;
+void MsgCZTeamInvite::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgCZTeamInvite::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgCZTeamInvite::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.result)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamJoin::kMidFieldNumber;
+const int MsgCZTeamJoin::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamJoin::MsgCZTeamJoin()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamJoin)
+}
+
+void MsgCZTeamJoin::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgCZTeamJoin::MsgCZTeamJoin(const MsgCZTeamJoin& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamJoin)
+}
+
+void MsgCZTeamJoin::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+}
+
+MsgCZTeamJoin::~MsgCZTeamJoin() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamJoin)
+  SharedDtor();
+}
+
+void MsgCZTeamJoin::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgCZTeamJoin::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamJoin& MsgCZTeamJoin::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamJoin* MsgCZTeamJoin::default_instance_ = NULL;
+
+MsgCZTeamJoin* MsgCZTeamJoin::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamJoin* n = new MsgCZTeamJoin;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamJoin::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamJoin)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+
+bool MsgCZTeamJoin::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamJoin)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamJoin)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamJoin)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamJoin::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamJoin)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamJoin)
+}
+
+int MsgCZTeamJoin::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamJoin)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamJoin::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamJoin*>(&from));
+}
+
+void MsgCZTeamJoin::MergeFrom(const MsgCZTeamJoin& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamJoin)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgCZTeamJoin::CopyFrom(const MsgCZTeamJoin& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamJoin)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamJoin::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamJoin::Swap(MsgCZTeamJoin* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamJoin::InternalSwap(MsgCZTeamJoin* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamJoin::GetTypeName() const {
+  return "proto3.MsgCZTeamJoin";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamJoin
+
+// optional uint32 mid = 1;
+void MsgCZTeamJoin::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamJoin::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.mid)
+  return mid_;
+}
+ void MsgCZTeamJoin::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoin.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+bool MsgCZTeamJoin::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgCZTeamJoin::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgCZTeamJoin::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgCZTeamJoin::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamJoin.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgCZTeamJoin::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamJoin.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgCZTeamJoin::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamJoin.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCTeamApply::kMidFieldNumber;
+const int MsgZCTeamApply::kTeamFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCTeamApply::MsgZCTeamApply()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamApply)
+}
+
+void MsgZCTeamApply::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  team_ = const_cast< ::proto3::TeamInfo*>(
+      ::proto3::TeamInfo::internal_default_instance());
+#else
+  team_ = const_cast< ::proto3::TeamInfo*>(&::proto3::TeamInfo::default_instance());
+#endif
+}
+
+MsgZCTeamApply::MsgZCTeamApply(const MsgZCTeamApply& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamApply)
+}
+
+void MsgZCTeamApply::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  team_ = NULL;
+}
+
+MsgZCTeamApply::~MsgZCTeamApply() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamApply)
+  SharedDtor();
+}
+
+void MsgZCTeamApply::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete team_;
+  }
+}
+
+void MsgZCTeamApply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCTeamApply& MsgZCTeamApply::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCTeamApply* MsgZCTeamApply::default_instance_ = NULL;
+
+MsgZCTeamApply* MsgZCTeamApply::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamApply* n = new MsgZCTeamApply;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCTeamApply::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamApply)
+  mid_ = 0u;
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+
+bool MsgZCTeamApply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamApply)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_team;
+        break;
+      }
+
+      // optional .proto3.TeamInfo team = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_team:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_team()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamApply)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamApply)
+  return false;
+#undef DO_
+}
+
+void MsgZCTeamApply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamApply)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->team_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamApply)
+}
+
+int MsgZCTeamApply::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamApply)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.TeamInfo team = 2;
+  if (this->has_team()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->team_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCTeamApply::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamApply*>(&from));
+}
+
+void MsgZCTeamApply::MergeFrom(const MsgZCTeamApply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamApply)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_team()) {
+    mutable_team()->::proto3::TeamInfo::MergeFrom(from.team());
+  }
+}
+
+void MsgZCTeamApply::CopyFrom(const MsgZCTeamApply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamApply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCTeamApply::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCTeamApply::Swap(MsgZCTeamApply* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCTeamApply::InternalSwap(MsgZCTeamApply* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(team_, other->team_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCTeamApply::GetTypeName() const {
+  return "proto3.MsgZCTeamApply";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCTeamApply
+
+// optional uint32 mid = 1;
+void MsgZCTeamApply::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCTeamApply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.mid)
+  return mid_;
+}
+ void MsgZCTeamApply::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamApply.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+bool MsgZCTeamApply::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+void MsgZCTeamApply::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+const ::proto3::TeamInfo& MsgZCTeamApply::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+::proto3::TeamInfo* MsgZCTeamApply::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamApply.team)
+  return team_;
+}
+::proto3::TeamInfo* MsgZCTeamApply::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamApply.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+void MsgZCTeamApply::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamApply.team)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZTeamApply::kMidFieldNumber;
+const int MsgCZTeamApply::kApplicantFieldNumber;
+const int MsgCZTeamApply::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZTeamApply::MsgCZTeamApply()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamApply)
+}
+
+void MsgCZTeamApply::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  applicant_ = const_cast< ::proto3::PlayerInfo*>(
+      ::proto3::PlayerInfo::internal_default_instance());
+#else
+  applicant_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
+#endif
+}
+
+MsgCZTeamApply::MsgCZTeamApply(const MsgCZTeamApply& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamApply)
+}
+
+void MsgCZTeamApply::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  applicant_ = NULL;
+  result_ = 0;
+}
+
+MsgCZTeamApply::~MsgCZTeamApply() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamApply)
+  SharedDtor();
+}
+
+void MsgCZTeamApply::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+    delete applicant_;
+  }
+}
+
+void MsgCZTeamApply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZTeamApply& MsgCZTeamApply::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZTeamApply* MsgCZTeamApply::default_instance_ = NULL;
+
+MsgCZTeamApply* MsgCZTeamApply::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamApply* n = new MsgCZTeamApply;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZTeamApply::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamApply)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZTeamApply, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZTeamApply*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, result_);
+  if (GetArenaNoVirtual() == NULL && applicant_ != NULL) delete applicant_;
+  applicant_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool MsgCZTeamApply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamApply)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_applicant;
+        break;
+      }
+
+      // optional .proto3.PlayerInfo applicant = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_applicant:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_applicant()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamApply)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamApply)
+  return false;
+#undef DO_
+}
+
+void MsgCZTeamApply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamApply)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional .proto3.PlayerInfo applicant = 2;
+  if (this->has_applicant()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, *this->applicant_, output);
+  }
+
+  // optional .proto3.eResult result = 3;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamApply)
+}
+
+int MsgCZTeamApply::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamApply)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional .proto3.PlayerInfo applicant = 2;
+  if (this->has_applicant()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->applicant_);
+  }
+
+  // optional .proto3.eResult result = 3;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZTeamApply::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamApply*>(&from));
+}
+
+void MsgCZTeamApply::MergeFrom(const MsgCZTeamApply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamApply)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.has_applicant()) {
+    mutable_applicant()->::proto3::PlayerInfo::MergeFrom(from.applicant());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgCZTeamApply::CopyFrom(const MsgCZTeamApply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamApply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZTeamApply::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZTeamApply::Swap(MsgCZTeamApply* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZTeamApply::InternalSwap(MsgCZTeamApply* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(applicant_, other->applicant_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZTeamApply::GetTypeName() const {
+  return "proto3.MsgCZTeamApply";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZTeamApply
+
+// optional uint32 mid = 1;
+void MsgCZTeamApply::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZTeamApply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.mid)
+  return mid_;
+}
+ void MsgCZTeamApply::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.mid)
+}
+
+// optional .proto3.PlayerInfo applicant = 2;
+bool MsgCZTeamApply::has_applicant() const {
+  return !_is_default_instance_ && applicant_ != NULL;
+}
+void MsgCZTeamApply::clear_applicant() {
+  if (GetArenaNoVirtual() == NULL && applicant_ != NULL) delete applicant_;
+  applicant_ = NULL;
+}
+const ::proto3::PlayerInfo& MsgCZTeamApply::applicant() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.applicant)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return applicant_ != NULL ? *applicant_ : *default_instance().applicant_;
+#else
+  return applicant_ != NULL ? *applicant_ : *default_instance_->applicant_;
+#endif
+}
+::proto3::PlayerInfo* MsgCZTeamApply::mutable_applicant() {
+  
+  if (applicant_ == NULL) {
+    applicant_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamApply.applicant)
+  return applicant_;
+}
+::proto3::PlayerInfo* MsgCZTeamApply::release_applicant() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamApply.applicant)
+  
+  ::proto3::PlayerInfo* temp = applicant_;
+  applicant_ = NULL;
+  return temp;
+}
+void MsgCZTeamApply::set_allocated_applicant(::proto3::PlayerInfo* applicant) {
+  delete applicant_;
+  applicant_ = applicant;
+  if (applicant) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamApply.applicant)
+}
+
+// optional .proto3.eResult result = 3;
+void MsgCZTeamApply::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgCZTeamApply::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgCZTeamApply::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.result)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -15,6 +15,11 @@ using namespace keye;
 Server* Server::instance=nullptr;
 
 int main(int argc, char* argv[]) {
+	CRedisClient rc;
+	rc.Initialize("192.168.0.254",7000,5,1);
+	std::string val;
+	rc.Get("cnt",&val);
+	PDLOG<<"cnt="<<val<<"\n";
 	/*
 	ObjectPool<int> pool;
 	auto p=pool.create();

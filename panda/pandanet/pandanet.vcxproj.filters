@@ -32,6 +32,9 @@
     <ClInclude Include="settings\DataProvider.h">
       <Filter>settings</Filter>
     </ClInclude>
+    <ClInclude Include="utils\Utils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />

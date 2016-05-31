@@ -13,6 +13,10 @@
 
 class PlayerSystem{
 public:
+	void		onLogin(const proto3::PlayerInfo&,ClientSession*);
+	void		onLogout(const char*);
+	//[uid,session]
+	std::map<std::string,ClientSession*> sessions;
 };
 // --------------------------------------------------------
 #endif // _PlayerSystem_h_

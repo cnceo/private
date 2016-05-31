@@ -11,9 +11,19 @@
 #ifndef _gateway_server_fwd_h_
 #define _gateway_server_fwd_h_
 // --------------------------------------------------------
+#include <string.h>
+#include <memory>
+#include <vector>
+#include <string>
+#include <map>
+#include <list>
+
 #include <pandadb_fwd.h>
+
+#include "level/Level.h"
 #include "level/LevelSystem.h"
 #include "social/SocialSystem.h"
+#include "team/TeamSystem.h"
 #include "quest/QuestSystem.h"
 #include "player/PlayerSystem.h"
 

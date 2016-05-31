@@ -42,6 +42,11 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
+proto3::PlayerInfo* Server::findClient(size_t sid){
+	auto i=Server::instance->clientService._sessions.find(sid);
+	return (i==Server::instance->clientService._sessions.end()?nullptr:&i->second->player);
+}
+
 int redis(int argc,char **argv) {
 	unsigned int j;
 	redisContext *c;

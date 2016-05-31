@@ -13,7 +13,6 @@
 // --------------------------------------------------------
 class PANDA_API ClientSession:public BaseSession{
 public:
-	std::string			uid;	//user id
 	proto3::PlayerInfo	player;
 };
 // --------------------------------------------------------

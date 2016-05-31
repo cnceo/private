@@ -30,6 +30,12 @@
     <ClCompile Include="player\PlayerSystem.cpp">
       <Filter>player</Filter>
     </ClCompile>
+    <ClCompile Include="level\Level.cpp">
+      <Filter>level</Filter>
+    </ClCompile>
+    <ClCompile Include="team\TeamSystem.cpp">
+      <Filter>team</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -62,6 +68,12 @@
     <ClInclude Include="player\PlayerSystem.h">
       <Filter>player</Filter>
     </ClInclude>
+    <ClInclude Include="level\Level.h">
+      <Filter>level</Filter>
+    </ClInclude>
+    <ClInclude Include="team\TeamSystem.h">
+      <Filter>team</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="handlers">
@@ -78,6 +90,9 @@
     </Filter>
     <Filter Include="social">
       <UniqueIdentifier>{40b644b0-719d-4a3c-9497-98fbd006a020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="team">
+      <UniqueIdentifier>{dfe3152c-55ff-4bda-93b5-6751984bd122}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

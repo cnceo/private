@@ -24,8 +24,17 @@ public:
 	PandaService<ClientSession,ClientHandler>	clientService;
 	PandaService<ZoneSession,GatewayHandler>	gatewayConnection;
 	PandaService<ClientSession,WorldHandler>	worldConnection;
+
+	proto3::PlayerInfo*	findClient(size_t);
+
 	PandaDBProxy	pandaDB;
 	DataProvider	dp;
+
+	LevelSystem		levels;
+	QuestSystem		quests;
+	SocialSystem	socials;
+	TeamSystem		teams;
+	PlayerSystem	players;
 };
 
 // --------------------------------------------------------

@@ -64,6 +64,9 @@ void PandaDBProxy::replyClientLogin(const MsgCGLogin& info,size_t shid,eResult r
 		if(result!=eResult::SUCCEESS)
 			msg.set_result(result);
 		else{
+			auto zoneHost=(const char*)PandaNet::instance().config.value("ZoneHost");
+			auto zoneCPort=(int)PandaNet::instance().config.value("ZoneCPort");
+
 			msg.set_result(eResult::SUCCEESS);
 			msg.set_sid(shid);
 			msg.set_version(100);
@@ -71,8 +74,8 @@ void PandaDBProxy::replyClientLogin(const MsgCGLogin& info,size_t shid,eResult r
 			auto zi=msg.add_zoneinfo();
 			zi->set_id(100);
 			zi->set_version(100);
-			zi->set_ip("192.168.0.107");
-			zi->set_port(8820);
+			zi->set_ip(zoneHost);
+			zi->set_port(zoneCPort);
 			zi->set_occupied(0);
 			zi->set_capacity(2000);
 		}

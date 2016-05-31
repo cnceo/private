@@ -43,8 +43,9 @@ message PlaceInfo{
 	uint32 orientation	= 6;	// in degree
 };
 
-message PlayerInfo{				// ¸Ã·şÎñÆ÷ÏÂµÄ½ÇÉ«ĞÅÏ¢, Èç¹ûÃ»ÓĞ´´½¨¹ı½ÇÉ«¸Ã×Ö¶ÎÎª¿Õ
+message PlayerInfo{			// ¸Ã·şÎñÆ÷ÏÂµÄ½ÇÉ«ĞÅÏ¢, Èç¹ûÃ»ÓĞ´´½¨¹ı½ÇÉ«¸Ã×Ö¶ÎÎª¿Õ
 	uint32 id	= 1;		// ¶à½ÇÉ«ID
+	string uid	= 4;		// user id
 	string name = 2;		// ½ÇÉ«Ãû
 	uint32 level = 3;		// ½ÇÉ«µÈ¼¶     
 	uint32 energy = 5;				// ½ÇÉ«µ±Ç°ÌåÁ¦
@@ -60,6 +61,15 @@ message PlayerInfo{				// ¸Ã·şÎñÆ÷ÏÂµÄ½ÇÉ«ĞÅÏ¢, Èç¹ûÃ»ÓĞ´´½¨¹ı½ÇÉ«¸Ã×Ö¶ÎÎª¿Õ
 	string ArenaRank = 22;			// ¾º¼¼³¡¾üÏÎ
 	string ArenaHonor = 23;			// ¾º¼¼³¡ÈÙÓşÖµ	
 	uint32 HuashanRanking = 25;		// »ªÉ½ÂÛ½£ÅÅÃû
+	PlayerExtraInfo extra	= 30;
+	
+	uint32 HP = 50;					// ½ÇÉ«µ±Ç°ÉúÃü
+	uint32 MP = 51;					// ½ÇÉ«µ±Ç°Ä§·¨
+	uint32 MaxHP = 52;				// ½ÇÉ«×î´óÉúÃü
+	uint32 MaxMP = 53;				// ½ÇÉ«×î´óÄ§·¨
+
+	uint32 MartialclubID = 54;			// Îä¹İID
+	uint32 nBreak = 55;					// »ù´¡´ò¶ÏÖµ
 };
 
 message PlayerExtraInfo{				// ¸Ã·şÎñÆ÷ÏÂµÄ½ÇÉ«ĞÅÏ¢, Èç¹ûÃ»ÓĞ´´½¨¹ı½ÇÉ«¸Ã×Ö¶ÎÎª¿Õ
@@ -86,6 +96,19 @@ message PlayerExtraInfo{				// ¸Ã·şÎñÆ÷ÏÂµÄ½ÇÉ«ĞÅÏ¢, Èç¹ûÃ»ÓĞ´´½¨¹ı½ÇÉ«¸Ã×Ö¶ÎÎª¿
 	};
 	repeated KuangfuHouseSkill kuangfuhouseskill = 20;
 };
+
+message TeamInfo{
+	string uid					=11;
+	string title				=1;
+	uint32 levelLimit			=2;
+	uint32 professionLimit		=3;
+	uint32 dungeonId			=4;
+	uint32 difficulty			=5;
+	uint32 capacity				=6;
+	repeated PlayerInfo members	=7;	// the 1st should be team leader
+	repeated PlayerInfo recruits=8;	// ÕĞÄ¼¶ÓÁĞ
+	repeated PlayerInfo joins	=9;	// ÉêÇë¶ÓÁĞ
+}
 
 // Server Data <==> ºÃÓÑÁĞ±í,ÔÚUserÖĞ²ğ·Ö³öÀ´µÄÊı¾İ
 message User_FriendList{
@@ -319,11 +342,55 @@ message StageLootRewardData{
 	repeated nLoot_random_Task nloot_random_task = 17;		//µôÂä¼¸ÂÊ(¹ÖÎïÀàĞÍ)_ÈÎÎñ
 };
 
+// ÈÎÎñÊı¾İ±í
+message TaskInfoData{
+	
+	uint32  NextTaskId = 1;			/** Ç°ÖÃÈÎÎñID*/
+	uint32  LevelLimit = 2;			/** ÏŞÖÆµÈ¼¶*/
+	uint32  RecommendLevel = 3;		/** ÍÆ¼öµÈ¼¶*/
+	string TaskName = 4;			/** ÈÎÎñÃû³Æ*/
+	
+	uint32 TaskType = 5;		/** ÈÎÎñÀàĞÍ*/
+	
+	uint32 TriggerType = 6;		/** ÈÎÎñ´¥·¢ÀàĞÍ*/
+	
+	uint32 LimitTime = 7;		/** ÈÎÎñÏŞÖÆÊ±¼ä*/
+	
+	uint32 AcceptNPCID = 8;		/** ÁìÈ¡NPCID*/
+	
+	uint32 ConsignNPCID = 9;	/** ½»¸¶NPCID*/
+	
+	uint32 TargetID = 10;		/** Ä¿±êID*/
+	
+	uint32 SceneID = 11;			/** ¸±±¾ID*/
+	
+	uint32 TargetNum = 12;		/** Ä¿±êÊıÁ¿*/
+	
+	uint32 RewardGold = 13;		/** ½±Àø½ğ±Ò*/
+	
+	uint32 RewardEXP = 14;		/** ½±Àø¾­Ñé*/
+	
+	repeated uint32 RewardItemID = 15;		/** ½±ÀøµÀ¾ßÊı×é*/
+	
+	repeated uint32 TalkContentID = 16;	/** ÁìÈ¡¶Ô»°ID Êı×é*/
+	
+	uint32 ConsignDialogID = 17;		/** ½»¸¶¶Ô»°ID Êı×é*/
+	
+	uint32 FailedDialogID = 18;		/** Ê§°Ü¶Ô»°ID Êı×é*/
+	
+	uint32 DoingDialogID = 19;		/** Ö´ĞĞÖĞ¶Ô»°ID Êı×é*/
+	//////////////////////////////////////////////////////////////////////////
+	uint32 DescriptionID = 20;		/** ÈÎÎñÃèÊöID */
+};
+
 enum eResult{
 	SUCCEESS		=0;
 	FAILED			=100;
 	CANCELLED		=101;
-	UNKNOWN			=102;
+	ERR_PROTOCOL	=102;
+	ERR_PARAM		=103;
+	ERR_DUPLICATED	=104;
+	UNKNOWN			=999;
 };
 
 enum eMoveType{
@@ -332,6 +399,17 @@ enum eMoveType{
 	JUMP			=2;
 	SWIM			=3;
 	TELEPORT		=4;
+};
+
+enum eTeamOp{
+	CREATE			=0;
+	DISMISS			=1;
+	APPLY			=2;
+	INVITE			=5;
+	LEAVE			=3;
+	KICK			=4;
+	EDIT			=7;
+	BROADCAST		=6;
 };
 // *** Data ---------------- Struct Define End *** 
 
@@ -374,6 +452,12 @@ message MsgZCEnter{
 	uint32 activePlayer				= 2;
 	repeated PlayerInfo playerInfo	= 3;
 	eResult result					= 4;
+};
+
+message MsgZCExit{
+	uint32 mid				= 1;
+	PlayerInfo playerInfo	= 3;
+	eResult result			= 4;
 };
 
 message MsgCZCreatePlayer{
@@ -441,6 +525,11 @@ message MsgZCMove{
 	eResult result			= 4;
 };
 
+message MsgZCBroadcastPlayer{
+	uint32 mid					= 1;
+	PlayerInfo player			= 2;
+}
+
 message MsgZCSyncPlayers{
 	uint32 mid					= 1;
 	repeated PlayerInfo players	= 2;
@@ -472,6 +561,88 @@ message MsgZCEnterArena{
 	string level	= 7;
 };
 
+message MsgZCTeamBroadcast{
+	uint32 mid				= 1;
+	repeated TeamInfo team	= 2;
+};
+
+// ´´½¨¶ÓÎé
+message MsgCZTeamCreate{
+	uint32 mid			= 1;
+	uint32 reason		= 2;
+	TeamInfo team		= 3;
+};
+
+// ±à¼­¶ÓÎéĞÅÏ¢
+message MsgCZTeamEdit{
+	uint32 mid			= 1;
+	uint32 reason		= 2;
+	TeamInfo team		= 3;
+};
+
+// ¶ÓÎéÊı¾İ¸üĞÂ
+message MsgZCTeamUpdate{
+	uint32 mid			= 1;
+	TeamInfo team		= 2;
+	eTeamOp op			= 3;
+	eResult result		= 4;
+};
+
+// ½âÉ¢¶ÓÎé,½âÉ¢½Ó¿Ú²»ÔÙÊ¹ÓÃ.
+message MsgCZTeamDismiss{
+	uint32 mid			= 1;
+	TeamInfo team		= 3;
+};
+
+// Ìß³ö¶ÓÎé
+message MsgCZTeamKick{
+	uint32 mid			= 1;
+	TeamInfo team		= 3;
+	PlayerInfo targets	= 4;	
+};
+
+// Àë¿ª¶ÓÎé,TeamInfoÖ»´«ID
+message MsgCZTeamLeave{
+	uint32 mid			= 1;
+	uint32 reason		= 2;
+	TeamInfo team		= 3;
+};
+
+// ÕĞÄ¼ÈËÔ±£¬ÑûÇëÈËÔ±
+message MsgCZTeamRecruit{
+	uint32 mid					= 1;
+	uint32 reason				= 2;
+	TeamInfo team				= 3;
+	repeated PlayerInfo targets	= 4;	
+};
+
+message MsgZCTeamInvite{
+	uint32 mid			= 1;
+	TeamInfo team		= 2;
+};
+
+message MsgCZTeamInvite{
+	uint32 mid			= 1;
+	TeamInfo team		= 2;
+	eResult result		= 3;		//SUCCEESS, CANCELLED
+};
+
+message MsgCZTeamJoin{
+	uint32 mid			= 1;
+	TeamInfo team		= 2;
+};
+
+message MsgZCTeamApply{
+	uint32 mid			= 1;
+	TeamInfo team		= 2;
+//	PlayerInfo applicant= 2;
+};
+
+message MsgCZTeamApply{
+	uint32 mid			= 1;
+	PlayerInfo applicant= 2;
+	eResult result		= 3;
+};
 //	Client	---------------- Arena
 message MsgCAEnter{
 	uint32 mid		= 1;

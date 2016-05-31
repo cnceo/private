@@ -34,6 +34,7 @@
 #include "protocol/game_protocol.h"
 #include "protocol/game_protocol.pb.h"
 
+#include "utils/Utils.h"
 #include "utils/ObjectPool.h"
 #include "settings/DataProvider.h"
 #include "session/PandaService.h"

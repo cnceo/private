@@ -100,11 +100,13 @@
     <ClInclude Include="handlers\GatewayHandler.h" />
     <ClInclude Include="handlers\PandaDBProxy.h" />
     <ClInclude Include="handlers\WorldHandler.h" />
+    <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\LevelSystem.h" />
     <ClInclude Include="player\PlayerSystem.h" />
     <ClInclude Include="quest\QuestSystem.h" />
     <ClInclude Include="social\SocialSystem.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="team\TeamSystem.h" />
     <ClInclude Include="ZoneServer.h" />
     <ClInclude Include="ZoneServerFwd.h" />
   </ItemGroup>
@@ -114,6 +116,7 @@
     <ClCompile Include="handlers\GatewayHandler.cpp" />
     <ClCompile Include="handlers\PandaDBProxy.cpp" />
     <ClCompile Include="handlers\WorldHandler.cpp" />
+    <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\LevelSystem.cpp" />
     <ClCompile Include="player\PlayerSystem.cpp" />
     <ClCompile Include="quest\QuestSystem.cpp" />
@@ -122,6 +125,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="team\TeamSystem.cpp" />
     <ClCompile Include="ZoneServer.cpp" />
   </ItemGroup>
   <ItemGroup>

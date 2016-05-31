@@ -28,40 +28,50 @@ void PandaDBProxy::handle(int qid,DBResult* res,void* privdata){
 			if(result==DBResult::Type::REPLY_ARRAY&&res->arr.size()>0){
 				//found players
 				auto& data=res->arr;
-				parsePlayerInfo(*msg.mutable_playerinfo()->Add(),data);
+				auto pi=msg.mutable_playerinfo()->Add();
+				parsePlayerInfo(*pi,data);
 				msg.set_activeplayer(0);
+
+				//store player info
+				Server::instance->players.onLogin(*pi,ss);
+				PDLOG<<"retrieved player: "<<pi->uid()<<"\n";
 			} else if(result==DBResult::Type::REPLY_NIL||result==DBResult::Type::REPLY_NIL){
 				//no players
+				//test
+				proto3::PlayerInfo pi;
+				pi.set_uid(uid);
+				pi.set_name("kongfu");
+				CreatePlayer(pi,shid);
 			}
 
-			//store user id and player info
-			ss->uid=uid;
-
+			//reply: found or no players
 			msg.set_mid(eMsg::MSG_ZC_ENTER);
 			msg.set_result(eResult::SUCCEESS);
 			PBHelper::Send(*ss->sh,msg);
 
-			//SyncPlayers(sh);
-			PDLOG<<"client logged in("<<ss->sh->address()<<")\n";
+			PDLOG<<"client entered("<<ss->sh->address()<<")\n";
 		}
 		break;
 	}
 	case CREATE_PLAYER:{
 		auto param=(std::map<size_t,const PlayerInfo*>*)privdata;
 		auto shid=param->begin()->first;
-		auto info=param->begin()->second;
+		auto pi=param->begin()->second;
 		auto ss=Server::instance->clientService.find(shid);
 		if(ss){
 			auto result=res->type;
 			if(result==DBResult::Type::REPLY_ERROR){
 
+			} else{
+				//store player info
+				Server::instance->players.onLogin(*pi,ss);
+				PDLOG<<"created player: "<<pi->uid()<<"\n";
 			}
 			MsgZCCreatePlayer msg;
 			msg.set_mid(eMsg::MSG_ZC_CREATE_PLAYER);
-			msg.mutable_playerinfo()->CopyFrom(*info);
+			msg.mutable_playerinfo()->CopyFrom(*pi);
 			msg.set_result(eResult::SUCCEESS);
 			PBHelper::Send(*ss->sh,msg);
-			PDLOG<<"client request arena("<<ss->sh->address()<<")\n";
 		}
 		break;
 	}
@@ -98,14 +108,14 @@ void PandaDBProxy::GetPlayer(const char* uid,size_t shid){
 void PandaDBProxy::CreatePlayer(const proto3::PlayerInfo& pi,size_t shid){
 	auto ss=Server::instance->clientService.find(shid);
 	if(ss){
-		auto uid=ss->uid.c_str();
+		auto uid=pi.uid().c_str();
 		auto qid=eQid::CREATE_PLAYER;
 		auto table="player";
 		char cmdR[256];
 		char cmdM[256];
 		char id[2];
 		sprintf(id,"%d",pi.id());
-		sprintf(cmdR,"HMSET %s level %d exp %d",DBProxy::key(_db.c_str(),table,uid,id).c_str(),pi.level(),pi.exp());
+		sprintf(cmdR,"HMSET %s uid %s level %d exp %d",DBProxy::key(_db.c_str(),table,uid,id).c_str(),uid,pi.level(),pi.exp());
 		if(!pi.name().empty())sprintf(cmdR,"%s name %s",cmdR,pi.name().c_str());
 		sprintf(cmdM,"INSERT INTO %s(account,pid,name,level,exp) VALUES('%s',%d,'%s',%d,%d);",
 			table,uid,pi.id(),pi.name().c_str(),pi.level(),pi.exp());
@@ -119,7 +129,7 @@ void PandaDBProxy::CreatePlayer(const proto3::PlayerInfo& pi,size_t shid){
 void PandaDBProxy::UpdatePlayer(const proto3::PlayerInfo& pi,size_t shid){
 	auto ss=Server::instance->clientService.find(shid);
 	if(ss){
-		auto uid=ss->uid.c_str();
+		auto uid=pi.uid().c_str();
 		auto qid=eQid::UPDATE_PLAYER;
 		auto table="player";
 		char cmdR[256];
@@ -127,9 +137,11 @@ void PandaDBProxy::UpdatePlayer(const proto3::PlayerInfo& pi,size_t shid){
 		char id[2];
 		sprintf(id,"%d",pi.id());
 		sprintf(cmdR,"HMSET %s level %d exp %d",DBProxy::key(_db.c_str(),table,uid,id).c_str(),pi.level(),pi.exp());
+		if(true)sprintf(cmdR,"%s zid %d px %d py %d pz %d orientation %d",cmdR,pi.lastplace().zid(),(int)pi.lastplace().x(),(int)pi.lastplace().y(),(int)pi.lastplace().z(),pi.lastplace().orientation());
 		if(!pi.name().empty())sprintf(cmdR,"%s name %s",cmdR,pi.name().c_str());
-		sprintf(cmdM,"UPDATE %s SET name='%s' level=%d exp=%d WHERE account='%s' AND id=%d;",
-			table,pi.name().c_str(),pi.level(),pi.exp(),uid,pi.id());
+		sprintf(cmdM,"UPDATE %s SET name='%s' level=%d exp=%d",table,pi.name().c_str(),pi.level(),pi.exp());
+		sprintf(cmdM,"%s zid=%d px=%d py=%d pz=%d orientation=%d",cmdM,pi.lastplace().zid(),(int)pi.lastplace().x(),(int)pi.lastplace().y(),(int)pi.lastplace().z(),pi.lastplace().orientation());
+		sprintf(cmdM,"%s WHERE account='%s' AND id=%d;",cmdM,uid,pi.id());
 
 		std::map<size_t,const PlayerInfo*> privdata;
 		privdata[shid]=&pi;
@@ -168,12 +180,24 @@ void PandaDBProxy::parsePlayerInfo(proto3::PlayerInfo& pi,const std::vector<DBRe
 		auto v=res[i+1].str.c_str();
 		if(k=="id"){
 			pi.set_id(atoi(v));
+		} else if(k=="uid"){
+			pi.set_uid(v);
 		} else if(k=="name"){
 			pi.set_name(v);
 		} else if(k=="level"){
 			pi.set_level(atoi(v));
 		} else if(k=="exp"){
 			pi.set_exp(atoi(v));
+		} else if(k=="zid"){
+			pi.mutable_lastplace()->set_zid(atoi(v));
+		} else if(k=="px"){
+			pi.mutable_lastplace()->set_x((float)atoi(v));
+		} else if(k=="py"){
+			pi.mutable_lastplace()->set_y((float)atoi(v));
+		} else if(k=="pz"){
+			pi.mutable_lastplace()->set_z((float)atoi(v));
+		} else if(k=="orientation"){
+			pi.mutable_lastplace()->set_orientation(atoi(v));
 		}
 		i+=2;
 	}

@@ -16,6 +16,12 @@
     </ClInclude>
     <ClInclude Include="pandadb_fwd.h" />
     <ClInclude Include="pandadb_pch.hpp" />
+    <ClInclude Include="credis\RedisClient.hpp">
+      <Filter>credis</Filter>
+    </ClInclude>
+    <ClInclude Include="credis\hiredis.hpp">
+      <Filter>credis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -25,10 +31,16 @@
     <ClCompile Include="database\RedisProxy.cpp">
       <Filter>database</Filter>
     </ClCompile>
+    <ClCompile Include="credis\RedisClient.cpp">
+      <Filter>credis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="database">
       <UniqueIdentifier>{9be8ae97-6b4c-4f4e-9ae9-cf8438e7e07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="credis">
+      <UniqueIdentifier>{370c7832-b1cf-484f-afa9-a405a8e587e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

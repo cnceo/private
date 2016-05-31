@@ -26,6 +26,7 @@
 #include <keye/keye_fwd.h>
 
 #include <pandanet_fwd.h>
+#include "credis/RedisClient.hpp"
 
 #include "database/DBHandler.h"
 #include "database/DBProxy.h"

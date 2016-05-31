@@ -49,6 +49,15 @@ class MsgCZEnterArena;
 class MsgCZGetPlayerExtra;
 class MsgCZMove;
 class MsgCZRemovePlayer;
+class MsgCZTeamApply;
+class MsgCZTeamCreate;
+class MsgCZTeamDismiss;
+class MsgCZTeamEdit;
+class MsgCZTeamInvite;
+class MsgCZTeamJoin;
+class MsgCZTeamKick;
+class MsgCZTeamLeave;
+class MsgCZTeamRecruit;
 class MsgCZUpdateName;
 class MsgCZUpdatePlayer;
 class MsgCZUpdatePlayerExtra;
@@ -57,12 +66,18 @@ class MsgGZConnect;
 class MsgWZConnect;
 class MsgZAClientEnter;
 class MsgZAConnect;
+class MsgZCBroadcastPlayer;
 class MsgZCCreatePlayer;
 class MsgZCEnter;
 class MsgZCEnterArena;
+class MsgZCExit;
 class MsgZCMove;
 class MsgZCRemovePlayer;
 class MsgZCSyncPlayers;
+class MsgZCTeamApply;
+class MsgZCTeamBroadcast;
+class MsgZCTeamInvite;
+class MsgZCTeamUpdate;
 class MsgZCUpdateName;
 class MsgZCUpdatePlayer;
 class MsgZCUpdatePlayerExtra;
@@ -91,6 +106,8 @@ class StageLootRewardData_nLoot_random_Normal;
 class StageLootRewardData_nLoot_random_Task;
 class StageMonsterPositionData;
 class StageMonsterPositionData_tArrPositions;
+class TaskInfoData;
+class TeamInfo;
 class UserHeroBaseData;
 class UserUpgradeBaseData;
 class User_FriendList;
@@ -113,7 +130,10 @@ enum eResult {
   SUCCEESS = 0,
   FAILED = 100,
   CANCELLED = 101,
-  UNKNOWN = 102,
+  ERR_PROTOCOL = 102,
+  ERR_PARAM = 103,
+  ERR_DUPLICATED = 104,
+  UNKNOWN = 999,
   eResult_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   eResult_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -135,6 +155,23 @@ bool eMoveType_IsValid(int value);
 const eMoveType eMoveType_MIN = WALK;
 const eMoveType eMoveType_MAX = TELEPORT;
 const int eMoveType_ARRAYSIZE = eMoveType_MAX + 1;
+
+enum eTeamOp {
+  CREATE = 0,
+  DISMISS = 1,
+  APPLY = 2,
+  INVITE = 5,
+  LEAVE = 3,
+  KICK = 4,
+  EDIT = 7,
+  BROADCAST = 6,
+  eTeamOp_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  eTeamOp_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool eTeamOp_IsValid(int value);
+const eTeamOp eTeamOp_MIN = CREATE;
+const eTeamOp eTeamOp_MAX = EDIT;
+const int eTeamOp_ARRAYSIZE = eTeamOp_MAX + 1;
 
 // ===================================================================
 
@@ -521,6 +558,17 @@ class PlayerInfo : public ::google::protobuf::MessageLite {
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
+  // optional string uid = 4;
+  void clear_uid();
+  static const int kUidFieldNumber = 4;
+  const ::std::string& uid() const;
+  void set_uid(const ::std::string& value);
+  void set_uid(const char* value);
+  void set_uid(const char* value, size_t size);
+  ::std::string* mutable_uid();
+  ::std::string* release_uid();
+  void set_allocated_uid(::std::string* uid);
+
   // optional string name = 2;
   void clear_name();
   static const int kNameFieldNumber = 2;
@@ -622,6 +670,51 @@ class PlayerInfo : public ::google::protobuf::MessageLite {
   ::google::protobuf::uint32 huashanranking() const;
   void set_huashanranking(::google::protobuf::uint32 value);
 
+  // optional .proto3.PlayerExtraInfo extra = 30;
+  bool has_extra() const;
+  void clear_extra();
+  static const int kExtraFieldNumber = 30;
+  const ::proto3::PlayerExtraInfo& extra() const;
+  ::proto3::PlayerExtraInfo* mutable_extra();
+  ::proto3::PlayerExtraInfo* release_extra();
+  void set_allocated_extra(::proto3::PlayerExtraInfo* extra);
+
+  // optional uint32 HP = 50;
+  void clear_hp();
+  static const int kHPFieldNumber = 50;
+  ::google::protobuf::uint32 hp() const;
+  void set_hp(::google::protobuf::uint32 value);
+
+  // optional uint32 MP = 51;
+  void clear_mp();
+  static const int kMPFieldNumber = 51;
+  ::google::protobuf::uint32 mp() const;
+  void set_mp(::google::protobuf::uint32 value);
+
+  // optional uint32 MaxHP = 52;
+  void clear_maxhp();
+  static const int kMaxHPFieldNumber = 52;
+  ::google::protobuf::uint32 maxhp() const;
+  void set_maxhp(::google::protobuf::uint32 value);
+
+  // optional uint32 MaxMP = 53;
+  void clear_maxmp();
+  static const int kMaxMPFieldNumber = 53;
+  ::google::protobuf::uint32 maxmp() const;
+  void set_maxmp(::google::protobuf::uint32 value);
+
+  // optional uint32 MartialclubID = 54;
+  void clear_martialclubid();
+  static const int kMartialclubIDFieldNumber = 54;
+  ::google::protobuf::uint32 martialclubid() const;
+  void set_martialclubid(::google::protobuf::uint32 value);
+
+  // optional uint32 nBreak = 55;
+  void clear_nbreak();
+  static const int kNBreakFieldNumber = 55;
+  ::google::protobuf::uint32 nbreak() const;
+  void set_nbreak(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:proto3.PlayerInfo)
  private:
 
@@ -629,9 +722,10 @@ class PlayerInfo : public ::google::protobuf::MessageLite {
   ::google::protobuf::Arena* _arena_ptr_;
 
   bool _is_default_instance_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr uid_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 level_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint32 energy_;
   ::google::protobuf::uint32 energytime_;
   ::google::protobuf::uint32 exp_;
@@ -642,7 +736,14 @@ class PlayerInfo : public ::google::protobuf::MessageLite {
   ::google::protobuf::internal::ArenaStringPtr currenttitle_;
   ::google::protobuf::internal::ArenaStringPtr arenarank_;
   ::google::protobuf::internal::ArenaStringPtr arenahonor_;
+  ::proto3::PlayerExtraInfo* extra_;
   ::google::protobuf::uint32 huashanranking_;
+  ::google::protobuf::uint32 hp_;
+  ::google::protobuf::uint32 mp_;
+  ::google::protobuf::uint32 maxhp_;
+  ::google::protobuf::uint32 maxmp_;
+  ::google::protobuf::uint32 martialclubid_;
+  ::google::protobuf::uint32 nbreak_;
   mutable int _cached_size_;
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
@@ -1249,6 +1350,189 @@ class PlayerExtraInfo : public ::google::protobuf::MessageLite {
 
   void InitAsDefaultInstance();
   static PlayerExtraInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamInfo : public ::google::protobuf::MessageLite {
+ public:
+  TeamInfo();
+  virtual ~TeamInfo();
+
+  TeamInfo(const TeamInfo& from);
+
+  inline TeamInfo& operator=(const TeamInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const TeamInfo& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const TeamInfo* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(TeamInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  inline TeamInfo* New() const { return New(NULL); }
+
+  TeamInfo* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const TeamInfo& from);
+  void MergeFrom(const TeamInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TeamInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string uid = 11;
+  void clear_uid();
+  static const int kUidFieldNumber = 11;
+  const ::std::string& uid() const;
+  void set_uid(const ::std::string& value);
+  void set_uid(const char* value);
+  void set_uid(const char* value, size_t size);
+  ::std::string* mutable_uid();
+  ::std::string* release_uid();
+  void set_allocated_uid(::std::string* uid);
+
+  // optional string title = 1;
+  void clear_title();
+  static const int kTitleFieldNumber = 1;
+  const ::std::string& title() const;
+  void set_title(const ::std::string& value);
+  void set_title(const char* value);
+  void set_title(const char* value, size_t size);
+  ::std::string* mutable_title();
+  ::std::string* release_title();
+  void set_allocated_title(::std::string* title);
+
+  // optional uint32 levelLimit = 2;
+  void clear_levellimit();
+  static const int kLevelLimitFieldNumber = 2;
+  ::google::protobuf::uint32 levellimit() const;
+  void set_levellimit(::google::protobuf::uint32 value);
+
+  // optional uint32 professionLimit = 3;
+  void clear_professionlimit();
+  static const int kProfessionLimitFieldNumber = 3;
+  ::google::protobuf::uint32 professionlimit() const;
+  void set_professionlimit(::google::protobuf::uint32 value);
+
+  // optional uint32 dungeonId = 4;
+  void clear_dungeonid();
+  static const int kDungeonIdFieldNumber = 4;
+  ::google::protobuf::uint32 dungeonid() const;
+  void set_dungeonid(::google::protobuf::uint32 value);
+
+  // optional uint32 difficulty = 5;
+  void clear_difficulty();
+  static const int kDifficultyFieldNumber = 5;
+  ::google::protobuf::uint32 difficulty() const;
+  void set_difficulty(::google::protobuf::uint32 value);
+
+  // optional uint32 capacity = 6;
+  void clear_capacity();
+  static const int kCapacityFieldNumber = 6;
+  ::google::protobuf::uint32 capacity() const;
+  void set_capacity(::google::protobuf::uint32 value);
+
+  // repeated .proto3.PlayerInfo members = 7;
+  int members_size() const;
+  void clear_members();
+  static const int kMembersFieldNumber = 7;
+  const ::proto3::PlayerInfo& members(int index) const;
+  ::proto3::PlayerInfo* mutable_members(int index);
+  ::proto3::PlayerInfo* add_members();
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+      mutable_members();
+  const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+      members() const;
+
+  // repeated .proto3.PlayerInfo recruits = 8;
+  int recruits_size() const;
+  void clear_recruits();
+  static const int kRecruitsFieldNumber = 8;
+  const ::proto3::PlayerInfo& recruits(int index) const;
+  ::proto3::PlayerInfo* mutable_recruits(int index);
+  ::proto3::PlayerInfo* add_recruits();
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+      mutable_recruits();
+  const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+      recruits() const;
+
+  // repeated .proto3.PlayerInfo joins = 9;
+  int joins_size() const;
+  void clear_joins();
+  static const int kJoinsFieldNumber = 9;
+  const ::proto3::PlayerInfo& joins(int index) const;
+  ::proto3::PlayerInfo* mutable_joins(int index);
+  ::proto3::PlayerInfo* add_joins();
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+      mutable_joins();
+  const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+      joins() const;
+
+  // @@protoc_insertion_point(class_scope:proto3.TeamInfo)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr uid_;
+  ::google::protobuf::internal::ArenaStringPtr title_;
+  ::google::protobuf::uint32 levellimit_;
+  ::google::protobuf::uint32 professionlimit_;
+  ::google::protobuf::uint32 dungeonid_;
+  ::google::protobuf::uint32 difficulty_;
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo > members_;
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo > recruits_;
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo > joins_;
+  ::google::protobuf::uint32 capacity_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -4214,6 +4498,250 @@ class StageLootRewardData : public ::google::protobuf::MessageLite {
 };
 // -------------------------------------------------------------------
 
+class TaskInfoData : public ::google::protobuf::MessageLite {
+ public:
+  TaskInfoData();
+  virtual ~TaskInfoData();
+
+  TaskInfoData(const TaskInfoData& from);
+
+  inline TaskInfoData& operator=(const TaskInfoData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const TaskInfoData& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const TaskInfoData* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(TaskInfoData* other);
+
+  // implements Message ----------------------------------------------
+
+  inline TaskInfoData* New() const { return New(NULL); }
+
+  TaskInfoData* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const TaskInfoData& from);
+  void MergeFrom(const TaskInfoData& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TaskInfoData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 NextTaskId = 1;
+  void clear_nexttaskid();
+  static const int kNextTaskIdFieldNumber = 1;
+  ::google::protobuf::uint32 nexttaskid() const;
+  void set_nexttaskid(::google::protobuf::uint32 value);
+
+  // optional uint32 LevelLimit = 2;
+  void clear_levellimit();
+  static const int kLevelLimitFieldNumber = 2;
+  ::google::protobuf::uint32 levellimit() const;
+  void set_levellimit(::google::protobuf::uint32 value);
+
+  // optional uint32 RecommendLevel = 3;
+  void clear_recommendlevel();
+  static const int kRecommendLevelFieldNumber = 3;
+  ::google::protobuf::uint32 recommendlevel() const;
+  void set_recommendlevel(::google::protobuf::uint32 value);
+
+  // optional string TaskName = 4;
+  void clear_taskname();
+  static const int kTaskNameFieldNumber = 4;
+  const ::std::string& taskname() const;
+  void set_taskname(const ::std::string& value);
+  void set_taskname(const char* value);
+  void set_taskname(const char* value, size_t size);
+  ::std::string* mutable_taskname();
+  ::std::string* release_taskname();
+  void set_allocated_taskname(::std::string* taskname);
+
+  // optional uint32 TaskType = 5;
+  void clear_tasktype();
+  static const int kTaskTypeFieldNumber = 5;
+  ::google::protobuf::uint32 tasktype() const;
+  void set_tasktype(::google::protobuf::uint32 value);
+
+  // optional uint32 TriggerType = 6;
+  void clear_triggertype();
+  static const int kTriggerTypeFieldNumber = 6;
+  ::google::protobuf::uint32 triggertype() const;
+  void set_triggertype(::google::protobuf::uint32 value);
+
+  // optional uint32 LimitTime = 7;
+  void clear_limittime();
+  static const int kLimitTimeFieldNumber = 7;
+  ::google::protobuf::uint32 limittime() const;
+  void set_limittime(::google::protobuf::uint32 value);
+
+  // optional uint32 AcceptNPCID = 8;
+  void clear_acceptnpcid();
+  static const int kAcceptNPCIDFieldNumber = 8;
+  ::google::protobuf::uint32 acceptnpcid() const;
+  void set_acceptnpcid(::google::protobuf::uint32 value);
+
+  // optional uint32 ConsignNPCID = 9;
+  void clear_consignnpcid();
+  static const int kConsignNPCIDFieldNumber = 9;
+  ::google::protobuf::uint32 consignnpcid() const;
+  void set_consignnpcid(::google::protobuf::uint32 value);
+
+  // optional uint32 TargetID = 10;
+  void clear_targetid();
+  static const int kTargetIDFieldNumber = 10;
+  ::google::protobuf::uint32 targetid() const;
+  void set_targetid(::google::protobuf::uint32 value);
+
+  // optional uint32 SceneID = 11;
+  void clear_sceneid();
+  static const int kSceneIDFieldNumber = 11;
+  ::google::protobuf::uint32 sceneid() const;
+  void set_sceneid(::google::protobuf::uint32 value);
+
+  // optional uint32 TargetNum = 12;
+  void clear_targetnum();
+  static const int kTargetNumFieldNumber = 12;
+  ::google::protobuf::uint32 targetnum() const;
+  void set_targetnum(::google::protobuf::uint32 value);
+
+  // optional uint32 RewardGold = 13;
+  void clear_rewardgold();
+  static const int kRewardGoldFieldNumber = 13;
+  ::google::protobuf::uint32 rewardgold() const;
+  void set_rewardgold(::google::protobuf::uint32 value);
+
+  // optional uint32 RewardEXP = 14;
+  void clear_rewardexp();
+  static const int kRewardEXPFieldNumber = 14;
+  ::google::protobuf::uint32 rewardexp() const;
+  void set_rewardexp(::google::protobuf::uint32 value);
+
+  // repeated uint32 RewardItemID = 15;
+  int rewarditemid_size() const;
+  void clear_rewarditemid();
+  static const int kRewardItemIDFieldNumber = 15;
+  ::google::protobuf::uint32 rewarditemid(int index) const;
+  void set_rewarditemid(int index, ::google::protobuf::uint32 value);
+  void add_rewarditemid(::google::protobuf::uint32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      rewarditemid() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_rewarditemid();
+
+  // repeated uint32 TalkContentID = 16;
+  int talkcontentid_size() const;
+  void clear_talkcontentid();
+  static const int kTalkContentIDFieldNumber = 16;
+  ::google::protobuf::uint32 talkcontentid(int index) const;
+  void set_talkcontentid(int index, ::google::protobuf::uint32 value);
+  void add_talkcontentid(::google::protobuf::uint32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      talkcontentid() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_talkcontentid();
+
+  // optional uint32 ConsignDialogID = 17;
+  void clear_consigndialogid();
+  static const int kConsignDialogIDFieldNumber = 17;
+  ::google::protobuf::uint32 consigndialogid() const;
+  void set_consigndialogid(::google::protobuf::uint32 value);
+
+  // optional uint32 FailedDialogID = 18;
+  void clear_faileddialogid();
+  static const int kFailedDialogIDFieldNumber = 18;
+  ::google::protobuf::uint32 faileddialogid() const;
+  void set_faileddialogid(::google::protobuf::uint32 value);
+
+  // optional uint32 DoingDialogID = 19;
+  void clear_doingdialogid();
+  static const int kDoingDialogIDFieldNumber = 19;
+  ::google::protobuf::uint32 doingdialogid() const;
+  void set_doingdialogid(::google::protobuf::uint32 value);
+
+  // optional uint32 DescriptionID = 20;
+  void clear_descriptionid();
+  static const int kDescriptionIDFieldNumber = 20;
+  ::google::protobuf::uint32 descriptionid() const;
+  void set_descriptionid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:proto3.TaskInfoData)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 nexttaskid_;
+  ::google::protobuf::uint32 levellimit_;
+  ::google::protobuf::internal::ArenaStringPtr taskname_;
+  ::google::protobuf::uint32 recommendlevel_;
+  ::google::protobuf::uint32 tasktype_;
+  ::google::protobuf::uint32 triggertype_;
+  ::google::protobuf::uint32 limittime_;
+  ::google::protobuf::uint32 acceptnpcid_;
+  ::google::protobuf::uint32 consignnpcid_;
+  ::google::protobuf::uint32 targetid_;
+  ::google::protobuf::uint32 sceneid_;
+  ::google::protobuf::uint32 targetnum_;
+  ::google::protobuf::uint32 rewardgold_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > rewarditemid_;
+  mutable int _rewarditemid_cached_byte_size_;
+  ::google::protobuf::uint32 rewardexp_;
+  ::google::protobuf::uint32 consigndialogid_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > talkcontentid_;
+  mutable int _talkcontentid_cached_byte_size_;
+  ::google::protobuf::uint32 faileddialogid_;
+  ::google::protobuf::uint32 doingdialogid_;
+  ::google::protobuf::uint32 descriptionid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static TaskInfoData* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class MsgBase : public ::google::protobuf::MessageLite {
  public:
   MsgBase();
@@ -4844,6 +5372,115 @@ class MsgZCEnter : public ::google::protobuf::MessageLite {
 
   void InitAsDefaultInstance();
   static MsgZCEnter* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgZCExit : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCExit();
+  virtual ~MsgZCExit();
+
+  MsgZCExit(const MsgZCExit& from);
+
+  inline MsgZCExit& operator=(const MsgZCExit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCExit& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCExit* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCExit* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCExit* New() const { return New(NULL); }
+
+  MsgZCExit* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCExit& from);
+  void MergeFrom(const MsgZCExit& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCExit* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.PlayerInfo playerInfo = 3;
+  bool has_playerinfo() const;
+  void clear_playerinfo();
+  static const int kPlayerInfoFieldNumber = 3;
+  const ::proto3::PlayerInfo& playerinfo() const;
+  ::proto3::PlayerInfo* mutable_playerinfo();
+  ::proto3::PlayerInfo* release_playerinfo();
+  void set_allocated_playerinfo(::proto3::PlayerInfo* playerinfo);
+
+  // optional .proto3.eResult result = 4;
+  void clear_result();
+  static const int kResultFieldNumber = 4;
+  ::proto3::eResult result() const;
+  void set_result(::proto3::eResult value);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCExit)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::PlayerInfo* playerinfo_;
+  ::google::protobuf::uint32 mid_;
+  int result_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCExit* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -6036,6 +6673,108 @@ class MsgZCMove : public ::google::protobuf::MessageLite {
 };
 // -------------------------------------------------------------------
 
+class MsgZCBroadcastPlayer : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCBroadcastPlayer();
+  virtual ~MsgZCBroadcastPlayer();
+
+  MsgZCBroadcastPlayer(const MsgZCBroadcastPlayer& from);
+
+  inline MsgZCBroadcastPlayer& operator=(const MsgZCBroadcastPlayer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCBroadcastPlayer& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCBroadcastPlayer* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCBroadcastPlayer* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCBroadcastPlayer* New() const { return New(NULL); }
+
+  MsgZCBroadcastPlayer* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCBroadcastPlayer& from);
+  void MergeFrom(const MsgZCBroadcastPlayer& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCBroadcastPlayer* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.PlayerInfo player = 2;
+  bool has_player() const;
+  void clear_player();
+  static const int kPlayerFieldNumber = 2;
+  const ::proto3::PlayerInfo& player() const;
+  ::proto3::PlayerInfo* mutable_player();
+  ::proto3::PlayerInfo* release_player();
+  void set_allocated_player(::proto3::PlayerInfo* player);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCBroadcastPlayer)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::PlayerInfo* player_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCBroadcastPlayer* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class MsgZCSyncPlayers : public ::google::protobuf::MessageLite {
  public:
   MsgZCSyncPlayers();
@@ -6601,6 +7340,1414 @@ class MsgZCEnterArena : public ::google::protobuf::MessageLite {
 
   void InitAsDefaultInstance();
   static MsgZCEnterArena* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgZCTeamBroadcast : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCTeamBroadcast();
+  virtual ~MsgZCTeamBroadcast();
+
+  MsgZCTeamBroadcast(const MsgZCTeamBroadcast& from);
+
+  inline MsgZCTeamBroadcast& operator=(const MsgZCTeamBroadcast& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCTeamBroadcast& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCTeamBroadcast* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCTeamBroadcast* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCTeamBroadcast* New() const { return New(NULL); }
+
+  MsgZCTeamBroadcast* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCTeamBroadcast& from);
+  void MergeFrom(const MsgZCTeamBroadcast& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCTeamBroadcast* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // repeated .proto3.TeamInfo team = 2;
+  int team_size() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team(int index) const;
+  ::proto3::TeamInfo* mutable_team(int index);
+  ::proto3::TeamInfo* add_team();
+  ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >*
+      mutable_team();
+  const ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >&
+      team() const;
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCTeamBroadcast)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo > team_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCTeamBroadcast* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamCreate : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamCreate();
+  virtual ~MsgCZTeamCreate();
+
+  MsgCZTeamCreate(const MsgCZTeamCreate& from);
+
+  inline MsgCZTeamCreate& operator=(const MsgCZTeamCreate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamCreate& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamCreate* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamCreate* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamCreate* New() const { return New(NULL); }
+
+  MsgCZTeamCreate* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamCreate& from);
+  void MergeFrom(const MsgCZTeamCreate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamCreate* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional uint32 reason = 2;
+  void clear_reason();
+  static const int kReasonFieldNumber = 2;
+  ::google::protobuf::uint32 reason() const;
+  void set_reason(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamCreate)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 mid_;
+  ::google::protobuf::uint32 reason_;
+  ::proto3::TeamInfo* team_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamCreate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamEdit : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamEdit();
+  virtual ~MsgCZTeamEdit();
+
+  MsgCZTeamEdit(const MsgCZTeamEdit& from);
+
+  inline MsgCZTeamEdit& operator=(const MsgCZTeamEdit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamEdit& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamEdit* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamEdit* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamEdit* New() const { return New(NULL); }
+
+  MsgCZTeamEdit* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamEdit& from);
+  void MergeFrom(const MsgCZTeamEdit& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamEdit* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional uint32 reason = 2;
+  void clear_reason();
+  static const int kReasonFieldNumber = 2;
+  ::google::protobuf::uint32 reason() const;
+  void set_reason(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamEdit)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 mid_;
+  ::google::protobuf::uint32 reason_;
+  ::proto3::TeamInfo* team_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamEdit* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgZCTeamUpdate : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCTeamUpdate();
+  virtual ~MsgZCTeamUpdate();
+
+  MsgZCTeamUpdate(const MsgZCTeamUpdate& from);
+
+  inline MsgZCTeamUpdate& operator=(const MsgZCTeamUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCTeamUpdate& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCTeamUpdate* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCTeamUpdate* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCTeamUpdate* New() const { return New(NULL); }
+
+  MsgZCTeamUpdate* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCTeamUpdate& from);
+  void MergeFrom(const MsgZCTeamUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCTeamUpdate* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 2;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // optional .proto3.eTeamOp op = 3;
+  void clear_op();
+  static const int kOpFieldNumber = 3;
+  ::proto3::eTeamOp op() const;
+  void set_op(::proto3::eTeamOp value);
+
+  // optional .proto3.eResult result = 4;
+  void clear_result();
+  static const int kResultFieldNumber = 4;
+  ::proto3::eResult result() const;
+  void set_result(::proto3::eResult value);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCTeamUpdate)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  int op_;
+  int result_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCTeamUpdate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamDismiss : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamDismiss();
+  virtual ~MsgCZTeamDismiss();
+
+  MsgCZTeamDismiss(const MsgCZTeamDismiss& from);
+
+  inline MsgCZTeamDismiss& operator=(const MsgCZTeamDismiss& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamDismiss& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamDismiss* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamDismiss* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamDismiss* New() const { return New(NULL); }
+
+  MsgCZTeamDismiss* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamDismiss& from);
+  void MergeFrom(const MsgCZTeamDismiss& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamDismiss* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamDismiss)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamDismiss* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamKick : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamKick();
+  virtual ~MsgCZTeamKick();
+
+  MsgCZTeamKick(const MsgCZTeamKick& from);
+
+  inline MsgCZTeamKick& operator=(const MsgCZTeamKick& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamKick& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamKick* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamKick* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamKick* New() const { return New(NULL); }
+
+  MsgCZTeamKick* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamKick& from);
+  void MergeFrom(const MsgCZTeamKick& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamKick* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // optional .proto3.PlayerInfo targets = 4;
+  bool has_targets() const;
+  void clear_targets();
+  static const int kTargetsFieldNumber = 4;
+  const ::proto3::PlayerInfo& targets() const;
+  ::proto3::PlayerInfo* mutable_targets();
+  ::proto3::PlayerInfo* release_targets();
+  void set_allocated_targets(::proto3::PlayerInfo* targets);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamKick)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::proto3::PlayerInfo* targets_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamKick* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamLeave : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamLeave();
+  virtual ~MsgCZTeamLeave();
+
+  MsgCZTeamLeave(const MsgCZTeamLeave& from);
+
+  inline MsgCZTeamLeave& operator=(const MsgCZTeamLeave& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamLeave& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamLeave* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamLeave* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamLeave* New() const { return New(NULL); }
+
+  MsgCZTeamLeave* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamLeave& from);
+  void MergeFrom(const MsgCZTeamLeave& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamLeave* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional uint32 reason = 2;
+  void clear_reason();
+  static const int kReasonFieldNumber = 2;
+  ::google::protobuf::uint32 reason() const;
+  void set_reason(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamLeave)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 mid_;
+  ::google::protobuf::uint32 reason_;
+  ::proto3::TeamInfo* team_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamLeave* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamRecruit : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamRecruit();
+  virtual ~MsgCZTeamRecruit();
+
+  MsgCZTeamRecruit(const MsgCZTeamRecruit& from);
+
+  inline MsgCZTeamRecruit& operator=(const MsgCZTeamRecruit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamRecruit& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamRecruit* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamRecruit* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamRecruit* New() const { return New(NULL); }
+
+  MsgCZTeamRecruit* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamRecruit& from);
+  void MergeFrom(const MsgCZTeamRecruit& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamRecruit* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional uint32 reason = 2;
+  void clear_reason();
+  static const int kReasonFieldNumber = 2;
+  ::google::protobuf::uint32 reason() const;
+  void set_reason(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 3;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 3;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // repeated .proto3.PlayerInfo targets = 4;
+  int targets_size() const;
+  void clear_targets();
+  static const int kTargetsFieldNumber = 4;
+  const ::proto3::PlayerInfo& targets(int index) const;
+  ::proto3::PlayerInfo* mutable_targets(int index);
+  ::proto3::PlayerInfo* add_targets();
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+      mutable_targets();
+  const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+      targets() const;
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamRecruit)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 mid_;
+  ::google::protobuf::uint32 reason_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo > targets_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamRecruit* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgZCTeamInvite : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCTeamInvite();
+  virtual ~MsgZCTeamInvite();
+
+  MsgZCTeamInvite(const MsgZCTeamInvite& from);
+
+  inline MsgZCTeamInvite& operator=(const MsgZCTeamInvite& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCTeamInvite& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCTeamInvite* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCTeamInvite* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCTeamInvite* New() const { return New(NULL); }
+
+  MsgZCTeamInvite* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCTeamInvite& from);
+  void MergeFrom(const MsgZCTeamInvite& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCTeamInvite* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 2;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCTeamInvite)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCTeamInvite* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamInvite : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamInvite();
+  virtual ~MsgCZTeamInvite();
+
+  MsgCZTeamInvite(const MsgCZTeamInvite& from);
+
+  inline MsgCZTeamInvite& operator=(const MsgCZTeamInvite& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamInvite& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamInvite* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamInvite* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamInvite* New() const { return New(NULL); }
+
+  MsgCZTeamInvite* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamInvite& from);
+  void MergeFrom(const MsgCZTeamInvite& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamInvite* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 2;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // optional .proto3.eResult result = 3;
+  void clear_result();
+  static const int kResultFieldNumber = 3;
+  ::proto3::eResult result() const;
+  void set_result(::proto3::eResult value);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamInvite)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  int result_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamInvite* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamJoin : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamJoin();
+  virtual ~MsgCZTeamJoin();
+
+  MsgCZTeamJoin(const MsgCZTeamJoin& from);
+
+  inline MsgCZTeamJoin& operator=(const MsgCZTeamJoin& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamJoin& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamJoin* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamJoin* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamJoin* New() const { return New(NULL); }
+
+  MsgCZTeamJoin* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamJoin& from);
+  void MergeFrom(const MsgCZTeamJoin& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamJoin* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 2;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamJoin)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamJoin* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgZCTeamApply : public ::google::protobuf::MessageLite {
+ public:
+  MsgZCTeamApply();
+  virtual ~MsgZCTeamApply();
+
+  MsgZCTeamApply(const MsgZCTeamApply& from);
+
+  inline MsgZCTeamApply& operator=(const MsgZCTeamApply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgZCTeamApply& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgZCTeamApply* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgZCTeamApply* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgZCTeamApply* New() const { return New(NULL); }
+
+  MsgZCTeamApply* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgZCTeamApply& from);
+  void MergeFrom(const MsgZCTeamApply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgZCTeamApply* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.TeamInfo team = 2;
+  bool has_team() const;
+  void clear_team();
+  static const int kTeamFieldNumber = 2;
+  const ::proto3::TeamInfo& team() const;
+  ::proto3::TeamInfo* mutable_team();
+  ::proto3::TeamInfo* release_team();
+  void set_allocated_team(::proto3::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgZCTeamApply)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::TeamInfo* team_;
+  ::google::protobuf::uint32 mid_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgZCTeamApply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgCZTeamApply : public ::google::protobuf::MessageLite {
+ public:
+  MsgCZTeamApply();
+  virtual ~MsgCZTeamApply();
+
+  MsgCZTeamApply(const MsgCZTeamApply& from);
+
+  inline MsgCZTeamApply& operator=(const MsgCZTeamApply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const MsgCZTeamApply& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const MsgCZTeamApply* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(MsgCZTeamApply* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgCZTeamApply* New() const { return New(NULL); }
+
+  MsgCZTeamApply* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const MsgCZTeamApply& from);
+  void MergeFrom(const MsgCZTeamApply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgCZTeamApply* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 mid = 1;
+  void clear_mid();
+  static const int kMidFieldNumber = 1;
+  ::google::protobuf::uint32 mid() const;
+  void set_mid(::google::protobuf::uint32 value);
+
+  // optional .proto3.PlayerInfo applicant = 2;
+  bool has_applicant() const;
+  void clear_applicant();
+  static const int kApplicantFieldNumber = 2;
+  const ::proto3::PlayerInfo& applicant() const;
+  ::proto3::PlayerInfo* mutable_applicant();
+  ::proto3::PlayerInfo* release_applicant();
+  void set_allocated_applicant(::proto3::PlayerInfo* applicant);
+
+  // optional .proto3.eResult result = 3;
+  void clear_result();
+  static const int kResultFieldNumber = 3;
+  ::proto3::eResult result() const;
+  void set_result(::proto3::eResult value);
+
+  // @@protoc_insertion_point(class_scope:proto3.MsgCZTeamApply)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  bool _is_default_instance_;
+  ::proto3::PlayerInfo* applicant_;
+  ::google::protobuf::uint32 mid_;
+  int result_;
+  mutable int _cached_size_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_game_5fprotocol_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_game_5fprotocol_2eproto();
+  friend void protobuf_ShutdownFile_game_5fprotocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgCZTeamApply* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -8008,6 +10155,50 @@ inline void PlayerInfo::set_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:proto3.PlayerInfo.id)
 }
 
+// optional string uid = 4;
+inline void PlayerInfo::clear_uid() {
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PlayerInfo::uid() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.uid)
+  return uid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerInfo::set_uid(const ::std::string& value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.uid)
+}
+inline void PlayerInfo::set_uid(const char* value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.PlayerInfo.uid)
+}
+inline void PlayerInfo::set_uid(const char* value, size_t size) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.PlayerInfo.uid)
+}
+inline ::std::string* PlayerInfo::mutable_uid() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.PlayerInfo.uid)
+  return uid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerInfo::release_uid() {
+  // @@protoc_insertion_point(field_release:proto3.PlayerInfo.uid)
+  
+  return uid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerInfo::set_allocated_uid(::std::string* uid) {
+  if (uid != NULL) {
+    
+  } else {
+    
+  }
+  uid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), uid);
+  // @@protoc_insertion_point(field_set_allocated:proto3.PlayerInfo.uid)
+}
+
 // optional string name = 2;
 inline void PlayerInfo::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -8338,6 +10529,132 @@ inline void PlayerInfo::set_huashanranking(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:proto3.PlayerInfo.HuashanRanking)
 }
 
+// optional .proto3.PlayerExtraInfo extra = 30;
+inline bool PlayerInfo::has_extra() const {
+  return !_is_default_instance_ && extra_ != NULL;
+}
+inline void PlayerInfo::clear_extra() {
+  if (GetArenaNoVirtual() == NULL && extra_ != NULL) delete extra_;
+  extra_ = NULL;
+}
+inline const ::proto3::PlayerExtraInfo& PlayerInfo::extra() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.extra)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return extra_ != NULL ? *extra_ : *default_instance().extra_;
+#else
+  return extra_ != NULL ? *extra_ : *default_instance_->extra_;
+#endif
+}
+inline ::proto3::PlayerExtraInfo* PlayerInfo::mutable_extra() {
+  
+  if (extra_ == NULL) {
+    extra_ = new ::proto3::PlayerExtraInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.PlayerInfo.extra)
+  return extra_;
+}
+inline ::proto3::PlayerExtraInfo* PlayerInfo::release_extra() {
+  // @@protoc_insertion_point(field_release:proto3.PlayerInfo.extra)
+  
+  ::proto3::PlayerExtraInfo* temp = extra_;
+  extra_ = NULL;
+  return temp;
+}
+inline void PlayerInfo::set_allocated_extra(::proto3::PlayerExtraInfo* extra) {
+  delete extra_;
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.PlayerInfo.extra)
+}
+
+// optional uint32 HP = 50;
+inline void PlayerInfo::clear_hp() {
+  hp_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::hp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.HP)
+  return hp_;
+}
+inline void PlayerInfo::set_hp(::google::protobuf::uint32 value) {
+  
+  hp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.HP)
+}
+
+// optional uint32 MP = 51;
+inline void PlayerInfo::clear_mp() {
+  mp_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::mp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MP)
+  return mp_;
+}
+inline void PlayerInfo::set_mp(::google::protobuf::uint32 value) {
+  
+  mp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MP)
+}
+
+// optional uint32 MaxHP = 52;
+inline void PlayerInfo::clear_maxhp() {
+  maxhp_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::maxhp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MaxHP)
+  return maxhp_;
+}
+inline void PlayerInfo::set_maxhp(::google::protobuf::uint32 value) {
+  
+  maxhp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MaxHP)
+}
+
+// optional uint32 MaxMP = 53;
+inline void PlayerInfo::clear_maxmp() {
+  maxmp_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::maxmp() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MaxMP)
+  return maxmp_;
+}
+inline void PlayerInfo::set_maxmp(::google::protobuf::uint32 value) {
+  
+  maxmp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MaxMP)
+}
+
+// optional uint32 MartialclubID = 54;
+inline void PlayerInfo::clear_martialclubid() {
+  martialclubid_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::martialclubid() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.MartialclubID)
+  return martialclubid_;
+}
+inline void PlayerInfo::set_martialclubid(::google::protobuf::uint32 value) {
+  
+  martialclubid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.MartialclubID)
+}
+
+// optional uint32 nBreak = 55;
+inline void PlayerInfo::clear_nbreak() {
+  nbreak_ = 0u;
+}
+inline ::google::protobuf::uint32 PlayerInfo::nbreak() const {
+  // @@protoc_insertion_point(field_get:proto3.PlayerInfo.nBreak)
+  return nbreak_;
+}
+inline void PlayerInfo::set_nbreak(::google::protobuf::uint32 value) {
+  
+  nbreak_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlayerInfo.nBreak)
+}
+
 // -------------------------------------------------------------------
 
 // PlayerExtraInfo_BattleSkill
@@ -8538,6 +10855,258 @@ inline const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerExtraInfo_Kua
 PlayerExtraInfo::kuangfuhouseskill() const {
   // @@protoc_insertion_point(field_list:proto3.PlayerExtraInfo.kuangfuhouseskill)
   return kuangfuhouseskill_;
+}
+
+// -------------------------------------------------------------------
+
+// TeamInfo
+
+// optional string uid = 11;
+inline void TeamInfo::clear_uid() {
+  uid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TeamInfo::uid() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.uid)
+  return uid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TeamInfo::set_uid(const ::std::string& value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.uid)
+}
+inline void TeamInfo::set_uid(const char* value) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TeamInfo.uid)
+}
+inline void TeamInfo::set_uid(const char* value, size_t size) {
+  
+  uid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TeamInfo.uid)
+}
+inline ::std::string* TeamInfo::mutable_uid() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.uid)
+  return uid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TeamInfo::release_uid() {
+  // @@protoc_insertion_point(field_release:proto3.TeamInfo.uid)
+  
+  return uid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TeamInfo::set_allocated_uid(::std::string* uid) {
+  if (uid != NULL) {
+    
+  } else {
+    
+  }
+  uid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), uid);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TeamInfo.uid)
+}
+
+// optional string title = 1;
+inline void TeamInfo::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TeamInfo::title() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TeamInfo::set_title(const ::std::string& value) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.title)
+}
+inline void TeamInfo::set_title(const char* value) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TeamInfo.title)
+}
+inline void TeamInfo::set_title(const char* value, size_t size) {
+  
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TeamInfo.title)
+}
+inline ::std::string* TeamInfo::mutable_title() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TeamInfo::release_title() {
+  // @@protoc_insertion_point(field_release:proto3.TeamInfo.title)
+  
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TeamInfo::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    
+  } else {
+    
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TeamInfo.title)
+}
+
+// optional uint32 levelLimit = 2;
+inline void TeamInfo::clear_levellimit() {
+  levellimit_ = 0u;
+}
+inline ::google::protobuf::uint32 TeamInfo::levellimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.levelLimit)
+  return levellimit_;
+}
+inline void TeamInfo::set_levellimit(::google::protobuf::uint32 value) {
+  
+  levellimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.levelLimit)
+}
+
+// optional uint32 professionLimit = 3;
+inline void TeamInfo::clear_professionlimit() {
+  professionlimit_ = 0u;
+}
+inline ::google::protobuf::uint32 TeamInfo::professionlimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.professionLimit)
+  return professionlimit_;
+}
+inline void TeamInfo::set_professionlimit(::google::protobuf::uint32 value) {
+  
+  professionlimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.professionLimit)
+}
+
+// optional uint32 dungeonId = 4;
+inline void TeamInfo::clear_dungeonid() {
+  dungeonid_ = 0u;
+}
+inline ::google::protobuf::uint32 TeamInfo::dungeonid() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.dungeonId)
+  return dungeonid_;
+}
+inline void TeamInfo::set_dungeonid(::google::protobuf::uint32 value) {
+  
+  dungeonid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.dungeonId)
+}
+
+// optional uint32 difficulty = 5;
+inline void TeamInfo::clear_difficulty() {
+  difficulty_ = 0u;
+}
+inline ::google::protobuf::uint32 TeamInfo::difficulty() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.difficulty)
+  return difficulty_;
+}
+inline void TeamInfo::set_difficulty(::google::protobuf::uint32 value) {
+  
+  difficulty_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.difficulty)
+}
+
+// optional uint32 capacity = 6;
+inline void TeamInfo::clear_capacity() {
+  capacity_ = 0u;
+}
+inline ::google::protobuf::uint32 TeamInfo::capacity() const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.capacity)
+  return capacity_;
+}
+inline void TeamInfo::set_capacity(::google::protobuf::uint32 value) {
+  
+  capacity_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TeamInfo.capacity)
+}
+
+// repeated .proto3.PlayerInfo members = 7;
+inline int TeamInfo::members_size() const {
+  return members_.size();
+}
+inline void TeamInfo::clear_members() {
+  members_.Clear();
+}
+inline const ::proto3::PlayerInfo& TeamInfo::members(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.members)
+  return members_.Get(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::mutable_members(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.members)
+  return members_.Mutable(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::add_members() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.members)
+  return members_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_members() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.members)
+  return &members_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::members() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.members)
+  return members_;
+}
+
+// repeated .proto3.PlayerInfo recruits = 8;
+inline int TeamInfo::recruits_size() const {
+  return recruits_.size();
+}
+inline void TeamInfo::clear_recruits() {
+  recruits_.Clear();
+}
+inline const ::proto3::PlayerInfo& TeamInfo::recruits(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.recruits)
+  return recruits_.Get(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::mutable_recruits(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.recruits)
+  return recruits_.Mutable(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::add_recruits() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.recruits)
+  return recruits_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_recruits() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.recruits)
+  return &recruits_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::recruits() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.recruits)
+  return recruits_;
+}
+
+// repeated .proto3.PlayerInfo joins = 9;
+inline int TeamInfo::joins_size() const {
+  return joins_.size();
+}
+inline void TeamInfo::clear_joins() {
+  joins_.Clear();
+}
+inline const ::proto3::PlayerInfo& TeamInfo::joins(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TeamInfo.joins)
+  return joins_.Get(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::mutable_joins(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.TeamInfo.joins)
+  return joins_.Mutable(index);
+}
+inline ::proto3::PlayerInfo* TeamInfo::add_joins() {
+  // @@protoc_insertion_point(field_add:proto3.TeamInfo.joins)
+  return joins_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+TeamInfo::mutable_joins() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TeamInfo.joins)
+  return &joins_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+TeamInfo::joins() const {
+  // @@protoc_insertion_point(field_list:proto3.TeamInfo.joins)
+  return joins_;
 }
 
 // -------------------------------------------------------------------
@@ -11059,6 +13628,352 @@ StageLootRewardData::nloot_random_task() const {
 
 // -------------------------------------------------------------------
 
+// TaskInfoData
+
+// optional uint32 NextTaskId = 1;
+inline void TaskInfoData::clear_nexttaskid() {
+  nexttaskid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::nexttaskid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.NextTaskId)
+  return nexttaskid_;
+}
+inline void TaskInfoData::set_nexttaskid(::google::protobuf::uint32 value) {
+  
+  nexttaskid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.NextTaskId)
+}
+
+// optional uint32 LevelLimit = 2;
+inline void TaskInfoData::clear_levellimit() {
+  levellimit_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::levellimit() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.LevelLimit)
+  return levellimit_;
+}
+inline void TaskInfoData::set_levellimit(::google::protobuf::uint32 value) {
+  
+  levellimit_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.LevelLimit)
+}
+
+// optional uint32 RecommendLevel = 3;
+inline void TaskInfoData::clear_recommendlevel() {
+  recommendlevel_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::recommendlevel() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RecommendLevel)
+  return recommendlevel_;
+}
+inline void TaskInfoData::set_recommendlevel(::google::protobuf::uint32 value) {
+  
+  recommendlevel_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RecommendLevel)
+}
+
+// optional string TaskName = 4;
+inline void TaskInfoData::clear_taskname() {
+  taskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TaskInfoData::taskname() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TaskName)
+  return taskname_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TaskInfoData::set_taskname(const ::std::string& value) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TaskName)
+}
+inline void TaskInfoData::set_taskname(const char* value) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.TaskInfoData.TaskName)
+}
+inline void TaskInfoData::set_taskname(const char* value, size_t size) {
+  
+  taskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.TaskInfoData.TaskName)
+}
+inline ::std::string* TaskInfoData::mutable_taskname() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.TaskInfoData.TaskName)
+  return taskname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TaskInfoData::release_taskname() {
+  // @@protoc_insertion_point(field_release:proto3.TaskInfoData.TaskName)
+  
+  return taskname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TaskInfoData::set_allocated_taskname(::std::string* taskname) {
+  if (taskname != NULL) {
+    
+  } else {
+    
+  }
+  taskname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), taskname);
+  // @@protoc_insertion_point(field_set_allocated:proto3.TaskInfoData.TaskName)
+}
+
+// optional uint32 TaskType = 5;
+inline void TaskInfoData::clear_tasktype() {
+  tasktype_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::tasktype() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TaskType)
+  return tasktype_;
+}
+inline void TaskInfoData::set_tasktype(::google::protobuf::uint32 value) {
+  
+  tasktype_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TaskType)
+}
+
+// optional uint32 TriggerType = 6;
+inline void TaskInfoData::clear_triggertype() {
+  triggertype_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::triggertype() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TriggerType)
+  return triggertype_;
+}
+inline void TaskInfoData::set_triggertype(::google::protobuf::uint32 value) {
+  
+  triggertype_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TriggerType)
+}
+
+// optional uint32 LimitTime = 7;
+inline void TaskInfoData::clear_limittime() {
+  limittime_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::limittime() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.LimitTime)
+  return limittime_;
+}
+inline void TaskInfoData::set_limittime(::google::protobuf::uint32 value) {
+  
+  limittime_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.LimitTime)
+}
+
+// optional uint32 AcceptNPCID = 8;
+inline void TaskInfoData::clear_acceptnpcid() {
+  acceptnpcid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::acceptnpcid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.AcceptNPCID)
+  return acceptnpcid_;
+}
+inline void TaskInfoData::set_acceptnpcid(::google::protobuf::uint32 value) {
+  
+  acceptnpcid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.AcceptNPCID)
+}
+
+// optional uint32 ConsignNPCID = 9;
+inline void TaskInfoData::clear_consignnpcid() {
+  consignnpcid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::consignnpcid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.ConsignNPCID)
+  return consignnpcid_;
+}
+inline void TaskInfoData::set_consignnpcid(::google::protobuf::uint32 value) {
+  
+  consignnpcid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.ConsignNPCID)
+}
+
+// optional uint32 TargetID = 10;
+inline void TaskInfoData::clear_targetid() {
+  targetid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::targetid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TargetID)
+  return targetid_;
+}
+inline void TaskInfoData::set_targetid(::google::protobuf::uint32 value) {
+  
+  targetid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TargetID)
+}
+
+// optional uint32 SceneID = 11;
+inline void TaskInfoData::clear_sceneid() {
+  sceneid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::sceneid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.SceneID)
+  return sceneid_;
+}
+inline void TaskInfoData::set_sceneid(::google::protobuf::uint32 value) {
+  
+  sceneid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.SceneID)
+}
+
+// optional uint32 TargetNum = 12;
+inline void TaskInfoData::clear_targetnum() {
+  targetnum_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::targetnum() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TargetNum)
+  return targetnum_;
+}
+inline void TaskInfoData::set_targetnum(::google::protobuf::uint32 value) {
+  
+  targetnum_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TargetNum)
+}
+
+// optional uint32 RewardGold = 13;
+inline void TaskInfoData::clear_rewardgold() {
+  rewardgold_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::rewardgold() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardGold)
+  return rewardgold_;
+}
+inline void TaskInfoData::set_rewardgold(::google::protobuf::uint32 value) {
+  
+  rewardgold_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardGold)
+}
+
+// optional uint32 RewardEXP = 14;
+inline void TaskInfoData::clear_rewardexp() {
+  rewardexp_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::rewardexp() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardEXP)
+  return rewardexp_;
+}
+inline void TaskInfoData::set_rewardexp(::google::protobuf::uint32 value) {
+  
+  rewardexp_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardEXP)
+}
+
+// repeated uint32 RewardItemID = 15;
+inline int TaskInfoData::rewarditemid_size() const {
+  return rewarditemid_.size();
+}
+inline void TaskInfoData::clear_rewarditemid() {
+  rewarditemid_.Clear();
+}
+inline ::google::protobuf::uint32 TaskInfoData::rewarditemid(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.RewardItemID)
+  return rewarditemid_.Get(index);
+}
+inline void TaskInfoData::set_rewarditemid(int index, ::google::protobuf::uint32 value) {
+  rewarditemid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.RewardItemID)
+}
+inline void TaskInfoData::add_rewarditemid(::google::protobuf::uint32 value) {
+  rewarditemid_.Add(value);
+  // @@protoc_insertion_point(field_add:proto3.TaskInfoData.RewardItemID)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+TaskInfoData::rewarditemid() const {
+  // @@protoc_insertion_point(field_list:proto3.TaskInfoData.RewardItemID)
+  return rewarditemid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+TaskInfoData::mutable_rewarditemid() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TaskInfoData.RewardItemID)
+  return &rewarditemid_;
+}
+
+// repeated uint32 TalkContentID = 16;
+inline int TaskInfoData::talkcontentid_size() const {
+  return talkcontentid_.size();
+}
+inline void TaskInfoData::clear_talkcontentid() {
+  talkcontentid_.Clear();
+}
+inline ::google::protobuf::uint32 TaskInfoData::talkcontentid(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.TalkContentID)
+  return talkcontentid_.Get(index);
+}
+inline void TaskInfoData::set_talkcontentid(int index, ::google::protobuf::uint32 value) {
+  talkcontentid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.TalkContentID)
+}
+inline void TaskInfoData::add_talkcontentid(::google::protobuf::uint32 value) {
+  talkcontentid_.Add(value);
+  // @@protoc_insertion_point(field_add:proto3.TaskInfoData.TalkContentID)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+TaskInfoData::talkcontentid() const {
+  // @@protoc_insertion_point(field_list:proto3.TaskInfoData.TalkContentID)
+  return talkcontentid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+TaskInfoData::mutable_talkcontentid() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.TaskInfoData.TalkContentID)
+  return &talkcontentid_;
+}
+
+// optional uint32 ConsignDialogID = 17;
+inline void TaskInfoData::clear_consigndialogid() {
+  consigndialogid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::consigndialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.ConsignDialogID)
+  return consigndialogid_;
+}
+inline void TaskInfoData::set_consigndialogid(::google::protobuf::uint32 value) {
+  
+  consigndialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.ConsignDialogID)
+}
+
+// optional uint32 FailedDialogID = 18;
+inline void TaskInfoData::clear_faileddialogid() {
+  faileddialogid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::faileddialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.FailedDialogID)
+  return faileddialogid_;
+}
+inline void TaskInfoData::set_faileddialogid(::google::protobuf::uint32 value) {
+  
+  faileddialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.FailedDialogID)
+}
+
+// optional uint32 DoingDialogID = 19;
+inline void TaskInfoData::clear_doingdialogid() {
+  doingdialogid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::doingdialogid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.DoingDialogID)
+  return doingdialogid_;
+}
+inline void TaskInfoData::set_doingdialogid(::google::protobuf::uint32 value) {
+  
+  doingdialogid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.DoingDialogID)
+}
+
+// optional uint32 DescriptionID = 20;
+inline void TaskInfoData::clear_descriptionid() {
+  descriptionid_ = 0u;
+}
+inline ::google::protobuf::uint32 TaskInfoData::descriptionid() const {
+  // @@protoc_insertion_point(field_get:proto3.TaskInfoData.DescriptionID)
+  return descriptionid_;
+}
+inline void TaskInfoData::set_descriptionid(::google::protobuf::uint32 value) {
+  
+  descriptionid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.TaskInfoData.DescriptionID)
+}
+
+// -------------------------------------------------------------------
+
 // MsgBase
 
 // optional uint32 mid = 1;
@@ -11639,6 +14554,80 @@ inline void MsgZCEnter::set_result(::proto3::eResult value) {
   
   result_ = value;
   // @@protoc_insertion_point(field_set:proto3.MsgZCEnter.result)
+}
+
+// -------------------------------------------------------------------
+
+// MsgZCExit
+
+// optional uint32 mid = 1;
+inline void MsgZCExit::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCExit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.mid)
+  return mid_;
+}
+inline void MsgZCExit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCExit.mid)
+}
+
+// optional .proto3.PlayerInfo playerInfo = 3;
+inline bool MsgZCExit::has_playerinfo() const {
+  return !_is_default_instance_ && playerinfo_ != NULL;
+}
+inline void MsgZCExit::clear_playerinfo() {
+  if (GetArenaNoVirtual() == NULL && playerinfo_ != NULL) delete playerinfo_;
+  playerinfo_ = NULL;
+}
+inline const ::proto3::PlayerInfo& MsgZCExit::playerinfo() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.playerInfo)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return playerinfo_ != NULL ? *playerinfo_ : *default_instance().playerinfo_;
+#else
+  return playerinfo_ != NULL ? *playerinfo_ : *default_instance_->playerinfo_;
+#endif
+}
+inline ::proto3::PlayerInfo* MsgZCExit::mutable_playerinfo() {
+  
+  if (playerinfo_ == NULL) {
+    playerinfo_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCExit.playerInfo)
+  return playerinfo_;
+}
+inline ::proto3::PlayerInfo* MsgZCExit::release_playerinfo() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCExit.playerInfo)
+  
+  ::proto3::PlayerInfo* temp = playerinfo_;
+  playerinfo_ = NULL;
+  return temp;
+}
+inline void MsgZCExit::set_allocated_playerinfo(::proto3::PlayerInfo* playerinfo) {
+  delete playerinfo_;
+  playerinfo_ = playerinfo;
+  if (playerinfo) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCExit.playerInfo)
+}
+
+// optional .proto3.eResult result = 4;
+inline void MsgZCExit::clear_result() {
+  result_ = 0;
+}
+inline ::proto3::eResult MsgZCExit::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+inline void MsgZCExit::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCExit.result)
 }
 
 // -------------------------------------------------------------------
@@ -12335,6 +15324,66 @@ inline void MsgZCMove::set_result(::proto3::eResult value) {
 
 // -------------------------------------------------------------------
 
+// MsgZCBroadcastPlayer
+
+// optional uint32 mid = 1;
+inline void MsgZCBroadcastPlayer::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCBroadcastPlayer::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCBroadcastPlayer.mid)
+  return mid_;
+}
+inline void MsgZCBroadcastPlayer::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCBroadcastPlayer.mid)
+}
+
+// optional .proto3.PlayerInfo player = 2;
+inline bool MsgZCBroadcastPlayer::has_player() const {
+  return !_is_default_instance_ && player_ != NULL;
+}
+inline void MsgZCBroadcastPlayer::clear_player() {
+  if (GetArenaNoVirtual() == NULL && player_ != NULL) delete player_;
+  player_ = NULL;
+}
+inline const ::proto3::PlayerInfo& MsgZCBroadcastPlayer::player() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCBroadcastPlayer.player)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return player_ != NULL ? *player_ : *default_instance().player_;
+#else
+  return player_ != NULL ? *player_ : *default_instance_->player_;
+#endif
+}
+inline ::proto3::PlayerInfo* MsgZCBroadcastPlayer::mutable_player() {
+  
+  if (player_ == NULL) {
+    player_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCBroadcastPlayer.player)
+  return player_;
+}
+inline ::proto3::PlayerInfo* MsgZCBroadcastPlayer::release_player() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCBroadcastPlayer.player)
+  
+  ::proto3::PlayerInfo* temp = player_;
+  player_ = NULL;
+  return temp;
+}
+inline void MsgZCBroadcastPlayer::set_allocated_player(::proto3::PlayerInfo* player) {
+  delete player_;
+  player_ = player;
+  if (player) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCBroadcastPlayer.player)
+}
+
+// -------------------------------------------------------------------
+
 // MsgZCSyncPlayers
 
 // optional uint32 mid = 1;
@@ -12741,6 +15790,958 @@ inline void MsgZCEnterArena::set_allocated_level(::std::string* level) {
   }
   level_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), level);
   // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCEnterArena.level)
+}
+
+// -------------------------------------------------------------------
+
+// MsgZCTeamBroadcast
+
+// optional uint32 mid = 1;
+inline void MsgZCTeamBroadcast::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCTeamBroadcast::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamBroadcast.mid)
+  return mid_;
+}
+inline void MsgZCTeamBroadcast::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamBroadcast.mid)
+}
+
+// repeated .proto3.TeamInfo team = 2;
+inline int MsgZCTeamBroadcast::team_size() const {
+  return team_.size();
+}
+inline void MsgZCTeamBroadcast::clear_team() {
+  team_.Clear();
+}
+inline const ::proto3::TeamInfo& MsgZCTeamBroadcast::team(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamBroadcast.team)
+  return team_.Get(index);
+}
+inline ::proto3::TeamInfo* MsgZCTeamBroadcast::mutable_team(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamBroadcast.team)
+  return team_.Mutable(index);
+}
+inline ::proto3::TeamInfo* MsgZCTeamBroadcast::add_team() {
+  // @@protoc_insertion_point(field_add:proto3.MsgZCTeamBroadcast.team)
+  return team_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >*
+MsgZCTeamBroadcast::mutable_team() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCTeamBroadcast.team)
+  return &team_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto3::TeamInfo >&
+MsgZCTeamBroadcast::team() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCTeamBroadcast.team)
+  return team_;
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamCreate
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamCreate::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamCreate::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.mid)
+  return mid_;
+}
+inline void MsgCZTeamCreate::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamCreate.mid)
+}
+
+// optional uint32 reason = 2;
+inline void MsgCZTeamCreate::clear_reason() {
+  reason_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamCreate::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.reason)
+  return reason_;
+}
+inline void MsgCZTeamCreate::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamCreate.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamCreate::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamCreate::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamCreate::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamCreate.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamCreate::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamCreate.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamCreate::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamCreate.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamCreate::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamCreate.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamEdit
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamEdit::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamEdit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.mid)
+  return mid_;
+}
+inline void MsgCZTeamEdit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamEdit.mid)
+}
+
+// optional uint32 reason = 2;
+inline void MsgCZTeamEdit::clear_reason() {
+  reason_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamEdit::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.reason)
+  return reason_;
+}
+inline void MsgCZTeamEdit::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamEdit.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamEdit::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamEdit::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamEdit::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamEdit.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamEdit::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamEdit.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamEdit::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamEdit.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamEdit::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamEdit.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgZCTeamUpdate
+
+// optional uint32 mid = 1;
+inline void MsgZCTeamUpdate::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCTeamUpdate::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.mid)
+  return mid_;
+}
+inline void MsgZCTeamUpdate::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+inline bool MsgZCTeamUpdate::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgZCTeamUpdate::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgZCTeamUpdate::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgZCTeamUpdate::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamUpdate.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgZCTeamUpdate::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamUpdate.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgZCTeamUpdate::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamUpdate.team)
+}
+
+// optional .proto3.eTeamOp op = 3;
+inline void MsgZCTeamUpdate::clear_op() {
+  op_ = 0;
+}
+inline ::proto3::eTeamOp MsgZCTeamUpdate::op() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.op)
+  return static_cast< ::proto3::eTeamOp >(op_);
+}
+inline void MsgZCTeamUpdate::set_op(::proto3::eTeamOp value) {
+  
+  op_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.op)
+}
+
+// optional .proto3.eResult result = 4;
+inline void MsgZCTeamUpdate::clear_result() {
+  result_ = 0;
+}
+inline ::proto3::eResult MsgZCTeamUpdate::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamUpdate.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+inline void MsgZCTeamUpdate::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamUpdate.result)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamDismiss
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamDismiss::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamDismiss::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamDismiss.mid)
+  return mid_;
+}
+inline void MsgCZTeamDismiss::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamDismiss.mid)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamDismiss::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamDismiss::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamDismiss::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamDismiss.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamDismiss::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamDismiss.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamDismiss::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamDismiss.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamDismiss::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamDismiss.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamKick
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamKick::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamKick::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.mid)
+  return mid_;
+}
+inline void MsgCZTeamKick::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamKick.mid)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamKick::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamKick::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamKick::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamKick::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamKick.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamKick::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamKick.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamKick::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamKick.team)
+}
+
+// optional .proto3.PlayerInfo targets = 4;
+inline bool MsgCZTeamKick::has_targets() const {
+  return !_is_default_instance_ && targets_ != NULL;
+}
+inline void MsgCZTeamKick::clear_targets() {
+  if (GetArenaNoVirtual() == NULL && targets_ != NULL) delete targets_;
+  targets_ = NULL;
+}
+inline const ::proto3::PlayerInfo& MsgCZTeamKick::targets() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamKick.targets)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return targets_ != NULL ? *targets_ : *default_instance().targets_;
+#else
+  return targets_ != NULL ? *targets_ : *default_instance_->targets_;
+#endif
+}
+inline ::proto3::PlayerInfo* MsgCZTeamKick::mutable_targets() {
+  
+  if (targets_ == NULL) {
+    targets_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamKick.targets)
+  return targets_;
+}
+inline ::proto3::PlayerInfo* MsgCZTeamKick::release_targets() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamKick.targets)
+  
+  ::proto3::PlayerInfo* temp = targets_;
+  targets_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamKick::set_allocated_targets(::proto3::PlayerInfo* targets) {
+  delete targets_;
+  targets_ = targets;
+  if (targets) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamKick.targets)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamLeave
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamLeave::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamLeave::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.mid)
+  return mid_;
+}
+inline void MsgCZTeamLeave::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamLeave.mid)
+}
+
+// optional uint32 reason = 2;
+inline void MsgCZTeamLeave::clear_reason() {
+  reason_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamLeave::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.reason)
+  return reason_;
+}
+inline void MsgCZTeamLeave::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamLeave.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamLeave::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamLeave::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamLeave::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamLeave.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamLeave::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamLeave.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamLeave::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamLeave.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamLeave::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamLeave.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamRecruit
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamRecruit::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamRecruit::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.mid)
+  return mid_;
+}
+inline void MsgCZTeamRecruit::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.mid)
+}
+
+// optional uint32 reason = 2;
+inline void MsgCZTeamRecruit::clear_reason() {
+  reason_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamRecruit::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.reason)
+  return reason_;
+}
+inline void MsgCZTeamRecruit::set_reason(::google::protobuf::uint32 value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.reason)
+}
+
+// optional .proto3.TeamInfo team = 3;
+inline bool MsgCZTeamRecruit::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamRecruit::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamRecruit::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamRecruit::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamRecruit::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamRecruit.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamRecruit::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamRecruit.team)
+}
+
+// repeated .proto3.PlayerInfo targets = 4;
+inline int MsgCZTeamRecruit::targets_size() const {
+  return targets_.size();
+}
+inline void MsgCZTeamRecruit::clear_targets() {
+  targets_.Clear();
+}
+inline const ::proto3::PlayerInfo& MsgCZTeamRecruit::targets(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Get(index);
+}
+inline ::proto3::PlayerInfo* MsgCZTeamRecruit::mutable_targets(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Mutable(index);
+}
+inline ::proto3::PlayerInfo* MsgCZTeamRecruit::add_targets() {
+  // @@protoc_insertion_point(field_add:proto3.MsgCZTeamRecruit.targets)
+  return targets_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
+MsgCZTeamRecruit::mutable_targets() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZTeamRecruit.targets)
+  return &targets_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
+MsgCZTeamRecruit::targets() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZTeamRecruit.targets)
+  return targets_;
+}
+
+// -------------------------------------------------------------------
+
+// MsgZCTeamInvite
+
+// optional uint32 mid = 1;
+inline void MsgZCTeamInvite::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCTeamInvite::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.mid)
+  return mid_;
+}
+inline void MsgZCTeamInvite::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamInvite.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+inline bool MsgZCTeamInvite::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgZCTeamInvite::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgZCTeamInvite::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgZCTeamInvite::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamInvite.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgZCTeamInvite::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamInvite.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgZCTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamInvite.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamInvite
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamInvite::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamInvite::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.mid)
+  return mid_;
+}
+inline void MsgCZTeamInvite::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+inline bool MsgCZTeamInvite::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamInvite::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamInvite::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamInvite::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamInvite.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamInvite::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamInvite.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamInvite.team)
+}
+
+// optional .proto3.eResult result = 3;
+inline void MsgCZTeamInvite::clear_result() {
+  result_ = 0;
+}
+inline ::proto3::eResult MsgCZTeamInvite::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+inline void MsgCZTeamInvite::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.result)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamJoin
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamJoin::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamJoin::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.mid)
+  return mid_;
+}
+inline void MsgCZTeamJoin::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoin.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+inline bool MsgCZTeamJoin::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgCZTeamJoin::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgCZTeamJoin::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgCZTeamJoin::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamJoin.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgCZTeamJoin::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamJoin.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamJoin::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamJoin.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgZCTeamApply
+
+// optional uint32 mid = 1;
+inline void MsgZCTeamApply::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgZCTeamApply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.mid)
+  return mid_;
+}
+inline void MsgZCTeamApply::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamApply.mid)
+}
+
+// optional .proto3.TeamInfo team = 2;
+inline bool MsgZCTeamApply::has_team() const {
+  return !_is_default_instance_ && team_ != NULL;
+}
+inline void MsgZCTeamApply::clear_team() {
+  if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
+  team_ = NULL;
+}
+inline const ::proto3::TeamInfo& MsgZCTeamApply::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.team)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return team_ != NULL ? *team_ : *default_instance().team_;
+#else
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+#endif
+}
+inline ::proto3::TeamInfo* MsgZCTeamApply::mutable_team() {
+  
+  if (team_ == NULL) {
+    team_ = new ::proto3::TeamInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamApply.team)
+  return team_;
+}
+inline ::proto3::TeamInfo* MsgZCTeamApply::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamApply.team)
+  
+  ::proto3::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void MsgZCTeamApply::set_allocated_team(::proto3::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamApply.team)
+}
+
+// -------------------------------------------------------------------
+
+// MsgCZTeamApply
+
+// optional uint32 mid = 1;
+inline void MsgCZTeamApply::clear_mid() {
+  mid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgCZTeamApply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.mid)
+  return mid_;
+}
+inline void MsgCZTeamApply::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.mid)
+}
+
+// optional .proto3.PlayerInfo applicant = 2;
+inline bool MsgCZTeamApply::has_applicant() const {
+  return !_is_default_instance_ && applicant_ != NULL;
+}
+inline void MsgCZTeamApply::clear_applicant() {
+  if (GetArenaNoVirtual() == NULL && applicant_ != NULL) delete applicant_;
+  applicant_ = NULL;
+}
+inline const ::proto3::PlayerInfo& MsgCZTeamApply::applicant() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.applicant)
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  return applicant_ != NULL ? *applicant_ : *default_instance().applicant_;
+#else
+  return applicant_ != NULL ? *applicant_ : *default_instance_->applicant_;
+#endif
+}
+inline ::proto3::PlayerInfo* MsgCZTeamApply::mutable_applicant() {
+  
+  if (applicant_ == NULL) {
+    applicant_ = new ::proto3::PlayerInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamApply.applicant)
+  return applicant_;
+}
+inline ::proto3::PlayerInfo* MsgCZTeamApply::release_applicant() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamApply.applicant)
+  
+  ::proto3::PlayerInfo* temp = applicant_;
+  applicant_ = NULL;
+  return temp;
+}
+inline void MsgCZTeamApply::set_allocated_applicant(::proto3::PlayerInfo* applicant) {
+  delete applicant_;
+  applicant_ = applicant;
+  if (applicant) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamApply.applicant)
+}
+
+// optional .proto3.eResult result = 3;
+inline void MsgCZTeamApply::clear_result() {
+  result_ = 0;
+}
+inline ::proto3::eResult MsgCZTeamApply::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+inline void MsgCZTeamApply::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.result)
 }
 
 // -------------------------------------------------------------------
@@ -13372,6 +17373,40 @@ MsgAZClientEnter::mutable_sid() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -13384,6 +17419,7 @@ namespace protobuf {
 template <> struct is_proto_enum< ::proto3::AccountType> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::proto3::eResult> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::proto3::eMoveType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::proto3::eTeamOp> : ::google::protobuf::internal::true_type {};
 
 }  // namespace protobuf
 }  // namespace google

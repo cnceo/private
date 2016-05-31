@@ -24,6 +24,7 @@
     <ClInclude Include="settings\DataProvider.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="utils\ObjectPool.h" />
+    <ClInclude Include="utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PandaNet.cpp" />
