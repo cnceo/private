@@ -1,0 +1,40 @@
+sharding:
+data slice,distribute stores massive data into clusters;
+consistent hash:
+ensure the same key been located to same address, even add or remove node; construct hash values space as a virsual loop, creates virsual nodes if too few nodes;
+when add or remove nodes, key will been relocate to next node nearby;
+
+Redis cluster:
+1,need 2 TCP ports: client port<port> and cluster bus port<port+10000>;
+2,docker: need to use the 'host networking mode';
+3,use hash slot instead of consistent hash,simply CRC16(key % 16384);
+
+Redis cluster deployment:
+1,Redis cluster configuration:
+config Redis instance to support cluster
+  cluster-enabled yes
+  cluster-config-file nodes.conf	#redis persists
+  cluster-node-timeout 5000
+  dir .		#data path,dont overlap
+  # requirepass	#dont use any authentications
+2,create directories for Redis instance within redis-server and config file;
+  /app/redis/7001/redis-server,redis.conf
+  /app/redis/7002/redis-server,redis.conf
+  ...
+3,startup Redis instances,at least 3 masters(slaves are optional)
+  cd /app/redis/7001;nohup redis-server redis.conf &
+  cd /app/redis/7002;nohup redis-server redis.conf &
+  ...
+  kill them:
+  ps -ef |grep '\[cluster\]'|awk '{print $2}'|xargs kill -9
+4,startup clusters
+install redis-trib first:
+  gem install redis
+startup by script:
+  redis-trib.rb create --replicas 1 192.168.0.254:7000 192.168.0.254:7001 192.168.0.254:7002 192.168.0.254:7003 192.168.0.254:7004 192.168.0.254:7005
+5,reshard clusters
+  redis-trib.rb add-node [--slave] 127.0.0.1:7006 127.0.0.1:7000
+  redis-trib.rb del-node 127.0.0.1:7000
+6,access
+  redis-cli -c -p 7000	#-c means enable clusters
+  >cluster slots	#retrieve cluster info
