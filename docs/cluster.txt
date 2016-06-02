@@ -33,8 +33,14 @@ install redis-trib first:
 startup by script:
   redis-trib.rb create --replicas 1 192.168.0.254:7000 192.168.0.254:7001 192.168.0.254:7002 192.168.0.254:7003 192.168.0.254:7004 192.168.0.254:7005
 5,reshard clusters
-  redis-trib.rb add-node [--slave] 127.0.0.1:7006 127.0.0.1:7000
-  redis-trib.rb del-node 127.0.0.1:7000
+  redis-trib.rb add-node [--slave] 127.0.0.1:7006 127.0.0.1:7000	#add 7006 into 7000(or random)
+  redis-trib.rb del-node 127.0.0.1:7000 '<node_id>'			#remove node_id from 7000(or random)
+  redis-trib.rb reshard 127.0.0.1:7000	#reshard 7000(or random)
+  redis-trib.rb check 127.0.0.1:7000
+
+  to remove slave,just del-node;to remove master,failover(turn into slave and upgrade it's slave to master) it then del-node;resharding needed.
 6,access
   redis-cli -c -p 7000	#-c means enable clusters
   >cluster slots	#retrieve cluster info
+  >cluster failover	#failover current node
+  redis-cli -p 7001 debug segfault	#debug crash node 7001
