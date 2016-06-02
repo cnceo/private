@@ -40,14 +40,21 @@ public:
 		_sh.unset_timer(id);
 	}
 	virtual std::string	address()const{
-		boost::asio::ip::tcp::endpoint remote_endpoint=_sh.socket().remote_endpoint();
-		boost::asio::ip::address address=remote_endpoint.address();
-		return address.to_string();
+		try{
+			boost::asio::ip::tcp::endpoint remote_endpoint=_sh.socket().remote_endpoint();
+			boost::asio::ip::address address=remote_endpoint.address();
+			return address.to_string();
+		} catch(...){
+			return "0.0.0.0";
+		}
 	}
 	virtual unsigned short	port()const{
-		boost::asio::ip::tcp::endpoint remote_endpoint=_sh.socket().remote_endpoint();
-		boost::asio::ip::address address=remote_endpoint.address();
-		return remote_endpoint.port();
+		try{
+			boost::asio::ip::tcp::endpoint remote_endpoint=_sh.socket().remote_endpoint();
+			return remote_endpoint.port();
+		} catch(...){
+			return 0;
+		}
 	}
 	virtual std::shared_ptr<void>&	sptr(){
 		return _sh.sptr();
