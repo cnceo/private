@@ -44,3 +44,19 @@ startup by script:
   >cluster slots	#retrieve cluster info
   >cluster failover	#failover current node
   redis-cli -p 7001 debug segfault	#debug crash node 7001
+  redis-check-aof --fix	#fix aof file
+
+Specification:
+1,use hash tag to ensure multiple keys been allocated in same same slot,e.g.{slot_part}:other_part,only slot_part been hashed for slot;
+2,only support single database,SELECT command unavailble;
+3,Clients usually need to fetch a complete list of slots and mapped node addresses in two different situations:
+  .At startup in order to populate the initial slots configuration.
+  .When a MOVED redirection is received.
+
+Application:
+keep low memory of single instance,e.g 20/30G in 96/128G machine;
+
+migration from MySQL to Redis:
+#cat m2r.sql
+SELECT CONCAT(redis_cmd,...,redis_key,...) FROM(SELECT ... FROM ...) AS t
+#mysql < m2r.sql | redis-cli --pipe

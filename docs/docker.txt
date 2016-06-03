@@ -1,0 +1,21 @@
+﻿Installation
+CentOS 6:
+#yum install http://mirrors.yun-idc.com/epel/6/i386/epel-release-6-8.noarch.rpm
+#yum install docket.io
+CentOS 7:
+#yum install docker
+
+Start & make auto start
+#service docker start
+#chkconfig docker on
+
+Pull image
+#docker search centos
+#docker pull ubuntu
+#docker images
+
+Run bash
+#docker run -t -i centos:latest /bin/bash
+
+Build image 
+docker build -t "panda:server" .
