@@ -74,3 +74,18 @@ mkdir build
 cd build
 ../configure --disable-checking --disable-multilib --enable-languages=c,c++ --prefix=/usr
 make -j 16
+
+python
+wget http://python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
+tar xvf Python-2.7.8.tar.xz
+./configure
+make -j
+make install
+mv /usr/bin/python /usr/bin/python-2.6.6
+ln -s /usr/local/bin/python /usr/bin/python
+vi /usr/bin/yum
+
+pip for python
+wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate
+python get-pip.py
+

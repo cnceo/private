@@ -9,4 +9,4 @@ RUN apt-get -y install ruby ruby-dev
 
 EXPOSE 443
 
-RUN gem install redis
+#RUN gem install redis
