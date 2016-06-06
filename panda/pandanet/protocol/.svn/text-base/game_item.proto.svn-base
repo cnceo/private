@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+//import "google/protobuf/unittest_import.proto";
+
+package proto3;
+
+// item file
+
+option optimize_for = LITE_RUNTIME;
+
+//  *** Data ---------------- Struct Define Begin *** 
+
+//单个道具
+message game_ItemInfo{
+	uint32 mid					= 1;
+	uint32 itemId			    = 2;	//
+	uint32 itemDataId			= 3;	//
+};
+
+//同步所有道具
+message game_itemInfos{
+	uint32 mid						 = 1;
+	repeated game_ItemInfo itemInfos = 2;//道具数组
+};
