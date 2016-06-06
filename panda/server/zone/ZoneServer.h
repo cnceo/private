@@ -35,6 +35,7 @@ public:
 	SocialSystem	socials;
 	TeamSystem		teams;
 	PlayerSystem	players;
+	PandaItem		pandaItems;
 };
 
 // --------------------------------------------------------

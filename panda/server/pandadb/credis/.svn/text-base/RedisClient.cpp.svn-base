@@ -745,7 +745,7 @@ CRedisConnection * CRedisServer::FetchConnection()
     if (!m_queIdleConn.empty())
     {
         pRedisConn = m_queIdleConn.front();
-        m_queIdleConn.pop();
+        //m_queIdleConn.pop();
     }
     m_mutexConn.unlock();
     return pRedisConn;
@@ -754,7 +754,7 @@ CRedisConnection * CRedisServer::FetchConnection()
 void CRedisServer::ReturnConnection(CRedisConnection *pRedisConn)
 {
     m_mutexConn.lock();
-    m_queIdleConn.push(pRedisConn);
+    //m_queIdleConn.push(pRedisConn);
     m_mutexConn.unlock();
 }
 
@@ -954,11 +954,11 @@ void CRedisClient::operator()()
             safeLock.WriteLock();
             if (m_bValid)
                 m_condAny.wait(safeLock);
-
+			if(false)//!m_bExit)
             m_bValid = m_bCluster ? LoadClusterSlots() : m_vecRedisServ[0]->Initialize();
         }
 
-        if (!m_bValid)
+        if (!m_bValid&&!m_bExit)
             std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }

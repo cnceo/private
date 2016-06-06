@@ -72,6 +72,10 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete MsgZCUpdateName::default_instance_;
   delete MsgCZEnterArena::default_instance_;
   delete MsgZCEnterArena::default_instance_;
+  delete MsgCZChallengeCreate::default_instance_;
+  delete MsgZCChallengeInvite::default_instance_;
+  delete MsgCZChallengeAgree::default_instance_;
+  delete MsgZCChallengeStart::default_instance_;
   delete MsgZCTeamBroadcast::default_instance_;
   delete MsgCZTeamCreate::default_instance_;
   delete MsgCZTeamEdit::default_instance_;
@@ -79,12 +83,12 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete MsgCZTeamDismiss::default_instance_;
   delete MsgCZTeamKick::default_instance_;
   delete MsgCZTeamLeave::default_instance_;
-  delete MsgCZTeamRecruit::default_instance_;
-  delete MsgZCTeamInvite::default_instance_;
-  delete MsgCZTeamInvite::default_instance_;
-  delete MsgCZTeamJoin::default_instance_;
-  delete MsgZCTeamApply::default_instance_;
-  delete MsgCZTeamApply::default_instance_;
+  delete MsgCZTeamRecruitStart::default_instance_;
+  delete MsgZCTeamRecruitAsk::default_instance_;
+  delete MsgCZTeamRecruitReply::default_instance_;
+  delete MsgCZTeamJoinStart::default_instance_;
+  delete MsgZCTeamJoinAsk::default_instance_;
+  delete MsgCZTeamJoinReply::default_instance_;
   delete MsgCAEnter::default_instance_;
   delete MsgACEnter::default_instance_;
   delete MsgZGConnect::default_instance_;
@@ -95,6 +99,8 @@ void protobuf_ShutdownFile_game_5fprotocol_2eproto() {
   delete MsgZAConnect::default_instance_;
   delete MsgZAClientEnter::default_instance_;
   delete MsgAZClientEnter::default_instance_;
+  delete game_ItemInfo::default_instance_;
+  delete game_itemInfos::default_instance_;
 }
 
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -164,6 +170,10 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZCUpdateName::default_instance_ = new MsgZCUpdateName();
   MsgCZEnterArena::default_instance_ = new MsgCZEnterArena();
   MsgZCEnterArena::default_instance_ = new MsgZCEnterArena();
+  MsgCZChallengeCreate::default_instance_ = new MsgCZChallengeCreate();
+  MsgZCChallengeInvite::default_instance_ = new MsgZCChallengeInvite();
+  MsgCZChallengeAgree::default_instance_ = new MsgCZChallengeAgree();
+  MsgZCChallengeStart::default_instance_ = new MsgZCChallengeStart();
   MsgZCTeamBroadcast::default_instance_ = new MsgZCTeamBroadcast();
   MsgCZTeamCreate::default_instance_ = new MsgCZTeamCreate();
   MsgCZTeamEdit::default_instance_ = new MsgCZTeamEdit();
@@ -171,12 +181,12 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgCZTeamDismiss::default_instance_ = new MsgCZTeamDismiss();
   MsgCZTeamKick::default_instance_ = new MsgCZTeamKick();
   MsgCZTeamLeave::default_instance_ = new MsgCZTeamLeave();
-  MsgCZTeamRecruit::default_instance_ = new MsgCZTeamRecruit();
-  MsgZCTeamInvite::default_instance_ = new MsgZCTeamInvite();
-  MsgCZTeamInvite::default_instance_ = new MsgCZTeamInvite();
-  MsgCZTeamJoin::default_instance_ = new MsgCZTeamJoin();
-  MsgZCTeamApply::default_instance_ = new MsgZCTeamApply();
-  MsgCZTeamApply::default_instance_ = new MsgCZTeamApply();
+  MsgCZTeamRecruitStart::default_instance_ = new MsgCZTeamRecruitStart();
+  MsgZCTeamRecruitAsk::default_instance_ = new MsgZCTeamRecruitAsk();
+  MsgCZTeamRecruitReply::default_instance_ = new MsgCZTeamRecruitReply();
+  MsgCZTeamJoinStart::default_instance_ = new MsgCZTeamJoinStart();
+  MsgZCTeamJoinAsk::default_instance_ = new MsgZCTeamJoinAsk();
+  MsgCZTeamJoinReply::default_instance_ = new MsgCZTeamJoinReply();
   MsgCAEnter::default_instance_ = new MsgCAEnter();
   MsgACEnter::default_instance_ = new MsgACEnter();
   MsgZGConnect::default_instance_ = new MsgZGConnect();
@@ -187,6 +197,8 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZAConnect::default_instance_ = new MsgZAConnect();
   MsgZAClientEnter::default_instance_ = new MsgZAClientEnter();
   MsgAZClientEnter::default_instance_ = new MsgAZClientEnter();
+  game_ItemInfo::default_instance_ = new game_ItemInfo();
+  game_itemInfos::default_instance_ = new game_itemInfos();
   ZoneInfo::default_instance_->InitAsDefaultInstance();
   PlaceInfo::default_instance_->InitAsDefaultInstance();
   PlayerInfo::default_instance_->InitAsDefaultInstance();
@@ -242,6 +254,10 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZCUpdateName::default_instance_->InitAsDefaultInstance();
   MsgCZEnterArena::default_instance_->InitAsDefaultInstance();
   MsgZCEnterArena::default_instance_->InitAsDefaultInstance();
+  MsgCZChallengeCreate::default_instance_->InitAsDefaultInstance();
+  MsgZCChallengeInvite::default_instance_->InitAsDefaultInstance();
+  MsgCZChallengeAgree::default_instance_->InitAsDefaultInstance();
+  MsgZCChallengeStart::default_instance_->InitAsDefaultInstance();
   MsgZCTeamBroadcast::default_instance_->InitAsDefaultInstance();
   MsgCZTeamCreate::default_instance_->InitAsDefaultInstance();
   MsgCZTeamEdit::default_instance_->InitAsDefaultInstance();
@@ -249,12 +265,12 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgCZTeamDismiss::default_instance_->InitAsDefaultInstance();
   MsgCZTeamKick::default_instance_->InitAsDefaultInstance();
   MsgCZTeamLeave::default_instance_->InitAsDefaultInstance();
-  MsgCZTeamRecruit::default_instance_->InitAsDefaultInstance();
-  MsgZCTeamInvite::default_instance_->InitAsDefaultInstance();
-  MsgCZTeamInvite::default_instance_->InitAsDefaultInstance();
-  MsgCZTeamJoin::default_instance_->InitAsDefaultInstance();
-  MsgZCTeamApply::default_instance_->InitAsDefaultInstance();
-  MsgCZTeamApply::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamRecruitStart::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamRecruitAsk::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamRecruitReply::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamJoinStart::default_instance_->InitAsDefaultInstance();
+  MsgZCTeamJoinAsk::default_instance_->InitAsDefaultInstance();
+  MsgCZTeamJoinReply::default_instance_->InitAsDefaultInstance();
   MsgCAEnter::default_instance_->InitAsDefaultInstance();
   MsgACEnter::default_instance_->InitAsDefaultInstance();
   MsgZGConnect::default_instance_->InitAsDefaultInstance();
@@ -265,6 +281,8 @@ void protobuf_AddDesc_game_5fprotocol_2eproto() {
   MsgZAConnect::default_instance_->InitAsDefaultInstance();
   MsgZAClientEnter::default_instance_->InitAsDefaultInstance();
   MsgAZClientEnter::default_instance_->InitAsDefaultInstance();
+  game_ItemInfo::default_instance_->InitAsDefaultInstance();
+  game_itemInfos::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_game_5fprotocol_2eproto);
 }
 
@@ -315,6 +333,7 @@ bool eMoveType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
       return true;
     default:
       return false;
@@ -1228,7 +1247,14 @@ const int PlaceInfo::kNMapIdFieldNumber;
 const int PlaceInfo::kXFieldNumber;
 const int PlaceInfo::kYFieldNumber;
 const int PlaceInfo::kZFieldNumber;
+const int PlaceInfo::kRollFieldNumber;
+const int PlaceInfo::kPitchFieldNumber;
+const int PlaceInfo::kYawFieldNumber;
 const int PlaceInfo::kOrientationFieldNumber;
+const int PlaceInfo::kFMoveSpeedFieldNumber;
+const int PlaceInfo::kCHARACTERSTATEFieldNumber;
+const int PlaceInfo::kCHARACTERSUBSTATEFieldNumber;
+const int PlaceInfo::kMoveTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PlaceInfo::PlaceInfo()
@@ -1257,7 +1283,14 @@ void PlaceInfo::SharedCtor() {
   x_ = 0;
   y_ = 0;
   z_ = 0;
+  roll_ = 0;
+  pitch_ = 0;
+  yaw_ = 0;
   orientation_ = 0u;
+  fmovespeed_ = 0;
+  character_state_ = 0u;
+  character_sub_state_ = 0u;
+  movetype_ = 0;
 }
 
 PlaceInfo::~PlaceInfo() {
@@ -1316,7 +1349,8 @@ void PlaceInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(zid_, orientation_);
+  ZR_(zid_, yaw_);
+  ZR_(orientation_, movetype_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -1403,18 +1437,124 @@ bool PlaceInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(48)) goto parse_orientation;
+        if (input->ExpectTag(53)) goto parse_Roll;
         break;
       }
 
-      // optional uint32 orientation = 6;
+      // optional float Roll = 6;
       case 6: {
-        if (tag == 48) {
+        if (tag == 53) {
+         parse_Roll:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &roll_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(61)) goto parse_Pitch;
+        break;
+      }
+
+      // optional float Pitch = 7;
+      case 7: {
+        if (tag == 61) {
+         parse_Pitch:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &pitch_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(69)) goto parse_Yaw;
+        break;
+      }
+
+      // optional float Yaw = 8;
+      case 8: {
+        if (tag == 69) {
+         parse_Yaw:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &yaw_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(72)) goto parse_orientation;
+        break;
+      }
+
+      // optional uint32 orientation = 9;
+      case 9: {
+        if (tag == 72) {
          parse_orientation:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &orientation_)));
 
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(85)) goto parse_fMoveSpeed;
+        break;
+      }
+
+      // optional float fMoveSpeed = 10;
+      case 10: {
+        if (tag == 85) {
+         parse_fMoveSpeed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &fmovespeed_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(88)) goto parse_CHARACTER_STATE;
+        break;
+      }
+
+      // optional uint32 CHARACTER_STATE = 11;
+      case 11: {
+        if (tag == 88) {
+         parse_CHARACTER_STATE:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &character_state_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(96)) goto parse_CHARACTER_SUB_STATE;
+        break;
+      }
+
+      // optional uint32 CHARACTER_SUB_STATE = 12;
+      case 12: {
+        if (tag == 96) {
+         parse_CHARACTER_SUB_STATE:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &character_sub_state_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(104)) goto parse_moveType;
+        break;
+      }
+
+      // optional .proto3.eMoveType moveType = 13;
+      case 13: {
+        if (tag == 104) {
+         parse_moveType:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_movetype(static_cast< ::proto3::eMoveType >(value));
         } else {
           goto handle_unusual;
         }
@@ -1471,9 +1611,45 @@ void PlaceInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->z(), output);
   }
 
-  // optional uint32 orientation = 6;
+  // optional float Roll = 6;
+  if (this->roll() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->roll(), output);
+  }
+
+  // optional float Pitch = 7;
+  if (this->pitch() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->pitch(), output);
+  }
+
+  // optional float Yaw = 8;
+  if (this->yaw() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->yaw(), output);
+  }
+
+  // optional uint32 orientation = 9;
   if (this->orientation() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->orientation(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->orientation(), output);
+  }
+
+  // optional float fMoveSpeed = 10;
+  if (this->fmovespeed() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->fmovespeed(), output);
+  }
+
+  // optional uint32 CHARACTER_STATE = 11;
+  if (this->character_state() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->character_state(), output);
+  }
+
+  // optional uint32 CHARACTER_SUB_STATE = 12;
+  if (this->character_sub_state() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->character_sub_state(), output);
+  }
+
+  // optional .proto3.eMoveType moveType = 13;
+  if (this->movetype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      13, this->movetype(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:proto3.PlaceInfo)
@@ -1512,11 +1688,51 @@ int PlaceInfo::ByteSize() const {
     total_size += 1 + 4;
   }
 
-  // optional uint32 orientation = 6;
+  // optional float Roll = 6;
+  if (this->roll() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // optional float Pitch = 7;
+  if (this->pitch() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // optional float Yaw = 8;
+  if (this->yaw() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // optional uint32 orientation = 9;
   if (this->orientation() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->orientation());
+  }
+
+  // optional float fMoveSpeed = 10;
+  if (this->fmovespeed() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // optional uint32 CHARACTER_STATE = 11;
+  if (this->character_state() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->character_state());
+  }
+
+  // optional uint32 CHARACTER_SUB_STATE = 12;
+  if (this->character_sub_state() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->character_sub_state());
+  }
+
+  // optional .proto3.eMoveType moveType = 13;
+  if (this->movetype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->movetype());
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -1548,8 +1764,29 @@ void PlaceInfo::MergeFrom(const PlaceInfo& from) {
   if (from.z() != 0) {
     set_z(from.z());
   }
+  if (from.roll() != 0) {
+    set_roll(from.roll());
+  }
+  if (from.pitch() != 0) {
+    set_pitch(from.pitch());
+  }
+  if (from.yaw() != 0) {
+    set_yaw(from.yaw());
+  }
   if (from.orientation() != 0) {
     set_orientation(from.orientation());
+  }
+  if (from.fmovespeed() != 0) {
+    set_fmovespeed(from.fmovespeed());
+  }
+  if (from.character_state() != 0) {
+    set_character_state(from.character_state());
+  }
+  if (from.character_sub_state() != 0) {
+    set_character_sub_state(from.character_sub_state());
+  }
+  if (from.movetype() != 0) {
+    set_movetype(from.movetype());
   }
 }
 
@@ -1575,7 +1812,14 @@ void PlaceInfo::InternalSwap(PlaceInfo* other) {
   std::swap(x_, other->x_);
   std::swap(y_, other->y_);
   std::swap(z_, other->z_);
+  std::swap(roll_, other->roll_);
+  std::swap(pitch_, other->pitch_);
+  std::swap(yaw_, other->yaw_);
   std::swap(orientation_, other->orientation_);
+  std::swap(fmovespeed_, other->fmovespeed_);
+  std::swap(character_state_, other->character_state_);
+  std::swap(character_sub_state_, other->character_sub_state_);
+  std::swap(movetype_, other->movetype_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1657,7 +1901,49 @@ void PlaceInfo::clear_z() {
   // @@protoc_insertion_point(field_set:proto3.PlaceInfo.z)
 }
 
-// optional uint32 orientation = 6;
+// optional float Roll = 6;
+void PlaceInfo::clear_roll() {
+  roll_ = 0;
+}
+ float PlaceInfo::roll() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.Roll)
+  return roll_;
+}
+ void PlaceInfo::set_roll(float value) {
+  
+  roll_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.Roll)
+}
+
+// optional float Pitch = 7;
+void PlaceInfo::clear_pitch() {
+  pitch_ = 0;
+}
+ float PlaceInfo::pitch() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.Pitch)
+  return pitch_;
+}
+ void PlaceInfo::set_pitch(float value) {
+  
+  pitch_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.Pitch)
+}
+
+// optional float Yaw = 8;
+void PlaceInfo::clear_yaw() {
+  yaw_ = 0;
+}
+ float PlaceInfo::yaw() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.Yaw)
+  return yaw_;
+}
+ void PlaceInfo::set_yaw(float value) {
+  
+  yaw_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.Yaw)
+}
+
+// optional uint32 orientation = 9;
 void PlaceInfo::clear_orientation() {
   orientation_ = 0u;
 }
@@ -1669,6 +1955,62 @@ void PlaceInfo::clear_orientation() {
   
   orientation_ = value;
   // @@protoc_insertion_point(field_set:proto3.PlaceInfo.orientation)
+}
+
+// optional float fMoveSpeed = 10;
+void PlaceInfo::clear_fmovespeed() {
+  fmovespeed_ = 0;
+}
+ float PlaceInfo::fmovespeed() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.fMoveSpeed)
+  return fmovespeed_;
+}
+ void PlaceInfo::set_fmovespeed(float value) {
+  
+  fmovespeed_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.fMoveSpeed)
+}
+
+// optional uint32 CHARACTER_STATE = 11;
+void PlaceInfo::clear_character_state() {
+  character_state_ = 0u;
+}
+ ::google::protobuf::uint32 PlaceInfo::character_state() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.CHARACTER_STATE)
+  return character_state_;
+}
+ void PlaceInfo::set_character_state(::google::protobuf::uint32 value) {
+  
+  character_state_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.CHARACTER_STATE)
+}
+
+// optional uint32 CHARACTER_SUB_STATE = 12;
+void PlaceInfo::clear_character_sub_state() {
+  character_sub_state_ = 0u;
+}
+ ::google::protobuf::uint32 PlaceInfo::character_sub_state() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.CHARACTER_SUB_STATE)
+  return character_sub_state_;
+}
+ void PlaceInfo::set_character_sub_state(::google::protobuf::uint32 value) {
+  
+  character_sub_state_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.CHARACTER_SUB_STATE)
+}
+
+// optional .proto3.eMoveType moveType = 13;
+void PlaceInfo::clear_movetype() {
+  movetype_ = 0;
+}
+ ::proto3::eMoveType PlaceInfo::movetype() const {
+  // @@protoc_insertion_point(field_get:proto3.PlaceInfo.moveType)
+  return static_cast< ::proto3::eMoveType >(movetype_);
+}
+ void PlaceInfo::set_movetype(::proto3::eMoveType value) {
+  
+  movetype_ = value;
+  // @@protoc_insertion_point(field_set:proto3.PlaceInfo.moveType)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -19665,7 +20007,7 @@ void MsgZCEnter::clear_result() {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgZCExit::kMidFieldNumber;
-const int MsgZCExit::kPlayerInfoFieldNumber;
+const int MsgZCExit::kPlayerFieldNumber;
 const int MsgZCExit::kResultFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -19678,10 +20020,10 @@ MsgZCExit::MsgZCExit()
 void MsgZCExit::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  playerinfo_ = const_cast< ::proto3::PlayerInfo*>(
+  player_ = const_cast< ::proto3::PlayerInfo*>(
       ::proto3::PlayerInfo::internal_default_instance());
 #else
-  playerinfo_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
+  player_ = const_cast< ::proto3::PlayerInfo*>(&::proto3::PlayerInfo::default_instance());
 #endif
 }
 
@@ -19697,7 +20039,7 @@ void MsgZCExit::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
-  playerinfo_ = NULL;
+  player_ = NULL;
   result_ = 0;
 }
 
@@ -19712,7 +20054,7 @@ void MsgZCExit::SharedDtor() {
   #else
   if (this != default_instance_) {
   #endif
-    delete playerinfo_;
+    delete player_;
   }
 }
 
@@ -19759,8 +20101,8 @@ void MsgZCExit::Clear() {
 } while (0)
 
   ZR_(mid_, result_);
-  if (GetArenaNoVirtual() == NULL && playerinfo_ != NULL) delete playerinfo_;
-  playerinfo_ = NULL;
+  if (GetArenaNoVirtual() == NULL && player_ != NULL) delete player_;
+  player_ = NULL;
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -19787,16 +20129,16 @@ bool MsgZCExit::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_playerInfo;
+        if (input->ExpectTag(26)) goto parse_player;
         break;
       }
 
-      // optional .proto3.PlayerInfo playerInfo = 3;
+      // optional .proto3.PlayerInfo player = 3;
       case 3: {
         if (tag == 26) {
-         parse_playerInfo:
+         parse_player:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_playerinfo()));
+               input, mutable_player()));
         } else {
           goto handle_unusual;
         }
@@ -19849,10 +20191,10 @@ void MsgZCExit::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
   }
 
-  // optional .proto3.PlayerInfo playerInfo = 3;
-  if (this->has_playerinfo()) {
+  // optional .proto3.PlayerInfo player = 3;
+  if (this->has_player()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessage(
-      3, *this->playerinfo_, output);
+      3, *this->player_, output);
   }
 
   // optional .proto3.eResult result = 4;
@@ -19875,11 +20217,11 @@ int MsgZCExit::ByteSize() const {
         this->mid());
   }
 
-  // optional .proto3.PlayerInfo playerInfo = 3;
-  if (this->has_playerinfo()) {
+  // optional .proto3.PlayerInfo player = 3;
+  if (this->has_player()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->playerinfo_);
+        *this->player_);
   }
 
   // optional .proto3.eResult result = 4;
@@ -19905,8 +20247,8 @@ void MsgZCExit::MergeFrom(const MsgZCExit& from) {
   if (from.mid() != 0) {
     set_mid(from.mid());
   }
-  if (from.has_playerinfo()) {
-    mutable_playerinfo()->::proto3::PlayerInfo::MergeFrom(from.playerinfo());
+  if (from.has_player()) {
+    mutable_player()->::proto3::PlayerInfo::MergeFrom(from.player());
   }
   if (from.result() != 0) {
     set_result(from.result());
@@ -19931,7 +20273,7 @@ void MsgZCExit::Swap(MsgZCExit* other) {
 }
 void MsgZCExit::InternalSwap(MsgZCExit* other) {
   std::swap(mid_, other->mid_);
-  std::swap(playerinfo_, other->playerinfo_);
+  std::swap(player_, other->player_);
   std::swap(result_, other->result_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -19958,46 +20300,46 @@ void MsgZCExit::clear_mid() {
   // @@protoc_insertion_point(field_set:proto3.MsgZCExit.mid)
 }
 
-// optional .proto3.PlayerInfo playerInfo = 3;
-bool MsgZCExit::has_playerinfo() const {
-  return !_is_default_instance_ && playerinfo_ != NULL;
+// optional .proto3.PlayerInfo player = 3;
+bool MsgZCExit::has_player() const {
+  return !_is_default_instance_ && player_ != NULL;
 }
-void MsgZCExit::clear_playerinfo() {
-  if (GetArenaNoVirtual() == NULL && playerinfo_ != NULL) delete playerinfo_;
-  playerinfo_ = NULL;
+void MsgZCExit::clear_player() {
+  if (GetArenaNoVirtual() == NULL && player_ != NULL) delete player_;
+  player_ = NULL;
 }
-const ::proto3::PlayerInfo& MsgZCExit::playerinfo() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.playerInfo)
+const ::proto3::PlayerInfo& MsgZCExit::player() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCExit.player)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
-  return playerinfo_ != NULL ? *playerinfo_ : *default_instance().playerinfo_;
+  return player_ != NULL ? *player_ : *default_instance().player_;
 #else
-  return playerinfo_ != NULL ? *playerinfo_ : *default_instance_->playerinfo_;
+  return player_ != NULL ? *player_ : *default_instance_->player_;
 #endif
 }
-::proto3::PlayerInfo* MsgZCExit::mutable_playerinfo() {
+::proto3::PlayerInfo* MsgZCExit::mutable_player() {
   
-  if (playerinfo_ == NULL) {
-    playerinfo_ = new ::proto3::PlayerInfo;
+  if (player_ == NULL) {
+    player_ = new ::proto3::PlayerInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgZCExit.playerInfo)
-  return playerinfo_;
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCExit.player)
+  return player_;
 }
-::proto3::PlayerInfo* MsgZCExit::release_playerinfo() {
-  // @@protoc_insertion_point(field_release:proto3.MsgZCExit.playerInfo)
+::proto3::PlayerInfo* MsgZCExit::release_player() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCExit.player)
   
-  ::proto3::PlayerInfo* temp = playerinfo_;
-  playerinfo_ = NULL;
+  ::proto3::PlayerInfo* temp = player_;
+  player_ = NULL;
   return temp;
 }
-void MsgZCExit::set_allocated_playerinfo(::proto3::PlayerInfo* playerinfo) {
-  delete playerinfo_;
-  playerinfo_ = playerinfo;
-  if (playerinfo) {
+void MsgZCExit::set_allocated_player(::proto3::PlayerInfo* player) {
+  delete player_;
+  player_ = player;
+  if (player) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCExit.playerInfo)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCExit.player)
 }
 
 // optional .proto3.eResult result = 4;
@@ -25819,6 +26161,1762 @@ void MsgZCEnterArena::clear_level() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZChallengeCreate::kMidFieldNumber;
+const int MsgCZChallengeCreate::kChallengersFieldNumber;
+const int MsgCZChallengeCreate::kOppositesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZChallengeCreate::MsgCZChallengeCreate()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZChallengeCreate)
+}
+
+void MsgCZChallengeCreate::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+MsgCZChallengeCreate::MsgCZChallengeCreate(const MsgCZChallengeCreate& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZChallengeCreate)
+}
+
+void MsgCZChallengeCreate::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  mid_ = 0u;
+}
+
+MsgCZChallengeCreate::~MsgCZChallengeCreate() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZChallengeCreate)
+  SharedDtor();
+}
+
+void MsgCZChallengeCreate::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void MsgCZChallengeCreate::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZChallengeCreate& MsgCZChallengeCreate::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZChallengeCreate* MsgCZChallengeCreate::default_instance_ = NULL;
+
+MsgCZChallengeCreate* MsgCZChallengeCreate::New(::google::protobuf::Arena* arena) const {
+  MsgCZChallengeCreate* n = new MsgCZChallengeCreate;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZChallengeCreate::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZChallengeCreate)
+  mid_ = 0u;
+  challengers_.Clear();
+  opposites_.Clear();
+}
+
+bool MsgCZChallengeCreate::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZChallengeCreate)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        break;
+      }
+
+      // repeated string challengers = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_challengers:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_challengers()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->challengers(this->challengers_size() - 1).data(),
+            this->challengers(this->challengers_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgCZChallengeCreate.challengers"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        if (input->ExpectTag(26)) goto parse_opposites;
+        break;
+      }
+
+      // repeated string opposites = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_opposites:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_opposites()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->opposites(this->opposites_size() - 1).data(),
+            this->opposites(this->opposites_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgCZChallengeCreate.opposites"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_opposites;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZChallengeCreate)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZChallengeCreate)
+  return false;
+#undef DO_
+}
+
+void MsgCZChallengeCreate::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZChallengeCreate)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated string challengers = 2;
+  for (int i = 0; i < this->challengers_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->challengers(i).data(), this->challengers(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgCZChallengeCreate.challengers");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->challengers(i), output);
+  }
+
+  // repeated string opposites = 3;
+  for (int i = 0; i < this->opposites_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->opposites(i).data(), this->opposites(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgCZChallengeCreate.opposites");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->opposites(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZChallengeCreate)
+}
+
+int MsgCZChallengeCreate::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZChallengeCreate)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // repeated string challengers = 2;
+  total_size += 1 * this->challengers_size();
+  for (int i = 0; i < this->challengers_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->challengers(i));
+  }
+
+  // repeated string opposites = 3;
+  total_size += 1 * this->opposites_size();
+  for (int i = 0; i < this->opposites_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->opposites(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZChallengeCreate::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZChallengeCreate*>(&from));
+}
+
+void MsgCZChallengeCreate::MergeFrom(const MsgCZChallengeCreate& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZChallengeCreate)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  challengers_.MergeFrom(from.challengers_);
+  opposites_.MergeFrom(from.opposites_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+}
+
+void MsgCZChallengeCreate::CopyFrom(const MsgCZChallengeCreate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZChallengeCreate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZChallengeCreate::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZChallengeCreate::Swap(MsgCZChallengeCreate* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZChallengeCreate::InternalSwap(MsgCZChallengeCreate* other) {
+  std::swap(mid_, other->mid_);
+  challengers_.UnsafeArenaSwap(&other->challengers_);
+  opposites_.UnsafeArenaSwap(&other->opposites_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZChallengeCreate::GetTypeName() const {
+  return "proto3.MsgCZChallengeCreate";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZChallengeCreate
+
+// optional uint32 mid = 1;
+void MsgCZChallengeCreate::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZChallengeCreate::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeCreate.mid)
+  return mid_;
+}
+ void MsgCZChallengeCreate::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeCreate.mid)
+}
+
+// repeated string challengers = 2;
+int MsgCZChallengeCreate::challengers_size() const {
+  return challengers_.size();
+}
+void MsgCZChallengeCreate::clear_challengers() {
+  challengers_.Clear();
+}
+ const ::std::string& MsgCZChallengeCreate::challengers(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeCreate.challengers)
+  return challengers_.Get(index);
+}
+ ::std::string* MsgCZChallengeCreate::mutable_challengers(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZChallengeCreate.challengers)
+  return challengers_.Mutable(index);
+}
+ void MsgCZChallengeCreate::set_challengers(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeCreate.challengers)
+  challengers_.Mutable(index)->assign(value);
+}
+ void MsgCZChallengeCreate::set_challengers(int index, const char* value) {
+  challengers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgCZChallengeCreate.challengers)
+}
+ void MsgCZChallengeCreate::set_challengers(int index, const char* value, size_t size) {
+  challengers_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgCZChallengeCreate.challengers)
+}
+ ::std::string* MsgCZChallengeCreate::add_challengers() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgCZChallengeCreate.challengers)
+  return challengers_.Add();
+}
+ void MsgCZChallengeCreate::add_challengers(const ::std::string& value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgCZChallengeCreate.challengers)
+}
+ void MsgCZChallengeCreate::add_challengers(const char* value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgCZChallengeCreate.challengers)
+}
+ void MsgCZChallengeCreate::add_challengers(const char* value, size_t size) {
+  challengers_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgCZChallengeCreate.challengers)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgCZChallengeCreate::challengers() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZChallengeCreate.challengers)
+  return challengers_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgCZChallengeCreate::mutable_challengers() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZChallengeCreate.challengers)
+  return &challengers_;
+}
+
+// repeated string opposites = 3;
+int MsgCZChallengeCreate::opposites_size() const {
+  return opposites_.size();
+}
+void MsgCZChallengeCreate::clear_opposites() {
+  opposites_.Clear();
+}
+ const ::std::string& MsgCZChallengeCreate::opposites(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeCreate.opposites)
+  return opposites_.Get(index);
+}
+ ::std::string* MsgCZChallengeCreate::mutable_opposites(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZChallengeCreate.opposites)
+  return opposites_.Mutable(index);
+}
+ void MsgCZChallengeCreate::set_opposites(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeCreate.opposites)
+  opposites_.Mutable(index)->assign(value);
+}
+ void MsgCZChallengeCreate::set_opposites(int index, const char* value) {
+  opposites_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgCZChallengeCreate.opposites)
+}
+ void MsgCZChallengeCreate::set_opposites(int index, const char* value, size_t size) {
+  opposites_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgCZChallengeCreate.opposites)
+}
+ ::std::string* MsgCZChallengeCreate::add_opposites() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgCZChallengeCreate.opposites)
+  return opposites_.Add();
+}
+ void MsgCZChallengeCreate::add_opposites(const ::std::string& value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgCZChallengeCreate.opposites)
+}
+ void MsgCZChallengeCreate::add_opposites(const char* value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgCZChallengeCreate.opposites)
+}
+ void MsgCZChallengeCreate::add_opposites(const char* value, size_t size) {
+  opposites_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgCZChallengeCreate.opposites)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgCZChallengeCreate::opposites() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZChallengeCreate.opposites)
+  return opposites_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgCZChallengeCreate::mutable_opposites() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZChallengeCreate.opposites)
+  return &opposites_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCChallengeInvite::kMidFieldNumber;
+const int MsgZCChallengeInvite::kChallengersFieldNumber;
+const int MsgZCChallengeInvite::kOppositesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCChallengeInvite::MsgZCChallengeInvite()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCChallengeInvite)
+}
+
+void MsgZCChallengeInvite::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+MsgZCChallengeInvite::MsgZCChallengeInvite(const MsgZCChallengeInvite& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCChallengeInvite)
+}
+
+void MsgZCChallengeInvite::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  mid_ = 0u;
+}
+
+MsgZCChallengeInvite::~MsgZCChallengeInvite() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCChallengeInvite)
+  SharedDtor();
+}
+
+void MsgZCChallengeInvite::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void MsgZCChallengeInvite::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCChallengeInvite& MsgZCChallengeInvite::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCChallengeInvite* MsgZCChallengeInvite::default_instance_ = NULL;
+
+MsgZCChallengeInvite* MsgZCChallengeInvite::New(::google::protobuf::Arena* arena) const {
+  MsgZCChallengeInvite* n = new MsgZCChallengeInvite;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCChallengeInvite::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCChallengeInvite)
+  mid_ = 0u;
+  challengers_.Clear();
+  opposites_.Clear();
+}
+
+bool MsgZCChallengeInvite::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCChallengeInvite)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        break;
+      }
+
+      // repeated string challengers = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_challengers:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_challengers()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->challengers(this->challengers_size() - 1).data(),
+            this->challengers(this->challengers_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgZCChallengeInvite.challengers"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        if (input->ExpectTag(26)) goto parse_opposites;
+        break;
+      }
+
+      // repeated string opposites = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_opposites:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_opposites()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->opposites(this->opposites_size() - 1).data(),
+            this->opposites(this->opposites_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgZCChallengeInvite.opposites"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_opposites;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCChallengeInvite)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCChallengeInvite)
+  return false;
+#undef DO_
+}
+
+void MsgZCChallengeInvite::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCChallengeInvite)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated string challengers = 2;
+  for (int i = 0; i < this->challengers_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->challengers(i).data(), this->challengers(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgZCChallengeInvite.challengers");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->challengers(i), output);
+  }
+
+  // repeated string opposites = 3;
+  for (int i = 0; i < this->opposites_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->opposites(i).data(), this->opposites(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgZCChallengeInvite.opposites");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->opposites(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCChallengeInvite)
+}
+
+int MsgZCChallengeInvite::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCChallengeInvite)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // repeated string challengers = 2;
+  total_size += 1 * this->challengers_size();
+  for (int i = 0; i < this->challengers_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->challengers(i));
+  }
+
+  // repeated string opposites = 3;
+  total_size += 1 * this->opposites_size();
+  for (int i = 0; i < this->opposites_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->opposites(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCChallengeInvite::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCChallengeInvite*>(&from));
+}
+
+void MsgZCChallengeInvite::MergeFrom(const MsgZCChallengeInvite& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCChallengeInvite)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  challengers_.MergeFrom(from.challengers_);
+  opposites_.MergeFrom(from.opposites_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+}
+
+void MsgZCChallengeInvite::CopyFrom(const MsgZCChallengeInvite& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCChallengeInvite)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCChallengeInvite::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCChallengeInvite::Swap(MsgZCChallengeInvite* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCChallengeInvite::InternalSwap(MsgZCChallengeInvite* other) {
+  std::swap(mid_, other->mid_);
+  challengers_.UnsafeArenaSwap(&other->challengers_);
+  opposites_.UnsafeArenaSwap(&other->opposites_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCChallengeInvite::GetTypeName() const {
+  return "proto3.MsgZCChallengeInvite";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCChallengeInvite
+
+// optional uint32 mid = 1;
+void MsgZCChallengeInvite::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCChallengeInvite::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeInvite.mid)
+  return mid_;
+}
+ void MsgZCChallengeInvite::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeInvite.mid)
+}
+
+// repeated string challengers = 2;
+int MsgZCChallengeInvite::challengers_size() const {
+  return challengers_.size();
+}
+void MsgZCChallengeInvite::clear_challengers() {
+  challengers_.Clear();
+}
+ const ::std::string& MsgZCChallengeInvite::challengers(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeInvite.challengers)
+  return challengers_.Get(index);
+}
+ ::std::string* MsgZCChallengeInvite::mutable_challengers(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCChallengeInvite.challengers)
+  return challengers_.Mutable(index);
+}
+ void MsgZCChallengeInvite::set_challengers(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeInvite.challengers)
+  challengers_.Mutable(index)->assign(value);
+}
+ void MsgZCChallengeInvite::set_challengers(int index, const char* value) {
+  challengers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgZCChallengeInvite.challengers)
+}
+ void MsgZCChallengeInvite::set_challengers(int index, const char* value, size_t size) {
+  challengers_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgZCChallengeInvite.challengers)
+}
+ ::std::string* MsgZCChallengeInvite::add_challengers() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgZCChallengeInvite.challengers)
+  return challengers_.Add();
+}
+ void MsgZCChallengeInvite::add_challengers(const ::std::string& value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgZCChallengeInvite.challengers)
+}
+ void MsgZCChallengeInvite::add_challengers(const char* value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgZCChallengeInvite.challengers)
+}
+ void MsgZCChallengeInvite::add_challengers(const char* value, size_t size) {
+  challengers_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgZCChallengeInvite.challengers)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgZCChallengeInvite::challengers() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCChallengeInvite.challengers)
+  return challengers_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgZCChallengeInvite::mutable_challengers() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCChallengeInvite.challengers)
+  return &challengers_;
+}
+
+// repeated string opposites = 3;
+int MsgZCChallengeInvite::opposites_size() const {
+  return opposites_.size();
+}
+void MsgZCChallengeInvite::clear_opposites() {
+  opposites_.Clear();
+}
+ const ::std::string& MsgZCChallengeInvite::opposites(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeInvite.opposites)
+  return opposites_.Get(index);
+}
+ ::std::string* MsgZCChallengeInvite::mutable_opposites(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCChallengeInvite.opposites)
+  return opposites_.Mutable(index);
+}
+ void MsgZCChallengeInvite::set_opposites(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeInvite.opposites)
+  opposites_.Mutable(index)->assign(value);
+}
+ void MsgZCChallengeInvite::set_opposites(int index, const char* value) {
+  opposites_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgZCChallengeInvite.opposites)
+}
+ void MsgZCChallengeInvite::set_opposites(int index, const char* value, size_t size) {
+  opposites_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgZCChallengeInvite.opposites)
+}
+ ::std::string* MsgZCChallengeInvite::add_opposites() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgZCChallengeInvite.opposites)
+  return opposites_.Add();
+}
+ void MsgZCChallengeInvite::add_opposites(const ::std::string& value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgZCChallengeInvite.opposites)
+}
+ void MsgZCChallengeInvite::add_opposites(const char* value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgZCChallengeInvite.opposites)
+}
+ void MsgZCChallengeInvite::add_opposites(const char* value, size_t size) {
+  opposites_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgZCChallengeInvite.opposites)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgZCChallengeInvite::opposites() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCChallengeInvite.opposites)
+  return opposites_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgZCChallengeInvite::mutable_opposites() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCChallengeInvite.opposites)
+  return &opposites_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgCZChallengeAgree::kMidFieldNumber;
+const int MsgCZChallengeAgree::kChallengersFieldNumber;
+const int MsgCZChallengeAgree::kOppositesFieldNumber;
+const int MsgCZChallengeAgree::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgCZChallengeAgree::MsgCZChallengeAgree()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgCZChallengeAgree)
+}
+
+void MsgCZChallengeAgree::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+MsgCZChallengeAgree::MsgCZChallengeAgree(const MsgCZChallengeAgree& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZChallengeAgree)
+}
+
+void MsgCZChallengeAgree::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  mid_ = 0u;
+  opposites_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  result_ = 0;
+}
+
+MsgCZChallengeAgree::~MsgCZChallengeAgree() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZChallengeAgree)
+  SharedDtor();
+}
+
+void MsgCZChallengeAgree::SharedDtor() {
+  opposites_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void MsgCZChallengeAgree::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgCZChallengeAgree& MsgCZChallengeAgree::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgCZChallengeAgree* MsgCZChallengeAgree::default_instance_ = NULL;
+
+MsgCZChallengeAgree* MsgCZChallengeAgree::New(::google::protobuf::Arena* arena) const {
+  MsgCZChallengeAgree* n = new MsgCZChallengeAgree;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgCZChallengeAgree::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZChallengeAgree)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgCZChallengeAgree, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgCZChallengeAgree*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, result_);
+  opposites_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  challengers_.Clear();
+}
+
+bool MsgCZChallengeAgree::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZChallengeAgree)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        break;
+      }
+
+      // repeated string challengers = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_challengers:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_challengers()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->challengers(this->challengers_size() - 1).data(),
+            this->challengers(this->challengers_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgCZChallengeAgree.challengers"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        if (input->ExpectTag(26)) goto parse_opposites;
+        break;
+      }
+
+      // optional string opposites = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_opposites:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_opposites()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->opposites().data(), this->opposites().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgCZChallengeAgree.opposites"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZChallengeAgree)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZChallengeAgree)
+  return false;
+#undef DO_
+}
+
+void MsgCZChallengeAgree::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZChallengeAgree)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated string challengers = 2;
+  for (int i = 0; i < this->challengers_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->challengers(i).data(), this->challengers(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgCZChallengeAgree.challengers");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->challengers(i), output);
+  }
+
+  // optional string opposites = 3;
+  if (this->opposites().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->opposites().data(), this->opposites().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgCZChallengeAgree.opposites");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->opposites(), output);
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZChallengeAgree)
+}
+
+int MsgCZChallengeAgree::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZChallengeAgree)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional string opposites = 3;
+  if (this->opposites().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->opposites());
+  }
+
+  // optional .proto3.eResult result = 4;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  // repeated string challengers = 2;
+  total_size += 1 * this->challengers_size();
+  for (int i = 0; i < this->challengers_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->challengers(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgCZChallengeAgree::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZChallengeAgree*>(&from));
+}
+
+void MsgCZChallengeAgree::MergeFrom(const MsgCZChallengeAgree& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZChallengeAgree)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  challengers_.MergeFrom(from.challengers_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.opposites().size() > 0) {
+
+    opposites_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.opposites_);
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgCZChallengeAgree::CopyFrom(const MsgCZChallengeAgree& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZChallengeAgree)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgCZChallengeAgree::IsInitialized() const {
+
+  return true;
+}
+
+void MsgCZChallengeAgree::Swap(MsgCZChallengeAgree* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgCZChallengeAgree::InternalSwap(MsgCZChallengeAgree* other) {
+  std::swap(mid_, other->mid_);
+  challengers_.UnsafeArenaSwap(&other->challengers_);
+  opposites_.Swap(&other->opposites_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgCZChallengeAgree::GetTypeName() const {
+  return "proto3.MsgCZChallengeAgree";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgCZChallengeAgree
+
+// optional uint32 mid = 1;
+void MsgCZChallengeAgree::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgCZChallengeAgree::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeAgree.mid)
+  return mid_;
+}
+ void MsgCZChallengeAgree::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeAgree.mid)
+}
+
+// repeated string challengers = 2;
+int MsgCZChallengeAgree::challengers_size() const {
+  return challengers_.size();
+}
+void MsgCZChallengeAgree::clear_challengers() {
+  challengers_.Clear();
+}
+ const ::std::string& MsgCZChallengeAgree::challengers(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeAgree.challengers)
+  return challengers_.Get(index);
+}
+ ::std::string* MsgCZChallengeAgree::mutable_challengers(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZChallengeAgree.challengers)
+  return challengers_.Mutable(index);
+}
+ void MsgCZChallengeAgree::set_challengers(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeAgree.challengers)
+  challengers_.Mutable(index)->assign(value);
+}
+ void MsgCZChallengeAgree::set_challengers(int index, const char* value) {
+  challengers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgCZChallengeAgree.challengers)
+}
+ void MsgCZChallengeAgree::set_challengers(int index, const char* value, size_t size) {
+  challengers_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgCZChallengeAgree.challengers)
+}
+ ::std::string* MsgCZChallengeAgree::add_challengers() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgCZChallengeAgree.challengers)
+  return challengers_.Add();
+}
+ void MsgCZChallengeAgree::add_challengers(const ::std::string& value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgCZChallengeAgree.challengers)
+}
+ void MsgCZChallengeAgree::add_challengers(const char* value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgCZChallengeAgree.challengers)
+}
+ void MsgCZChallengeAgree::add_challengers(const char* value, size_t size) {
+  challengers_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgCZChallengeAgree.challengers)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgCZChallengeAgree::challengers() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZChallengeAgree.challengers)
+  return challengers_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgCZChallengeAgree::mutable_challengers() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZChallengeAgree.challengers)
+  return &challengers_;
+}
+
+// optional string opposites = 3;
+void MsgCZChallengeAgree::clear_opposites() {
+  opposites_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& MsgCZChallengeAgree::opposites() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeAgree.opposites)
+  return opposites_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MsgCZChallengeAgree::set_opposites(const ::std::string& value) {
+  
+  opposites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeAgree.opposites)
+}
+ void MsgCZChallengeAgree::set_opposites(const char* value) {
+  
+  opposites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto3.MsgCZChallengeAgree.opposites)
+}
+ void MsgCZChallengeAgree::set_opposites(const char* value, size_t size) {
+  
+  opposites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgCZChallengeAgree.opposites)
+}
+ ::std::string* MsgCZChallengeAgree::mutable_opposites() {
+  
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZChallengeAgree.opposites)
+  return opposites_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* MsgCZChallengeAgree::release_opposites() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZChallengeAgree.opposites)
+  
+  return opposites_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MsgCZChallengeAgree::set_allocated_opposites(::std::string* opposites) {
+  if (opposites != NULL) {
+    
+  } else {
+    
+  }
+  opposites_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), opposites);
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZChallengeAgree.opposites)
+}
+
+// optional .proto3.eResult result = 4;
+void MsgCZChallengeAgree::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgCZChallengeAgree::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZChallengeAgree.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgCZChallengeAgree::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgCZChallengeAgree.result)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgZCChallengeStart::kMidFieldNumber;
+const int MsgZCChallengeStart::kChallengersFieldNumber;
+const int MsgZCChallengeStart::kOppositesFieldNumber;
+const int MsgZCChallengeStart::kNmapidFieldNumber;
+const int MsgZCChallengeStart::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgZCChallengeStart::MsgZCChallengeStart()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.MsgZCChallengeStart)
+}
+
+void MsgZCChallengeStart::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+MsgZCChallengeStart::MsgZCChallengeStart(const MsgZCChallengeStart& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCChallengeStart)
+}
+
+void MsgZCChallengeStart::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  mid_ = 0u;
+  nmapid_ = 0u;
+  result_ = 0;
+}
+
+MsgZCChallengeStart::~MsgZCChallengeStart() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCChallengeStart)
+  SharedDtor();
+}
+
+void MsgZCChallengeStart::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void MsgZCChallengeStart::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const MsgZCChallengeStart& MsgZCChallengeStart::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+MsgZCChallengeStart* MsgZCChallengeStart::default_instance_ = NULL;
+
+MsgZCChallengeStart* MsgZCChallengeStart::New(::google::protobuf::Arena* arena) const {
+  MsgZCChallengeStart* n = new MsgZCChallengeStart;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgZCChallengeStart::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCChallengeStart)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(MsgZCChallengeStart, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgZCChallengeStart*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, nmapid_);
+  result_ = 0;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  challengers_.Clear();
+  opposites_.Clear();
+}
+
+bool MsgZCChallengeStart::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCChallengeStart)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        break;
+      }
+
+      // repeated string challengers = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_challengers:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_challengers()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->challengers(this->challengers_size() - 1).data(),
+            this->challengers(this->challengers_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgZCChallengeStart.challengers"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_challengers;
+        if (input->ExpectTag(26)) goto parse_opposites;
+        break;
+      }
+
+      // repeated string opposites = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_opposites:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_opposites()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->opposites(this->opposites_size() - 1).data(),
+            this->opposites(this->opposites_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "proto3.MsgZCChallengeStart.opposites"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_opposites;
+        if (input->ExpectTag(32)) goto parse_nmapid;
+        break;
+      }
+
+      // optional uint32 nmapid = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_nmapid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &nmapid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_result;
+        break;
+      }
+
+      // optional .proto3.eResult result = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_result:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_result(static_cast< ::proto3::eResult >(value));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCChallengeStart)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCChallengeStart)
+  return false;
+#undef DO_
+}
+
+void MsgZCChallengeStart::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCChallengeStart)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated string challengers = 2;
+  for (int i = 0; i < this->challengers_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->challengers(i).data(), this->challengers(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgZCChallengeStart.challengers");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->challengers(i), output);
+  }
+
+  // repeated string opposites = 3;
+  for (int i = 0; i < this->opposites_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->opposites(i).data(), this->opposites(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "proto3.MsgZCChallengeStart.opposites");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->opposites(i), output);
+  }
+
+  // optional uint32 nmapid = 4;
+  if (this->nmapid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->nmapid(), output);
+  }
+
+  // optional .proto3.eResult result = 5;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->result(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCChallengeStart)
+}
+
+int MsgZCChallengeStart::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCChallengeStart)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 nmapid = 4;
+  if (this->nmapid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->nmapid());
+  }
+
+  // optional .proto3.eResult result = 5;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  // repeated string challengers = 2;
+  total_size += 1 * this->challengers_size();
+  for (int i = 0; i < this->challengers_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->challengers(i));
+  }
+
+  // repeated string opposites = 3;
+  total_size += 1 * this->opposites_size();
+  for (int i = 0; i < this->opposites_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->opposites(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgZCChallengeStart::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCChallengeStart*>(&from));
+}
+
+void MsgZCChallengeStart::MergeFrom(const MsgZCChallengeStart& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCChallengeStart)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  challengers_.MergeFrom(from.challengers_);
+  opposites_.MergeFrom(from.opposites_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.nmapid() != 0) {
+    set_nmapid(from.nmapid());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void MsgZCChallengeStart::CopyFrom(const MsgZCChallengeStart& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCChallengeStart)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgZCChallengeStart::IsInitialized() const {
+
+  return true;
+}
+
+void MsgZCChallengeStart::Swap(MsgZCChallengeStart* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgZCChallengeStart::InternalSwap(MsgZCChallengeStart* other) {
+  std::swap(mid_, other->mid_);
+  challengers_.UnsafeArenaSwap(&other->challengers_);
+  opposites_.UnsafeArenaSwap(&other->opposites_);
+  std::swap(nmapid_, other->nmapid_);
+  std::swap(result_, other->result_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string MsgZCChallengeStart::GetTypeName() const {
+  return "proto3.MsgZCChallengeStart";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgZCChallengeStart
+
+// optional uint32 mid = 1;
+void MsgZCChallengeStart::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCChallengeStart::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeStart.mid)
+  return mid_;
+}
+ void MsgZCChallengeStart::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeStart.mid)
+}
+
+// repeated string challengers = 2;
+int MsgZCChallengeStart::challengers_size() const {
+  return challengers_.size();
+}
+void MsgZCChallengeStart::clear_challengers() {
+  challengers_.Clear();
+}
+ const ::std::string& MsgZCChallengeStart::challengers(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeStart.challengers)
+  return challengers_.Get(index);
+}
+ ::std::string* MsgZCChallengeStart::mutable_challengers(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCChallengeStart.challengers)
+  return challengers_.Mutable(index);
+}
+ void MsgZCChallengeStart::set_challengers(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeStart.challengers)
+  challengers_.Mutable(index)->assign(value);
+}
+ void MsgZCChallengeStart::set_challengers(int index, const char* value) {
+  challengers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgZCChallengeStart.challengers)
+}
+ void MsgZCChallengeStart::set_challengers(int index, const char* value, size_t size) {
+  challengers_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgZCChallengeStart.challengers)
+}
+ ::std::string* MsgZCChallengeStart::add_challengers() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgZCChallengeStart.challengers)
+  return challengers_.Add();
+}
+ void MsgZCChallengeStart::add_challengers(const ::std::string& value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgZCChallengeStart.challengers)
+}
+ void MsgZCChallengeStart::add_challengers(const char* value) {
+  challengers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgZCChallengeStart.challengers)
+}
+ void MsgZCChallengeStart::add_challengers(const char* value, size_t size) {
+  challengers_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgZCChallengeStart.challengers)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgZCChallengeStart::challengers() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCChallengeStart.challengers)
+  return challengers_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgZCChallengeStart::mutable_challengers() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCChallengeStart.challengers)
+  return &challengers_;
+}
+
+// repeated string opposites = 3;
+int MsgZCChallengeStart::opposites_size() const {
+  return opposites_.size();
+}
+void MsgZCChallengeStart::clear_opposites() {
+  opposites_.Clear();
+}
+ const ::std::string& MsgZCChallengeStart::opposites(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeStart.opposites)
+  return opposites_.Get(index);
+}
+ ::std::string* MsgZCChallengeStart::mutable_opposites(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCChallengeStart.opposites)
+  return opposites_.Mutable(index);
+}
+ void MsgZCChallengeStart::set_opposites(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeStart.opposites)
+  opposites_.Mutable(index)->assign(value);
+}
+ void MsgZCChallengeStart::set_opposites(int index, const char* value) {
+  opposites_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto3.MsgZCChallengeStart.opposites)
+}
+ void MsgZCChallengeStart::set_opposites(int index, const char* value, size_t size) {
+  opposites_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto3.MsgZCChallengeStart.opposites)
+}
+ ::std::string* MsgZCChallengeStart::add_opposites() {
+  // @@protoc_insertion_point(field_add_mutable:proto3.MsgZCChallengeStart.opposites)
+  return opposites_.Add();
+}
+ void MsgZCChallengeStart::add_opposites(const ::std::string& value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto3.MsgZCChallengeStart.opposites)
+}
+ void MsgZCChallengeStart::add_opposites(const char* value) {
+  opposites_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto3.MsgZCChallengeStart.opposites)
+}
+ void MsgZCChallengeStart::add_opposites(const char* value, size_t size) {
+  opposites_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto3.MsgZCChallengeStart.opposites)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MsgZCChallengeStart::opposites() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgZCChallengeStart.opposites)
+  return opposites_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+MsgZCChallengeStart::mutable_opposites() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgZCChallengeStart.opposites)
+  return &opposites_;
+}
+
+// optional uint32 nmapid = 4;
+void MsgZCChallengeStart::clear_nmapid() {
+  nmapid_ = 0u;
+}
+ ::google::protobuf::uint32 MsgZCChallengeStart::nmapid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeStart.nmapid)
+  return nmapid_;
+}
+ void MsgZCChallengeStart::set_nmapid(::google::protobuf::uint32 value) {
+  
+  nmapid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeStart.nmapid)
+}
+
+// optional .proto3.eResult result = 5;
+void MsgZCChallengeStart::clear_result() {
+  result_ = 0;
+}
+ ::proto3::eResult MsgZCChallengeStart::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCChallengeStart.result)
+  return static_cast< ::proto3::eResult >(result_);
+}
+ void MsgZCChallengeStart::set_result(::proto3::eResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:proto3.MsgZCChallengeStart.result)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgZCTeamBroadcast::kMidFieldNumber;
 const int MsgZCTeamBroadcast::kTeamFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -28210,19 +30308,19 @@ void MsgCZTeamLeave::set_allocated_team(::proto3::TeamInfo* team) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgCZTeamRecruit::kMidFieldNumber;
-const int MsgCZTeamRecruit::kReasonFieldNumber;
-const int MsgCZTeamRecruit::kTeamFieldNumber;
-const int MsgCZTeamRecruit::kTargetsFieldNumber;
+const int MsgCZTeamRecruitStart::kMidFieldNumber;
+const int MsgCZTeamRecruitStart::kReasonFieldNumber;
+const int MsgCZTeamRecruitStart::kTeamFieldNumber;
+const int MsgCZTeamRecruitStart::kTargetsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgCZTeamRecruit::MsgCZTeamRecruit()
+MsgCZTeamRecruitStart::MsgCZTeamRecruitStart()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamRecruitStart)
 }
 
-void MsgCZTeamRecruit::InitAsDefaultInstance() {
+void MsgCZTeamRecruitStart::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   team_ = const_cast< ::proto3::TeamInfo*>(
@@ -28232,15 +30330,15 @@ void MsgCZTeamRecruit::InitAsDefaultInstance() {
 #endif
 }
 
-MsgCZTeamRecruit::MsgCZTeamRecruit(const MsgCZTeamRecruit& from)
+MsgCZTeamRecruitStart::MsgCZTeamRecruitStart(const MsgCZTeamRecruitStart& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamRecruitStart)
 }
 
-void MsgCZTeamRecruit::SharedCtor() {
+void MsgCZTeamRecruitStart::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
@@ -28248,12 +30346,12 @@ void MsgCZTeamRecruit::SharedCtor() {
   team_ = NULL;
 }
 
-MsgCZTeamRecruit::~MsgCZTeamRecruit() {
-  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamRecruit)
+MsgCZTeamRecruitStart::~MsgCZTeamRecruitStart() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamRecruitStart)
   SharedDtor();
 }
 
-void MsgCZTeamRecruit::SharedDtor() {
+void MsgCZTeamRecruitStart::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -28263,12 +30361,12 @@ void MsgCZTeamRecruit::SharedDtor() {
   }
 }
 
-void MsgCZTeamRecruit::SetCachedSize(int size) const {
+void MsgCZTeamRecruitStart::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgCZTeamRecruit& MsgCZTeamRecruit::default_instance() {
+const MsgCZTeamRecruitStart& MsgCZTeamRecruitStart::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -28277,27 +30375,27 @@ const MsgCZTeamRecruit& MsgCZTeamRecruit::default_instance() {
   return *default_instance_;
 }
 
-MsgCZTeamRecruit* MsgCZTeamRecruit::default_instance_ = NULL;
+MsgCZTeamRecruitStart* MsgCZTeamRecruitStart::default_instance_ = NULL;
 
-MsgCZTeamRecruit* MsgCZTeamRecruit::New(::google::protobuf::Arena* arena) const {
-  MsgCZTeamRecruit* n = new MsgCZTeamRecruit;
+MsgCZTeamRecruitStart* MsgCZTeamRecruitStart::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamRecruitStart* n = new MsgCZTeamRecruitStart;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgCZTeamRecruit::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamRecruit)
+void MsgCZTeamRecruitStart::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamRecruitStart)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
   _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(MsgCZTeamRecruit, f) \
+  __builtin_offsetof(MsgCZTeamRecruitStart, f) \
   _Pragma("clang diagnostic pop")
 #else
 #define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgCZTeamRecruit*>(16)->f)
+  &reinterpret_cast<MsgCZTeamRecruitStart*>(16)->f)
 #endif
 
 #define ZR_(first, last) do {\
@@ -28315,11 +30413,11 @@ void MsgCZTeamRecruit::Clear() {
   targets_.Clear();
 }
 
-bool MsgCZTeamRecruit::MergePartialFromCodedStream(
+bool MsgCZTeamRecruitStart::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamRecruitStart)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -28397,17 +30495,17 @@ bool MsgCZTeamRecruit::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamRecruitStart)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamRecruitStart)
   return false;
 #undef DO_
 }
 
-void MsgCZTeamRecruit::SerializeWithCachedSizes(
+void MsgCZTeamRecruitStart::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamRecruitStart)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -28430,11 +30528,11 @@ void MsgCZTeamRecruit::SerializeWithCachedSizes(
       4, this->targets(i), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamRecruit)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamRecruitStart)
 }
 
-int MsgCZTeamRecruit::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamRecruit)
+int MsgCZTeamRecruitStart::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamRecruitStart)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -28472,13 +30570,13 @@ int MsgCZTeamRecruit::ByteSize() const {
   return total_size;
 }
 
-void MsgCZTeamRecruit::CheckTypeAndMergeFrom(
+void MsgCZTeamRecruitStart::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamRecruit*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamRecruitStart*>(&from));
 }
 
-void MsgCZTeamRecruit::MergeFrom(const MsgCZTeamRecruit& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamRecruit)
+void MsgCZTeamRecruitStart::MergeFrom(const MsgCZTeamRecruitStart& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamRecruitStart)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   targets_.MergeFrom(from.targets_);
   if (from.mid() != 0) {
@@ -28492,23 +30590,23 @@ void MsgCZTeamRecruit::MergeFrom(const MsgCZTeamRecruit& from) {
   }
 }
 
-void MsgCZTeamRecruit::CopyFrom(const MsgCZTeamRecruit& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamRecruit)
+void MsgCZTeamRecruitStart::CopyFrom(const MsgCZTeamRecruitStart& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamRecruitStart)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgCZTeamRecruit::IsInitialized() const {
+bool MsgCZTeamRecruitStart::IsInitialized() const {
 
   return true;
 }
 
-void MsgCZTeamRecruit::Swap(MsgCZTeamRecruit* other) {
+void MsgCZTeamRecruitStart::Swap(MsgCZTeamRecruitStart* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgCZTeamRecruit::InternalSwap(MsgCZTeamRecruit* other) {
+void MsgCZTeamRecruitStart::InternalSwap(MsgCZTeamRecruitStart* other) {
   std::swap(mid_, other->mid_);
   std::swap(reason_, other->reason_);
   std::swap(team_, other->team_);
@@ -28517,73 +30615,73 @@ void MsgCZTeamRecruit::InternalSwap(MsgCZTeamRecruit* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgCZTeamRecruit::GetTypeName() const {
-  return "proto3.MsgCZTeamRecruit";
+::std::string MsgCZTeamRecruitStart::GetTypeName() const {
+  return "proto3.MsgCZTeamRecruitStart";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgCZTeamRecruit
+// MsgCZTeamRecruitStart
 
 // optional uint32 mid = 1;
-void MsgCZTeamRecruit::clear_mid() {
+void MsgCZTeamRecruitStart::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgCZTeamRecruit::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.mid)
+ ::google::protobuf::uint32 MsgCZTeamRecruitStart::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitStart.mid)
   return mid_;
 }
- void MsgCZTeamRecruit::set_mid(::google::protobuf::uint32 value) {
+ void MsgCZTeamRecruitStart::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruitStart.mid)
 }
 
 // optional uint32 reason = 2;
-void MsgCZTeamRecruit::clear_reason() {
+void MsgCZTeamRecruitStart::clear_reason() {
   reason_ = 0u;
 }
- ::google::protobuf::uint32 MsgCZTeamRecruit::reason() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.reason)
+ ::google::protobuf::uint32 MsgCZTeamRecruitStart::reason() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitStart.reason)
   return reason_;
 }
- void MsgCZTeamRecruit::set_reason(::google::protobuf::uint32 value) {
+ void MsgCZTeamRecruitStart::set_reason(::google::protobuf::uint32 value) {
   
   reason_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruit.reason)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruitStart.reason)
 }
 
 // optional .proto3.TeamInfo team = 3;
-bool MsgCZTeamRecruit::has_team() const {
+bool MsgCZTeamRecruitStart::has_team() const {
   return !_is_default_instance_ && team_ != NULL;
 }
-void MsgCZTeamRecruit::clear_team() {
+void MsgCZTeamRecruitStart::clear_team() {
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
-const ::proto3::TeamInfo& MsgCZTeamRecruit::team() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.team)
+const ::proto3::TeamInfo& MsgCZTeamRecruitStart::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitStart.team)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return team_ != NULL ? *team_ : *default_instance().team_;
 #else
   return team_ != NULL ? *team_ : *default_instance_->team_;
 #endif
 }
-::proto3::TeamInfo* MsgCZTeamRecruit::mutable_team() {
+::proto3::TeamInfo* MsgCZTeamRecruitStart::mutable_team() {
   
   if (team_ == NULL) {
     team_ = new ::proto3::TeamInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.team)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruitStart.team)
   return team_;
 }
-::proto3::TeamInfo* MsgCZTeamRecruit::release_team() {
-  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamRecruit.team)
+::proto3::TeamInfo* MsgCZTeamRecruitStart::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamRecruitStart.team)
   
   ::proto3::TeamInfo* temp = team_;
   team_ = NULL;
   return temp;
 }
-void MsgCZTeamRecruit::set_allocated_team(::proto3::TeamInfo* team) {
+void MsgCZTeamRecruitStart::set_allocated_team(::proto3::TeamInfo* team) {
   delete team_;
   team_ = team;
   if (team) {
@@ -28591,36 +30689,36 @@ void MsgCZTeamRecruit::set_allocated_team(::proto3::TeamInfo* team) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamRecruit.team)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamRecruitStart.team)
 }
 
 // repeated .proto3.PlayerInfo targets = 4;
-int MsgCZTeamRecruit::targets_size() const {
+int MsgCZTeamRecruitStart::targets_size() const {
   return targets_.size();
 }
-void MsgCZTeamRecruit::clear_targets() {
+void MsgCZTeamRecruitStart::clear_targets() {
   targets_.Clear();
 }
-const ::proto3::PlayerInfo& MsgCZTeamRecruit::targets(int index) const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruit.targets)
+const ::proto3::PlayerInfo& MsgCZTeamRecruitStart::targets(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitStart.targets)
   return targets_.Get(index);
 }
-::proto3::PlayerInfo* MsgCZTeamRecruit::mutable_targets(int index) {
-  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruit.targets)
+::proto3::PlayerInfo* MsgCZTeamRecruitStart::mutable_targets(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruitStart.targets)
   return targets_.Mutable(index);
 }
-::proto3::PlayerInfo* MsgCZTeamRecruit::add_targets() {
-  // @@protoc_insertion_point(field_add:proto3.MsgCZTeamRecruit.targets)
+::proto3::PlayerInfo* MsgCZTeamRecruitStart::add_targets() {
+  // @@protoc_insertion_point(field_add:proto3.MsgCZTeamRecruitStart.targets)
   return targets_.Add();
 }
 ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >*
-MsgCZTeamRecruit::mutable_targets() {
-  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZTeamRecruit.targets)
+MsgCZTeamRecruitStart::mutable_targets() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.MsgCZTeamRecruitStart.targets)
   return &targets_;
 }
 const ::google::protobuf::RepeatedPtrField< ::proto3::PlayerInfo >&
-MsgCZTeamRecruit::targets() const {
-  // @@protoc_insertion_point(field_list:proto3.MsgCZTeamRecruit.targets)
+MsgCZTeamRecruitStart::targets() const {
+  // @@protoc_insertion_point(field_list:proto3.MsgCZTeamRecruitStart.targets)
   return targets_;
 }
 
@@ -28629,17 +30727,17 @@ MsgCZTeamRecruit::targets() const {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgZCTeamInvite::kMidFieldNumber;
-const int MsgZCTeamInvite::kTeamFieldNumber;
+const int MsgZCTeamRecruitAsk::kMidFieldNumber;
+const int MsgZCTeamRecruitAsk::kTeamFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgZCTeamInvite::MsgZCTeamInvite()
+MsgZCTeamRecruitAsk::MsgZCTeamRecruitAsk()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamRecruitAsk)
 }
 
-void MsgZCTeamInvite::InitAsDefaultInstance() {
+void MsgZCTeamRecruitAsk::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   team_ = const_cast< ::proto3::TeamInfo*>(
@@ -28649,27 +30747,27 @@ void MsgZCTeamInvite::InitAsDefaultInstance() {
 #endif
 }
 
-MsgZCTeamInvite::MsgZCTeamInvite(const MsgZCTeamInvite& from)
+MsgZCTeamRecruitAsk::MsgZCTeamRecruitAsk(const MsgZCTeamRecruitAsk& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamRecruitAsk)
 }
 
-void MsgZCTeamInvite::SharedCtor() {
+void MsgZCTeamRecruitAsk::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
   team_ = NULL;
 }
 
-MsgZCTeamInvite::~MsgZCTeamInvite() {
-  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamInvite)
+MsgZCTeamRecruitAsk::~MsgZCTeamRecruitAsk() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamRecruitAsk)
   SharedDtor();
 }
 
-void MsgZCTeamInvite::SharedDtor() {
+void MsgZCTeamRecruitAsk::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -28679,12 +30777,12 @@ void MsgZCTeamInvite::SharedDtor() {
   }
 }
 
-void MsgZCTeamInvite::SetCachedSize(int size) const {
+void MsgZCTeamRecruitAsk::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgZCTeamInvite& MsgZCTeamInvite::default_instance() {
+const MsgZCTeamRecruitAsk& MsgZCTeamRecruitAsk::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -28693,28 +30791,28 @@ const MsgZCTeamInvite& MsgZCTeamInvite::default_instance() {
   return *default_instance_;
 }
 
-MsgZCTeamInvite* MsgZCTeamInvite::default_instance_ = NULL;
+MsgZCTeamRecruitAsk* MsgZCTeamRecruitAsk::default_instance_ = NULL;
 
-MsgZCTeamInvite* MsgZCTeamInvite::New(::google::protobuf::Arena* arena) const {
-  MsgZCTeamInvite* n = new MsgZCTeamInvite;
+MsgZCTeamRecruitAsk* MsgZCTeamRecruitAsk::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamRecruitAsk* n = new MsgZCTeamRecruitAsk;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgZCTeamInvite::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamInvite)
+void MsgZCTeamRecruitAsk::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamRecruitAsk)
   mid_ = 0u;
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
 
-bool MsgZCTeamInvite::MergePartialFromCodedStream(
+bool MsgZCTeamRecruitAsk::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamRecruitAsk)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -28760,17 +30858,17 @@ bool MsgZCTeamInvite::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamRecruitAsk)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamRecruitAsk)
   return false;
 #undef DO_
 }
 
-void MsgZCTeamInvite::SerializeWithCachedSizes(
+void MsgZCTeamRecruitAsk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamRecruitAsk)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -28782,11 +30880,11 @@ void MsgZCTeamInvite::SerializeWithCachedSizes(
       2, *this->team_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamInvite)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamRecruitAsk)
 }
 
-int MsgZCTeamInvite::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamInvite)
+int MsgZCTeamRecruitAsk::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamRecruitAsk)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -28809,13 +30907,13 @@ int MsgZCTeamInvite::ByteSize() const {
   return total_size;
 }
 
-void MsgZCTeamInvite::CheckTypeAndMergeFrom(
+void MsgZCTeamRecruitAsk::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamInvite*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamRecruitAsk*>(&from));
 }
 
-void MsgZCTeamInvite::MergeFrom(const MsgZCTeamInvite& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamInvite)
+void MsgZCTeamRecruitAsk::MergeFrom(const MsgZCTeamRecruitAsk& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamRecruitAsk)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.mid() != 0) {
     set_mid(from.mid());
@@ -28825,82 +30923,82 @@ void MsgZCTeamInvite::MergeFrom(const MsgZCTeamInvite& from) {
   }
 }
 
-void MsgZCTeamInvite::CopyFrom(const MsgZCTeamInvite& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamInvite)
+void MsgZCTeamRecruitAsk::CopyFrom(const MsgZCTeamRecruitAsk& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamRecruitAsk)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgZCTeamInvite::IsInitialized() const {
+bool MsgZCTeamRecruitAsk::IsInitialized() const {
 
   return true;
 }
 
-void MsgZCTeamInvite::Swap(MsgZCTeamInvite* other) {
+void MsgZCTeamRecruitAsk::Swap(MsgZCTeamRecruitAsk* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgZCTeamInvite::InternalSwap(MsgZCTeamInvite* other) {
+void MsgZCTeamRecruitAsk::InternalSwap(MsgZCTeamRecruitAsk* other) {
   std::swap(mid_, other->mid_);
   std::swap(team_, other->team_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgZCTeamInvite::GetTypeName() const {
-  return "proto3.MsgZCTeamInvite";
+::std::string MsgZCTeamRecruitAsk::GetTypeName() const {
+  return "proto3.MsgZCTeamRecruitAsk";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgZCTeamInvite
+// MsgZCTeamRecruitAsk
 
 // optional uint32 mid = 1;
-void MsgZCTeamInvite::clear_mid() {
+void MsgZCTeamRecruitAsk::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgZCTeamInvite::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.mid)
+ ::google::protobuf::uint32 MsgZCTeamRecruitAsk::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamRecruitAsk.mid)
   return mid_;
 }
- void MsgZCTeamInvite::set_mid(::google::protobuf::uint32 value) {
+ void MsgZCTeamRecruitAsk::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamInvite.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamRecruitAsk.mid)
 }
 
 // optional .proto3.TeamInfo team = 2;
-bool MsgZCTeamInvite::has_team() const {
+bool MsgZCTeamRecruitAsk::has_team() const {
   return !_is_default_instance_ && team_ != NULL;
 }
-void MsgZCTeamInvite::clear_team() {
+void MsgZCTeamRecruitAsk::clear_team() {
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
-const ::proto3::TeamInfo& MsgZCTeamInvite::team() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamInvite.team)
+const ::proto3::TeamInfo& MsgZCTeamRecruitAsk::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamRecruitAsk.team)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return team_ != NULL ? *team_ : *default_instance().team_;
 #else
   return team_ != NULL ? *team_ : *default_instance_->team_;
 #endif
 }
-::proto3::TeamInfo* MsgZCTeamInvite::mutable_team() {
+::proto3::TeamInfo* MsgZCTeamRecruitAsk::mutable_team() {
   
   if (team_ == NULL) {
     team_ = new ::proto3::TeamInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamInvite.team)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamRecruitAsk.team)
   return team_;
 }
-::proto3::TeamInfo* MsgZCTeamInvite::release_team() {
-  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamInvite.team)
+::proto3::TeamInfo* MsgZCTeamRecruitAsk::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamRecruitAsk.team)
   
   ::proto3::TeamInfo* temp = team_;
   team_ = NULL;
   return temp;
 }
-void MsgZCTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+void MsgZCTeamRecruitAsk::set_allocated_team(::proto3::TeamInfo* team) {
   delete team_;
   team_ = team;
   if (team) {
@@ -28908,7 +31006,7 @@ void MsgZCTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamInvite.team)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamRecruitAsk.team)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -28916,18 +31014,18 @@ void MsgZCTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgCZTeamInvite::kMidFieldNumber;
-const int MsgCZTeamInvite::kTeamFieldNumber;
-const int MsgCZTeamInvite::kResultFieldNumber;
+const int MsgCZTeamRecruitReply::kMidFieldNumber;
+const int MsgCZTeamRecruitReply::kTeamFieldNumber;
+const int MsgCZTeamRecruitReply::kResultFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgCZTeamInvite::MsgCZTeamInvite()
+MsgCZTeamRecruitReply::MsgCZTeamRecruitReply()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamRecruitReply)
 }
 
-void MsgCZTeamInvite::InitAsDefaultInstance() {
+void MsgCZTeamRecruitReply::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   team_ = const_cast< ::proto3::TeamInfo*>(
@@ -28937,15 +31035,15 @@ void MsgCZTeamInvite::InitAsDefaultInstance() {
 #endif
 }
 
-MsgCZTeamInvite::MsgCZTeamInvite(const MsgCZTeamInvite& from)
+MsgCZTeamRecruitReply::MsgCZTeamRecruitReply(const MsgCZTeamRecruitReply& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamRecruitReply)
 }
 
-void MsgCZTeamInvite::SharedCtor() {
+void MsgCZTeamRecruitReply::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
@@ -28953,12 +31051,12 @@ void MsgCZTeamInvite::SharedCtor() {
   result_ = 0;
 }
 
-MsgCZTeamInvite::~MsgCZTeamInvite() {
-  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamInvite)
+MsgCZTeamRecruitReply::~MsgCZTeamRecruitReply() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamRecruitReply)
   SharedDtor();
 }
 
-void MsgCZTeamInvite::SharedDtor() {
+void MsgCZTeamRecruitReply::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -28968,12 +31066,12 @@ void MsgCZTeamInvite::SharedDtor() {
   }
 }
 
-void MsgCZTeamInvite::SetCachedSize(int size) const {
+void MsgCZTeamRecruitReply::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgCZTeamInvite& MsgCZTeamInvite::default_instance() {
+const MsgCZTeamRecruitReply& MsgCZTeamRecruitReply::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -28982,27 +31080,27 @@ const MsgCZTeamInvite& MsgCZTeamInvite::default_instance() {
   return *default_instance_;
 }
 
-MsgCZTeamInvite* MsgCZTeamInvite::default_instance_ = NULL;
+MsgCZTeamRecruitReply* MsgCZTeamRecruitReply::default_instance_ = NULL;
 
-MsgCZTeamInvite* MsgCZTeamInvite::New(::google::protobuf::Arena* arena) const {
-  MsgCZTeamInvite* n = new MsgCZTeamInvite;
+MsgCZTeamRecruitReply* MsgCZTeamRecruitReply::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamRecruitReply* n = new MsgCZTeamRecruitReply;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgCZTeamInvite::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamInvite)
+void MsgCZTeamRecruitReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamRecruitReply)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
   _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(MsgCZTeamInvite, f) \
+  __builtin_offsetof(MsgCZTeamRecruitReply, f) \
   _Pragma("clang diagnostic pop")
 #else
 #define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgCZTeamInvite*>(16)->f)
+  &reinterpret_cast<MsgCZTeamRecruitReply*>(16)->f)
 #endif
 
 #define ZR_(first, last) do {\
@@ -29019,11 +31117,11 @@ void MsgCZTeamInvite::Clear() {
 
 }
 
-bool MsgCZTeamInvite::MergePartialFromCodedStream(
+bool MsgCZTeamRecruitReply::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamRecruitReply)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -29085,17 +31183,17 @@ bool MsgCZTeamInvite::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamRecruitReply)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamRecruitReply)
   return false;
 #undef DO_
 }
 
-void MsgCZTeamInvite::SerializeWithCachedSizes(
+void MsgCZTeamRecruitReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamRecruitReply)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -29113,11 +31211,11 @@ void MsgCZTeamInvite::SerializeWithCachedSizes(
       3, this->result(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamInvite)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamRecruitReply)
 }
 
-int MsgCZTeamInvite::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamInvite)
+int MsgCZTeamRecruitReply::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamRecruitReply)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -29146,13 +31244,13 @@ int MsgCZTeamInvite::ByteSize() const {
   return total_size;
 }
 
-void MsgCZTeamInvite::CheckTypeAndMergeFrom(
+void MsgCZTeamRecruitReply::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamInvite*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamRecruitReply*>(&from));
 }
 
-void MsgCZTeamInvite::MergeFrom(const MsgCZTeamInvite& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamInvite)
+void MsgCZTeamRecruitReply::MergeFrom(const MsgCZTeamRecruitReply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamRecruitReply)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.mid() != 0) {
     set_mid(from.mid());
@@ -29165,23 +31263,23 @@ void MsgCZTeamInvite::MergeFrom(const MsgCZTeamInvite& from) {
   }
 }
 
-void MsgCZTeamInvite::CopyFrom(const MsgCZTeamInvite& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamInvite)
+void MsgCZTeamRecruitReply::CopyFrom(const MsgCZTeamRecruitReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamRecruitReply)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgCZTeamInvite::IsInitialized() const {
+bool MsgCZTeamRecruitReply::IsInitialized() const {
 
   return true;
 }
 
-void MsgCZTeamInvite::Swap(MsgCZTeamInvite* other) {
+void MsgCZTeamRecruitReply::Swap(MsgCZTeamRecruitReply* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgCZTeamInvite::InternalSwap(MsgCZTeamInvite* other) {
+void MsgCZTeamRecruitReply::InternalSwap(MsgCZTeamRecruitReply* other) {
   std::swap(mid_, other->mid_);
   std::swap(team_, other->team_);
   std::swap(result_, other->result_);
@@ -29189,59 +31287,59 @@ void MsgCZTeamInvite::InternalSwap(MsgCZTeamInvite* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgCZTeamInvite::GetTypeName() const {
-  return "proto3.MsgCZTeamInvite";
+::std::string MsgCZTeamRecruitReply::GetTypeName() const {
+  return "proto3.MsgCZTeamRecruitReply";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgCZTeamInvite
+// MsgCZTeamRecruitReply
 
 // optional uint32 mid = 1;
-void MsgCZTeamInvite::clear_mid() {
+void MsgCZTeamRecruitReply::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgCZTeamInvite::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.mid)
+ ::google::protobuf::uint32 MsgCZTeamRecruitReply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitReply.mid)
   return mid_;
 }
- void MsgCZTeamInvite::set_mid(::google::protobuf::uint32 value) {
+ void MsgCZTeamRecruitReply::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruitReply.mid)
 }
 
 // optional .proto3.TeamInfo team = 2;
-bool MsgCZTeamInvite::has_team() const {
+bool MsgCZTeamRecruitReply::has_team() const {
   return !_is_default_instance_ && team_ != NULL;
 }
-void MsgCZTeamInvite::clear_team() {
+void MsgCZTeamRecruitReply::clear_team() {
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
-const ::proto3::TeamInfo& MsgCZTeamInvite::team() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.team)
+const ::proto3::TeamInfo& MsgCZTeamRecruitReply::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitReply.team)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return team_ != NULL ? *team_ : *default_instance().team_;
 #else
   return team_ != NULL ? *team_ : *default_instance_->team_;
 #endif
 }
-::proto3::TeamInfo* MsgCZTeamInvite::mutable_team() {
+::proto3::TeamInfo* MsgCZTeamRecruitReply::mutable_team() {
   
   if (team_ == NULL) {
     team_ = new ::proto3::TeamInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamInvite.team)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamRecruitReply.team)
   return team_;
 }
-::proto3::TeamInfo* MsgCZTeamInvite::release_team() {
-  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamInvite.team)
+::proto3::TeamInfo* MsgCZTeamRecruitReply::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamRecruitReply.team)
   
   ::proto3::TeamInfo* temp = team_;
   team_ = NULL;
   return temp;
 }
-void MsgCZTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
+void MsgCZTeamRecruitReply::set_allocated_team(::proto3::TeamInfo* team) {
   delete team_;
   team_ = team;
   if (team) {
@@ -29249,21 +31347,21 @@ void MsgCZTeamInvite::set_allocated_team(::proto3::TeamInfo* team) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamInvite.team)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamRecruitReply.team)
 }
 
 // optional .proto3.eResult result = 3;
-void MsgCZTeamInvite::clear_result() {
+void MsgCZTeamRecruitReply::clear_result() {
   result_ = 0;
 }
- ::proto3::eResult MsgCZTeamInvite::result() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamInvite.result)
+ ::proto3::eResult MsgCZTeamRecruitReply::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamRecruitReply.result)
   return static_cast< ::proto3::eResult >(result_);
 }
- void MsgCZTeamInvite::set_result(::proto3::eResult value) {
+ void MsgCZTeamRecruitReply::set_result(::proto3::eResult value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamInvite.result)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamRecruitReply.result)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -29271,17 +31369,17 @@ void MsgCZTeamInvite::clear_result() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgCZTeamJoin::kMidFieldNumber;
-const int MsgCZTeamJoin::kTeamFieldNumber;
+const int MsgCZTeamJoinStart::kMidFieldNumber;
+const int MsgCZTeamJoinStart::kTeamFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgCZTeamJoin::MsgCZTeamJoin()
+MsgCZTeamJoinStart::MsgCZTeamJoinStart()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamJoinStart)
 }
 
-void MsgCZTeamJoin::InitAsDefaultInstance() {
+void MsgCZTeamJoinStart::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   team_ = const_cast< ::proto3::TeamInfo*>(
@@ -29291,27 +31389,27 @@ void MsgCZTeamJoin::InitAsDefaultInstance() {
 #endif
 }
 
-MsgCZTeamJoin::MsgCZTeamJoin(const MsgCZTeamJoin& from)
+MsgCZTeamJoinStart::MsgCZTeamJoinStart(const MsgCZTeamJoinStart& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamJoinStart)
 }
 
-void MsgCZTeamJoin::SharedCtor() {
+void MsgCZTeamJoinStart::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
   team_ = NULL;
 }
 
-MsgCZTeamJoin::~MsgCZTeamJoin() {
-  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamJoin)
+MsgCZTeamJoinStart::~MsgCZTeamJoinStart() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamJoinStart)
   SharedDtor();
 }
 
-void MsgCZTeamJoin::SharedDtor() {
+void MsgCZTeamJoinStart::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -29321,12 +31419,12 @@ void MsgCZTeamJoin::SharedDtor() {
   }
 }
 
-void MsgCZTeamJoin::SetCachedSize(int size) const {
+void MsgCZTeamJoinStart::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgCZTeamJoin& MsgCZTeamJoin::default_instance() {
+const MsgCZTeamJoinStart& MsgCZTeamJoinStart::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -29335,28 +31433,28 @@ const MsgCZTeamJoin& MsgCZTeamJoin::default_instance() {
   return *default_instance_;
 }
 
-MsgCZTeamJoin* MsgCZTeamJoin::default_instance_ = NULL;
+MsgCZTeamJoinStart* MsgCZTeamJoinStart::default_instance_ = NULL;
 
-MsgCZTeamJoin* MsgCZTeamJoin::New(::google::protobuf::Arena* arena) const {
-  MsgCZTeamJoin* n = new MsgCZTeamJoin;
+MsgCZTeamJoinStart* MsgCZTeamJoinStart::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamJoinStart* n = new MsgCZTeamJoinStart;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgCZTeamJoin::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamJoin)
+void MsgCZTeamJoinStart::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamJoinStart)
   mid_ = 0u;
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
 
-bool MsgCZTeamJoin::MergePartialFromCodedStream(
+bool MsgCZTeamJoinStart::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamJoinStart)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -29402,17 +31500,17 @@ bool MsgCZTeamJoin::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamJoinStart)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamJoinStart)
   return false;
 #undef DO_
 }
 
-void MsgCZTeamJoin::SerializeWithCachedSizes(
+void MsgCZTeamJoinStart::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamJoinStart)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -29424,11 +31522,11 @@ void MsgCZTeamJoin::SerializeWithCachedSizes(
       2, *this->team_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamJoin)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamJoinStart)
 }
 
-int MsgCZTeamJoin::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamJoin)
+int MsgCZTeamJoinStart::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamJoinStart)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -29451,13 +31549,13 @@ int MsgCZTeamJoin::ByteSize() const {
   return total_size;
 }
 
-void MsgCZTeamJoin::CheckTypeAndMergeFrom(
+void MsgCZTeamJoinStart::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamJoin*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamJoinStart*>(&from));
 }
 
-void MsgCZTeamJoin::MergeFrom(const MsgCZTeamJoin& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamJoin)
+void MsgCZTeamJoinStart::MergeFrom(const MsgCZTeamJoinStart& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamJoinStart)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.mid() != 0) {
     set_mid(from.mid());
@@ -29467,82 +31565,82 @@ void MsgCZTeamJoin::MergeFrom(const MsgCZTeamJoin& from) {
   }
 }
 
-void MsgCZTeamJoin::CopyFrom(const MsgCZTeamJoin& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamJoin)
+void MsgCZTeamJoinStart::CopyFrom(const MsgCZTeamJoinStart& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamJoinStart)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgCZTeamJoin::IsInitialized() const {
+bool MsgCZTeamJoinStart::IsInitialized() const {
 
   return true;
 }
 
-void MsgCZTeamJoin::Swap(MsgCZTeamJoin* other) {
+void MsgCZTeamJoinStart::Swap(MsgCZTeamJoinStart* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgCZTeamJoin::InternalSwap(MsgCZTeamJoin* other) {
+void MsgCZTeamJoinStart::InternalSwap(MsgCZTeamJoinStart* other) {
   std::swap(mid_, other->mid_);
   std::swap(team_, other->team_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgCZTeamJoin::GetTypeName() const {
-  return "proto3.MsgCZTeamJoin";
+::std::string MsgCZTeamJoinStart::GetTypeName() const {
+  return "proto3.MsgCZTeamJoinStart";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgCZTeamJoin
+// MsgCZTeamJoinStart
 
 // optional uint32 mid = 1;
-void MsgCZTeamJoin::clear_mid() {
+void MsgCZTeamJoinStart::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgCZTeamJoin::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.mid)
+ ::google::protobuf::uint32 MsgCZTeamJoinStart::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoinStart.mid)
   return mid_;
 }
- void MsgCZTeamJoin::set_mid(::google::protobuf::uint32 value) {
+ void MsgCZTeamJoinStart::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoin.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoinStart.mid)
 }
 
 // optional .proto3.TeamInfo team = 2;
-bool MsgCZTeamJoin::has_team() const {
+bool MsgCZTeamJoinStart::has_team() const {
   return !_is_default_instance_ && team_ != NULL;
 }
-void MsgCZTeamJoin::clear_team() {
+void MsgCZTeamJoinStart::clear_team() {
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
-const ::proto3::TeamInfo& MsgCZTeamJoin::team() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoin.team)
+const ::proto3::TeamInfo& MsgCZTeamJoinStart::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoinStart.team)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return team_ != NULL ? *team_ : *default_instance().team_;
 #else
   return team_ != NULL ? *team_ : *default_instance_->team_;
 #endif
 }
-::proto3::TeamInfo* MsgCZTeamJoin::mutable_team() {
+::proto3::TeamInfo* MsgCZTeamJoinStart::mutable_team() {
   
   if (team_ == NULL) {
     team_ = new ::proto3::TeamInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamJoin.team)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamJoinStart.team)
   return team_;
 }
-::proto3::TeamInfo* MsgCZTeamJoin::release_team() {
-  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamJoin.team)
+::proto3::TeamInfo* MsgCZTeamJoinStart::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamJoinStart.team)
   
   ::proto3::TeamInfo* temp = team_;
   team_ = NULL;
   return temp;
 }
-void MsgCZTeamJoin::set_allocated_team(::proto3::TeamInfo* team) {
+void MsgCZTeamJoinStart::set_allocated_team(::proto3::TeamInfo* team) {
   delete team_;
   team_ = team;
   if (team) {
@@ -29550,7 +31648,7 @@ void MsgCZTeamJoin::set_allocated_team(::proto3::TeamInfo* team) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamJoin.team)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamJoinStart.team)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -29558,17 +31656,17 @@ void MsgCZTeamJoin::set_allocated_team(::proto3::TeamInfo* team) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgZCTeamApply::kMidFieldNumber;
-const int MsgZCTeamApply::kTeamFieldNumber;
+const int MsgZCTeamJoinAsk::kMidFieldNumber;
+const int MsgZCTeamJoinAsk::kTeamFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgZCTeamApply::MsgZCTeamApply()
+MsgZCTeamJoinAsk::MsgZCTeamJoinAsk()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(constructor:proto3.MsgZCTeamJoinAsk)
 }
 
-void MsgZCTeamApply::InitAsDefaultInstance() {
+void MsgZCTeamJoinAsk::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   team_ = const_cast< ::proto3::TeamInfo*>(
@@ -29578,27 +31676,27 @@ void MsgZCTeamApply::InitAsDefaultInstance() {
 #endif
 }
 
-MsgZCTeamApply::MsgZCTeamApply(const MsgZCTeamApply& from)
+MsgZCTeamJoinAsk::MsgZCTeamJoinAsk(const MsgZCTeamJoinAsk& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgZCTeamJoinAsk)
 }
 
-void MsgZCTeamApply::SharedCtor() {
+void MsgZCTeamJoinAsk::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
   team_ = NULL;
 }
 
-MsgZCTeamApply::~MsgZCTeamApply() {
-  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamApply)
+MsgZCTeamJoinAsk::~MsgZCTeamJoinAsk() {
+  // @@protoc_insertion_point(destructor:proto3.MsgZCTeamJoinAsk)
   SharedDtor();
 }
 
-void MsgZCTeamApply::SharedDtor() {
+void MsgZCTeamJoinAsk::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -29608,12 +31706,12 @@ void MsgZCTeamApply::SharedDtor() {
   }
 }
 
-void MsgZCTeamApply::SetCachedSize(int size) const {
+void MsgZCTeamJoinAsk::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgZCTeamApply& MsgZCTeamApply::default_instance() {
+const MsgZCTeamJoinAsk& MsgZCTeamJoinAsk::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -29622,28 +31720,28 @@ const MsgZCTeamApply& MsgZCTeamApply::default_instance() {
   return *default_instance_;
 }
 
-MsgZCTeamApply* MsgZCTeamApply::default_instance_ = NULL;
+MsgZCTeamJoinAsk* MsgZCTeamJoinAsk::default_instance_ = NULL;
 
-MsgZCTeamApply* MsgZCTeamApply::New(::google::protobuf::Arena* arena) const {
-  MsgZCTeamApply* n = new MsgZCTeamApply;
+MsgZCTeamJoinAsk* MsgZCTeamJoinAsk::New(::google::protobuf::Arena* arena) const {
+  MsgZCTeamJoinAsk* n = new MsgZCTeamJoinAsk;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgZCTeamApply::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamApply)
+void MsgZCTeamJoinAsk::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgZCTeamJoinAsk)
   mid_ = 0u;
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
 
-bool MsgZCTeamApply::MergePartialFromCodedStream(
+bool MsgZCTeamJoinAsk::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(parse_start:proto3.MsgZCTeamJoinAsk)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -29689,17 +31787,17 @@ bool MsgZCTeamApply::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(parse_success:proto3.MsgZCTeamJoinAsk)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgZCTeamJoinAsk)
   return false;
 #undef DO_
 }
 
-void MsgZCTeamApply::SerializeWithCachedSizes(
+void MsgZCTeamJoinAsk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgZCTeamJoinAsk)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -29711,11 +31809,11 @@ void MsgZCTeamApply::SerializeWithCachedSizes(
       2, *this->team_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamApply)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgZCTeamJoinAsk)
 }
 
-int MsgZCTeamApply::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamApply)
+int MsgZCTeamJoinAsk::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgZCTeamJoinAsk)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -29738,13 +31836,13 @@ int MsgZCTeamApply::ByteSize() const {
   return total_size;
 }
 
-void MsgZCTeamApply::CheckTypeAndMergeFrom(
+void MsgZCTeamJoinAsk::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamApply*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgZCTeamJoinAsk*>(&from));
 }
 
-void MsgZCTeamApply::MergeFrom(const MsgZCTeamApply& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamApply)
+void MsgZCTeamJoinAsk::MergeFrom(const MsgZCTeamJoinAsk& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgZCTeamJoinAsk)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.mid() != 0) {
     set_mid(from.mid());
@@ -29754,82 +31852,82 @@ void MsgZCTeamApply::MergeFrom(const MsgZCTeamApply& from) {
   }
 }
 
-void MsgZCTeamApply::CopyFrom(const MsgZCTeamApply& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamApply)
+void MsgZCTeamJoinAsk::CopyFrom(const MsgZCTeamJoinAsk& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgZCTeamJoinAsk)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgZCTeamApply::IsInitialized() const {
+bool MsgZCTeamJoinAsk::IsInitialized() const {
 
   return true;
 }
 
-void MsgZCTeamApply::Swap(MsgZCTeamApply* other) {
+void MsgZCTeamJoinAsk::Swap(MsgZCTeamJoinAsk* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgZCTeamApply::InternalSwap(MsgZCTeamApply* other) {
+void MsgZCTeamJoinAsk::InternalSwap(MsgZCTeamJoinAsk* other) {
   std::swap(mid_, other->mid_);
   std::swap(team_, other->team_);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgZCTeamApply::GetTypeName() const {
-  return "proto3.MsgZCTeamApply";
+::std::string MsgZCTeamJoinAsk::GetTypeName() const {
+  return "proto3.MsgZCTeamJoinAsk";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgZCTeamApply
+// MsgZCTeamJoinAsk
 
 // optional uint32 mid = 1;
-void MsgZCTeamApply::clear_mid() {
+void MsgZCTeamJoinAsk::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgZCTeamApply::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.mid)
+ ::google::protobuf::uint32 MsgZCTeamJoinAsk::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamJoinAsk.mid)
   return mid_;
 }
- void MsgZCTeamApply::set_mid(::google::protobuf::uint32 value) {
+ void MsgZCTeamJoinAsk::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamApply.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgZCTeamJoinAsk.mid)
 }
 
 // optional .proto3.TeamInfo team = 2;
-bool MsgZCTeamApply::has_team() const {
+bool MsgZCTeamJoinAsk::has_team() const {
   return !_is_default_instance_ && team_ != NULL;
 }
-void MsgZCTeamApply::clear_team() {
+void MsgZCTeamJoinAsk::clear_team() {
   if (GetArenaNoVirtual() == NULL && team_ != NULL) delete team_;
   team_ = NULL;
 }
-const ::proto3::TeamInfo& MsgZCTeamApply::team() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamApply.team)
+const ::proto3::TeamInfo& MsgZCTeamJoinAsk::team() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgZCTeamJoinAsk.team)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return team_ != NULL ? *team_ : *default_instance().team_;
 #else
   return team_ != NULL ? *team_ : *default_instance_->team_;
 #endif
 }
-::proto3::TeamInfo* MsgZCTeamApply::mutable_team() {
+::proto3::TeamInfo* MsgZCTeamJoinAsk::mutable_team() {
   
   if (team_ == NULL) {
     team_ = new ::proto3::TeamInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamApply.team)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgZCTeamJoinAsk.team)
   return team_;
 }
-::proto3::TeamInfo* MsgZCTeamApply::release_team() {
-  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamApply.team)
+::proto3::TeamInfo* MsgZCTeamJoinAsk::release_team() {
+  // @@protoc_insertion_point(field_release:proto3.MsgZCTeamJoinAsk.team)
   
   ::proto3::TeamInfo* temp = team_;
   team_ = NULL;
   return temp;
 }
-void MsgZCTeamApply::set_allocated_team(::proto3::TeamInfo* team) {
+void MsgZCTeamJoinAsk::set_allocated_team(::proto3::TeamInfo* team) {
   delete team_;
   team_ = team;
   if (team) {
@@ -29837,7 +31935,7 @@ void MsgZCTeamApply::set_allocated_team(::proto3::TeamInfo* team) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamApply.team)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgZCTeamJoinAsk.team)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -29845,18 +31943,18 @@ void MsgZCTeamApply::set_allocated_team(::proto3::TeamInfo* team) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgCZTeamApply::kMidFieldNumber;
-const int MsgCZTeamApply::kApplicantFieldNumber;
-const int MsgCZTeamApply::kResultFieldNumber;
+const int MsgCZTeamJoinReply::kMidFieldNumber;
+const int MsgCZTeamJoinReply::kApplicantFieldNumber;
+const int MsgCZTeamJoinReply::kResultFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgCZTeamApply::MsgCZTeamApply()
+MsgCZTeamJoinReply::MsgCZTeamJoinReply()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(constructor:proto3.MsgCZTeamJoinReply)
 }
 
-void MsgCZTeamApply::InitAsDefaultInstance() {
+void MsgCZTeamJoinReply::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   applicant_ = const_cast< ::proto3::PlayerInfo*>(
@@ -29866,15 +31964,15 @@ void MsgCZTeamApply::InitAsDefaultInstance() {
 #endif
 }
 
-MsgCZTeamApply::MsgCZTeamApply(const MsgCZTeamApply& from)
+MsgCZTeamJoinReply::MsgCZTeamJoinReply(const MsgCZTeamJoinReply& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(copy_constructor:proto3.MsgCZTeamJoinReply)
 }
 
-void MsgCZTeamApply::SharedCtor() {
+void MsgCZTeamJoinReply::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   mid_ = 0u;
@@ -29882,12 +31980,12 @@ void MsgCZTeamApply::SharedCtor() {
   result_ = 0;
 }
 
-MsgCZTeamApply::~MsgCZTeamApply() {
-  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamApply)
+MsgCZTeamJoinReply::~MsgCZTeamJoinReply() {
+  // @@protoc_insertion_point(destructor:proto3.MsgCZTeamJoinReply)
   SharedDtor();
 }
 
-void MsgCZTeamApply::SharedDtor() {
+void MsgCZTeamJoinReply::SharedDtor() {
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   if (this != &default_instance()) {
   #else
@@ -29897,12 +31995,12 @@ void MsgCZTeamApply::SharedDtor() {
   }
 }
 
-void MsgCZTeamApply::SetCachedSize(int size) const {
+void MsgCZTeamJoinReply::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const MsgCZTeamApply& MsgCZTeamApply::default_instance() {
+const MsgCZTeamJoinReply& MsgCZTeamJoinReply::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_game_5fprotocol_2eproto();
 #else
@@ -29911,27 +32009,27 @@ const MsgCZTeamApply& MsgCZTeamApply::default_instance() {
   return *default_instance_;
 }
 
-MsgCZTeamApply* MsgCZTeamApply::default_instance_ = NULL;
+MsgCZTeamJoinReply* MsgCZTeamJoinReply::default_instance_ = NULL;
 
-MsgCZTeamApply* MsgCZTeamApply::New(::google::protobuf::Arena* arena) const {
-  MsgCZTeamApply* n = new MsgCZTeamApply;
+MsgCZTeamJoinReply* MsgCZTeamJoinReply::New(::google::protobuf::Arena* arena) const {
+  MsgCZTeamJoinReply* n = new MsgCZTeamJoinReply;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgCZTeamApply::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamApply)
+void MsgCZTeamJoinReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.MsgCZTeamJoinReply)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
   _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(MsgCZTeamApply, f) \
+  __builtin_offsetof(MsgCZTeamJoinReply, f) \
   _Pragma("clang diagnostic pop")
 #else
 #define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgCZTeamApply*>(16)->f)
+  &reinterpret_cast<MsgCZTeamJoinReply*>(16)->f)
 #endif
 
 #define ZR_(first, last) do {\
@@ -29948,11 +32046,11 @@ void MsgCZTeamApply::Clear() {
 
 }
 
-bool MsgCZTeamApply::MergePartialFromCodedStream(
+bool MsgCZTeamJoinReply::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(parse_start:proto3.MsgCZTeamJoinReply)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -30014,17 +32112,17 @@ bool MsgCZTeamApply::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(parse_success:proto3.MsgCZTeamJoinReply)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(parse_failure:proto3.MsgCZTeamJoinReply)
   return false;
 #undef DO_
 }
 
-void MsgCZTeamApply::SerializeWithCachedSizes(
+void MsgCZTeamJoinReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(serialize_start:proto3.MsgCZTeamJoinReply)
   // optional uint32 mid = 1;
   if (this->mid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
@@ -30042,11 +32140,11 @@ void MsgCZTeamApply::SerializeWithCachedSizes(
       3, this->result(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamApply)
+  // @@protoc_insertion_point(serialize_end:proto3.MsgCZTeamJoinReply)
 }
 
-int MsgCZTeamApply::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamApply)
+int MsgCZTeamJoinReply::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.MsgCZTeamJoinReply)
   int total_size = 0;
 
   // optional uint32 mid = 1;
@@ -30075,13 +32173,13 @@ int MsgCZTeamApply::ByteSize() const {
   return total_size;
 }
 
-void MsgCZTeamApply::CheckTypeAndMergeFrom(
+void MsgCZTeamJoinReply::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamApply*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const MsgCZTeamJoinReply*>(&from));
 }
 
-void MsgCZTeamApply::MergeFrom(const MsgCZTeamApply& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamApply)
+void MsgCZTeamJoinReply::MergeFrom(const MsgCZTeamJoinReply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.MsgCZTeamJoinReply)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.mid() != 0) {
     set_mid(from.mid());
@@ -30094,23 +32192,23 @@ void MsgCZTeamApply::MergeFrom(const MsgCZTeamApply& from) {
   }
 }
 
-void MsgCZTeamApply::CopyFrom(const MsgCZTeamApply& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamApply)
+void MsgCZTeamJoinReply::CopyFrom(const MsgCZTeamJoinReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.MsgCZTeamJoinReply)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgCZTeamApply::IsInitialized() const {
+bool MsgCZTeamJoinReply::IsInitialized() const {
 
   return true;
 }
 
-void MsgCZTeamApply::Swap(MsgCZTeamApply* other) {
+void MsgCZTeamJoinReply::Swap(MsgCZTeamJoinReply* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgCZTeamApply::InternalSwap(MsgCZTeamApply* other) {
+void MsgCZTeamJoinReply::InternalSwap(MsgCZTeamJoinReply* other) {
   std::swap(mid_, other->mid_);
   std::swap(applicant_, other->applicant_);
   std::swap(result_, other->result_);
@@ -30118,59 +32216,59 @@ void MsgCZTeamApply::InternalSwap(MsgCZTeamApply* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string MsgCZTeamApply::GetTypeName() const {
-  return "proto3.MsgCZTeamApply";
+::std::string MsgCZTeamJoinReply::GetTypeName() const {
+  return "proto3.MsgCZTeamJoinReply";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgCZTeamApply
+// MsgCZTeamJoinReply
 
 // optional uint32 mid = 1;
-void MsgCZTeamApply::clear_mid() {
+void MsgCZTeamJoinReply::clear_mid() {
   mid_ = 0u;
 }
- ::google::protobuf::uint32 MsgCZTeamApply::mid() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.mid)
+ ::google::protobuf::uint32 MsgCZTeamJoinReply::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoinReply.mid)
   return mid_;
 }
- void MsgCZTeamApply::set_mid(::google::protobuf::uint32 value) {
+ void MsgCZTeamJoinReply::set_mid(::google::protobuf::uint32 value) {
   
   mid_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.mid)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoinReply.mid)
 }
 
 // optional .proto3.PlayerInfo applicant = 2;
-bool MsgCZTeamApply::has_applicant() const {
+bool MsgCZTeamJoinReply::has_applicant() const {
   return !_is_default_instance_ && applicant_ != NULL;
 }
-void MsgCZTeamApply::clear_applicant() {
+void MsgCZTeamJoinReply::clear_applicant() {
   if (GetArenaNoVirtual() == NULL && applicant_ != NULL) delete applicant_;
   applicant_ = NULL;
 }
-const ::proto3::PlayerInfo& MsgCZTeamApply::applicant() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.applicant)
+const ::proto3::PlayerInfo& MsgCZTeamJoinReply::applicant() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoinReply.applicant)
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   return applicant_ != NULL ? *applicant_ : *default_instance().applicant_;
 #else
   return applicant_ != NULL ? *applicant_ : *default_instance_->applicant_;
 #endif
 }
-::proto3::PlayerInfo* MsgCZTeamApply::mutable_applicant() {
+::proto3::PlayerInfo* MsgCZTeamJoinReply::mutable_applicant() {
   
   if (applicant_ == NULL) {
     applicant_ = new ::proto3::PlayerInfo;
   }
-  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamApply.applicant)
+  // @@protoc_insertion_point(field_mutable:proto3.MsgCZTeamJoinReply.applicant)
   return applicant_;
 }
-::proto3::PlayerInfo* MsgCZTeamApply::release_applicant() {
-  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamApply.applicant)
+::proto3::PlayerInfo* MsgCZTeamJoinReply::release_applicant() {
+  // @@protoc_insertion_point(field_release:proto3.MsgCZTeamJoinReply.applicant)
   
   ::proto3::PlayerInfo* temp = applicant_;
   applicant_ = NULL;
   return temp;
 }
-void MsgCZTeamApply::set_allocated_applicant(::proto3::PlayerInfo* applicant) {
+void MsgCZTeamJoinReply::set_allocated_applicant(::proto3::PlayerInfo* applicant) {
   delete applicant_;
   applicant_ = applicant;
   if (applicant) {
@@ -30178,21 +32276,21 @@ void MsgCZTeamApply::set_allocated_applicant(::proto3::PlayerInfo* applicant) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamApply.applicant)
+  // @@protoc_insertion_point(field_set_allocated:proto3.MsgCZTeamJoinReply.applicant)
 }
 
 // optional .proto3.eResult result = 3;
-void MsgCZTeamApply::clear_result() {
+void MsgCZTeamJoinReply::clear_result() {
   result_ = 0;
 }
- ::proto3::eResult MsgCZTeamApply::result() const {
-  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamApply.result)
+ ::proto3::eResult MsgCZTeamJoinReply::result() const {
+  // @@protoc_insertion_point(field_get:proto3.MsgCZTeamJoinReply.result)
   return static_cast< ::proto3::eResult >(result_);
 }
- void MsgCZTeamApply::set_result(::proto3::eResult value) {
+ void MsgCZTeamJoinReply::set_result(::proto3::eResult value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamApply.result)
+  // @@protoc_insertion_point(field_set:proto3.MsgCZTeamJoinReply.result)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -33280,6 +35378,593 @@ MsgAZClientEnter::sid() const {
 MsgAZClientEnter::mutable_sid() {
   // @@protoc_insertion_point(field_mutable_list:proto3.MsgAZClientEnter.sid)
   return &sid_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int game_ItemInfo::kMidFieldNumber;
+const int game_ItemInfo::kItemIdFieldNumber;
+const int game_ItemInfo::kItemDataIdFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+game_ItemInfo::game_ItemInfo()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.game_ItemInfo)
+}
+
+void game_ItemInfo::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+game_ItemInfo::game_ItemInfo(const game_ItemInfo& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.game_ItemInfo)
+}
+
+void game_ItemInfo::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+  itemid_ = 0u;
+  itemdataid_ = 0u;
+}
+
+game_ItemInfo::~game_ItemInfo() {
+  // @@protoc_insertion_point(destructor:proto3.game_ItemInfo)
+  SharedDtor();
+}
+
+void game_ItemInfo::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void game_ItemInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const game_ItemInfo& game_ItemInfo::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+game_ItemInfo* game_ItemInfo::default_instance_ = NULL;
+
+game_ItemInfo* game_ItemInfo::New(::google::protobuf::Arena* arena) const {
+  game_ItemInfo* n = new game_ItemInfo;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void game_ItemInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.game_ItemInfo)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(game_ItemInfo, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<game_ItemInfo*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(mid_, itemdataid_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool game_ItemInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.game_ItemInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_itemId;
+        break;
+      }
+
+      // optional uint32 itemId = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_itemId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &itemid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_itemDataId;
+        break;
+      }
+
+      // optional uint32 itemDataId = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_itemDataId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &itemdataid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.game_ItemInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.game_ItemInfo)
+  return false;
+#undef DO_
+}
+
+void game_ItemInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.game_ItemInfo)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // optional uint32 itemId = 2;
+  if (this->itemid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->itemid(), output);
+  }
+
+  // optional uint32 itemDataId = 3;
+  if (this->itemdataid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->itemdataid(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.game_ItemInfo)
+}
+
+int game_ItemInfo::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.game_ItemInfo)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // optional uint32 itemId = 2;
+  if (this->itemid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->itemid());
+  }
+
+  // optional uint32 itemDataId = 3;
+  if (this->itemdataid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->itemdataid());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void game_ItemInfo::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const game_ItemInfo*>(&from));
+}
+
+void game_ItemInfo::MergeFrom(const game_ItemInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.game_ItemInfo)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.itemid() != 0) {
+    set_itemid(from.itemid());
+  }
+  if (from.itemdataid() != 0) {
+    set_itemdataid(from.itemdataid());
+  }
+}
+
+void game_ItemInfo::CopyFrom(const game_ItemInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.game_ItemInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool game_ItemInfo::IsInitialized() const {
+
+  return true;
+}
+
+void game_ItemInfo::Swap(game_ItemInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void game_ItemInfo::InternalSwap(game_ItemInfo* other) {
+  std::swap(mid_, other->mid_);
+  std::swap(itemid_, other->itemid_);
+  std::swap(itemdataid_, other->itemdataid_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string game_ItemInfo::GetTypeName() const {
+  return "proto3.game_ItemInfo";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// game_ItemInfo
+
+// optional uint32 mid = 1;
+void game_ItemInfo::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 game_ItemInfo::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.game_ItemInfo.mid)
+  return mid_;
+}
+ void game_ItemInfo::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.game_ItemInfo.mid)
+}
+
+// optional uint32 itemId = 2;
+void game_ItemInfo::clear_itemid() {
+  itemid_ = 0u;
+}
+ ::google::protobuf::uint32 game_ItemInfo::itemid() const {
+  // @@protoc_insertion_point(field_get:proto3.game_ItemInfo.itemId)
+  return itemid_;
+}
+ void game_ItemInfo::set_itemid(::google::protobuf::uint32 value) {
+  
+  itemid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.game_ItemInfo.itemId)
+}
+
+// optional uint32 itemDataId = 3;
+void game_ItemInfo::clear_itemdataid() {
+  itemdataid_ = 0u;
+}
+ ::google::protobuf::uint32 game_ItemInfo::itemdataid() const {
+  // @@protoc_insertion_point(field_get:proto3.game_ItemInfo.itemDataId)
+  return itemdataid_;
+}
+ void game_ItemInfo::set_itemdataid(::google::protobuf::uint32 value) {
+  
+  itemdataid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.game_ItemInfo.itemDataId)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int game_itemInfos::kMidFieldNumber;
+const int game_itemInfos::kItemInfosFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+game_itemInfos::game_itemInfos()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto3.game_itemInfos)
+}
+
+void game_itemInfos::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+game_itemInfos::game_itemInfos(const game_itemInfos& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto3.game_itemInfos)
+}
+
+void game_itemInfos::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  mid_ = 0u;
+}
+
+game_itemInfos::~game_itemInfos() {
+  // @@protoc_insertion_point(destructor:proto3.game_itemInfos)
+  SharedDtor();
+}
+
+void game_itemInfos::SharedDtor() {
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void game_itemInfos::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const game_itemInfos& game_itemInfos::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_game_5fprotocol_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_game_5fprotocol_2eproto();
+#endif
+  return *default_instance_;
+}
+
+game_itemInfos* game_itemInfos::default_instance_ = NULL;
+
+game_itemInfos* game_itemInfos::New(::google::protobuf::Arena* arena) const {
+  game_itemInfos* n = new game_itemInfos;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void game_itemInfos::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto3.game_itemInfos)
+  mid_ = 0u;
+  iteminfos_.Clear();
+}
+
+bool game_itemInfos::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto3.game_itemInfos)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 mid = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_itemInfos;
+        break;
+      }
+
+      // repeated .proto3.game_ItemInfo itemInfos = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_itemInfos:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_itemInfos:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_iteminfos()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_loop_itemInfos;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto3.game_itemInfos)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto3.game_itemInfos)
+  return false;
+#undef DO_
+}
+
+void game_itemInfos::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto3.game_itemInfos)
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->mid(), output);
+  }
+
+  // repeated .proto3.game_ItemInfo itemInfos = 2;
+  for (unsigned int i = 0, n = this->iteminfos_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, this->iteminfos(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:proto3.game_itemInfos)
+}
+
+int game_itemInfos::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:proto3.game_itemInfos)
+  int total_size = 0;
+
+  // optional uint32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mid());
+  }
+
+  // repeated .proto3.game_ItemInfo itemInfos = 2;
+  total_size += 1 * this->iteminfos_size();
+  for (int i = 0; i < this->iteminfos_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->iteminfos(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void game_itemInfos::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const game_itemInfos*>(&from));
+}
+
+void game_itemInfos::MergeFrom(const game_itemInfos& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto3.game_itemInfos)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  iteminfos_.MergeFrom(from.iteminfos_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+}
+
+void game_itemInfos::CopyFrom(const game_itemInfos& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto3.game_itemInfos)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool game_itemInfos::IsInitialized() const {
+
+  return true;
+}
+
+void game_itemInfos::Swap(game_itemInfos* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void game_itemInfos::InternalSwap(game_itemInfos* other) {
+  std::swap(mid_, other->mid_);
+  iteminfos_.UnsafeArenaSwap(&other->iteminfos_);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string game_itemInfos::GetTypeName() const {
+  return "proto3.game_itemInfos";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// game_itemInfos
+
+// optional uint32 mid = 1;
+void game_itemInfos::clear_mid() {
+  mid_ = 0u;
+}
+ ::google::protobuf::uint32 game_itemInfos::mid() const {
+  // @@protoc_insertion_point(field_get:proto3.game_itemInfos.mid)
+  return mid_;
+}
+ void game_itemInfos::set_mid(::google::protobuf::uint32 value) {
+  
+  mid_ = value;
+  // @@protoc_insertion_point(field_set:proto3.game_itemInfos.mid)
+}
+
+// repeated .proto3.game_ItemInfo itemInfos = 2;
+int game_itemInfos::iteminfos_size() const {
+  return iteminfos_.size();
+}
+void game_itemInfos::clear_iteminfos() {
+  iteminfos_.Clear();
+}
+const ::proto3::game_ItemInfo& game_itemInfos::iteminfos(int index) const {
+  // @@protoc_insertion_point(field_get:proto3.game_itemInfos.itemInfos)
+  return iteminfos_.Get(index);
+}
+::proto3::game_ItemInfo* game_itemInfos::mutable_iteminfos(int index) {
+  // @@protoc_insertion_point(field_mutable:proto3.game_itemInfos.itemInfos)
+  return iteminfos_.Mutable(index);
+}
+::proto3::game_ItemInfo* game_itemInfos::add_iteminfos() {
+  // @@protoc_insertion_point(field_add:proto3.game_itemInfos.itemInfos)
+  return iteminfos_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::proto3::game_ItemInfo >*
+game_itemInfos::mutable_iteminfos() {
+  // @@protoc_insertion_point(field_mutable_list:proto3.game_itemInfos.itemInfos)
+  return &iteminfos_;
+}
+const ::google::protobuf::RepeatedPtrField< ::proto3::game_ItemInfo >&
+game_itemInfos::iteminfos() const {
+  // @@protoc_insertion_point(field_list:proto3.game_itemInfos.itemInfos)
+  return iteminfos_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

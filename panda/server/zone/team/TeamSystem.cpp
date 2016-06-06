@@ -63,14 +63,6 @@ bool TeamSystem::dismiss(size_t shid,const proto3::TeamInfo& ti){
 
 bool TeamSystem::joinable(const proto3::TeamInfo& ti,const proto3::PlayerInfo& pi){
 	bool ret=pi.level()>=ti.levellimit()&&ti.capacity()>(unsigned)ti.members_size();
-	if(ret){
-		for(auto& j:ti.joins())
-			if(j.uid()==pi.uid()){
-				//duplicated
-				//ret=false;
-				break;
-			}
-	}
 	return ret;
 }
 
@@ -79,24 +71,16 @@ proto3::TeamInfo* TeamSystem::join(const proto3::TeamInfo& ti,const proto3::Play
 		if(joinable(*t,pi)){
 			auto p=t->mutable_members()->Add();
 			p->CopyFrom(pi);
-
-			for(int i=0;i<t->joins_size();+i){
-				if(t->joins().Get(i).uid()==pi.uid()){
-					t->mutable_joins()->DeleteSubrange(i,1);
-					break;
-				}
-			}
 			return t;
 		}
 	}
 	return nullptr;
 }
 
-proto3::TeamInfo* TeamSystem::apply(size_t shid,const proto3::PlayerInfo& pi){
+proto3::TeamInfo* TeamSystem::apply(size_t shid,const proto3::PlayerInfo& pi,bool ok){
 	auto& leader=Server::instance->clientService.find(shid)->player;
-	auto team=find(leader.uid().c_str());
-	if(team)
-		return join(*team,pi);
+	if(auto team=find(leader.uid().c_str()))
+		return ok?join(*team,pi):team;
 
 	return nullptr;
 }
@@ -108,25 +92,24 @@ proto3::TeamInfo* TeamSystem::leave(size_t shid,const proto3::TeamInfo& ti,proto
 		if(idx>=0){
 			res=proto3::eResult::SUCCEESS;
 			t->mutable_members()->DeleteSubrange(idx,1);
-			if(t->members_size()>0)
+			if(t->members_size()>0){
+				//change leader
+				if(idx==0){
+					auto leaerId=t->members().Get(0).uid();
+					t->set_uid(leaerId);
+					teams[leaerId]=TeamInfo();
+					teams[leaerId].CopyFrom(*t);
+					teams.erase(ti.uid());
+					t=&teams[leaerId];
+				}
 				return t;
-			else{
+			} else{
 				remove(ti.uid().c_str());
+				return nullptr;
 			}
 		}
 	}
 	res=proto3::eResult::FAILED;
-	return nullptr;
-}
-
-proto3::TeamInfo* TeamSystem::kick(size_t shid,const proto3::TeamInfo& ti,const proto3::PlayerInfo& pi){
-	if(auto t=find(ti.uid().c_str())){
-		auto idx=check(*t,pi);
-		if(idx>0){
-			t->mutable_members()->DeleteSubrange(idx,1);
-			return t;
-		}
-	}
 	return nullptr;
 }
 

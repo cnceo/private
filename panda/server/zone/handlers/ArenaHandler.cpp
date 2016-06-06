@@ -27,7 +27,7 @@ void ArenaHandler::on_message(keye::svc_handler& sh,keye::PacketWrapper& pw){
 			msg.set_mid(eMsg::MSG_ZA_UPDATE_PLAYER);
 			msg.set_result(eResult::SUCCEESS);
 			PBHelper::Send(sh,msg);
-			PDLOG<<"client request arena("<<sh.address()<<")\n";
+			//PDLOG<<"client request arena("<<sh.address()<<")\n";
 		}
 		break;
 	}
@@ -38,7 +38,7 @@ void ArenaHandler::on_message(keye::svc_handler& sh,keye::PacketWrapper& pw){
 			msg.set_mid(eMsg::MSG_ZA_UPDATE_PLAYER_EXTRA);
 			msg.set_result(eResult::SUCCEESS);
 			PBHelper::Send(sh,msg);
-			PDLOG<<"client request arena("<<sh.address()<<")\n";
+			//PDLOG<<"client request arena("<<sh.address()<<")\n";
 		}
 		break;
 	}

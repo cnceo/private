@@ -26,6 +26,7 @@
 #include "team/TeamSystem.h"
 #include "quest/QuestSystem.h"
 #include "player/PlayerSystem.h"
+#include "item/PandaItem.h"
 
 #include "handlers/GatewayHandler.h"
 #include "handlers/WorldHandler.h"

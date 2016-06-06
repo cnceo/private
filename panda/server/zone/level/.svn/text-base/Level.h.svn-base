@@ -13,15 +13,20 @@
 
 class Level{
 public:
-	proto3::PlayerInfo*	findPlayer(size_t sid);
-	void				onPlayerEnter(size_t sid);
-	void				onPlayerLeave(size_t sid);
+	ClientSession*		findSession(const char*);
+	proto3::PlayerInfo*	findPlayer(const char*);
+	void				onPlayerEnter(const ClientSession&);
+	void				onPlayerLeave(const char*);
+
+	void				BroadcastMessage(::google::protobuf::MessageLite&,std::vector<std::string>* uids=nullptr,const char* =nullptr);
+	void				BroadcastPlayer(const char*);
+	void				SyncPlayers(const char*);
 
 	unsigned			id;
 	std::string			name;
 	//dungeons
-	std::map<size_t,proto3::PlayerInfo*>	players;
-	std::map<size_t,proto3::PlayerInfo>		monsters,npcs;
+	std::map<std::string,ClientSession*>		sessions;
+	std::map<std::string,proto3::PlayerInfo>	monsters,npcs;
 };
 // --------------------------------------------------------
 #endif // _Level_h_
