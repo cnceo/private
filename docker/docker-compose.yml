@@ -1,8 +1,9 @@
 redis:
     build: ./redis
     expose:
-        - 6379
-
+        - 6543
+    volumes:
+        - data:/var/redis/6543
 mysql:
     build: ./mysql
     expose:
