@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZoneServer", "zone\ZoneServ
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pandadb", "pandadb\pandadb.vcxproj", "{07EF1E7D-1D1E-449E-8220-CE955B900E2C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cluster_test", "cluster_test\cluster_test.vcxproj", "{65C94B9A-14E3-4165-812E-D3BC2B9C7F22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -60,6 +62,10 @@ Global
 		{07EF1E7D-1D1E-449E-8220-CE955B900E2C}.Debug|x64.Build.0 = Debug|x64
 		{07EF1E7D-1D1E-449E-8220-CE955B900E2C}.Release|x64.ActiveCfg = Release|x64
 		{07EF1E7D-1D1E-449E-8220-CE955B900E2C}.Release|x64.Build.0 = Release|x64
+		{65C94B9A-14E3-4165-812E-D3BC2B9C7F22}.Debug|x64.ActiveCfg = Debug|x64
+		{65C94B9A-14E3-4165-812E-D3BC2B9C7F22}.Debug|x64.Build.0 = Debug|x64
+		{65C94B9A-14E3-4165-812E-D3BC2B9C7F22}.Release|x64.ActiveCfg = Release|x64
+		{65C94B9A-14E3-4165-812E-D3BC2B9C7F22}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,21 @@
+redis:
+    image: redis:3.2.0
+    #build: ./redis
+    expose:
+        - 6543
+    volumes:
+        - /root/docker/redis:/var/redis/
+mysql:
+    build: ./mysql
+    expose:
+        - 437
+
+server:
+    build: ./server
+    volumes:
+        - /data:/data
+    links:
+        - redis
+        - mysql
+    expose:
+        - 8200

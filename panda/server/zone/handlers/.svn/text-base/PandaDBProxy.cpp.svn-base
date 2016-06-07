@@ -35,7 +35,8 @@ void PandaDBProxy::handle(int qid,DBResult* res,void* privdata){
 				//store player info
 				Server::instance->players.onLogin(*pi,ss);
 				PDLOG<<"retrieved player: "<<pi->uid()<<"\n";
-			} else if(result==DBResult::Type::REPLY_NIL||result==DBResult::Type::REPLY_NIL){
+			} else// if(result==DBResult::Type::REPLY_NIL)
+			{
 				//no players
 				//test
 				proto3::PlayerInfo pi;

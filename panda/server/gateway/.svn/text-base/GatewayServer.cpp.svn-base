@@ -15,24 +15,6 @@ using namespace keye;
 Server* Server::instance=nullptr;
 
 int main(int argc, char* argv[]) {
-	CRedisClient rc;
-	rc.Initialize("192.168.0.254",7000,5,1);
-	std::string val;
-	rc.Get("cnt",&val);
-	PDLOG<<"cnt="<<val<<"\n";
-	/*
-	ObjectPool<int> pool;
-	auto p=pool.create();
-	pool.destroy(p);
-	p=pool.create();
-	auto p1=pool.create();
-	auto p2=pool.create();
-	auto p3=pool.create();
-	pool.destroy(p1);
-	pool.destroy(p2);
-	pool.destroy(p3);
-	return 0;
-	*/
 	Server server;
 	PandaNet::instance().initialize("gateway.ini");
 	DBProxy::instance().open(&server.pandaDB);
@@ -43,8 +25,6 @@ int main(int argc, char* argv[]) {
 
 	server.clientService.run((unsigned short)gatewayPort);
 	server.zoneService.run((unsigned short)zonePort);
-
-	//Server::instance->pandaDB.QueryUser(10000);
 
 	getch();
 	return 0;

@@ -11,6 +11,9 @@
 #ifndef _PlayerSystem_h_
 #define _PlayerSystem_h_
 
+/* PlayerSystem maintains map: uid->session
+		session maintains shid,uid( PlayerInfo )
+	service mainstais map: shid->session */
 class PlayerSystem{
 public:
 	void		onLogin(const proto3::PlayerInfo&,ClientSession*);

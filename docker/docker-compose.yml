@@ -1,19 +1,9 @@
 redis:
-    build: ./redis
-    expose:
-        - 6379
-
-mysql:
-    build: ./mysql
-    expose:
-        - 437
-
-server:
-    build: ./server
+    image: redis:3.2.0
+    #build: redis/
+    ports:
+        - "6543:6543"
     volumes:
-        - /data:/data
-    links:
-        - redis
-        - mysql
-    expose:
-        - 8200
+        - /root/docker/redis:/var/redis/
+    #command: redis-server /var/redis/redis.conf
+    command: /bin/bash

@@ -40,7 +40,14 @@ message PlaceInfo{
 	float x				= 3;	// x
 	float y				= 4;	// y              
 	float z				= 5;	// z
-	uint32 orientation	= 6;	// in degree
+	float Roll			= 6;	// roation x	Roll
+	float Pitch			= 7;	// roation y	Pitch
+	float Yaw			= 8;	// roation z	Yaw
+	uint32 orientation	= 9;	// in degree
+	float fMoveSpeed	= 10;	// CharacterMovement移动速度
+	uint32 CHARACTER_STATE = 11;		// 角色状态定义(带动作的,同时只能存在一个),int值,可以到客户端CommonDefine.h查找对应状态
+	uint32 CHARACTER_SUB_STATE	= 12;	// 角色子状态定义(CHARACTER_STATE的从属关系),int值,可以到客户端CommonDefine.h查找对应状态
+	eMoveType moveType			= 13;	// 对应角色Character Movement
 };
 
 message PlayerInfo{			// 该服务器下的角色信息, 如果没有创建过角色该字段为空
@@ -399,6 +406,7 @@ enum eMoveType{
 	JUMP			=2;
 	SWIM			=3;
 	TELEPORT		=4;
+	FALLING			=5;
 };
 
 enum eTeamOp{
@@ -456,7 +464,7 @@ message MsgZCEnter{
 
 message MsgZCExit{
 	uint32 mid				= 1;
-	PlayerInfo playerInfo	= 3;
+	PlayerInfo player		= 3;
 	eResult result			= 4;
 };
 
@@ -560,7 +568,34 @@ message MsgZCEnterArena{
 	uint32 port		= 6;
 	string level	= 7;
 };
+//pvp相关
+message MsgCZChallengeCreate{
+	uint32 mid					= 1;
+	repeated string challengers	= 2;	//挑战者
+	repeated string opposites	= 3;	//被挑战者
+}
 
+message MsgZCChallengeInvite{
+	uint32 mid					= 1;
+	repeated string challengers	= 2;
+	repeated string opposites	= 3;
+}
+
+message MsgCZChallengeAgree{
+	uint32 mid					= 1;
+	repeated string challengers	= 2;
+	string opposites			= 3;
+	eResult result				= 4;
+}
+
+message MsgZCChallengeStart{
+	uint32 mid					= 1;
+	repeated string challengers	= 2;
+	repeated string opposites	= 3;
+	uint32 nmapid				= 4;
+	eResult result				= 5;
+}
+//
 message MsgZCTeamBroadcast{
 	uint32 mid				= 1;
 	repeated TeamInfo team	= 2;
@@ -609,36 +644,36 @@ message MsgCZTeamLeave{
 };
 
 // 招募人员，邀请人员
-message MsgCZTeamRecruit{
+message MsgCZTeamRecruitStart{
 	uint32 mid					= 1;
 	uint32 reason				= 2;
 	TeamInfo team				= 3;
 	repeated PlayerInfo targets	= 4;	
 };
 
-message MsgZCTeamInvite{
+message MsgZCTeamRecruitAsk{
 	uint32 mid			= 1;
 	TeamInfo team		= 2;
 };
 
-message MsgCZTeamInvite{
+message MsgCZTeamRecruitReply{
 	uint32 mid			= 1;
 	TeamInfo team		= 2;
 	eResult result		= 3;		//SUCCEESS, CANCELLED
 };
 
-message MsgCZTeamJoin{
+message MsgCZTeamJoinStart{
 	uint32 mid			= 1;
 	TeamInfo team		= 2;
 };
 
-message MsgZCTeamApply{
+message MsgZCTeamJoinAsk{
 	uint32 mid			= 1;
 	TeamInfo team		= 2;
 //	PlayerInfo applicant= 2;
 };
 
-message MsgCZTeamApply{
+message MsgCZTeamJoinReply{
 	uint32 mid			= 1;
 	PlayerInfo applicant= 2;
 	eResult result		= 3;
@@ -700,4 +735,17 @@ message MsgAZClientEnter{
 	uint32 mid				= 1;
 	uint32 aid				= 2;	// arena id
 	repeated uint64 sid		= 3;
+};
+
+//单个道具
+message game_ItemInfo{
+	uint32 mid					= 1;
+	uint32 itemId			    = 2;	//
+	uint32 itemDataId			= 3;	//
+};
+
+//同步所有道具
+message game_itemInfos{
+	uint32 mid						 = 1;
+	repeated game_ItemInfo itemInfos = 2;//道具数组
 };

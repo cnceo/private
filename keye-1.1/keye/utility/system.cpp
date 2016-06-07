@@ -35,25 +35,6 @@ void pause(){
 	getch();
 }
 
-long long crc(const void* buf,size_t len,unsigned char bytes){
-	long long ret=0;
-	switch(bytes){
-	case 16:{
-		boost::crc_16_type computer;
-		computer.process_bytes(buf,len);
-		ret=(long long)computer.checksum();
-		break;
-	}
-	case 32:{
-		boost::crc_32_type computer;
-		computer.process_bytes(buf,len);
-		ret=(long long)computer.checksum();
-		break;
-	}
-	}
-	return ret;
-}
-
 bool is_bigendian(){
 	const int endian=1;
 	return ((*(char*)&endian)==0);

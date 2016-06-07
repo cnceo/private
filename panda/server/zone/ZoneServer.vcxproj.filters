@@ -36,6 +36,12 @@
     <ClCompile Include="team\TeamSystem.cpp">
       <Filter>team</Filter>
     </ClCompile>
+    <ClCompile Include="item\PandaItem.cpp">
+      <Filter>item</Filter>
+    </ClCompile>
+    <ClCompile Include="dataFile\dataManage.cpp">
+      <Filter>dataFile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -74,6 +80,15 @@
     <ClInclude Include="team\TeamSystem.h">
       <Filter>team</Filter>
     </ClInclude>
+    <ClInclude Include="item\PandaItem.h">
+      <Filter>item</Filter>
+    </ClInclude>
+    <ClInclude Include="dataFile\dataManage.h">
+      <Filter>dataFile</Filter>
+    </ClInclude>
+    <ClInclude Include="dataFile\CommonDefine.h">
+      <Filter>dataFile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="handlers">
@@ -93,6 +108,12 @@
     </Filter>
     <Filter Include="team">
       <UniqueIdentifier>{dfe3152c-55ff-4bda-93b5-6751984bd122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item">
+      <UniqueIdentifier>{c21e57d8-fbdc-4d97-a54e-04f4b2811090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataFile">
+      <UniqueIdentifier>{0cd9ba5e-2f53-485c-af92-d91e10631297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

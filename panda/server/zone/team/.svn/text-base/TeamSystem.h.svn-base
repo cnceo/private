@@ -20,11 +20,11 @@ public:
 
 	int						check(const proto3::TeamInfo&,const proto3::PlayerInfo&);
 	bool					dismiss(size_t,const proto3::TeamInfo&);
-	proto3::TeamInfo*		kick(size_t,const proto3::TeamInfo&,const proto3::PlayerInfo&);
+	//proto3::TeamInfo*		kick(size_t,const proto3::TeamInfo&,const proto3::PlayerInfo&);
 
 	bool					joinable(const proto3::TeamInfo&,const proto3::PlayerInfo&);
 	proto3::TeamInfo*		join(const proto3::TeamInfo&,const proto3::PlayerInfo&);
-	proto3::TeamInfo*		apply(size_t,const proto3::PlayerInfo&);
+	proto3::TeamInfo*		apply(size_t,const proto3::PlayerInfo&,bool ok);
 	proto3::TeamInfo*		leave(size_t,const proto3::TeamInfo&,proto3::eResult&);
 
 	void					broadcast(size_t=0);

@@ -21,6 +21,7 @@
 #	define s_ptr std::shared_ptr
 #endif
 
+#include <keye/utility/system.h>
 #include <keye/utility/logger.h>
 #include <keye/utility/buf_set.h>
 #include <keye/utility/conf_file.h>

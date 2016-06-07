@@ -95,11 +95,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="dataFile\CommonDefine.h" />
+    <ClInclude Include="dataFile\dataManage.h" />
     <ClInclude Include="handlers\ArenaHandler.h" />
     <ClInclude Include="handlers\ClientHandler.h" />
     <ClInclude Include="handlers\GatewayHandler.h" />
     <ClInclude Include="handlers\PandaDBProxy.h" />
     <ClInclude Include="handlers\WorldHandler.h" />
+    <ClInclude Include="item\PandaItem.h" />
     <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\LevelSystem.h" />
     <ClInclude Include="player\PlayerSystem.h" />
@@ -111,11 +114,13 @@
     <ClInclude Include="ZoneServerFwd.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dataFile\dataManage.cpp" />
     <ClCompile Include="handlers\ArenaHandler.cpp" />
     <ClCompile Include="handlers\ClientHandler.cpp" />
     <ClCompile Include="handlers\GatewayHandler.cpp" />
     <ClCompile Include="handlers\PandaDBProxy.cpp" />
     <ClCompile Include="handlers\WorldHandler.cpp" />
+    <ClCompile Include="item\PandaItem.cpp" />
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\LevelSystem.cpp" />
     <ClCompile Include="player\PlayerSystem.cpp" />
