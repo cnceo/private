@@ -1,0 +1,339 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include "panda.h"
+#include "PlayerCharacter.h"
+#include "AttachObjBase.h"
+#include "AttachWeapon.h"
+#include "Manager/SkillManager.h"
+#include "Utils/PandaUtils.h"
+
+
+class UWorld;
+class AAttachObjBase;
+class AAttachWeapon;
+class UEngine;
+
+APlayerCharacter::APlayerCharacter()
+	: m_nMaxJumpNum(2)
+	, m_nJumpCount(2)
+	, m_fvBeforeFVector(FVector::ZeroVector)
+	, m_fvNewFVector(FVector::ZeroVector)
+	, sid(0)
+{
+	// Configure character movement
+	GetCharacterMovement()->bOrientRotationToMovement = true; // Character moves in the direction of input...	
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); // ...at this rotation rate
+	GetCharacterMovement()->JumpZVelocity = 600.0f;
+	GetCharacterMovement()->AirControl = 0.2f;
+	JumpMaxHoldTime = 0.2f;
+	setMaxWalkSpeed(350);
+
+	// Create a camera boom (pulls in towards the player if there is a collision)
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->AttachTo(RootComponent);
+	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
+
+	// Create a follow camera
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->AttachTo(CameraBoom,USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	// Create a Special camera,	big skill
+	FollowCamera_2 = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera_2"));
+	FollowCamera_2->AttachTo(CameraBoom,USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera_2->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	// Create a follow camera, double hit
+	FollowCamera_3 = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera_3"));
+	FollowCamera_3->AttachTo(CameraBoom,USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera_3->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	// Create a follow camera, copy follow data
+	FollowCamera_1_Copy = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera_1_Copy"));
+	FollowCamera_1_Copy->AttachTo(CameraBoom,USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera_1_Copy->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
+	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	m_QuestHandler = CreateDefaultSubobject<UQuestComponent>(TEXT("QuestComponent"));
+	if (m_QuestHandler)
+	{
+		m_QuestHandler->SetNetAddressable();
+		m_QuestHandler->SetIsReplicated(true);
+	}
+	bReplicates = true;
+
+}
+
+APlayerCharacter::~APlayerCharacter()
+{
+}
+
+void APlayerCharacter::setMaxWalkSpeed(float speed)
+{
+	GetCharacterMovement()->MaxWalkSpeed = speed;
+}
+
+void APlayerCharacter::NotifyHit(UPrimitiveComponent * MyComp, AActor * Other, UPrimitiveComponent * OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult & Hit)
+{
+	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+}
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	SetPoseTimer();
+}
+
+bool APlayerCharacter::CheckTarget(ABaseCharacter* start, AActor* target, float& fDistance, float& fAngle)
+{
+	fDistance = target->GetDistanceTo(start);
+	if (fDistance > 1000) return false;
+	FVector distance = target->GetActorLocation() - start->GetActorLocation();
+	FVector direction = start->GetCapsuleComponent()->GetForwardVector();
+	fAngle = UPandaUtils::VectorAngle(direction, distance);
+	if (FMath::Abs(fAngle) > 75) return false;
+	return true;
+}
+
+ABaseCharacter* APlayerCharacter::FindTarget(float fAxis)
+{
+	ABaseCharacter* pCurTarget = GetTarget();
+	ABaseCharacter* pNewTarget = pCurTarget;
+	float fCurDistance = 0;
+	if (pCurTarget != nullptr) fCurDistance = pCurTarget->GetDistanceTo(this);
+	float fCurAngle = 75;
+	if (fAxis > 0) fCurAngle = -75;
+	//遍历关卡内全部BaseCharacter
+	for (auto it = GetWorld()->GetPawnIterator(); it; ++it) 
+	{
+		if (auto pPawn = (*it)) 
+		{
+			if (auto pActor = Cast<ABaseCharacter>(pPawn))
+			{
+				//没有目标时,先设置第1个符合锁定规则的目标
+				if (!pNewTarget)
+				{			
+					float fDistance = 0;
+					float fAngle = 0;
+					if (this->CheckTarget(this, pActor, fDistance, fAngle))
+					{
+						pNewTarget = pActor;
+						fCurDistance = fDistance;
+					}		
+				}
+				//有目标后,进行比较.
+				else
+				{
+					//如果当前已经处于索敌模式.再次索敌被认为是素敌切换
+					if (pCurTarget)
+					{
+						float fDistance = 0;
+						float fAngle = 0;
+						//根据右摇杆的左/右输入，找出距离当前目标左/右最近的其他目标
+						if (pCurTarget != pActor && this->CheckTarget(this, pActor, fDistance, fAngle) && fAxis != 0.0f)
+						{
+							if (fAxis > 0 && fAngle < 0 && fAngle > fCurAngle)
+							{
+								pNewTarget = pActor;
+								fCurDistance = fDistance;
+								fCurAngle = fAngle;
+							}
+							else if (fAxis < 0 && fAngle > 0 && fAngle < fCurAngle)
+							{
+								pNewTarget = pActor;
+								fCurDistance = fDistance;
+								fCurAngle = fAngle;
+							}
+						}
+					}
+					//寻找出距离主角最近的目标
+					else
+					{
+						float fDistance = 0;
+						float fAngle = 0;
+						if (this->CheckTarget(this, pActor, fDistance, fAngle) && fDistance < fCurDistance)
+						{
+							pNewTarget = pActor;
+							fCurDistance = fDistance;
+						}
+					}
+				}
+			}
+		}
+	}
+	return pNewTarget;
+}
+
+void APlayerCharacter::TurnAtTarget()
+{
+	if (!HasTarget()) return;
+	if (GetTarget()->GetState() == CHARACTER_STATE::CHARACTER_STATE_DIE || GetTarget()->IsPendingKill())
+	{
+		ClearTarget();
+		return;
+	}
+	FVector distance = GetTarget()->GetActorLocation() - this->GetActorLocation();
+	FVector direction = this->GetCapsuleComponent()->GetForwardVector();
+	float fAngle = UPandaUtils::VectorAngle(direction, distance);
+	if (FMath::Abs(fAngle) < 1.0f) return;
+	float fYaw = this->GetActorRotation().Yaw;
+	FRotator YawRotation = FRotator(0, fYaw - fAngle, 0);
+	YawRotation.Normalize();
+	this->SetActorRotation(YawRotation);
+
+}
+
+void APlayerCharacter::AcceptQuest(int id)
+{
+	if (m_QuestHandler)
+	{
+		m_QuestHandler->Rpc2ServerAccept(id);
+	}
+
+}
+
+void APlayerCharacter::UpdateQuest(int taskId)
+{
+	if (m_QuestHandler)
+	{
+		m_QuestHandler->Rpc2ServerUpdate(taskId);
+	}
+
+}
+
+void APlayerCharacter::CommitQuest(int taskId)
+{
+	if (m_QuestHandler)
+	{
+		m_QuestHandler->Rpc2ServerCommit(taskId);
+	}
+}
+
+bool APlayerCharacter::CanJumpInternal_Implementation() const
+{
+	const bool bCanHoldToJumpHigher = (GetJumpMaxHoldTime() > 0.0f) && IsJumpProvidingForce();
+	return !bIsCrouched && GetCharacterMovement() && (GetCharacterMovement()->IsMovingOnGround() || bCanHoldToJumpHigher) && GetCharacterMovement()->IsJumpAllowed() && !GetCharacterMovement()->bWantsToCrouch;
+}
+
+bool APlayerCharacter::IsJumpProvidingForce() const
+{
+	//UE_LOG(LogTemp,Log,TEXT("IsJumpProvidingForce time=%f.!!!"),JumpKeyHoldTime);
+	return ((m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP || m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP2) && JumpKeyHoldTime > 0.0f && JumpKeyHoldTime < GetJumpMaxHoldTime());
+}
+
+void APlayerCharacter::OnJump(bool bJump)
+{
+	if (bJump)
+	{
+		if (IsChangeStateTo(CHARACTER_STATE::CHARACTER_STATE_JUMP))
+		{
+			SetState(CHARACTER_STATE::CHARACTER_STATE_JUMP);
+			m_fvBeforeFVector = GetActorLocation();
+			m_fvNewFVector = GetActorLocation();
+			GetCharacterMovement()->GravityScale = 1.5f;
+		}
+		else if (IsChangeStateTo(CHARACTER_STATE::CHARACTER_STATE_JUMP2))
+		{
+			SetState(CHARACTER_STATE::CHARACTER_STATE_JUMP2);
+			m_fvBeforeFVector = GetActorLocation();
+			m_fvNewFVector = GetActorLocation();
+			GetCharacterMovement()->GravityScale = 1.5f;
+		}
+		else
+		{
+			return;
+		}
+
+		if (m_nJumpCount > 0)
+		{
+			bPressedJump = true;
+			JumpKeyHoldTime = 0.0f;
+			m_nJumpCount = m_nJumpCount - 1;
+		}
+	}
+	else
+	{
+		bPressedJump = false;
+		JumpKeyHoldTime = 0.0f;
+	}
+
+
+}
+
+void APlayerCharacter::ClearJumpInput()
+{
+	if (GetCharacterMovement()->IsFalling() && GetCharacterMovement()->GravityScale <= 2.0f)
+	{
+		m_fvNewFVector = GetActorLocation();
+		if (m_fvNewFVector.Z < m_fvBeforeFVector.Z)
+		{
+			if (m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP2)
+			{
+				GetCharacterMovement()->GravityScale = 20.f;
+			}
+			else if ((m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP))
+			{
+				GetCharacterMovement()->GravityScale = 8.f;
+			}
+		}
+		m_fvBeforeFVector = m_fvNewFVector;
+	}
+}
+
+void APlayerCharacter::OnDelayJumpGround()
+{
+	if (m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP || m_emState == CHARACTER_STATE::CHARACTER_STATE_JUMP2)
+	{
+		SetState(CHARACTER_STATE::CHARACTER_STATE_NORMAL);
+	}
+}
+
+void APlayerCharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	m_nJumpCount = m_nMaxJumpNum;
+	GetCharacterMovement()->GravityScale = 1.f;
+	JumpMaxHoldTime = 0.2f;
+	GetCharacterMovement()->JumpZVelocity = 600.0f;
+	m_fvBeforeFVector = FVector::ZeroVector;
+	m_fvNewFVector = FVector::ZeroVector;
+
+	FTimerDelegate DestroyTimer;
+	DestroyTimer.BindUObject(this, &APlayerCharacter::OnDelayJumpGround);
+	GetWorld()->GetTimerManager().SetTimer(m_JumpGroundTimerHandle, DestroyTimer, 0.1f, false);
+}
+
+void APlayerCharacter::SetFightingTimer()
+{
+	FTimerDelegate FightingTimer;
+	FightingTimer.BindUObject(this, &APlayerCharacter::FightingTimerCallback);
+	GetWorld()->GetTimerManager().SetTimer(m_FightingTimerHandle, FightingTimer, 6.0f, false);
+	m_bFighting = true;
+}
+
+void APlayerCharacter::FightingTimerCallback()
+{
+	m_bFighting = false;
+	if (m_emState == CHARACTER_STATE::CHARACTER_STATE_FIGHTING)
+	{
+		SetState(CHARACTER_STATE::CHARACTER_STATE_NORMAL);
+	}
+}
+
+void APlayerCharacter::SetPoseTimer()
+{
+	FTimerDelegate PoseTimer;
+	PoseTimer.BindUObject(this, &APlayerCharacter::PoseTimerCallback);
+	GetWorld()->GetTimerManager().SetTimer(m_PoseTimerHandle, PoseTimer, 20.0f, false);
+}
+
+void APlayerCharacter::PoseTimerCallback()
+{
+	if (m_emState == CHARACTER_STATE::CHARACTER_STATE_NORMAL)
+	{
+		SetState(CHARACTER_STATE::CHARACTER_STATE_POSE);
+	}
+}

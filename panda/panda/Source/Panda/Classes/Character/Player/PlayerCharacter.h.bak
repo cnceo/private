@@ -1,0 +1,110 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+//  Created by yang 玩家角色类
+#pragma once
+
+#include "../BaseCharacter.h"
+#include "Quest/QuestComponent.h"
+#include "PlayerCharacter.generated.h"
+
+
+/**
+ * 
+ */
+UCLASS(HideDropdown)
+class PANDA_API APlayerCharacter : public ABaseCharacter
+{
+	GENERATED_BODY()
+public:
+	APlayerCharacter();
+	~APlayerCharacter();
+
+public:
+	virtual void NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)override;
+
+public:
+	void  BeginPlay() override;
+
+	//改变主角移动速度
+	UFUNCTION(BlueprintCallable,Category = "MainPlayer")
+	void setMaxWalkSpeed(float speed);
+
+	//select target
+	UFUNCTION(BlueprintCallable, Category = "MainPlayer")
+	ABaseCharacter* FindTarget(float fAxis = 0.0f);
+
+	//check a actor by character 
+	UFUNCTION(BlueprintCallable, Category = "MainPlayer")
+	bool CheckTarget(ABaseCharacter* start, AActor* target, float& fDistance, float& fAngle);
+
+	UFUNCTION(BlueprintCallable, Category = "MainPlayer")
+	void TurnAtTarget();
+
+	/** Camera boom positioning the camera behind the character */
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = Camera,meta = (AllowPrivateAccess = "true"))
+	class USpringArmComponent* CameraBoom;
+
+	/** Follow camera Normail behavior*/
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = Camera,meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera;
+
+	/** Combo camera Combo behavior*/
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = Camera,meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera_2;
+
+	/** Special camera Special behavior*/
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = Camera,meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera_3;
+
+	/** Follow camera copy data, have postion etc.*/
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = Camera,meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera_1_Copy;
+
+private:
+	//FTimerHandle m_TargetHandle;
+
+
+//******Quest
+public:
+	size_t sid;
+
+	//this to handle Quest
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	class UQuestComponent*  m_QuestHandler;
+	//request server get quest
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void AcceptQuest(int id);
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void UpdateQuest(int taskId);
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void CommitQuest(int taskId);
+
+	class UQuestComponent* GetQuestHandler() const;
+
+
+//******Jump define
+public:
+	virtual bool CanJumpInternal_Implementation() const override;
+	virtual void Landed(const FHitResult& Hit) override;
+	virtual void OnJump(bool bJump);
+	virtual void OnDelayJumpGround();
+protected:
+	bool IsJumpProvidingForce() const;
+	void ClearJumpInput();
+	int32 m_nMaxJumpNum;	//max jump count
+	int32 m_nJumpCount;		//cur jump count
+	FVector m_fvBeforeFVector;
+	FVector m_fvNewFVector;
+	FTimerHandle m_JumpGroundTimerHandle;
+
+//********************************Timer define begin*******************************
+	FTimerHandle m_FightingTimerHandle;
+	void SetFightingTimer();
+	void FightingTimerCallback();
+
+	FTimerHandle m_PoseTimerHandle;
+	void SetPoseTimer();
+	void PoseTimerCallback();
+//********************************Timer define end**********************************
+
+};
+FORCEINLINE class UQuestComponent* APlayerCharacter::GetQuestHandler() const { return m_QuestHandler; }
