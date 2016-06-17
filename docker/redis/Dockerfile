@@ -1,10 +1,11 @@
-FROM redis:3.2.0
+FROM ubuntu:16.04
 MAINTAINER Vic
 
-#RUN apt-get -y update
+RUN apt-get -y update
 #RUN apt-get -y upgrade
-#RUN apt-get -y install ruby ruby-dev
+RUN apt-get -y install redis-server
+RUN apt-get -y install ruby
+#RUN apt-get -y install ruby-dev
 
 EXPOSE 6543
 
-#RUN gem install redis

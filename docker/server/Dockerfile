@@ -3,6 +3,5 @@ MAINTAINER Vic
 
 #RUN apt-get -y update
 #RUN apt-get -y upgrade
-RUN apt-get -y install gcc-5 g++-5
+#RUN apt-get -y install gcc-5 g++-5
 
-ADD src /var/src
