@@ -26,3 +26,6 @@ MagicStone/proj.ios_mac
 MagicStone/.cocos-project.json
 MagicStone/CMakeLists.txt
 libkeye.so.1.1
+docker/redis/appendonly.aof
+docker/redis/dump.rdb
+docker/redis/redis-server.log
