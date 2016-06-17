@@ -1,43 +1,46 @@
-redis:
+version: "2"
+
+services:
+  redis:
     image: redis:3.2.0
-#    ports:
-#        - 6543:6543
-#        - 6379:6379
+    ports:
+      - 6543:6543
+      - 6379:6379
     volumes:
-        - ./redis:/var/redis/
+      - ./redis:/var/redis/
     #command: redis-server /var/redis/redis.conf
     command: ls -lh /var/redis
 
-redis-cluster:
+  redis-cluster:
     build: redis/
 
-mysql:
+  mysql:
     image: mysql:5.7
     ports:
-        - 3306:3306
+      - 3306:3306
     volumes:
-        - ./mysql:/var/mysql/
+      - ./mysql:/var/mysql/
     command: ls -lh /var/mysql
 
-nginx:
+  nginx:
     image: nginx:1.10
     ports:
-        - 80:80
+      - 80:80
     volumes:
-        - ./nginx:/var/nginx/
+      - ./nginx:/var/nginx/
     #command: nginx -c /etc/nginx/nginx.conf
     command: /bin/bash
 
-dev:
+  dev:
     build: dev/
 
-server:
+  server:
     build: server/
     volumes:
-        - ./server:/var/server
+      - ./server:/var/server
     links:
-        - redis
-        - mysql
+      - redis
+      - mysql
     ports:
-        - 8200:8200
+      - 8200:8200
 
