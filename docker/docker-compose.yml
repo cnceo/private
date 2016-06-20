@@ -13,6 +13,11 @@ services:
 
   redis-cluster:
     build: redis/
+    ports:
+      - 6543:6543
+      - 6379:6379
+    volumes:
+      - ./redis:/var/redis/
 
   mysql:
     image: mysql:5.7
