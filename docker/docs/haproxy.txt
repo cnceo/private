@@ -1,0 +1,6 @@
+Installation:
+
+Configure:
+
+Run:
+haproxy -f /usr/local/haproxy/haproxy.cfg

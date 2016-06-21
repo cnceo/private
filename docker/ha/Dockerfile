@@ -1,17 +1,15 @@
-FROM ubuntu:16.04
+FROM docker_develop
 MAINTAINER Vic
 
-RUN apt-get -y update
-RUN apt-get -y install wget
+ADD haproxy-1.6.5.tar.gz /var/src
+ADD keepalived-1.2.22.tar.gz /var/src
+ADD haproxy.cfg /etc/haproxy/haproxy.cfg
 
-#RUN wget http://www.haproxy.org/download/1.6/src/haproxy-1.6.5.tar.gz
-#RUN make install
-#RUN mkdir -p /usr/local/haproxy/etc
-#RUN mkdir -p /usr/local/haproxy/sbin
-#ADD ha/haproxy.cfg /usr/local/haproxy/etc
-#RUN ln -s /usr/local/sbin/haproxy /usr/local/haproxy/sbin/haproxy 
+WORKDIR /var/src/haproxy-1.6.5
+RUN ls
+RUN make TARGET=generic
+RUN make install
 
-#RUN tar zxvf keepalived-1.2.22.tar.gz
-#WORKDIR keepalived-1.2.22
-#RUN ./configure
-#RUN make && make install
+WORKDIR /var/src/keepalived-1.2.22
+RUN ./configure
+RUN make && make install
