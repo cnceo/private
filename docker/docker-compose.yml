@@ -36,8 +36,8 @@ services:
     #command: nginx -c /etc/nginx/nginx.conf
     command: /bin/bash
 
-  dev:
-    build: dev/
+#  dev:
+#    build: dev/
 
   develop:
     build: develop/

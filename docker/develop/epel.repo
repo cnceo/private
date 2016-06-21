@@ -1,0 +1,6 @@
+[epel]
+name=epel
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&arch=$basearch
+enabled=1
+gpgcheck=0
+
