@@ -4,5 +4,5 @@ MAINTAINER Vic
 RUN apt-get -y update
 #RUN apt-get -y upgrade
 RUN apt-get -y install vim
-#RUN apt-get -y -f install gcc-5 g++-5
+RUN apt-get -y -f install gcc-5 g++-5
 
