@@ -1,6 +1,11 @@
-#version: "2"
+version: "2"
 
-#services:
+services:
+  data_volume:
+    image: ubuntu:16.04
+    volumes:
+      - ./data:/var/data/
+
   redis:
     image: redis:3.2.0
     ports:
@@ -8,8 +13,10 @@
       - 6379:6379
     volumes:
       - ./redis:/var/redis/
+    volumes_from:
+      - data_volume
     #command: redis-server /var/redis/redis.conf
-    command: ls -lh /var/redis
+    command: ls -lh /var/data
 
 #  redis-cluster:
 #    build: redis/
@@ -38,6 +45,9 @@
 
   compiler:
     build: compiler/
+    volumes_from:
+      - data_volume
+    command: ls -lh /var/data
 
   gitsvn:
     build: gitsvn/
