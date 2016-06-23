@@ -1,6 +1,6 @@
-#version: "2"
+version: "2"
 
-#services:
+services:
   redis:
     image: redis:3.2.0
     ports:
@@ -36,23 +36,24 @@
     #command: nginx -c /etc/nginx/nginx.conf
     command: /bin/bash
 
-  compiler:
-    build: compiler/
+#  dev:
+#    build: dev/
 
-#  develop:
-#    build: develop/
+  develop:
+    build: develop/
 
-#  server:
-#    build: server/
-#    volumes:
-#      - ./server:/var/server
-#    links:
-#      - redis
-#      - mysql
-#    ports:
-#      - 8200:8200
+  server:
+    build: server/
+    volumes:
+      - ./server:/var/server
+    links:
+      - redis
+      - mysql
+    ports:
+      - 8200:8200
 
-#  ha:
-#    build: ha/
-#    volumes:
-#      - ./ha:/var/ha
+  ha:
+    build: ha/
+    volumes:
+      - ./ha:/var/ha
+
