@@ -11,13 +11,13 @@
     #command: redis-server /var/redis/redis.conf
     command: ls -lh /var/redis
 
-  redis-cluster:
-    build: redis/
-    ports:
-      - 6543:6543
-      - 6379:6379
-    volumes:
-      - ./redis:/var/redis/
+#  redis-cluster:
+#    build: redis/
+#    ports:
+#      - 6543:6543
+#      - 6379:6379
+#    volumes:
+#      - ./redis:/var/redis/
 
   mysql:
     image: mysql:5.7
@@ -38,6 +38,8 @@
 
   compiler:
     build: compiler/
+  gitsvn:
+    build: gitsvn/
 
 #  develop:
 #    build: develop/
