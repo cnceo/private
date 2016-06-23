@@ -2,10 +2,12 @@ FROM ubuntu:16.04
 MAINTAINER Vic
 
 RUN apt-get -y update
-RUN apt-get -y install vim automake autoconf libtool make
 
 ENV SRC=/var/src
 ADD src/* $SRC/
 WORKDIR $SRC
 RUN dpkg -i $SRC/*.deb
-RUN apt-get -y install gcc-5 g++-5 gdb
+
+#RUN apt-get -y install vim autoconf libtool automake make
+RUN apt-get -y --fix-missing --no-install-recommends install gcc g++
+#RUN apt-get -y --fix-missing install gdb

@@ -1,0 +1,188 @@
+———- Guide
+docker machine: easy create docker host;
+docker swarm: dockerlized cluster tool;
+docker hub: docker images repository;
+docker engine: docker image & container toolset;
+  docker image: image to support containers;
+  docker container: container(or instance) for application, run based image;
+docker compose: manage docker project(images & containers set),base on python;alternative of fig;
+
+
+
+———- docker-machine
+easy create docker host(virtual machines to run docker compose and engine);
+support Azure,AWS,VMware,VirtualBox etc.
+without docker-machine,there were various works to setup docker;
+
+installation:
+https://github.com/docker/machine/releases
+$curl -L https://github.com/docker/machine/releases/download/v0.8.0-rc1/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine
+
+OR
+install Docker ToolBox on Mac or Windows,it includes machine,compose,docker and virtualbox;
+Windows doesn’t have eval command,could use gitbash(install git for Windows);
+
+usage:
+$alias doma=docker-machine
+$doma create -d virtualbox $vm
+$doma create —amazonec2 …
+$doma ls
+$doma start $vm		#start vm
+$doma ssh $vm		#ssh into vm
+$doma stop $vm
+$eval "$(doma env $vm)”	#configure shell for docker,then docker is free!
+$docker ps
+$docker-compose up			#run docker from vm by docker-compose
+
+specification:
+after install docker-machine,can create any numbers of machines,and run docker on them;
+docker machine use boot2docker as virtualbox image,boot2docker is a light weight linux running docker(with docker daemon);
+machines stored in ~/.docker/machine/machines,they R big!
+machine expose ip to host,could ssh into;
+
+
+
+———- docker-compose
+installation:
+#pip install docker-compose		#need python2.7
+$alias doco=docker-compose
+$doco ps
+$doco up [-d]				#=doco create+run
+$doco stop
+$doco kill -s SIG
+$doco scale $svc 10			#scale up or down
+
+
+
+———- docker
+usage,alternative is use docker-compose
+
+image
+$docker search centos
+$docker pull ubuntu
+$docker images
+$docker build -t "panda:server" .	#build image from Dockerfile
+
+container
+$docker run <image>		#run container,it will stop when application exit
+$docker run -d <image>		#deamon mode
+$docker run -it <image>	#tty mode
+$docker run -it centos:latest /bin/bash	#run bash
+$docker run -v [<host_dir>:]<dir> <image>	#mount volume
+$docker run --net=host <image>			#set network mode
+
+//data volume
+$docker run -v `pwd`/data:/var/data —name=<container_name> <image>	#create data volume
+$docker run --volumes-from=<container_name> <image>			#shared volume
+
+$docker ps			#show running containers
+$docker ps -a			#show all containers include stopped
+$docker start <container id>	#run stopped container
+$docker stop <container id>	#stop container
+
+$docker rm
+$docker rm `docker ps -a -q`	#remove all containers
+
+
+
+———- network
+network mode:
+  bridge: default, container use private dynamic ip, get by $docker inspect DOCKER_ID;
+  host: container share ip with host;
+
+host - vm
+
+vm - container
+
+host - container
+
+
+
+———- docker
+$docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis redis:3.2.0 /bin/bash
+$docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis --name myredis redis:3.2.0 /bin/bash
+$docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis docker_redis-cluster /bin/bash
+#docker>redis-server /var/redis/redis.conf
+
+apt-get -y install gcc-5 -o Acquire::CompressionTypes::Order::=bz2
+
+
+install in pure linux(with out docker-machine)
+CentOS 6:
+$yum install http://mirrors.yun-idc.com/epel/6/i386/epel-release-6-8.noarch.rpm
+$yum install docket.io
+CentOS 7:
+$yum install docker
+Other:
+$curl -sSL -O https://get.docker.com/builds/Linux/x86_64/docker-1.9.1
+$chmod +x docker-1.9.1
+$cp docker-1.9.1 /usr/bin/docker
+$docker daemon &
+
+Start & make auto start
+$service docker start
+$chkconfig docker on
+
+
+
+虚拟机到host的端口映射
+VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8089,tcp,,8089,,8089"
+VBoxManage modifyvm "boot2docker-vm" --natpf1 delete tcp-port8088
+
+/etc/apt/sources.list
+/var/cache/apt/archives/libgcc-5-dev_5.3.1-14ubuntu2.1_amd64.deb
+docker run -it -v /Users/vliu/Downloads:/var/download docker_dev /bin/bash
+
+deb http://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+deb http://mirrors.sohu.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.sohu.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.sohu.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+deb http://tw.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb http://tw.archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb http://tw.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+deb http://tw.archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+deb http://tw.archive.ubuntu.com/ubuntu xenial-proposed main restricted universe multiverse
+deb-src http://tw.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb-src http://tw.archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb-src http://tw.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+deb-src http://tw.archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+deb-src http://tw.archive.ubuntu.com/ubuntu xenial-proposed main restricted universe multiverse
+xenial
+
+
+http://archive.ubuntu.com/ubuntu/pool/main/
+
+dpkg -i libgmp10_6.1.0+dfsg-2_amd64.deb
+dpkg -i libmpfr4_3.1.4-1_amd64.deb
+dpkg -i libmpc3_1.0.3-1_amd64.deb
+
+
+
+  binutils cpp cpp-5 g++ g++-5 gcc gcc-5 libasan2 libatomic1 libc-dev-bin
+  libc6-dev libcc1-0 libcilkrts5 libgcc-5-dev libgomp1 libisl15 libitm1
+  liblsan0 libmpx0 libquadmath0 libstdc++-5-dev libtsan0 libubsan0
+  linux-libc-dev manpages-dev
+
+  binutils cpp cpp-5 g++ g++-5 gcc gcc-5 libasan2 libatomic1 libc-dev-bin
+  libc6-dev libcc1-0 libcilkrts5 libgcc-5-dev libgomp1 libisl15 libitm1
+  liblsan0 libmpx0 libquadmath0 libstdc++-5-dev libtsan0 libubsan0
+  linux-libc-dev
+
