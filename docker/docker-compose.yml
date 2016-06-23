@@ -38,8 +38,12 @@
 
   compiler:
     build: compiler/
+
   gitsvn:
     build: gitsvn/
+
+  libs:
+    build: libs/
 
 #  develop:
 #    build: develop/
