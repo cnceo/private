@@ -1,4 +1,4 @@
-FROM docker_develop
+FROM docker_compile
 MAINTAINER Vic
 
 ADD src/haproxy-1.6.5.tar.gz /var/src

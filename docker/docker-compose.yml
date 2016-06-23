@@ -68,7 +68,5 @@ services:
 #    ports:
 #      - 8200:8200
 
-#  ha:
-#    build: ha/
-#    volumes:
-#      - ./ha:/var/ha
+  haproxy:
+    build: haproxy/

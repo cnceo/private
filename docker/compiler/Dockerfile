@@ -8,6 +8,6 @@ ADD src/* $SRC/
 WORKDIR $SRC
 RUN dpkg -i $SRC/*.deb
 
-#RUN apt-get -y install vim autoconf libtool automake make
+#RUN apt-get -y --fix-missing --no-install-recommends install vim autoconf libtool automake make
 RUN apt-get -y --fix-missing --no-install-recommends install gcc g++
-#RUN apt-get -y --fix-missing install gdb
+#RUN apt-get -y --fix-missing --no-install-recommends install gdb
