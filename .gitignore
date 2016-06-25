@@ -29,4 +29,6 @@ libkeye.so.1.1
 docker/redis/appendonly.aof
 docker/redis/dump.rdb
 docker/redis/redis-server.log
-docker/src
+docker/data/src
+*.deb
+*.gz
