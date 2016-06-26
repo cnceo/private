@@ -1,3 +1,5 @@
+#!/bin/bash
+
 vm=vic
 
 alias doma='docker-machine'
