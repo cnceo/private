@@ -52,8 +52,17 @@ services:
   gitsvn:
     build: gitsvn/
 
-  libs:
-    build: libs/
+#  libs:
+#    build: libs/
+
+ libboost:
+    build: libboost/
+
+ libsmysql:
+    build: libmysql/
+
+ libredis:
+    build: libredis/
 
 #  develop:
 #    build: develop/
