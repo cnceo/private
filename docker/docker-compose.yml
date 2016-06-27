@@ -55,14 +55,14 @@ services:
 #  libs:
 #    build: libs/
 
- libboost:
-    build: libboost/
+  libboost:
+     build: libboost/
 
- libsmysql:
-    build: libmysql/
+  libsmysql:
+     build: libmysql/
 
- libredis:
-    build: libredis/
+  libredis:
+     build: libredis/
 
 #  develop:
 #    build: develop/
