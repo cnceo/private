@@ -2,8 +2,9 @@
 
 vm=vic
 
+shopt -s expand_aliases
 alias doma='docker-machine'
 alias doco='docker-compose'
 
-docker-machine start $vm
-eval "$(docker-machine env $vm)"
+doma start $vm
+eval "$(doma env $vm)"

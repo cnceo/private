@@ -1,0 +1,7 @@
+$shopt -s opt_name	#Enable (set) shell option
+$shopt -u opt_name      #Disable (unset) shell option
+$shopt -s expand_aliases
+
+
+source(.)
+sh usually fork shell(subprocess) and execute commands; source(.) doesn’t do that but execute in current shell;
