@@ -1,4 +1,4 @@
-———- Guide
+﻿———- Guide
 docker machine: easy create docker host;
 docker swarm: dockerlized cluster tool;
 docker hub: docker images repository;
@@ -30,7 +30,7 @@ $doma ls
 $doma start $vm		#start vm
 $doma ssh $vm		#ssh into vm
 $doma stop $vm
-$eval "$(doma env $vm)”	#configure shell for docker,then docker is free!
+$eval "$(doma env $vm)”	#configure shell for docker,then docker is free! on Windows is: @FOR /f "tokens=*" %i IN ('docker-machine env $vm') DO @%i
 $docker ps
 $docker-compose up			#run docker from vm by docker-compose
 
