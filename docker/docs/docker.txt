@@ -153,7 +153,7 @@ dpkg -i libmpfr4_3.1.4-1_amd64.deb
 dpkg -i libmpc3_1.0.3-1_amd64.deb
 
 share folder between VirtualBox and Boot2Docker vm:
-1,add shared folder for vm from VirtualBox: c/Users:c:\public;
-2,start Boot2Docker vm and mount: mount -t vboxsf c/Users /mnt/data;
+1,add shared folder for vm from VirtualBox: public:c:\public;
+2,start Boot2Docker vm and mount: mount -t vboxsf public /mnt/data;
 3,run docker from vm: docker run -v /mnt/data:/var/data ubuntu;
 
