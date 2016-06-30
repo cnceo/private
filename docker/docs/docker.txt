@@ -161,9 +161,24 @@ dpkg -i libgmp10_6.1.0+dfsg-2_amd64.deb
 dpkg -i libmpfr4_3.1.4-1_amd64.deb
 dpkg -i libmpc3_1.0.3-1_amd64.deb
 
-mount -t vboxsf public /mnt/work;
+mount -t vboxsf project /mnt/work;
 docker run -v /mnt/work:/var/data --name=data_volume ubuntu;
 
 docker-machine start vic
 @FOR /f "tokens=*" %i IN ('docker-machine env vic') DO @%i
 docker run -it --volumes-from=7fde94b9f555 docker_compiler
+
+----------------------
+grep symbol libk.so
+ld -verbose libk.so
+objdump -x libk.so |grep symbol|more
+
+strings /usr/lib/libstdc++.so.6 | grep GLIBCXX
+
+libkeye.so: undefined reference to `MD5Init'
+libkeye.so: undefined reference to `wgetch'
+libkeye.so: undefined reference to `boost::system::system_category()'
+libkeye.so: undefined reference to `MD5Final'
+libkeye.so: undefined reference to `stdscr'
+libkeye.so: undefined reference to `boost::system::generic_category()'
+libkeye.so: undefined reference to `MD5Update'
