@@ -14,3 +14,5 @@ RUN make -j 2
 RUN make install
 RUN mv /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6.bak
 RUN ln -s /usr/lib64/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+RUN rm -rf $SRC/gcc-6.1.0
+

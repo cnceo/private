@@ -52,8 +52,8 @@ services:
   gcc6:
     build: gcc6/
 
-  gcc4:
-    build: gcc4/
+#  gcc4:
+#    build: gcc4/
 
   gitsvn:
     build: gitsvn/
