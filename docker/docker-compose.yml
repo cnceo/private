@@ -49,6 +49,12 @@ services:
       - data_volume
     command: ls -lh /var/data
 
+  gcc6:
+    build: gcc6/
+
+  gcc4:
+    build: gcc4/
+
   gitsvn:
     build: gitsvn/
 
