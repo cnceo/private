@@ -98,13 +98,22 @@ host - container
 
 
 
+---- Windows special
+share folder between VirtualBox and Boot2Docker vm:
+1,add shared folder for vm from VirtualBox: public:c:\public;
+2,start vm(from VirtualBox) and mount: mount -t vboxsf public /mnt/data;
+  *need remount after restart vm,but do not need start container;
+3,run docker from vm(from VirtualBox): docker run -v /mnt/data:/var/data --name=data_volume ubuntu;
+4,run docker from any terminal to share volume: docker run --volumue-from=data_volume compiler;
+5,stop data_volume container but volume still available;
+
+
+
 ———- docker
 $docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis redis:3.2.0 /bin/bash
 $docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis --name myredis redis:3.2.0 /bin/bash
 $docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis docker_redis-cluster /bin/bash
 #docker>redis-server /var/redis/redis.conf
-
-apt-get -y install gcc-5 -o Acquire::CompressionTypes::Order::=bz2
 
 
 install in pure linux(with out docker-machine)
@@ -152,8 +161,9 @@ dpkg -i libgmp10_6.1.0+dfsg-2_amd64.deb
 dpkg -i libmpfr4_3.1.4-1_amd64.deb
 dpkg -i libmpc3_1.0.3-1_amd64.deb
 
-share folder between VirtualBox and Boot2Docker vm:
-1,add shared folder for vm from VirtualBox: public:c:\public;
-2,start Boot2Docker vm and mount: mount -t vboxsf public /mnt/data;
-3,run docker from vm: docker run -v /mnt/data:/var/data ubuntu;
+mount -t vboxsf public /mnt/work;
+docker run -v /mnt/work:/var/data --name=data_volume ubuntu;
 
+docker-machine start vic
+@FOR /f "tokens=*" %i IN ('docker-machine env vic') DO @%i
+docker run -it --volumes-from=7fde94b9f555 docker_compiler
