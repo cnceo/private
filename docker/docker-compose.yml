@@ -52,8 +52,10 @@ services:
   gcc6:
     build: gcc6/
 
-  gcc4:
-    build: gcc4/
+  gcc61:
+    build: gcc61/
+#  gcc4:
+#    build: gcc4/
 
   gitsvn:
     build: gitsvn/
@@ -73,15 +75,15 @@ services:
 #  develop:
 #    build: develop/
 
-#  server:
-#    build: server/
+  server:
+    build: server/
 #    volumes:
 #      - ./server:/var/server
 #    links:
 #      - redis
 #      - mysql
-#    ports:
-#      - 8200:8200
+    ports:
+      - 8200:8200
 
   haproxy:
     build: haproxy/
