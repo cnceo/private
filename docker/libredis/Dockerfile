@@ -1,5 +1,4 @@
-FROM buildpack-deps:xenial
-#FROM docker_compiler
+FROM docker_gcc
 MAINTAINER Vic
 
 ENV SRC /var/src
@@ -9,3 +8,4 @@ ENV DATA /var/data
 #WORKDIR $SRC/boost_1_59_0
 #RUN cp -rf /usr/local/include/boost/ $(DATA)/thirdparts/include/
 #RUN cp -rf /usr/local/lib/libboost_* $(DATA)/thirdparts/libs/
+#RUN rm -rf $SRC/*

@@ -1,28 +1,27 @@
 FROM ubuntu:16.04
 MAINTAINER Vic
 
-# install gcc-6,g++6 from packages
-ENV SRC=/var/src
-ADD src/* $SRC/
+ENV SRC=/var/data
 WORKDIR $SRC/
-RUN dpkg -i *.deb \
-	&& rm -rf *.deb \
+
+# install gcc-6,g++6 from packages
+ADD src/gcc/* $SRC/gcc/
+ADD src/libssl/* $SRC/libssl/
+ADD src/make/* $SRC/make/
+ADD src/vi/* $SRC/vi/
+RUN dpkg -i $SRC/gcc/*.deb \
 	&& ln -s /usr/bin/gcc-6 /usr/bin/gcc \
 	&& ln -s /usr/bin/g++-6 /usr/bin/g++
 
 # install tools and libs
-WORKDIR $SRC/
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak \
-	&& cp sources.list /etc/apt/sources.list \
-	&& buildDeps='vim autoconf libtool automake make gdb libssl-dev' \
-	&& set -x \
-	&& apt-get update && apt-get install -y $buildDeps --fix-missing --no-install-recommends \
-	&& rm -r /var/lib/apt/lists/* \
-	&& apt-get purge -y --auto-remove $buildDeps
+RUN dpkg -i $SRC/make/*.deb
+RUN dpkg -i $SRC/vi/*.deb
+RUN dpkg -i $SRC/libssl/*.deb
+RUN rm -rf $SRC/*
 
 # gcc installs .so files in /usr/local/lib64...
-#RUN echo '/usr/local/lib64' > /etc/ld.so.conf.d/local-lib64.conf \
-#	&& ldconfig -v
+RUN echo '/usr/local/lib64' > /etc/ld.so.conf.d/local-lib64.conf \
+	&& ldconfig -v
 
 # ensure that alternatives are pointing to the new compiler and that old one is no longer used
 #RUN set -x \

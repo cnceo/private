@@ -43,25 +43,11 @@ services:
     #command: nginx -c /etc/nginx/nginx.conf
     command: /bin/bash
 
-  compiler:
-    build: compiler/
-    volumes_from:
-      - data_volume
-    command: ls -lh /var/data
-
-  gcc6:
-    build: gcc6/
-
   gcc:
     build: gcc/
-#  gcc4:
-#    build: gcc4/
 
   gitsvn:
     build: gitsvn/
-
-#  libs:
-#    build: libs/
 
   libboost:
      build: libboost/
@@ -71,9 +57,6 @@ services:
 
   libredis:
      build: libredis/
-
-#  develop:
-#    build: develop/
 
   server:
     build: server/

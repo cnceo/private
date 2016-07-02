@@ -1,5 +1,4 @@
-FROM buildpack-deps:xenial
-#FROM docker_compiler
+FROM docker_gcc
 MAINTAINER Vic
 
 ENV DATA /var/data
