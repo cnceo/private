@@ -1,20 +1,13 @@
-FROM buildpack-deps:xenial
+FROM ubuntu:16.04
 MAINTAINER Vic
 
 ENV SRC=/var/src
-ADD src/gcc-6.1.0.tar.bz2 $SRC/
-WORKDIR $SRC/gcc-6.1.0
+ADD src/* $SRC/
+WORKDIR $SRC/
 
-RUN ./contrib/download_prerequisites
-RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:usr/lib64 
-RUN mkdir build
-WORKDIR $SRC/gcc-6.1.0/build
-RUN ../configure --disable-checking --disable-multilib --enable-languages=c,c++ --prefix=/usr
-RUN make -j 4
-RUN make install
-#RUN mv /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6.bak
-#RUN ln -s /usr/lib64/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
-#RUN make clean
-WORKDIR $SRC
-RUN rm -rf gcc-6.1.0
-
+RUN dpkg -i *.deb
+RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
+RUN cp -rf $SRC/sources.list /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install gcc-6 g++6 vim make automake
+RUN rm -rf $/SRC/*

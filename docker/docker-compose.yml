@@ -52,8 +52,8 @@ services:
   gcc6:
     build: gcc6/
 
-  gcc61:
-    build: gcc61/
+  gcc:
+    build: gcc/
 #  gcc4:
 #    build: gcc4/
 

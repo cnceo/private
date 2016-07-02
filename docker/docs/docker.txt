@@ -1,4 +1,4 @@
-﻿———- Guide
+———- Guide
 docker machine: easy create docker host;
 docker swarm: dockerlized cluster tool;
 docker hub: docker images repository;
@@ -154,6 +154,7 @@ deb-src http://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe 
 deb-src http://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
 
 deb http://mirrors.sohu.com/ubuntu/ xenial main restricted universe multiverse
+ftp.sjtu.edu.cn
 
 http://archive.ubuntu.com/ubuntu/pool/main/
 

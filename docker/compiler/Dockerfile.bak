@@ -11,3 +11,4 @@ RUN dpkg -i $SRC/*.deb
 #RUN apt-get -y --fix-missing --no-install-recommends install make
 RUN apt-get -y --fix-missing --no-install-recommends install gcc g++ gdb
 RUN apt-get -y --fix-missing --no-install-recommends install vim autoconf libtool automake
+RUN apt-get -y --no-install-recommends install libssl-dev openssh-server
