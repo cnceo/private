@@ -5,3 +5,5 @@ $shopt -s expand_aliases
 
 source(.)
 sh usually fork shell(subprocess) and execute commands; source(.) doesn’t do that but execute in current shell;
+
+nm list symbols in files;
