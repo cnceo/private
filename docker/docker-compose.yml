@@ -4,19 +4,7 @@ services:
   data_volume:
     image: ubuntu:16.04
     volumes:
-      - ./data:/var/data/
-
-  redis:
-    image: redis:3.2.0
-    ports:
-      - 6543:6543
-      - 6379:6379
-    volumes:
-      - ./redis:/var/redis/
-    volumes_from:
-      - data_volume
-    #command: redis-server /var/redis/redis.conf
-    command: ls -lh /var/data
+      - .:/var/data/
 
 #  redis-cluster:
 #    build: redis/
@@ -26,47 +14,21 @@ services:
 #    volumes:
 #      - ./redis:/var/redis/
 
-  mysql:
-    image: mysql:5.7
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql:/var/mysql/
-    command: ls -lh /var/mysql
-
-  nginx:
-    image: nginx:1.10
-    ports:
-      - 80:80
-    volumes:
-      - ./nginx:/var/nginx/
-    #command: nginx -c /etc/nginx/nginx.conf
-    command: /bin/bash
-
   gcc:
     build: gcc/
 
   gitsvn:
     build: gitsvn/
 
-  libboost:
-     build: libboost/
+# comment after build once
+#  libboost:
+#     build: libboost/
 
-  libmysql:
-     build: libmysql/
+#  libmysql:
+#     build: libmysql/
 
   libredis:
      build: libredis/
-
-  server:
-    build: server/
-#    volumes:
-#      - ./server:/var/server
-#    links:
-#      - redis
-#      - mysql
-    ports:
-      - 8200:8200
 
   haproxy:
     build: haproxy/
