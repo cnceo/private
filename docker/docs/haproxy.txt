@@ -1,6 +1,65 @@
 Installation:
+#RUN apt-get -y --no-install-recommends install libssl-dev openssh-server
 
-Configure:
+tar zxvf haproxy-1.6.5.tar.gz
+make -j TARGET=generic
+make install
+
+tar zxvf keepalived-1.2.22.tar.gz
+./configure
+make -j && make install
+
+
+
+Configure: haproxy.cfg
+1,global		#global config
+  maxconn		#default max connections
+  daemon		#run as daemon in bg
+  nbproc 1		#processes number
+  pidfile		#pid file
+  ulimit-n 65535	#ulimit
+
+2,defaults		#default global config
+  mode http		#http mode
+  stats refresh 30	#stats refresh interval
+  retries 3		#unavailable after retry times
+  balance roundrobin	#balance algorithm
+  timeout check 2000	#heart beat timeout
+
+3,listen admin_stats	#admin config
+  bind 0.0.0.0:8888	#listen address
+  mode http		#work mode
+  stats refresh 5s
+  stats auth admin:admin	#admin user and pswd
+
+4,frontend <name>	#frontend,haproxy will listen this address
+  bind 0.0.0.0:80
+  mode http
+
+5,backend <name>	#backend,handle frontend’s requests
+  bind 0.0.0.0:8800
+  mode http
+  balance source
+
+6,listen <name>		#listen address,as frontend and backend
+  bin
+  bind 0.0.0.0:7890	#frontend
+  mode tcp
+  balance source
+  server <name> 0.0.0.0:17000 [param*]	#backend
+  server <name> 0.0.0.0:17001 [param*]	#backend
+
+balance:
+  roundrobin	#simple round
+  static-rr	#using weight
+  leastconn	#prefer the least connections
+  source	#depends on request source addresses
+  ri		#depends on URI
+  rl_param	#depends on URI parameters
+  hdr		#depends on HTTP header
+  rdp-cookie	#depends on cookie
+
+
 
 Run:
 haproxy -f /usr/local/haproxy/haproxy.cfg
