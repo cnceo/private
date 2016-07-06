@@ -1,3 +1,8 @@
+﻿Stat
+QPS: 40-50k, 10Gbps
+
+
+
 Installation:
 #RUN apt-get -y --no-install-recommends install libssl-dev openssh-server
 
@@ -59,7 +64,9 @@ balance:
   hdr		#depends on HTTP header
   rdp-cookie	#depends on cookie
 
-
+mode:
+  tcp		#work on ISO layer 4,transport without check
+  http		#deep analyse before transport from frontend to backend
 
 Run:
 haproxy -f /usr/local/haproxy/haproxy.cfg
