@@ -32,3 +32,6 @@ services:
 
   haproxy:
     build: haproxy/
+
+  tomcat:
+    build: tomcat/
