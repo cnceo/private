@@ -1,7 +1,5 @@
-﻿Stat
+haproxy
 QPS: 40-50k, 10Gbps
-
-
 
 Installation:
 #RUN apt-get -y --no-install-recommends install libssl-dev openssh-server
@@ -70,3 +68,164 @@ mode:
 
 Run:
 haproxy -f /usr/local/haproxy/haproxy.cfg
+
+
+
+
+keepalived
+
+
+Installation:
+#cd keepalived-1.1.15
+#./configure --prefix=/usr/local/keepalived
+#make && make install
+#cp /usr/local/keepalived/sbin/keepalived  /usr/sbin/
+#cp /usr/local/keepalived/etc/sysconfig/keepalived  /etc/sysconfig/
+#cp /usr/local/keepalived/etc/rc.d/init.d/keepalived  /etc/init.d/
+#service keepalived start
+#service keepalived stop
+
+
+
+Configuration:
+keepalived.conf
+1,global_defs:
+  notification objects and machines;
+
+2,static_ipaddress,static_routes:
+  local ip and route,unuasual needed;
+
+3,vrrp_sync_group,vrrp_instance:
+  define VIP and related properties provided;
+
+4,vrrp_script:
+  health check script,specify checking script and failure operations;
+
+5,virtual_server,virtual_server_group:
+  virtual server and group configures;
+
+global_defs {
+   #notification objects and machines
+   notification_email {
+     keyeleo@163.com
+   }
+   notification_email_from keyeleo@163.com
+   smtp_server smtp.163.com
+   smtp_connect_timeout 30
+   router_id LVS_DEVEL
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+#health check script,specify checking script and failure operations;
+vrrp_script check_run {
+   script "/root/bin/check_service.sh"
+   interval 5
+}
+
+vrrp_instance VI_1 {
+    state BACKUP		#backup node
+    interface eth0		#moniter network interface
+    virtual_router_id 51	#same as master
+    priority 90			#failover priority,master must higher than backup
+    advert_int 1		#broadcast frequence
+    authentication {		#VRRP auth,same as master
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+        192.168.99.101		#VRRP HA VIP
+    }
+}
+
+vrrp_instance VI_2 {
+    state MASTER
+    interface eth0
+    virtual_router_id 52
+    priority 100
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+        192.168.99.102
+    }
+}
+
+virtual_server 192.168.99.100 8899 {
+    delay_loop 6
+    lb_algo rr
+    lb_kind NAT
+    persistence_timeout 50
+    protocol TCP
+
+    real_server 192.168.99.100 8899 {
+        weight 1
+        SSL_GET {
+            url {
+              path /
+              digest ff20ad2481f97b1754ef3e12ecd3a9cc
+            }
+            url {
+              path /mrtg/
+              digest 9b3a0c85a887a256d6939da88aabd8cd
+            }
+            connect_timeout 3
+            nb_get_retry 3
+            delay_before_retry 3
+        }
+    }
+}
+
+
+Mechanism:
+include modules of core,check and vrrp;
+install keepalived on each machines;keepalived will link and moniter each other and notify;
+HA use virtual ip to swith machines to keep high availabe;
+
+
+
+Run:
+#crontab -e
+  */1****/root/check_service.sh
+#keepalived -D -f etc/keepalived.conf
+#tail -f /var/log/messages
+#ip a
+
+
+
+Nagios:
+
+
+
+
+Virtual IP:
+
+1,config eth0:1 as VIP
+.online config:
+#ifconfig eth0:1 192.168.109.108 netmask 255.255.255.0
+#ifconfig eth0:1
+#ifconfig eth0:1 up
+#ping -c 3 192.168.109.108
+
+.OR file config:
+#cd /etc/sysconfig/network-script/
+#cp ifcfg-eth0 ifcfg-eth0:1
+#vi ifcfg-eth0:1
+DEVICE=eth0:1
+HWADDR=00:0C:29:45:62:3B
+ONBOOT=yes
+BOOTPROTO=static
+IPADDR=192.168.109.108
+NETMASK=255.255.255.0
+
+2,switch with eth0
+#vi ifcfg-eth0
+IPADDR=192.168.109.109
+
+3,restart
+nohup service network restart &
+
