@@ -1,0 +1,33 @@
+brew install autoconf[need to across the great wall and reach the bigger world]
+brew install automake
+brew install libel
+sudo ./autogen.sh
+./configure
+make
+make check
+make install
+protoc —version
+
+
+problems:
+
+1,curl
+Protocol https not supported or disabled in libcurl
+使用的curl库不支持https，需要下载源码包，重新编译curl
+tar zxvf curl-7.24.0.tar.gz
+cd  curl-7.24.0
+./configure --prefix=/usr/local/services/curl-7.24.0 --with-ssl=/usr/local/services/openssl-0.9.8a
+./configure --prefix=/usr/local/ --with-ssl=/usr/local/Cellar/openssl/1.0.2d_1
+#请注意，这里一定要使用 --with-ssl 参数，前提是你已经安装了openssl-0.9.8a (建议安装0.9.8a 测试过0.9.7i有些bug）
+该步骤执行结束后，一定要观察仔细，是否有这行
+SSL support:     enabled (OpenSSL)
+如果你的是
+SSL support:     no
+那就是说，你的curl依旧没有支持https
+make  &&  make install
+curl -V
+Protocols: dict file ftp gopher http https imap pop3 rtsp smtp telnet tftp
+这说明已经支持了https
+
+2,gmock not found and can not download from google
+download gmock from anywhere and extract into protobuf source;

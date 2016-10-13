@@ -1,0 +1,63 @@
+#!/bin/sh
+
+filelist=`ls /Users/x/Documents/Proto/protogen-master/test/*.proto`
+for file in $filelist
+do
+echo $file
+mono /Users/x/Documents/Proto/protogen-master/bin/protogen.exe -i:$file -o:${file%.*}.cs
+done
+
+
+
+1、先去 https://github.com/mgravell/protobuf-net/tree/master/protobuf-net 把protobuf-net的代码下载下来。
+
+2、使用Monodevelop打开protobuf-net-master/protobuf-net/protobuf-net.csproj，然后右键选择Build protobuf-net 项目。在protobuf-net-master/protobuf-net/目录下会生成一个bin的目录。(选择Release)
+
+3、把protobuf-net.dll复制到protobuf-net-master/ProtoGen/目录下，然后使用MonoDevelop打开protobuf-net-master/ProtoGen/ProtoGen.csproj 工程，添加引用（如下图），build ProtoGen
+
+4、这时会在ProtoGen/bin/生成protogen.exe，然后把整个protobuf-net-master文件夹复制到win操作系统，没有win的可以安装一个虚拟机。
+
+5、执行protogen.exe -i:a.proto -o:a.cs,则会在本目录生成一个a.cs的c#文件
+
+6、把protobuf-net-master/protobuf-net/源代码拷贝到unity工程scritps目录下（可以把bin文件夹去掉），a.cs文件添加到scripts文件中，这是会有一个unsafe的错误。
+
+7、在Assets目录下添加smcs.rsp文件，文件内容只有-unsafe。重启unity，错误消失。
+
+8、解析数据。(下面是本地proto数据解析)。
+
+FileStream fs = null;
+        try{
+            fs = new FileStream (Application.dataPath+"/StreamingAssets/64.proto",FileMode.Open,FileAccess.Read);
+        }catch(Exception ex){
+            Debug.LogError (ex.Message);
+        }
+        CMaindata mainData = new CMaindata();
+        mainData = ProtoBuf.Serializer.Deserialize<CMaindata> (fs);
+
+9、大功告成！！！
+
+
+
+google official protobuf 3.0
+
+1.下载protobuf代码
+
+https://github.com/google/protobuf/tree/master
+
+2.下载安装dotnet sdk
+
+https://github.com/dotnet/cli
+
+安装后记得关闭所有的explorer 
+
+3.在目录 protobuf_v3.0.0\csharp下 
+
+双击执行：
+
+build_packages
+
+4.等一会儿就可以在
+
+csharp\src\Google.Protobuf\bin\Release 
+
+找到你想要的dll了
