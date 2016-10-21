@@ -5799,7 +5799,7 @@
 									"width": 153,
 									"height": 70,
 									"autoResize": false,
-									"text": "pendingDiscard\n:set melder or drawer\nmsgMeld\n:all or drawer",
+									"text": "pendingDiscard\n:set melder or drawer\nmsgMeld\n:all",
 									"wordWrap": true
 								},
 								{
