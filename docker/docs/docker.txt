@@ -119,7 +119,7 @@ $docker run -it --net=host -v /Users/vliu/docker/redis:/var/redis docker_redis-c
 install in pure linux(with out docker-machine)
 CentOS 6:
 $yum install http://mirrors.yun-idc.com/epel/6/i386/epel-release-6-8.noarch.rpm
-$yum install docket.io
+$yum install docker-io
 CentOS 7:
 $yum install docker
 Other:
@@ -176,10 +176,3 @@ objdump -x libk.so |grep symbol|more
 
 strings /usr/lib/libstdc++.so.6 | grep GLIBCXX
 
-libkeye.so: undefined reference to `MD5Init'
-libkeye.so: undefined reference to `wgetch'
-libkeye.so: undefined reference to `boost::system::system_category()'
-libkeye.so: undefined reference to `MD5Final'
-libkeye.so: undefined reference to `stdscr'
-libkeye.so: undefined reference to `boost::system::generic_category()'
-libkeye.so: undefined reference to `MD5Update'
