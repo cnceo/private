@@ -9,5 +9,5 @@ RUN dpkg -i *.deb
 RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN cp -rf $SRC/sources.list /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install gcc-6 g++6 vim make automake
+RUN apt-get install gcc-6 g++6 autoconf automake libtool tar unzip bzip2 vim wget
 RUN rm -rf $/SRC/*

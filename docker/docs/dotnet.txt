@@ -1,8 +1,0 @@
-The dotnet is a new foundational cross-platform toolchain for developing .NET Core applications.
-
-//this will also install openssl-1.0,download from https://github.com/dotnet/cli as well
-$brew cast install dotnet
-//this make dotnet work
-$ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-$ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-$ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
